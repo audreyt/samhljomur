@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Hálendi Sauðkindin“\nEnglish gloss: “Highland of Sauðkindin”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.8158716894763604
+      }
+    },
+    "usage": {
+      "input_tokens": 168,
+      "output_tokens": 0
+    }
+  }
+}

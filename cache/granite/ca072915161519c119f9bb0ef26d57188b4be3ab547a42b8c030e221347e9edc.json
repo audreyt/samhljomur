@@ -1,0 +1,41 @@
+{
+  "request": {
+    "model": "granite4.2:30b",
+    "stream": false,
+    "think": false,
+    "messages": [
+      {
+        "role": "system",
+        "content": "You translate short Icelandic texts written by members of the public into plain English. Translate faithfully; add nothing and leave nothing out. Keep place names in Icelandic. Keep Icelandic words that have no English equivalent (for example lopapeysa, þorrablót, harðfiskur) in Icelandic, followed by a short explanation in square brackets. Do not correct, praise, or comment. Output only the English text."
+      },
+      {
+        "role": "user",
+        "content": "Translate literally: Ég fór alltaf í bása í jóla ferðir, minningar og náttúran alltaf jafn falleg"
+      }
+    ],
+    "options": {
+      "temperature": 0,
+      "num_ctx": 4096,
+      "seed": 1010
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "granite4.2:30b",
+    "created_at": "2026-10-05T00:06:32.44782Z",
+    "message": {
+      "role": "assistant",
+      "content": "I always went to the base during Christmas trips, memories and nature always equally beautiful"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 929523709,
+    "load_duration": 15406750,
+    "prompt_eval_count": 137,
+    "prompt_eval_cached_count": 94,
+    "prompt_eval_duration": 308478000,
+    "eval_count": 17,
+    "eval_duration": 603289000
+  },
+  "latency_ms": 929
+}

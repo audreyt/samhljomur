@@ -1,0 +1,46 @@
+{
+  "request": {
+    "model": "/Users/au/Models/Apertus-v1.5-8B-text-MLX-8bit",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You translate short Icelandic texts written by members of the public into plain English. Translate faithfully; add nothing and leave nothing out. Keep place names in Icelandic. Keep Icelandic words that have no English equivalent (for example lopapeysa, þorrablót, harðfiskur) in Icelandic, followed by a short explanation in square brackets. Do not correct, praise, or comment. Output only the English text."
+      },
+      {
+        "role": "user",
+        "content": "Translate literally: Þarna slær skátahjartað"
+      }
+    ],
+    "temperature": 0,
+    "max_tokens": 400,
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    }
+  },
+  "response": {
+    "id": "chatcmpl-ebab9f79-86ec-4ea1-b263-bbbf5b80f368",
+    "system_fingerprint": "0.32.1.dev7+g5bc45adb8-0.32.3-macOS-27.0.1-arm64-arm-64bit-applegpu_g17s",
+    "object": "chat.completion",
+    "model": "/Users/au/Models/Apertus-v1.5-8B-text-MLX-8bit",
+    "created": 1791183603,
+    "choices": [
+      {
+        "index": 0,
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "There the scout's heart strikes. [skátahjartað: scout's heart]"
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 123,
+      "completion_tokens": 20,
+      "total_tokens": 143,
+      "prompt_tokens_details": {
+        "cached_tokens": 108
+      }
+    }
+  },
+  "latency_ms": 403
+}

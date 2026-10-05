@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Hérna er gaman að fara í fjallgöngu, skíði, góðir veitingastaðir og auðvelt að fara á menningarviðburði.  Svolítið eins og að fara til útlanda.  Margt í boði.“\nEnglish gloss: “Here it is nice to go hiking, skiing, good restaurants and easy to go to cultural events. Almost as if going abroad. Much available.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.6519702062336278
+      }
+    },
+    "usage": {
+      "input_tokens": 243,
+      "output_tokens": 0
+    }
+  }
+}

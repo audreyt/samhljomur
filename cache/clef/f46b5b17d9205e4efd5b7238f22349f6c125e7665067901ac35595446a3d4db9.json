@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „virðing“\nEnglish gloss: “virðing [respect]”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.9470100365534563
+      }
+    },
+    "usage": {
+      "input_tokens": 163,
+      "output_tokens": 0
+    }
+  }
+}

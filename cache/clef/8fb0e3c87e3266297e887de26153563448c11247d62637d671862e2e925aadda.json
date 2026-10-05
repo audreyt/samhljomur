@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Þetta er sveitinn mín bestu miningarnar og hef aldrei fengið jafn mikla reinslu og á þessum stað“\nEnglish gloss: “This is my countryside, the best memories, and I have never gained as much experience as in this place.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.28087918349603996
+      }
+    },
+    "usage": {
+      "input_tokens": 208,
+      "output_tokens": 0
+    }
+  }
+}

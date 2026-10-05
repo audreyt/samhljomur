@@ -1,0 +1,31 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Mér finnst andinn á Akureyri vera ótrúlega góður svo þar líður mér alltaf vel.“\nEnglish gloss: “I find the atmosphere in Akureyri incredibly good, so I always feel great there.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.8040708568152942
+      }
+    },
+    "usage": {
+      "input_tokens": 201,
+      "output_tokens": 0
+    }
+  },
+  "latency_ms": 456
+}

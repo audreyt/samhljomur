@@ -1,0 +1,41 @@
+{
+  "request": {
+    "model": "granite4.2:30b",
+    "stream": false,
+    "think": false,
+    "messages": [
+      {
+        "role": "system",
+        "content": "You translate short Icelandic texts written by members of the public into plain English. Translate faithfully; add nothing and leave nothing out. Keep place names in Icelandic. Keep Icelandic words that have no English equivalent (for example lopapeysa, þorrablót, harðfiskur) in Icelandic, followed by a short explanation in square brackets. Do not correct, praise, or comment. Output only the English text."
+      },
+      {
+        "role": "user",
+        "content": "Translate literally: Vegna þess að fjölskylda pabba míns er frá Bakkafirði, og það er mjög friðsælt að vera þar. Það eru mjög fáir sem búa þarna enn held ég en það gerir þetta ennþá betra. Maður er langt frá öllu og er bara að lifa í núinu."
+      }
+    ],
+    "options": {
+      "temperature": 0,
+      "num_ctx": 4096,
+      "seed": 1010
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "granite4.2:30b",
+    "created_at": "2026-10-05T00:11:38.835414Z",
+    "message": {
+      "role": "assistant",
+      "content": "Because my father's family is from Bakkafirði, and it is very peaceful to be there. There are very few people living there now, but I still feel it makes this even better. A person is far from everything and is just living in the present."
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 2744631583,
+    "load_duration": 16894250,
+    "prompt_eval_count": 205,
+    "prompt_eval_cached_count": 97,
+    "prompt_eval_duration": 321838000,
+    "eval_count": 57,
+    "eval_duration": 2393843000
+  },
+  "latency_ms": 2745
+}

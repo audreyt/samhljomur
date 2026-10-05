@@ -1,0 +1,41 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Uppáhaldsstaður þátttakanda á Íslandi (talasaman.is/stadir).\nStaður: Álftavatn, Grímsnes- og Grafningshreppur\nÁstæða, orðrétt: „Amma og afi áttu bústað við Fimmtu braut og ég fór þangað með þeim þegar ég var lítil. Einnig fengu mamma og pabbi bústaðinn stundum lánaðan og börn bróður pabba voru þarna líka í sumarbústað. Þarna var algjör paradís. Þegar ég var komin með börnin mín fór ég stundum með þeim niður að Álftavatni á góðvirðisdögum og við óðum langt út í vatnið. Þetta var dásamlegur tími sem ég átti þarna, með ömmu og afa, svo mömmu og pabba, með vinum og svo með börnunum mínum og systrabörnum.“",
+    "questions": {
+      "excerpt": {
+        "type": "choice",
+        "instructions": "Which single sentence of the reason is the most beautiful to sing, word for word?",
+        "criteria": {
+          "s1": "Amma og afi áttu bústað við Fimmtu braut og ég fór þangað með þeim þegar ég var lítil.",
+          "s2": "Einnig fengu mamma og pabbi bústaðinn stundum lánaðan og börn bróður pabba voru þarna líka í sumarbústað.",
+          "s3": "Þarna var algjör paradís.",
+          "s4": "Þegar ég var komin með börnin mín fór ég stundum með þeim niður að Álftavatni á góðvirðisdögum og við óðum langt út í vatnið.",
+          "s5": "Þetta var dásamlegur tími sem ég átti þarna, með ömmu og afa, svo mömmu og pabba, með vinum og svo með börnunum mínum og systrabörnum."
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "excerpt": {
+        "type": "choice",
+        "choice": "s5",
+        "probabilities": {
+          "s1": 0.039123382808449805,
+          "s2": 0.021921451694130654,
+          "s3": 0.12589178365066192,
+          "s4": 0.3597900975963236,
+          "s5": 0.4532732842504341
+        },
+        "confidence": 0.2557133938279178
+      }
+    },
+    "usage": {
+      "input_tokens": 604,
+      "output_tokens": 0
+    }
+  }
+}

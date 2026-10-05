@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Ég fer oft í göngutúra þangað með vini mínum og finnst þetta vera fallegt og einfalt.“\nEnglish gloss: “I often go for walks there with my friends and find it to be beautiful and simple.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.8602292730436527
+      }
+    },
+    "usage": {
+      "input_tokens": 198,
+      "output_tokens": 0
+    }
+  }
+}

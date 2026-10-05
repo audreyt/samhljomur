@@ -1,0 +1,9 @@
+{
+  "model": "granite",
+  "run_id": "20261005001920-0xqy",
+  "requests_recalled": 8,
+  "identical": 8,
+  "changed": 0,
+  "diffs": [],
+  "note": "fresh responses stored under this run dir as recall-<model>-<sha>.json; cache is NOT modified"
+}

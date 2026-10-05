@@ -1,0 +1,41 @@
+{
+  "request": {
+    "model": "granite4.2:30b",
+    "stream": false,
+    "think": false,
+    "messages": [
+      {
+        "role": "system",
+        "content": "You translate short Icelandic texts written by members of the public into plain English. Translate faithfully; add nothing and leave nothing out. Keep place names in Icelandic. Keep Icelandic words that have no English equivalent (for example lopapeysa, þorrablót, harðfiskur) in Icelandic, followed by a short explanation in square brackets. Do not correct, praise, or comment. Output only the English text."
+      },
+      {
+        "role": "user",
+        "content": "Þetta er sveitinn mín bestu miningarnar og hef aldrei fengið jafn mikla reinslu og á þessum stað"
+      }
+    ],
+    "options": {
+      "temperature": 0.2,
+      "num_ctx": 4096,
+      "seed": 1010
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "granite4.2:30b",
+    "created_at": "2026-10-05T00:05:48.473074Z",
+    "message": {
+      "role": "assistant",
+      "content": "This is my best mining crew, and I have never gotten such a high level of refinement at this location."
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 1311980375,
+    "load_duration": 16708166,
+    "prompt_eval_count": 137,
+    "prompt_eval_cached_count": 94,
+    "prompt_eval_duration": 381451000,
+    "eval_count": 23,
+    "eval_duration": 911425000
+  },
+  "latency_ms": 1313
+}

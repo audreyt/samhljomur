@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Þarna tók ég þátt í að rækta skóg á hrjóstrugum mel“\nEnglish gloss: “There I took part in tending a forest on hrjóstrugum mel.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.6552560860118221
+      }
+    },
+    "usage": {
+      "input_tokens": 192,
+      "output_tokens": 0
+    }
+  }
+}

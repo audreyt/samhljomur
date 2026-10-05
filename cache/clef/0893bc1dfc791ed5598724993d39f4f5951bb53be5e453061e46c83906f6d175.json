@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Svo fallegt í eyjum alltaf, er ekki þaðan en mín besta vinkona er þaðan og mér finnst við ekki hafa gert nægilega vel til að tryggja samgöngur á milli lands og eyja. Mér líður alltaf þegar ég er í eyjum eins og ég sé á sérstakasta stað á jörðinni.“\nEnglish gloss: “So beautiful in the islands always, I am not from there but my best friend is from there and I feel we have not done well enough to ensure transport between the mainland and the islands. I always feel when I am in the islands like I am in a special place on earth.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.7530311379604374
+      }
+    },
+    "usage": {
+      "input_tokens": 295,
+      "output_tokens": 0
+    }
+  }
+}

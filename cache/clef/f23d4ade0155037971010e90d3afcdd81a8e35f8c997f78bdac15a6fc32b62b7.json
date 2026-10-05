@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „fjölskyldun hús, það er ekkert simasaband og einginn utanaðkomandi áreiti“\nEnglish gloss: “The family house, there is no plumbing connection and no external funding.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.20185828535652386
+      }
+    },
+    "usage": {
+      "input_tokens": 196,
+      "output_tokens": 0
+    }
+  }
+}

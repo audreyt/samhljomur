@@ -1,0 +1,31 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Stór himinn, fegurð, friður og kyrrð“\nEnglish gloss: “A vast sky, beauty, peace, and tranquility.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.8975616026878982
+      }
+    },
+    "usage": {
+      "input_tokens": 180,
+      "output_tokens": 0
+    }
+  },
+  "latency_ms": 447
+}

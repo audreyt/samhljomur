@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „útlendingamál“\nEnglish gloss: “foreigner's language [term used in Icelandic for the language spoken by non-Icelandic speakers, often referring to English or other foreign languages when distinguishing from Icelandic]”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.22490667683132506
+      }
+    },
+    "usage": {
+      "input_tokens": 192,
+      "output_tokens": 0
+    }
+  }
+}

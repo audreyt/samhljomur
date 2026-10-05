@@ -1,0 +1,41 @@
+{
+  "request": {
+    "model": "gemma4:31b-it-qat-google-official",
+    "stream": false,
+    "think": false,
+    "messages": [
+      {
+        "role": "system",
+        "content": "You translate short Icelandic texts written by members of the public into plain English. Translate faithfully; add nothing and leave nothing out. Keep place names in Icelandic. Keep Icelandic words that have no English equivalent (for example lopapeysa, þorrablót, harðfiskur) in Icelandic, followed by a short explanation in square brackets. Do not correct, praise, or comment. Output only the English text."
+      },
+      {
+        "role": "user",
+        "content": "Alla mína ævi hef ég farið til Gjögurs á sumrin. Það er eitthvað ólýsanlegt við það að fara í sveitina, slökkva á öllum áreitinu úr símanum og tengjast ósnertri náttúrunni í sveitinni."
+      }
+    ],
+    "options": {
+      "temperature": 0.2,
+      "num_ctx": 4096,
+      "seed": 1010
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "gemma4:31b-it-qat-google-official",
+    "created_at": "2026-10-05T00:36:47.725298Z",
+    "message": {
+      "role": "assistant",
+      "content": "All my life I have gone to Gjögur in the summers. There is something indescribable about going to the countryside, turning off all the distractions from the phone and connecting with the untouched nature in the countryside."
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 2306234167,
+    "load_duration": 15754834,
+    "prompt_eval_count": 178,
+    "prompt_eval_cached_count": 0,
+    "prompt_eval_duration": 596936000,
+    "eval_count": 44,
+    "eval_duration": 1692082000
+  },
+  "latency_ms": 2307
+}

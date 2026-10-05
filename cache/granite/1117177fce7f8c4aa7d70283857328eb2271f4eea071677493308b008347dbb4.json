@@ -1,0 +1,41 @@
+{
+  "request": {
+    "model": "granite4.2:30b",
+    "stream": false,
+    "think": false,
+    "messages": [
+      {
+        "role": "system",
+        "content": "You translate short Icelandic texts written by members of the public into plain English. Translate faithfully; add nothing and leave nothing out. Keep place names in Icelandic. Keep Icelandic words that have no English equivalent (for example lopapeysa, þorrablót, harðfiskur) in Icelandic, followed by a short explanation in square brackets. Do not correct, praise, or comment. Output only the English text."
+      },
+      {
+        "role": "user",
+        "content": "Translate literally: Ég man sérstaklega vel eftir að fara á fiskidaginn með þeim og frænku minni áður en það hætti og að borða jarðarberin og annað sem amma ræktar."
+      }
+    ],
+    "options": {
+      "temperature": 0,
+      "num_ctx": 4096,
+      "seed": 1010
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "granite4.2:30b",
+    "created_at": "2026-10-05T00:09:18.51454Z",
+    "message": {
+      "role": "assistant",
+      "content": "I remember especially well after going to the fishing day with them and my aunt earlier before it stopped and eating the earthworms and other things that grandma grows."
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 1636083916,
+    "load_duration": 16831750,
+    "prompt_eval_count": 172,
+    "prompt_eval_cached_count": 94,
+    "prompt_eval_duration": 353151000,
+    "eval_count": 33,
+    "eval_duration": 1262630000
+  },
+  "latency_ms": 1636
+}

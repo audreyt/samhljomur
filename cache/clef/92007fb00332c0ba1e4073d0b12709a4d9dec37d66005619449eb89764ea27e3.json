@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Það er ekkert betra en að fara í sund á Íslandi. Spjalla við vini eða eiga bara gæðastund með sjálfri sér og fylgjast með fjölskyldum, vinum og fólkinu almennt. Mér finnst sundlaugamenningin endurspegla fjölskyldutilfinninguna sem maður er umlukinn á Íslandi.“\nEnglish gloss: “There is nothing better than going for a swim in Iceland. Chat with friends or simply have a good time alone, and be accompanied by family, friends, and the general public. I find that the swimming culture reflects the family-oriented mindset of a person living in Iceland.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.36732068410482477
+      }
+    },
+    "usage": {
+      "input_tokens": 304,
+      "output_tokens": 0
+    }
+  }
+}

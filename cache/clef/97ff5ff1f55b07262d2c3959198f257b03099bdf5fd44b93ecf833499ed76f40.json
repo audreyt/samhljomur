@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Ég varð meira ég sjálf og fann vinni sem ég vill hafa með mér restina af lífinu mínu. Svo lærði ég að taka ábyrgð af lærdómnum mínum sem telst í margt annað í líf mínu.“\nEnglish gloss: “I took more care of myself and found work that I want to have with me for the rest of my life. So I learned to take responsibility for my learning, which counts for much else in my life.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.4059060815838705
+      }
+    },
+    "usage": {
+      "input_tokens": 257,
+      "output_tokens": 0
+    }
+  }
+}

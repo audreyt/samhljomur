@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Falleg náttúra og æðislegur staður fyrir útivist og fjölskyldusamveru“\nEnglish gloss: “Beautiful nature and a pleasant place for recreation and family togetherness”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.7699967741073505
+      }
+    },
+    "usage": {
+      "input_tokens": 194,
+      "output_tokens": 0
+    }
+  }
+}

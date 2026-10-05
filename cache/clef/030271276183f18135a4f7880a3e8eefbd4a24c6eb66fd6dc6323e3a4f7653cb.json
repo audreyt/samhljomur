@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „þrjóska“\nEnglish gloss: “þrjóska [a traditional Icelandic dish made from sheep's offal, typically consisting of liver, heart, and stomach]”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.5865633089857208
+      }
+    },
+    "usage": {
+      "input_tokens": 186,
+      "output_tokens": 0
+    }
+  }
+}

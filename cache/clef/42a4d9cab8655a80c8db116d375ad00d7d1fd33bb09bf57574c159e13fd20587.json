@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Staðfesting íslensks UI-texta: „ElevenLabs Music v2.5 og Scribe v2 í skýinu. Við vitum hver veitir þjónustuna, hvað var sent og hvað kom til baka (C2PA-undirritað), en ekki hvernig líkanið er gert.“",
+    "questions": {
+      "natural_is": {
+        "type": "noul",
+        "instructions": "Is this natural, grammatical Icelandic?",
+        "criteria": {
+          "true": "natural Icelandic",
+          "false": "unnatural or ungrammatical"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "natural_is": {
+        "type": "noul",
+        "noul": 0.6652542093628876
+      }
+    },
+    "usage": {
+      "input_tokens": 216,
+      "output_tokens": 0
+    }
+  }
+}

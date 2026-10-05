@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Þetta er heillandi staður. Þetta er mjög falleg strönd með jökla sem líta út eins og þeir séu úr ævintýri.“\nEnglish gloss: “This is a healthy place. This is a very beautiful beach with glaciers that look as if they were from a fairy tale.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.14234402796742235
+      }
+    },
+    "usage": {
+      "input_tokens": 218,
+      "output_tokens": 0
+    }
+  }
+}

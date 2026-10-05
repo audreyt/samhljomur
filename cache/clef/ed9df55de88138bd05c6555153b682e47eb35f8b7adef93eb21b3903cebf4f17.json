@@ -1,0 +1,31 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „kílómetragjaldið“\nEnglish gloss: “The toll in kilometers. [kilómetragjaldið = toll based on distance in kilometers]”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.3946344532958692
+      }
+    },
+    "usage": {
+      "input_tokens": 183,
+      "output_tokens": 0
+    }
+  },
+  "latency_ms": 439
+}

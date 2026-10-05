@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Yndislegt að vera þarna, fallegt landslag og nóg um gönguleiðir.“\nEnglish gloss: “Wonderful to be there, beautiful landscape and plenty of hiking trails.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.9273770217548438
+      }
+    },
+    "usage": {
+      "input_tokens": 190,
+      "output_tokens": 0
+    }
+  }
+}

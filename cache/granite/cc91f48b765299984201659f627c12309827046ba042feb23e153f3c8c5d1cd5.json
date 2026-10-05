@@ -1,0 +1,41 @@
+{
+  "request": {
+    "model": "granite4.2:30b",
+    "stream": false,
+    "think": false,
+    "messages": [
+      {
+        "role": "system",
+        "content": "You translate short Icelandic texts written by members of the public into plain English. Translate faithfully; add nothing and leave nothing out. Keep place names in Icelandic. Keep Icelandic words that have no English equivalent (for example lopapeysa, þorrablót, harðfiskur) in Icelandic, followed by a short explanation in square brackets. Do not correct, praise, or comment. Output only the English text."
+      },
+      {
+        "role": "user",
+        "content": "Heimabærinn minn, mér finnst fólkið í bænum skemmtilegt og yndislegt fólk. Við erum með duglegt og kraftmikið íþróttafólk, listrænt og hæfileikaríkt leiklistar fólk, sterka og vinnusama iðnaðarmenn og margt fleira sem heldur bænum uppi og ýtir okkur áfram að betra samfélagi."
+      }
+    ],
+    "options": {
+      "temperature": 0.2,
+      "num_ctx": 4096,
+      "seed": 1010
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "granite4.2:30b",
+    "created_at": "2026-10-05T00:09:59.386359Z",
+    "message": {
+      "role": "assistant",
+      "content": "My hometown, I find the people in the town entertaining and pleasant. We have skilled and strong athletes, artistic and talented performers, hardworking and industrious craftsmen, and many others who keep the town going and help us continue to improve our community."
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 2648600625,
+    "load_duration": 16033875,
+    "prompt_eval_count": 223,
+    "prompt_eval_cached_count": 94,
+    "prompt_eval_duration": 520813000,
+    "eval_count": 52,
+    "eval_duration": 2109350000
+  },
+  "latency_ms": 2649
+}

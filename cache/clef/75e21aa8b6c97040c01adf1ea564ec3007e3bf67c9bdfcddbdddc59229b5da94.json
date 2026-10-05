@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Uppáhalds staðir eru víðsvegar út um allt land í íslenskri náttúru. Grábrók, mikið hlegið af nafninu og fyrsta stopp þegar fjölskyldan lagði af stað í hringferð um landið þar sem hver staður var öðrum fallegri, fossar, vötn og lækir, íslensku jurtirnar okkar, bláber, krækiber og hundasúrur um allt land, ferskt og ískalt vatn og heitt vatn, náttúrulaugar og fallegir baðstaðir út um allt land, ferskt loft, vera með fjölskyldunni í undurfagri náttúru út um allt land, kyrðin, góður matur og ........“\nEnglish gloss: “Scenic spots are widespread throughout the Icelandic countryside. Grábrók, well-known by that name and the first stop when the family set out on their tour of the country where each place was more beautiful than the last, waterfalls, lakes and streams, our Icelandic plants, blueberries, crowberries and heather all over the country, fresh and cold water and hot water, natural pools and beautiful bathing spots throughout the country, fresh air, being with the family in wonderfully beautiful nature all over the country, camping, good food and .......”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.30670333303228375
+      }
+    },
+    "usage": {
+      "input_tokens": 457,
+      "output_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Amma og afi áttu bústað við Fimmtu braut og ég fór þangað með þeim þegar ég var lítil. Einnig fengu mamma og pabbi bústaðinn stundum lánaðan og börn bróður pabba voru þarna líka í sumarbústað. Þarna var algjör paradís. Þegar ég var komin með börnin mín fór ég stundum með þeim niður að Álftavatni á góðvirðisdögum og við óðum langt út í vatnið. Þetta var dásamlegur tími sem ég átti þarna, með ömmu og afa, svo mömmu og pabba, með vinum og svo með börnunum mínum og systrabörnum.“\nEnglish gloss: “Grandmother and grandfather had a cottage by Fimmtu braut and I went there with them when I was little. Also, mom and dad sometimes borrowed the cottage and my father's brother's children were there too in a summer cottage. It was a total paradise there. When I had my children, I sometimes went with them down to Álftavatn on fair-weather days and we waded far out into the lake. This was a wonderful time that I had there, with grandmother and grandfather, then mom and dad, with friends and then with my children and nieces and nephews.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.3457295173747669
+      }
+    },
+    "usage": {
+      "input_tokens": 456,
+      "output_tokens": 0
+    }
+  }
+}

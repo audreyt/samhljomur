@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Einn fjölmargra uppáhaldsstaða minna vegna náttúrufegurðar, kyrrðar og lífríkis.“\nEnglish gloss: “One of my favorite places because of its natural beauty, quietness, and biodiversity.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.9167036263832087
+      }
+    },
+    "usage": {
+      "input_tokens": 204,
+      "output_tokens": 0
+    }
+  }
+}

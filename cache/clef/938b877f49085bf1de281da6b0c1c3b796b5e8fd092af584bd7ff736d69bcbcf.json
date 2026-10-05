@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Vestur af Vestmannaeyjum… svo fallegt útsýni og náttúran öflug.“\nEnglish gloss: “West of the Vestmanna Islands… such beautiful scenery and powerful nature.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.8736723944100614
+      }
+    },
+    "usage": {
+      "input_tokens": 192,
+      "output_tokens": 0
+    }
+  }
+}

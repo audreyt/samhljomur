@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Það er stutt í nauðsynjar og fríðindi. Nokkrir skólar og leikskólar með flottum leikvöllum og þægilegur staður til að búa á.“\nEnglish gloss: “There is a shortage of both necessities and leisure facilities. Some schools and playgrounds with good play areas and convenient locations for living.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.27666286887782504
+      }
+    },
+    "usage": {
+      "input_tokens": 227,
+      "output_tokens": 0
+    }
+  }
+}

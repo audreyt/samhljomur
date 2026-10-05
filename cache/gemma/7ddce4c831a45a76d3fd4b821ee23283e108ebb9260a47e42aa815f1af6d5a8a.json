@@ -1,0 +1,41 @@
+{
+  "request": {
+    "model": "gemma4:31b-it-qat-google-official",
+    "stream": false,
+    "think": false,
+    "messages": [
+      {
+        "role": "system",
+        "content": "You translate short Icelandic texts written by members of the public into plain English. Translate faithfully; add nothing and leave nothing out. Keep place names in Icelandic. Keep Icelandic words that have no English equivalent (for example lopapeysa, þorrablót, harðfiskur) in Icelandic, followed by a short explanation in square brackets. Do not correct, praise, or comment. Output only the English text."
+      },
+      {
+        "role": "user",
+        "content": "Translate literally: Ég varð meira ég sjálf og fann vinni sem ég vill hafa með mér restina af lífinu mínu."
+      }
+    ],
+    "options": {
+      "temperature": 0,
+      "num_ctx": 4096,
+      "seed": 1010
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "gemma4:31b-it-qat-google-official",
+    "created_at": "2026-10-05T00:33:56.502758Z",
+    "message": {
+      "role": "assistant",
+      "content": "I became more myself and found work that I want to have with me for the rest of my life."
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 1527389833,
+    "load_duration": 16634708,
+    "prompt_eval_count": 135,
+    "prompt_eval_cached_count": 0,
+    "prompt_eval_duration": 696185000,
+    "eval_count": 22,
+    "eval_duration": 813346000
+  },
+  "latency_ms": 1528
+}

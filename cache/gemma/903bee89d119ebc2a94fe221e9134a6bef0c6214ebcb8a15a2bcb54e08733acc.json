@@ -1,0 +1,41 @@
+{
+  "request": {
+    "model": "gemma4:31b-it-qat-google-official",
+    "stream": false,
+    "think": false,
+    "messages": [
+      {
+        "role": "system",
+        "content": "You translate short Icelandic texts written by members of the public into plain English. Translate faithfully; add nothing and leave nothing out. Keep place names in Icelandic. Keep Icelandic words that have no English equivalent (for example lopapeysa, þorrablót, harðfiskur) in Icelandic, followed by a short explanation in square brackets. Do not correct, praise, or comment. Output only the English text."
+      },
+      {
+        "role": "user",
+        "content": "Í fyrsta lagi er þetta heimili mitt og þar sem ég ólst upp, en ég elska að búa þar af því að það er svo fallegt og það er bara mjög næs að vera á stað sem allir þekkjast og er ekki fullur af fólki."
+      }
+    ],
+    "options": {
+      "temperature": 0.2,
+      "num_ctx": 4096,
+      "seed": 1010
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "gemma4:31b-it-qat-google-official",
+    "created_at": "2026-10-05T00:35:21.932576Z",
+    "message": {
+      "role": "assistant",
+      "content": "Firstly, this is my home and where I grew up, but I love living there because it is so beautiful and it is just very nice to be in a place where everyone knows each other and is not full of people."
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 2379105041,
+    "load_duration": 15619208,
+    "prompt_eval_count": 171,
+    "prompt_eval_cached_count": 0,
+    "prompt_eval_duration": 599590000,
+    "eval_count": 46,
+    "eval_duration": 1762543000
+  },
+  "latency_ms": 2379
+}

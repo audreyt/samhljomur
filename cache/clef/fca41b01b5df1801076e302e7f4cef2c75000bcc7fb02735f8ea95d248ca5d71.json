@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Staðfesting íslensks UI-texta: „Samtal flokkaði svörin í höndunum. Clef flokkaði sömu svör sjálfstætt, eftir stuttri flokkalýsingu og án þess að sjá handflokkunina. Samræmið segir okkur hversu vel staðbundið líkan skilur íslensku svörin.“",
+    "questions": {
+      "natural_is": {
+        "type": "noul",
+        "instructions": "Is this natural, grammatical Icelandic?",
+        "criteria": {
+          "true": "natural Icelandic",
+          "false": "unnatural or ungrammatical"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "natural_is": {
+        "type": "noul",
+        "noul": 0.4812815687625721
+      }
+    },
+    "usage": {
+      "input_tokens": 235,
+      "output_tokens": 0
+    }
+  }
+}

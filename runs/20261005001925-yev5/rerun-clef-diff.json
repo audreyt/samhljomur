@@ -1,0 +1,9 @@
+{
+  "model": "clef",
+  "run_id": "20261005001925-yev5",
+  "requests_recalled": 5,
+  "identical": 5,
+  "changed": 0,
+  "diffs": [],
+  "note": "fresh responses stored under this run dir as recall-<model>-<sha>.json; cache is NOT modified"
+}

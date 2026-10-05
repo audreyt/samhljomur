@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Ég á ótrúlega margar fallegar og góðar minningar þaðan - að veiða, sigla á bát, leika í hrauninu, spila og vera með fjölskyldunni.“\nEnglish gloss: “I have incredibly many beautiful and good memories from there—of fishing, sailing in a boat, playing in the lava fields, playing games, and being with the family.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.7354189728347228
+      }
+    },
+    "usage": {
+      "input_tokens": 236,
+      "output_tokens": 0
+    }
+  }
+}

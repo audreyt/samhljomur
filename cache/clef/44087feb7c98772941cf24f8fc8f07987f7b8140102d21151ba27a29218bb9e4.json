@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Að borða harðfisk í lopapeysu daglega“\nEnglish gloss: “Eating harðfiskur [dried fish] in a lopapeysa [traditional Icelandic wool sweater] daily”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.8886057303866826
+      }
+    },
+    "usage": {
+      "input_tokens": 194,
+      "output_tokens": 0
+    }
+  }
+}

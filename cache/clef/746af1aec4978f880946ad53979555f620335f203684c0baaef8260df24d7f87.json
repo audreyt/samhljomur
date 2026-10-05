@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Stórkostleg náttúra. Var skálavörður þar í nokkur ár 2000-2002 og hef komið þangað flest ár síðan.“\nEnglish gloss: “Great nature. Was a caretaker there for a few years 2000-2002 and have been going there most years since.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.6682671347391614
+      }
+    },
+    "usage": {
+      "input_tokens": 229,
+      "output_tokens": 0
+    }
+  }
+}

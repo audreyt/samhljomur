@@ -1,0 +1,234 @@
+[
+  {
+    "kind": "islenskast",
+    "source": "islenskast:oljost",
+    "text": "Grasystingur",
+    "reasons": [
+      "samtal category is annad only"
+    ],
+    "privacy": 0.030752318696593332
+  },
+  {
+    "kind": "islenskast",
+    "source": "islenskast:oljost",
+    "text": "Mér ekki gott",
+    "reasons": [
+      "samtal category is annad only"
+    ],
+    "privacy": 0.03146505487469843
+  },
+  {
+    "kind": "place",
+    "source": "place:eb7b4e71-9a38-40f9-8182-94a83783309f",
+    "text": "Þetta er fallegasti staður sem ég veit um á Íslandi. Það er ekki mikið af fólki svo þú getur verið einn með hugsunum þínum en samt ertu ekki einmanna vegna þess að fuglarnir syngja svo fallega. Það eru blóm í öllum regnbogans litum, og svo má vera með hunda þarna og þú getur leikið þér með þeim í öllu veðri.",
+    "display_text": "Hveragerði",
+    "reasons": [
+      "clef privacy 0.765 >= 0.3",
+      "place contains a digit (street address): shown as \"Hveragerði\", never sung"
+    ],
+    "privacy": 0.7645778645830441
+  },
+  {
+    "kind": "place",
+    "source": "place:b8ada807-aa8b-4b09-a6bd-980468de2a72",
+    "text": "Já orðatiltækið að vera úti á túni hefur kannski rétta merkingu, því maður getur algjörlega slökkt á hausnum og slakað á þegar maður liggur einhverstaðar úti á túni eða í móa eða hvar sem er. Svo lengi þar sem það er langt frá  stað og stund",
+    "display_text": "Úti á túni",
+    "reasons": [
+      "a single sentence > 140 chars: too_long"
+    ],
+    "privacy": 0.025259707320318268
+  },
+  {
+    "kind": "place",
+    "source": "place:e1f76090-59a5-4997-b145-b553b890c1af",
+    "text": "Fyrsti útilegustaðurinn þegar ég varð\r\nmamma. Vatnið, landslagið, gróðurinn og sagan - einfaldleikinn og rólegheitin.",
+    "display_text": "Vatnskotsvegur, Bláskógabyggð",
+    "reasons": [
+      "clef privacy 0.773 >= 0.3"
+    ],
+    "privacy": 0.7729512858646079
+  },
+  {
+    "kind": "place",
+    "source": "place:90bf9894-d9f1-4804-a950-457303425910",
+    "text": "Býður upp á hæfilega krefjandi göngu í dásamlegri, fallegri og kyrrlátri náttúru. Þarna hef ég gengið síðan ég var barn og á góðar mnningar bæði úr fjallinu og dalnum sem nefnist Böggvisstaðardalur því hann er þeim megin árinnar. (Brimnesá) Fjallið er einstaklega fallegt á haustin því þá skartar það öllum fegurstu haustlitunum þar sem fjallið er þakið berjalyngi.",
+    "display_text": "Böggvisstaðafjall, Dalvíkurbyggð",
+    "reasons": [
+      "a single sentence > 140 chars: too_long"
+    ],
+    "privacy": 0.034217759252543785
+  },
+  {
+    "kind": "place",
+    "source": "place:35427460-a0dd-4096-85b8-61e9b2eeaf2a",
+    "text": "Ég elska Vatnskóg hann hefur kennt mér mjög mikið",
+    "display_text": "Gamli skáli, Hvalfjarðarsveit",
+    "reasons": [
+      "clef privacy 0.484 >= 0.3"
+    ],
+    "privacy": 0.48439795754358905
+  },
+  {
+    "kind": "place",
+    "source": "place:f896ba78-35da-4b81-95eb-29c218aaa87e",
+    "text": "Bara besti staðurinn",
+    "display_text": "중성동, 평양시",
+    "reasons": [
+      "outside Iceland bbox (lat 39.02, lng 125.75): utan Íslands"
+    ],
+    "privacy": 0.0717175767374934,
+    "report_label": "outside_iceland"
+  },
+  {
+    "kind": "place",
+    "source": "place:8e78e1dd-3fb6-4297-bb0a-658d7f981b9c",
+    "text": "Uppáhalds staðir eru víðsvegar út um allt land í íslenskri náttúru. Grábrók, mikið hlegið af nafninu og fyrsta stopp þegar fjölskyldan lagði af stað í hringferð um landið þar sem hver staður var öðrum fallegri, fossar, vötn og lækir, íslensku jurtirnar okkar, bláber, krækiber og hundasúrur um allt land, ferskt og ískalt vatn og heitt vatn, náttúrulaugar og fallegir baðstaðir út um allt land, ferskt loft, vera með fjölskyldunni í undurfagri náttúru út um allt land, kyrðin, góður matur og ........",
+    "display_text": "Ísland",
+    "reasons": [
+      "a single sentence > 140 chars: too_long"
+    ],
+    "privacy": 0.03621726160381592
+  },
+  {
+    "kind": "place",
+    "source": "place:01b88b02-1b82-4055-8eca-f7e1007b24e4",
+    "text": "vegna þess að eg á svo margar og góðar minningar með ömmu minni og afa og þetta er heimili þeirra",
+    "display_text": "Birtingaholt, Reykjavík",
+    "reasons": [
+      "clef privacy 0.545 >= 0.3"
+    ],
+    "privacy": 0.5445050102918838
+  },
+  {
+    "kind": "place",
+    "source": "place:9a84236d-f6f8-4505-9b1d-4cb93b060aeb",
+    "text": "Samfélagið,",
+    "display_text": "Strandvegur, Sauðárkrókur",
+    "reasons": [
+      "clef privacy 0.566 >= 0.3"
+    ],
+    "privacy": 0.5655267991985514
+  },
+  {
+    "kind": "place",
+    "source": "place:6444e2b8-9d45-4700-bb1d-0939beaa5f6d",
+    "text": "Sveitin hennar ömmu minnar",
+    "display_text": "Eiríksbakki II, Bláskógabyggð",
+    "reasons": [
+      "clef privacy 0.780 >= 0.3"
+    ],
+    "privacy": 0.7801581669688082
+  },
+  {
+    "kind": "place",
+    "source": "place:57f752e2-34e5-40a3-9431-bace49b610f4",
+    "text": "Í fyrsta lagi er þetta heimili mitt og þar sem ég ólst upp, en ég elska að búa þar af því að það er svo fallegt og það er bara mjög næs að vera á stað sem allir þekkjast og er ekki fullur af fólki.",
+    "display_text": "Reykjahlíð",
+    "reasons": [
+      "a single sentence > 140 chars: too_long"
+    ],
+    "privacy": 0.06398721441797249
+  },
+  {
+    "kind": "place",
+    "source": "place:73a23999-a439-446d-9174-97b78a5c0448",
+    "text": "Stór himinn, fegurð, friður og kyrrð",
+    "display_text": "Hafnarbraut, Hofsós",
+    "reasons": [
+      "clef privacy 0.401 >= 0.3"
+    ],
+    "privacy": 0.40082205514467506
+  },
+  {
+    "kind": "place",
+    "source": "place:79e2cbd6-da41-4d9c-abf1-d6ca13a6299b",
+    "text": "Svo fallegt í eyjum alltaf, er ekki þaðan en mín besta vinkona er þaðan og mér finnst við ekki hafa gert nægilega vel til að tryggja samgöngur á milli lands og eyja. Mér líður alltaf þegar ég er í eyjum eins og ég sé á sérstakasta stað á jörðinni.",
+    "display_text": "Vestmannaeyjar, Vestmannaeyjabær",
+    "reasons": [
+      "a single sentence > 140 chars: too_long"
+    ],
+    "privacy": 0.04051371219417052
+  },
+  {
+    "kind": "place",
+    "source": "place:3cb047d0-a78e-4796-aec5-924dec09de49",
+    "text": "Þetta er bær sem ég hef miklar fjölskildu teyngíngar og hef ferðast þángað öll sumar frá því að ég var lítill strákur og búinn að leika mér í hrauninu og fara í bíltúra um aðaldalinn og vera með fólkinnu mínu",
+    "display_text": "Sandur, Þingeyjarsveit",
+    "reasons": [
+      "a single sentence > 140 chars: too_long"
+    ],
+    "privacy": 0.03525302414080039
+  },
+  {
+    "kind": "place",
+    "source": "place:1d3e23de-89fc-4215-a21d-296c58f65c46",
+    "text": "Amma mín og afi búa á Dalvík og ég hef komið í heimsókn á hverju ári með frænku minni. Ég man sérstaklega vel eftir að fara á fiskidaginn með þeim og frænku minni áður en það hætti og að borða jarðarberin og annað sem amma ræktar.",
+    "display_text": "Dalvík, Dalvík",
+    "reasons": [
+      "a single sentence > 140 chars: too_long"
+    ],
+    "privacy": 0.1291894141416975
+  },
+  {
+    "kind": "place",
+    "source": "place:9e87c7ef-9a59-4b18-96d3-4641a130f215",
+    "text": "Heimabærinn minn, mér finnst fólkið í bænum skemmtilegt og yndislegt fólk. Við erum með duglegt og kraftmikið íþróttafólk, listrænt og hæfileikaríkt leiklistar fólk, sterka og vinnusama iðnaðarmenn og margt fleira sem heldur bænum uppi og ýtir okkur áfram að betra samfélagi.",
+    "display_text": "Húsavík, Norðurþing",
+    "reasons": [
+      "a single sentence > 140 chars: too_long"
+    ],
+    "privacy": 0.031868089614838564
+  },
+  {
+    "kind": "place",
+    "source": "place:a99da2fb-2b19-48c6-af6d-588853331438",
+    "text": "Fallegur staður og rólegur staðaur",
+    "display_text": "京都御所, 上京区",
+    "reasons": [
+      "outside Iceland bbox (lat 35.03, lng 135.76): utan Íslands"
+    ],
+    "privacy": 0.034264669281021204,
+    "report_label": "outside_iceland"
+  },
+  {
+    "kind": "place",
+    "source": "place:7d666cb1-9d0d-4e60-a6cf-ff557e2b88a7",
+    "text": "Þetta er heillandi staður. Þetta er mjög falleg strönd með jökla sem líta út eins og þeir séu úr ævintýri.",
+    "display_text": "Breiðamerkursandur, Sveitarfélagið Hornafjörður",
+    "reasons": [
+      "outside Iceland bbox (lat 62.54, lng -14.46): utan Íslands"
+    ],
+    "privacy": 0.016409413867921555,
+    "report_label": "outside_iceland"
+  },
+  {
+    "kind": "place",
+    "source": "place:13f41695-d4c8-465c-84b5-3cb129cdf6eb",
+    "text": "fjölskyldun hús, það er ekkert simasaband og einginn utanaðkomandi áreiti",
+    "display_text": "Sjávarhús, Ísafjarðarbær",
+    "reasons": [
+      "clef privacy 0.591 >= 0.3"
+    ],
+    "privacy": 0.5914709768825956
+  },
+  {
+    "kind": "place",
+    "source": "place:0cb9f672-e52e-44cf-a02d-e60b868d6c05",
+    "text": "Fegurðin á Hornströndum er ólýsanleg og tilhugsunin um að fólk hafi búið þarna í mörghundruð ár á hjara veraldar fyllir mann bjartsýni um þrautsegju Íslendinga. Skortur á síma- og netsambandi leyfir manni að öðlast hugarró á þessum ysta sjó.",
+    "display_text": "Hornvík",
+    "reasons": [
+      "a single sentence > 140 chars: too_long"
+    ],
+    "privacy": 0.024570064636459256
+  },
+  {
+    "kind": "place",
+    "source": "place:2fb42268-d693-4d53-8afc-9f7b10dad031",
+    "text": "Það er næs að sitja hér í brekkunni í góðu veðri",
+    "display_text": "Flókagata, Reykjavík",
+    "reasons": [
+      "clef privacy 0.643 >= 0.3"
+    ],
+    "privacy": 0.6430816887996039
+  }
+]

@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Þetta er sveitin mín og mér finnst svo gott að vera þarna með náttúrunni og dýrunum“\nEnglish gloss: “This is my group, and I find it so good to be there with nature and the animals.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.3505911265533975
+      }
+    },
+    "usage": {
+      "input_tokens": 201,
+      "output_tokens": 0
+    }
+  }
+}

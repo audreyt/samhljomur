@@ -1,0 +1,31 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Það er ekki stórborg og ekki sveitabær svo það er á þægilegum stað í miðjunni.“\nEnglish gloss: “It is not a big city and not a village, so it is in a convenient location in the middle.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.6708075334278688
+      }
+    },
+    "usage": {
+      "input_tokens": 205,
+      "output_tokens": 0
+    }
+  },
+  "latency_ms": 439
+}

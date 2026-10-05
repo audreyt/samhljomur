@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Þar á ég mín bestu frí, þar ólst ég að hluta til upp og þaðan er ég ættuð“\nEnglish gloss: “That is where I have my best free time, I grew up partly there, and that is where I come from.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.7039457677676089
+      }
+    },
+    "usage": {
+      "input_tokens": 206,
+      "output_tokens": 0
+    }
+  }
+}

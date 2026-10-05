@@ -1,0 +1,37 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Uppáhaldsstaður þátttakanda á Íslandi (talasaman.is/stadir).\nStaður: Vatnasafn, Stykkishólmur\nÁstæða, orðrétt: „Það er eitthvað sérstakt við þetta safn og stykkishólm. Ég var alveg dáleidd af því og vildi ekki fara þaðan. Ég hef  aldrei fundið fyrir jafn mikilli ró og ég fann fyrir þar.“",
+    "questions": {
+      "excerpt": {
+        "type": "choice",
+        "instructions": "Which single sentence of the reason is the most beautiful to sing, word for word?",
+        "criteria": {
+          "s1": "Það er eitthvað sérstakt við þetta safn og stykkishólm.",
+          "s2": "Ég var alveg dáleidd af því og vildi ekki fara þaðan.",
+          "s3": "Ég hef  aldrei fundið fyrir jafn mikilli ró og ég fann fyrir þar."
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "excerpt": {
+        "type": "choice",
+        "choice": "s3",
+        "probabilities": {
+          "s1": 0.018595752464242984,
+          "s2": 0.11209998523980692,
+          "s3": 0.8693042622959501
+        },
+        "confidence": 0.5984271075744586
+      }
+    },
+    "usage": {
+      "input_tokens": 330,
+      "output_tokens": 0
+    }
+  }
+}

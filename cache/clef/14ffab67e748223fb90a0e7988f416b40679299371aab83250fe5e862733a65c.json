@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Þorramatur og þjóðhátíðardagurinn“\nEnglish gloss: “Traditional Icelandic food and National Holiday Day”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.6720046534511186
+      }
+    },
+    "usage": {
+      "input_tokens": 177,
+      "output_tokens": 0
+    }
+  }
+}

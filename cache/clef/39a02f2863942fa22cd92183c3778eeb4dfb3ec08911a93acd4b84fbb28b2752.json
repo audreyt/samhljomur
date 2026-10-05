@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Nátturan, fólkið, ferðamennirnir og núvitundin sem skilur mann eftir orðlausan“\nEnglish gloss: “Nature, the people, the tourists, and the modern understanding that values a person after wordless communication”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.07809135074586729
+      }
+    },
+    "usage": {
+      "input_tokens": 206,
+      "output_tokens": 0
+    }
+  }
+}

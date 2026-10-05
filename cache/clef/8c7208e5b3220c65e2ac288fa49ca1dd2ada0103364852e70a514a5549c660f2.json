@@ -1,0 +1,55 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Orð sem þátttakendur völdu undir „Hvað viltu tala um?“ á talasaman.is: lbgtq",
+    "questions": {
+      "topic_theme": {
+        "type": "choice",
+        "instructions": "Which theme does this topic word belong to?",
+        "criteria": {
+          "education": "schools, preschools, education",
+          "future": "the future, hopes",
+          "technology": "AI, technology, innovation",
+          "communication": "communication, social media, media, misinformation, phone manners",
+          "democracy": "democracy, trust, corruption, governance, politics",
+          "nature": "nature, environment",
+          "health": "health care, ageing, wellbeing, addiction",
+          "economy": "money, housing, transport, traffic, fees, fishing quota, food industry",
+          "equality": "equality, gender, racism, immigration, prejudice, LGBTQ, tolerance, respect",
+          "culture": "language, culture, arts, music, coffee",
+          "youth": "youth work, youth movements",
+          "mindset": "optimism, joy, courage, purpose, open-mindedness, creativity"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "topic_theme": {
+        "type": "choice",
+        "choice": "equality",
+        "probabilities": {
+          "communication": 0.007073040601535029,
+          "culture": 0.006134151939407511,
+          "democracy": 0.008299772282276848,
+          "economy": 0.0030026919834144285,
+          "education": 0.004376207298583107,
+          "equality": 0.9426411942669125,
+          "future": 0.004455809666055687,
+          "health": 0.004067998096342223,
+          "mindset": 0.0034911601492487636,
+          "nature": 0.0032483829038828685,
+          "technology": 0.005166370464427057,
+          "youth": 0.008043220347913927
+        },
+        "confidence": 0.857619550126133
+      }
+    },
+    "usage": {
+      "input_tokens": 424,
+      "output_tokens": 0
+    }
+  }
+}

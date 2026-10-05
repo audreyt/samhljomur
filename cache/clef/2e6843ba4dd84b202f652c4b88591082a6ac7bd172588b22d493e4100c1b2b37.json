@@ -1,0 +1,31 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „þetta er fjölskyldusveitinn mín og hefur alltaf liðið vel þar og hef átt sumar af mínum bestu minningum þar“\nEnglish gloss: “This is my family farm, and it has always been a good place there, and I have had some of my best memories there.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.6755483784165258
+      }
+    },
+    "usage": {
+      "input_tokens": 220,
+      "output_tokens": 0
+    }
+  },
+  "latency_ms": 447
+}

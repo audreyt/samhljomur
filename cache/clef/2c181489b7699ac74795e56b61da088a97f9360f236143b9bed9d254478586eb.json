@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Þetta er uppáhalds staðurinn minn því það er alltaf svo gott veður þarna og mikið af kusum.“\nEnglish gloss: “This is my favorite place because the weather is always so good there and there are many kusur [cats].”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.3768824853487987
+      }
+    },
+    "usage": {
+      "input_tokens": 208,
+      "output_tokens": 0
+    }
+  }
+}

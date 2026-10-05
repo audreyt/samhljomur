@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Hér er náttúrufegurðin engri lík“\nEnglish gloss: “Here the natural beauty is no more alike [i.e., not comparable or similar]”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.31408456288907466
+      }
+    },
+    "usage": {
+      "input_tokens": 185,
+      "output_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Fjölskyldan mín átti sumarbústað á Þingvöllum við Nesjarvelli. Ég á ótrúlega margar fallegar og góðar minningar þaðan - að veiða, sigla á bát, leika í hrauninu, spila og vera með fjölskyldunni.“\nEnglish gloss: “My family had a summer cottage at Þingvellir by Nesjarvellir. I have incredibly many beautiful and good memories from there - fishing, sailing on a boat, playing in the lava, playing games and being with the family.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.7277634032767943
+      }
+    },
+    "usage": {
+      "input_tokens": 276,
+      "output_tokens": 0
+    }
+  }
+}

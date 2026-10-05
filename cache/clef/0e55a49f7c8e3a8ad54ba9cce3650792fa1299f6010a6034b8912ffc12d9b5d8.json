@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Skaftafell er uppáhaldsstaðurinn minn vegna þess að fegurðin þar er ólík öllum stöðum landsins!“\nEnglish gloss: “Skaftafell is my favorite place because its beauty is unlike any other location in the country!”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.8531090256998516
+      }
+    },
+    "usage": {
+      "input_tokens": 212,
+      "output_tokens": 0
+    }
+  }
+}

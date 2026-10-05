@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Hákarl“\nEnglish gloss: “Hákarl [fermented shark], a traditional Icelandic dish made from the fermented carcasses of Greenland shark or sleeper shark.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.07590549007950904
+      }
+    },
+    "usage": {
+      "input_tokens": 183,
+      "output_tokens": 0
+    }
+  }
+}

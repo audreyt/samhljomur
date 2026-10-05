@@ -1,0 +1,35 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Uppáhaldsstaður þátttakanda á Íslandi (talasaman.is/stadir).\nStaður: Akranes\nÁstæða, orðrétt: „Þetta er minn uppáhalds staður því þetta er minn heima og fæðingarbær. Falleg tútsýni, fallegt sólsetur og svakalega fallegt að geta séð sjóinn þegar maður vaknar.“",
+    "questions": {
+      "excerpt": {
+        "type": "choice",
+        "instructions": "Which single sentence of the reason is the most beautiful to sing, word for word?",
+        "criteria": {
+          "s1": "Þetta er minn uppáhalds staður því þetta er minn heima og fæðingarbær.",
+          "s2": "Falleg tútsýni, fallegt sólsetur og svakalega fallegt að geta séð sjóinn þegar maður vaknar."
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "excerpt": {
+        "type": "choice",
+        "choice": "s2",
+        "probabilities": {
+          "s1": 0.024439559568287857,
+          "s2": 0.9755604404317121
+        },
+        "confidence": 0.8343105852539723
+      }
+    },
+    "usage": {
+      "input_tokens": 299,
+      "output_tokens": 0
+    }
+  }
+}

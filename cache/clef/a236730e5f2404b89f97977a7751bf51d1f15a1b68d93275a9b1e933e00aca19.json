@@ -1,0 +1,35 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Uppáhaldsstaður þátttakanda á Íslandi (talasaman.is/stadir).\nStaður: Kringlan, Reykjavík\nÁstæða, orðrétt: „Ég er í MH þannig það er mjög þægilegt að geta farið í Kringlunna eftir skólann. Sérstaklega er að það hefur borgabókasafnið sem er frekar aðgengilegt til að ná sér í bækur eða hins vegar að læra“",
+    "questions": {
+      "excerpt": {
+        "type": "choice",
+        "instructions": "Which single sentence of the reason is the most beautiful to sing, word for word?",
+        "criteria": {
+          "s1": "Ég er í MH þannig það er mjög þægilegt að geta farið í Kringlunna eftir skólann.",
+          "s2": "Sérstaklega er að það hefur borgabókasafnið sem er frekar aðgengilegt til að ná sér í bækur eða hins vegar að læra"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "excerpt": {
+        "type": "choice",
+        "choice": "s2",
+        "probabilities": {
+          "s1": 0.3675385062170887,
+          "s2": 0.6324614937829113
+        },
+        "confidence": 0.05123667481077887
+      }
+    },
+    "usage": {
+      "input_tokens": 337,
+      "output_tokens": 0
+    }
+  }
+}

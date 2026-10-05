@@ -1,0 +1,55 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Orð sem þátttakendur völdu undir „Hvað viltu tala um?“ á talasaman.is: gleði",
+    "questions": {
+      "topic_theme": {
+        "type": "choice",
+        "instructions": "Which theme does this topic word belong to?",
+        "criteria": {
+          "education": "schools, preschools, education",
+          "future": "the future, hopes",
+          "technology": "AI, technology, innovation",
+          "communication": "communication, social media, media, misinformation, phone manners",
+          "democracy": "democracy, trust, corruption, governance, politics",
+          "nature": "nature, environment",
+          "health": "health care, ageing, wellbeing, addiction",
+          "economy": "money, housing, transport, traffic, fees, fishing quota, food industry",
+          "equality": "equality, gender, racism, immigration, prejudice, LGBTQ, tolerance, respect",
+          "culture": "language, culture, arts, music, coffee",
+          "youth": "youth work, youth movements",
+          "mindset": "optimism, joy, courage, purpose, open-mindedness, creativity"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "topic_theme": {
+        "type": "choice",
+        "choice": "mindset",
+        "probabilities": {
+          "communication": 0.006050341071373121,
+          "culture": 0.01396489423819355,
+          "democracy": 0.0046255729812425764,
+          "economy": 0.0034470705764902887,
+          "education": 0.00575978989825352,
+          "equality": 0.0072059455693827545,
+          "future": 0.04938057498233352,
+          "health": 0.03487554823879512,
+          "mindset": 0.8553777450867109,
+          "nature": 0.007652033961622877,
+          "technology": 0.005000762026949034,
+          "youth": 0.006659721368652818
+        },
+        "confidence": 0.7196764759945355
+      }
+    },
+    "usage": {
+      "input_tokens": 423,
+      "output_tokens": 0
+    }
+  }
+}

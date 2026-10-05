@@ -1,0 +1,35 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Uppáhaldsstaður þátttakanda á Íslandi (talasaman.is/stadir).\nStaður: Dalvík, Dalvík\nÁstæða, orðrétt: „Amma mín og afi búa á Dalvík og ég hef komið í heimsókn á hverju ári með frænku minni. Ég man sérstaklega vel eftir að fara á fiskidaginn með þeim og frænku minni áður en það hætti og að borða jarðarberin og annað sem amma ræktar.“",
+    "questions": {
+      "excerpt": {
+        "type": "choice",
+        "instructions": "Which single sentence of the reason is the most beautiful to sing, word for word?",
+        "criteria": {
+          "s1": "Amma mín og afi búa á Dalvík og ég hef komið í heimsókn á hverju ári með frænku minni.",
+          "s2": "Ég man sérstaklega vel eftir að fara á fiskidaginn með þeim og frænku minni áður en það hætti og að borða jarðarberin og annað sem amma ræktar."
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "excerpt": {
+        "type": "choice",
+        "choice": "s2",
+        "probabilities": {
+          "s1": 0.08636723291272079,
+          "s2": 0.9136327670872793
+        },
+        "confidence": 0.5757735592831408
+      }
+    },
+    "usage": {
+      "input_tokens": 357,
+      "output_tokens": 0
+    }
+  }
+}

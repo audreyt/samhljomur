@@ -1,0 +1,31 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Ég fór alltaf í bása í jóla ferðir, minningar og náttúran alltaf jafn falleg“\nEnglish gloss: “I always went to the sauna during Christmas trips, memories and nature always equally beautiful.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.33740975830996517
+      }
+    },
+    "usage": {
+      "input_tokens": 201,
+      "output_tokens": 0
+    }
+  },
+  "latency_ms": 466
+}

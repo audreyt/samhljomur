@@ -1,0 +1,35 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Uppáhaldsstaður þátttakanda á Íslandi (talasaman.is/stadir).\nStaður: Smárahvammsvöllur, Kópavogur\nÁstæða, orðrétt: „Þetta er staður nálægt miðju höfuððborgar Íslands sem er full af náttúru, ánægju og ró. Mjóg góður staður til að labba eða hjóla smá og hugsa.“",
+    "questions": {
+      "excerpt": {
+        "type": "choice",
+        "instructions": "Which single sentence of the reason is the most beautiful to sing, word for word?",
+        "criteria": {
+          "s1": "Þetta er staður nálægt miðju höfuððborgar Íslands sem er full af náttúru, ánægju og ró.",
+          "s2": "Mjóg góður staður til að labba eða hjóla smá og hugsa."
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "excerpt": {
+        "type": "choice",
+        "choice": "s1",
+        "probabilities": {
+          "s1": 0.6695522460950116,
+          "s2": 0.3304477539049884
+        },
+        "confidence": 0.08461681319807468
+      }
+    },
+    "usage": {
+      "input_tokens": 306,
+      "output_tokens": 0
+    }
+  }
+}

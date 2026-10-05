@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Þingvellir er minn uppáhaldsstaður vegna  sögulegu mikilvægs hlutverks þeirra og Alþingis.“\nEnglish gloss: “Þingvellir is my favorite place because of their historically significant role and the Althing.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.7161922047718208
+      }
+    },
+    "usage": {
+      "input_tokens": 209,
+      "output_tokens": 0
+    }
+  }
+}

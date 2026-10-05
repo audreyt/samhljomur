@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Ég man sérstaklega vel eftir að fara á fiskidaginn með þeim og frænku minni áður en það hætti og að borða jarðarberin og annað sem amma ræktar.“\nEnglish gloss: “I remember especially well after going to the fishing day with them and my aunt earlier before it stopped and eating the earthworms and other things that grandma grows.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.07249984139572356
+      }
+    },
+    "usage": {
+      "input_tokens": 236,
+      "output_tokens": 0
+    }
+  }
+}

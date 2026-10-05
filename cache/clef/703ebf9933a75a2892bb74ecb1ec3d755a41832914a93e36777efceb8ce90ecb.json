@@ -1,0 +1,31 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „sviðasulta, skinnhandrit“\nEnglish gloss: “sviðasulta, skinhandrit [sviðasulta: a type of Icelandic cheese; skinhandrit: a manuscript written on animal skin]”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.31156781430568375
+      }
+    },
+    "usage": {
+      "input_tokens": 197,
+      "output_tokens": 0
+    }
+  },
+  "latency_ms": 411
+}

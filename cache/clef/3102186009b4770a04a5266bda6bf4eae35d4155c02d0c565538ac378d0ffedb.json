@@ -1,0 +1,31 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Staðfesting íslensks UI-texta: „Granite 4.2 30B þýddi fyrst og margar þýðingar voru rangar. Við prófuðum líka Gemma 4 31B og Apertus 1.5, opna svissneska líkanið, á sömu vél með sömu fyrirmælum. Clef gaf hverri þýðingu einkunn en reyndist lélegur dómari um þýðingar: það taldi „Sail“ trúa þýðingu á „Seigla“. Því réð handyfirferð. Gemma hafði oftast rétt fyrir sér og þýðingar hennar eru notaðar, með leiðréttingum ritstjórnar. Allar þýðingarnar og einkunnir Clef eru sýndar hér.“",
+    "questions": {
+      "natural_is": {
+        "type": "noul",
+        "instructions": "Is this natural, grammatical Icelandic?",
+        "criteria": {
+          "true": "natural Icelandic",
+          "false": "unnatural or ungrammatical"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "natural_is": {
+        "type": "noul",
+        "noul": 0.6052286013361663
+      }
+    },
+    "usage": {
+      "input_tokens": 338,
+      "output_tokens": 0
+    }
+  },
+  "latency_ms": 598
+}

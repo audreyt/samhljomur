@@ -1,0 +1,9 @@
+warn: This project does not use vite-plus. Learn how to migrate: https://viteplus.dev/guide/migrate
+$ bun run src/cli.ts music ⊘ cache disabled
+[stage5] seed 1010: 10769706 bytes, status 200
+[stage5] seed 463: 10769706 bytes, status 200
+[stage5] seed 2026: 10769706 bytes, status 200
+[stage6] seed 1010: score 0.689 (min 0.000)
+[stage6] seed 463: score 0.744 (min 0.000)
+[stage6] seed 2026: score 0.650 (min 0.000)
+

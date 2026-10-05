@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Staðfesting íslensks UI-texta: „Hlýja“",
+    "questions": {
+      "natural_is": {
+        "type": "noul",
+        "instructions": "Is this natural, grammatical Icelandic?",
+        "criteria": {
+          "true": "natural Icelandic",
+          "false": "unnatural or ungrammatical"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "natural_is": {
+        "type": "noul",
+        "noul": 0.7536429306222686
+      }
+    },
+    "usage": {
+      "input_tokens": 153,
+      "output_tokens": 0
+    }
+  }
+}

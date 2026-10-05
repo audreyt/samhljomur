@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Staðfesting íslensks UI-texta: „Allt hér er hægt að endurgera. Hver fyrirspurn til líkananna er skráð og vp run build endurbyggir allt úr skránni, án nets og án líkana.“",
+    "questions": {
+      "natural_is": {
+        "type": "noul",
+        "instructions": "Is this natural, grammatical Icelandic?",
+        "criteria": {
+          "true": "natural Icelandic",
+          "false": "unnatural or ungrammatical"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "natural_is": {
+        "type": "noul",
+        "noul": 0.3064651841014784
+      }
+    },
+    "usage": {
+      "input_tokens": 196,
+      "output_tokens": 0
+    }
+  }
+}

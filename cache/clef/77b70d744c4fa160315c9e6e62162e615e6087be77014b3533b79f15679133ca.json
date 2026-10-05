@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „að tala á innsoginu“\nEnglish gloss: “to speak into the suction [a phrase likely referring to speaking directly into a microphone or a device with a built-in suction or intake, though context may vary]”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.28656224771214844
+      }
+    },
+    "usage": {
+      "input_tokens": 194,
+      "output_tokens": 0
+    }
+  }
+}

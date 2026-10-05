@@ -1,0 +1,31 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „fullkominn staður þegar maður vill aðeins komast í frið og náttúru án þess að þurfa að fara langt (allavega fyrir þá sem búa í nálægt).“\nEnglish gloss: “A perfect place when one just wants to find peace and nature without having to travel far (at least for those who live nearby).”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.8676825132082414
+      }
+    },
+    "usage": {
+      "input_tokens": 228,
+      "output_tokens": 0
+    }
+  },
+  "latency_ms": 445
+}

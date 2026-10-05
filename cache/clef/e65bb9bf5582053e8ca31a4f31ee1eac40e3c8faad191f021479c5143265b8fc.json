@@ -1,0 +1,31 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Náttúra, þrasgjörn“\nEnglish gloss: “Nature, vigorous [vigorous nature]”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.5942388340353859
+      }
+    },
+    "usage": {
+      "input_tokens": 171,
+      "output_tokens": 0
+    }
+  },
+  "latency_ms": 453
+}

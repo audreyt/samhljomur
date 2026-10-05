@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Þetta er sveitinn mín bestu miningarnar og hef aldrei fengið jafn mikla reinslu og á þessum stað“\nEnglish gloss: “This is my best mining crew, and I have never gotten as much refining at this place.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.2403892783680206
+      }
+    },
+    "usage": {
+      "input_tokens": 205,
+      "output_tokens": 0
+    }
+  }
+}

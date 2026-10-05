@@ -1,0 +1,871 @@
+{
+  "attribution": "Gögn: Samtal, félag til almannaheilla (talasaman.is), CC BY 4.0",
+  "disclaimer_is": "Þetta er hvorki afstaða né niðurstaða Samtals.",
+  "disclaimer_en": "This is not Samtal's position or finding.",
+  "placeholder": false,
+  "takes": [
+    {
+      "seed": 1010,
+      "file": "media/takes/take-seed-1010.mp3",
+      "score": 0.6888943659294533,
+      "min_fidelity": 0
+    },
+    {
+      "seed": 463,
+      "file": "media/takes/take-seed-463.mp3",
+      "score": 0.7444458606262726,
+      "min_fidelity": 0
+    },
+    {
+      "seed": 2026,
+      "file": "media/takes/take-seed-2026.mp3",
+      "score": 0.6503581284337512,
+      "min_fidelity": 0
+    }
+  ],
+  "chosen_seed": 463,
+  "chosen_file": "media/takes/take-seed-463.mp3",
+  "total_duration_s": 448,
+  "chunks": [
+    {
+      "movement": 1,
+      "chunk": 1,
+      "title_is": "Gluggaveður",
+      "section": "main",
+      "start_s": 0,
+      "end_s": 41,
+      "duration_ms": 41000,
+      "lines": [
+        {
+          "n": 1,
+          "text": "Birta og myrkur",
+          "source": "islenskast:arstidir",
+          "start_s": 7.5,
+          "end_s": 8.16,
+          "fidelity": 0.3333333333333333,
+          "expected_words": 3,
+          "matched_words": 1
+        },
+        {
+          "n": 2,
+          "text": "Veðrið og kleinur",
+          "source": "islenskast:saett,vedrid",
+          "start_s": 11.12,
+          "end_s": 13.68,
+          "fidelity": 1,
+          "expected_words": 3,
+          "matched_words": 3
+        },
+        {
+          "n": 3,
+          "text": "Lykt af grænu grasi á sumrin og kaldar rauðar kynnar eftir að inn er komið að vetri",
+          "source": "islenskast:arstidir",
+          "start_s": 14.68,
+          "end_s": 21.82,
+          "fidelity": 0.8235294117647058,
+          "expected_words": 17,
+          "matched_words": 14
+        },
+        {
+          "n": 4,
+          "text": "Náttúran og veðrið",
+          "source": "islenskast:landid,vedrid",
+          "start_s": 23.88,
+          "end_s": 26.2,
+          "fidelity": 1,
+          "expected_words": 3,
+          "matched_words": 3
+        },
+        {
+          "n": 5,
+          "text": "Veðrið",
+          "source": "islenskast:vedrid",
+          "start_s": 27.5,
+          "end_s": 29.72,
+          "fidelity": 1,
+          "expected_words": 1,
+          "matched_words": 1
+        },
+        {
+          "n": 6,
+          "text": "Ístlenskar pönukökur út í sveit með gott veður og vontveður",
+          "source": "islenskast:saett,vedrid",
+          "start_s": 32.94,
+          "end_s": 35.28,
+          "fidelity": 0.7,
+          "expected_words": 10,
+          "matched_words": 7
+        },
+        {
+          "n": 7,
+          "text": "Gluggaveður",
+          "source": "islenskast:vedrid",
+          "start_s": 37.24,
+          "end_s": 40.2,
+          "fidelity": 1,
+          "expected_words": 1,
+          "matched_words": 1
+        }
+      ]
+    },
+    {
+      "movement": 2,
+      "chunk": 1,
+      "title_is": "Ís í fárviðri",
+      "section": "main",
+      "start_s": 41,
+      "end_s": 93,
+      "duration_ms": 52000,
+      "lines": [
+        {
+          "n": 1,
+          "text": "Að borða ís þegar það er vont veður",
+          "source": "islenskast:is",
+          "start_s": 43.74,
+          "end_s": 49.48,
+          "fidelity": 0.625,
+          "expected_words": 8,
+          "matched_words": 5
+        },
+        {
+          "n": 2,
+          "text": "Kjötsúpa og Bæjarins bestu pullur",
+          "source": "islenskast:kjotsupa,pylsa",
+          "start_s": 49.96,
+          "end_s": 51.9,
+          "fidelity": 0.8,
+          "expected_words": 5,
+          "matched_words": 4
+        },
+        {
+          "n": 3,
+          "text": "Flatkaka með hangikjöti",
+          "source": "islenskast:flatkaka",
+          "start_s": 53.96,
+          "end_s": 57.24,
+          "fidelity": 1,
+          "expected_words": 3,
+          "matched_words": 3
+        },
+        {
+          "n": 4,
+          "text": "Að borða harðfisk í lopapeysu daglega",
+          "source": "islenskast:hardfiskur,lopi",
+          "start_s": 57.82,
+          "end_s": 61.22,
+          "fidelity": 1,
+          "expected_words": 6,
+          "matched_words": 6
+        },
+        {
+          "n": 5,
+          "text": "ættarmót og soðin ýsa, flatkaka með hangikjöti",
+          "source": "islenskast:kjotsupa,flatkaka,hefdir",
+          "start_s": 62.82,
+          "end_s": 65.9,
+          "fidelity": 0.8571428571428571,
+          "expected_words": 7,
+          "matched_words": 6
+        },
+        {
+          "n": 6,
+          "text": "Lopapeysa og kjötsúpa",
+          "source": "islenskast:kjotsupa,lopi",
+          "start_s": 66.46000000000001,
+          "end_s": 67.02,
+          "fidelity": 0,
+          "expected_words": 3,
+          "matched_words": 0
+        },
+        {
+          "n": 7,
+          "text": "Pönnsur með sykri",
+          "source": "islenskast:saett",
+          "start_s": 67.02,
+          "end_s": 67.94,
+          "fidelity": 0.6666666666666666,
+          "expected_words": 3,
+          "matched_words": 2
+        },
+        {
+          "n": 8,
+          "text": "Pylsa og kókómjólk❤️",
+          "source": "islenskast:pylsa",
+          "start_s": 68.98,
+          "end_s": 69.02,
+          "fidelity": 0.3333333333333333,
+          "expected_words": 3,
+          "matched_words": 1
+        },
+        {
+          "n": 9,
+          "text": "Flatkökur með hangikjöti",
+          "source": "islenskast:flatkaka",
+          "start_s": 71.02,
+          "end_s": 73.24,
+          "fidelity": 0.6666666666666666,
+          "expected_words": 3,
+          "matched_words": 2
+        },
+        {
+          "n": 10,
+          "text": "Kjötsúpa",
+          "source": "islenskast:kjotsupa",
+          "start_s": 73.98,
+          "end_s": 76.26,
+          "fidelity": 1,
+          "expected_words": 1,
+          "matched_words": 1
+        }
+      ]
+    },
+    {
+      "movement": 2,
+      "chunk": 2,
+      "title_is": "Ís í fárviðri",
+      "section": "main",
+      "start_s": 93,
+      "end_s": 113,
+      "duration_ms": 20000,
+      "lines": [
+        {
+          "n": 11,
+          "text": "Harðfiskur",
+          "source": "islenskast:hardfiskur",
+          "start_s": 101.9,
+          "end_s": 110.8,
+          "fidelity": 0,
+          "expected_words": 1,
+          "matched_words": 0
+        },
+        {
+          "n": 12,
+          "text": "Ís í fárviðri",
+          "source": "islenskast:is",
+          "start_s": 110.8,
+          "end_s": 110.9,
+          "fidelity": 0.3333333333333333,
+          "expected_words": 3,
+          "matched_words": 1
+        }
+      ]
+    },
+    {
+      "movement": 3,
+      "chunk": 1,
+      "title_is": "Hringvegurinn",
+      "section": "main",
+      "start_s": 113,
+      "end_s": 185,
+      "duration_ms": 72000,
+      "lines": [
+        {
+          "n": 1,
+          "text": "Akranes. Falleg tútsýni, fallegt sólsetur og svakalega fallegt að geta séð sjóinn þegar maður vaknar.",
+          "source": "place:3d9cd44e-4847-4e2a-9231-953f06c17d84",
+          "start_s": 119.34,
+          "end_s": 123.9,
+          "fidelity": 0.2,
+          "expected_words": 15,
+          "matched_words": 3
+        },
+        {
+          "n": 2,
+          "text": "Tálknafjörður. þar var ég öll sumur sem krakki hjá ömmu minni, frelsi og ævintýri",
+          "source": "place:a42ef66d-2df7-4602-a2a6-073f1406b041",
+          "start_s": 126.06,
+          "end_s": 131.92,
+          "fidelity": 0.9285714285714286,
+          "expected_words": 14,
+          "matched_words": 13
+        },
+        {
+          "n": 3,
+          "text": "Hesteyri. Þetta er staðurinn sem hugurinn heimsækir þegar erfiðleikar steðja.",
+          "source": "place:225dfddb-2f68-41f3-8a5f-a6ec93ac8e32",
+          "start_s": 133.5,
+          "end_s": 134.96,
+          "fidelity": 0.4,
+          "expected_words": 10,
+          "matched_words": 4
+        },
+        {
+          "n": 4,
+          "text": "Reynistaður. Því það er gaman þar",
+          "source": "place:49d9ec15-7433-49d6-82a5-64deaccd5292",
+          "start_s": 142.16,
+          "end_s": 145.08,
+          "fidelity": 1,
+          "expected_words": 6,
+          "matched_words": 6
+        },
+        {
+          "n": 5,
+          "text": "blóðberg, Íslenski hesturinn",
+          "source": "islenskast:hraun; islenskast:dyr",
+          "start_s": 146.12,
+          "end_s": 149.02,
+          "fidelity": 1,
+          "expected_words": 3,
+          "matched_words": 3
+        },
+        {
+          "n": 6,
+          "text": "Hálendi Sauðkindin, Töfrar hálendisins",
+          "source": "islenskast:halendi,dyr; islenskast:halendi",
+          "start_s": 152.5,
+          "end_s": 153.68,
+          "fidelity": 0.5,
+          "expected_words": 4,
+          "matched_words": 2
+        },
+        {
+          "n": 7,
+          "text": "Svarfaðardalur. Hér lærði ég falleg samskipti, kynntist ég plöntutegundunum og lærði að elska náttúruna og manneskjuna",
+          "source": "place:65ce88ed-e98b-4542-90ab-6edc2672aa0b",
+          "start_s": 154.22,
+          "end_s": 163.86,
+          "fidelity": 0.875,
+          "expected_words": 16,
+          "matched_words": 14
+        },
+        {
+          "n": 8,
+          "text": "Ásbyrgi. Þetta er hófur Sleipnis",
+          "source": "place:81741d0a-7c1f-4d39-b364-b8e29440cb99",
+          "start_s": 164.66,
+          "end_s": 167.64,
+          "fidelity": 1,
+          "expected_words": 5,
+          "matched_words": 5
+        },
+        {
+          "n": 9,
+          "text": "Grímastaðir á fjöllum. það var ég uppalin að hluta og lærði að elska landið og virða",
+          "source": "place:d7b23189-cad6-4d27-9f3b-5e3334b6d4ef",
+          "start_s": 169.4,
+          "end_s": 174.4,
+          "fidelity": 0.875,
+          "expected_words": 16,
+          "matched_words": 14
+        },
+        {
+          "n": 10,
+          "text": "Víkurnes. Ég á frábærar minningar af langafa mínum í þessu húsi og útsýnið er frábært. Sérstaklega þegar það er blækyrrt",
+          "source": "place:dc31c706-5f7e-42b4-9559-0ea82a408e7e",
+          "start_s": 175.04,
+          "end_s": 181.94,
+          "fidelity": 0.95,
+          "expected_words": 20,
+          "matched_words": 19
+        }
+      ]
+    },
+    {
+      "movement": 3,
+      "chunk": 2,
+      "title_is": "Hringvegurinn",
+      "section": "main",
+      "start_s": 185,
+      "end_s": 255,
+      "duration_ms": 70000,
+      "lines": [
+        {
+          "n": 11,
+          "text": "Stórurð. vegna þess að ég átti eitt sinn innilegt samband þarna við náttúruna á fallegu sumarkvöldi",
+          "source": "place:dc58e2db-e287-4a2f-844e-1b71373bdabf",
+          "start_s": 185.9,
+          "end_s": 189.82,
+          "fidelity": 0.375,
+          "expected_words": 16,
+          "matched_words": 6
+        },
+        {
+          "n": 12,
+          "text": "Fáskrúðsfjörður. Þangað hef ég farið hvert einasta sumar, og flesta páska, að hitta ömmu og afa.",
+          "source": "place:400bbb30-dac9-476c-8648-b8891982f2f4",
+          "start_s": 193,
+          "end_s": 200.52,
+          "fidelity": 0.8125,
+          "expected_words": 16,
+          "matched_words": 13
+        },
+        {
+          "n": 13,
+          "text": "Vatnajökull. Kyngimagnaður kraftur",
+          "source": "place:343f7500-4cf7-49ec-9975-e56dda52c11f",
+          "start_s": 201.06,
+          "end_s": 205.8,
+          "fidelity": 0.6666666666666666,
+          "expected_words": 3,
+          "matched_words": 2
+        },
+        {
+          "n": 14,
+          "text": "Skaftafell. Nátturan, fólkið, ferðamennirnir og núvitundin sem skilur mann eftir orðlausan",
+          "source": "place:20a1e205-2522-4493-88f7-c7206101e45e",
+          "start_s": 208.98,
+          "end_s": 215.88,
+          "fidelity": 0.8181818181818182,
+          "expected_words": 11,
+          "matched_words": 9
+        },
+        {
+          "n": 15,
+          "text": "blóðberg, Íslenski hesturinn",
+          "source": "islenskast:hraun; islenskast:dyr",
+          "start_s": 215.94,
+          "end_s": 218.82,
+          "fidelity": 1,
+          "expected_words": 3,
+          "matched_words": 3
+        },
+        {
+          "n": 16,
+          "text": "Hálendi Sauðkindin, Töfrar hálendisins",
+          "source": "islenskast:halendi,dyr; islenskast:halendi",
+          "start_s": 225.1,
+          "end_s": 228,
+          "fidelity": 0.75,
+          "expected_words": 4,
+          "matched_words": 3
+        },
+        {
+          "n": 17,
+          "text": "Hálendið. Hálendið hefur einstaka töfra: Kyrrð og víðáttu.",
+          "source": "place:0c6b6cc7-2577-4ae6-8837-c6e1d2fa5aad",
+          "start_s": 228.9,
+          "end_s": 232.24,
+          "fidelity": 0.625,
+          "expected_words": 8,
+          "matched_words": 5
+        },
+        {
+          "n": 18,
+          "text": "Hvolsvöllur. Fallegi heimabærinn minn",
+          "source": "place:d69d08d0-11f6-4e0c-bba5-1e04d94323ba",
+          "start_s": 233.12,
+          "end_s": 235.74,
+          "fidelity": 1,
+          "expected_words": 4,
+          "matched_words": 4
+        },
+        {
+          "n": 19,
+          "text": "Kerlingarfjöll. Dásamleg náttúra og tignarleg fjöll í öllum regnboganslitum",
+          "source": "place:a91fcea5-f675-4798-96ee-31c1dc6958b2",
+          "start_s": 237.88,
+          "end_s": 241.18,
+          "fidelity": 0.7777777777777778,
+          "expected_words": 9,
+          "matched_words": 7
+        },
+        {
+          "n": 20,
+          "text": "Nesjar. Ég á ótrúlega margar fallegar og góðar minningar þaðan - að veiða, sigla á bát, leika í hrauninu, spila og vera með fjölskyldunni.",
+          "source": "place:71f2fd59-98f2-418a-9fdc-1def22015636",
+          "start_s": 243.4,
+          "end_s": 253,
+          "fidelity": 0.8260869565217391,
+          "expected_words": 23,
+          "matched_words": 19
+        }
+      ]
+    },
+    {
+      "movement": 4,
+      "chunk": 1,
+      "title_is": "Lopinn og laugin",
+      "section": "main",
+      "start_s": 255,
+      "end_s": 310,
+      "duration_ms": 55000,
+      "lines": [
+        {
+          "n": 1,
+          "text": "Lopapeysa",
+          "source": "islenskast:lopi",
+          "start_s": 256.019,
+          "end_s": 257.88,
+          "fidelity": 1,
+          "expected_words": 1,
+          "matched_words": 1
+        },
+        {
+          "n": 2,
+          "text": "tuðandi hamingjusöm",
+          "source": "islenskast:sjalfsmynd",
+          "start_s": 258.019,
+          "end_s": 259.959,
+          "fidelity": 1,
+          "expected_words": 2,
+          "matched_words": 2
+        },
+        {
+          "n": 3,
+          "text": "Þorramatur lopapeysur",
+          "source": "islenskast:thorri,lopi",
+          "start_s": 260.459,
+          "end_s": 263.88,
+          "fidelity": 1,
+          "expected_words": 2,
+          "matched_words": 2
+        },
+        {
+          "n": 4,
+          "text": "Lopapeysur",
+          "source": "islenskast:lopi",
+          "start_s": 264,
+          "end_s": 265.9,
+          "fidelity": 1,
+          "expected_words": 1,
+          "matched_words": 1
+        },
+        {
+          "n": 5,
+          "text": "Íslenskt lopapeysa",
+          "source": "islenskast:lopi",
+          "start_s": 269,
+          "end_s": 270.24,
+          "fidelity": 0.5,
+          "expected_words": 2,
+          "matched_words": 1
+        },
+        {
+          "n": 6,
+          "text": "sundlaug",
+          "source": "islenskast:sund",
+          "start_s": 272,
+          "end_s": 273.42,
+          "fidelity": 1,
+          "expected_words": 1,
+          "matched_words": 1
+        },
+        {
+          "n": 7,
+          "text": "Íslenski fáninn",
+          "source": "islenskast:sjalfstaedi",
+          "start_s": 277.24,
+          "end_s": 279.24,
+          "fidelity": 1,
+          "expected_words": 2,
+          "matched_words": 2
+        },
+        {
+          "n": 8,
+          "text": "öryggi, loppapeysur",
+          "source": "islenskast:samheldni,lopi",
+          "start_s": 280.46,
+          "end_s": 281.42,
+          "fidelity": 0.5,
+          "expected_words": 2,
+          "matched_words": 1
+        },
+        {
+          "n": 9,
+          "text": "Sundlaugar",
+          "source": "islenskast:sund",
+          "start_s": 284.04,
+          "end_s": 287.4,
+          "fidelity": 1,
+          "expected_words": 1,
+          "matched_words": 1
+        },
+        {
+          "n": 10,
+          "text": "Það íslenskasta í heimi finnst mér vera hlýi, fallegi lopinn okkar og sú samstaða sem einkennir okkur þegar á móti blæs. Við stöndum saman, höldum hita hvert á öðru og gefumst ekki upp.",
+          "source": "islenskast:samheldni,lopi,seigla",
+          "start_s": 287.48,
+          "end_s": 311.96,
+          "fidelity": 0.9090909090909091,
+          "expected_words": 33,
+          "matched_words": 30
+        }
+      ]
+    },
+    {
+      "movement": 4,
+      "chunk": 2,
+      "title_is": "Skuggahliðarnar",
+      "section": "bridge",
+      "start_s": 310,
+      "end_s": 339,
+      "duration_ms": 29000,
+      "lines": [
+        {
+          "n": 11,
+          "text": "Hjarðhegðun",
+          "source": "islenskast:skuggi",
+          "start_s": 321.9,
+          "end_s": 322.74,
+          "fidelity": 1,
+          "expected_words": 1,
+          "matched_words": 1
+        },
+        {
+          "n": 12,
+          "text": "Kynþáttahyggja",
+          "source": "islenskast:skuggi",
+          "start_s": 325.66,
+          "end_s": 326.92,
+          "fidelity": 1,
+          "expected_words": 1,
+          "matched_words": 1
+        },
+        {
+          "n": 13,
+          "text": "hópgerving",
+          "source": "islenskast:skuggi",
+          "start_s": 328.32,
+          "end_s": 329.46,
+          "fidelity": 1,
+          "expected_words": 1,
+          "matched_words": 1
+        },
+        {
+          "n": 14,
+          "text": "Frændhygli, jákvæð og neikvæð",
+          "source": "islenskast:skuggi",
+          "start_s": 330.12,
+          "end_s": 336.22,
+          "fidelity": 1,
+          "expected_words": 4,
+          "matched_words": 4
+        },
+        {
+          "n": 15,
+          "text": "Hjörð",
+          "source": "islenskast:skuggi",
+          "start_s": 337.61,
+          "end_s": 339,
+          "fidelity": 0,
+          "expected_words": 1,
+          "matched_words": 0
+        }
+      ]
+    },
+    {
+      "movement": 5,
+      "chunk": 1,
+      "title_is": "Þetta reddast",
+      "section": "main",
+      "start_s": 339,
+      "end_s": 390,
+      "duration_ms": 51000,
+      "lines": [
+        {
+          "n": 1,
+          "text": "Náttúran og heiðni",
+          "source": "islenskast:landid,sagan",
+          "start_s": 344.02,
+          "end_s": 345.94,
+          "fidelity": 0.6666666666666666,
+          "expected_words": 3,
+          "matched_words": 2
+        },
+        {
+          "n": 2,
+          "text": "friður og viljastyrkur",
+          "source": "islenskast:gildi,seigla",
+          "start_s": 347.98,
+          "end_s": 350.48,
+          "fidelity": 1,
+          "expected_words": 3,
+          "matched_words": 3
+        },
+        {
+          "n": 3,
+          "text": "sviðasulta, skinnhandrit",
+          "source": "islenskast:thorri,sagan",
+          "start_s": 353.22,
+          "end_s": 355.96,
+          "fidelity": 0,
+          "expected_words": 2,
+          "matched_words": 0
+        },
+        {
+          "n": 4,
+          "text": "Styrkur og friðsemi",
+          "source": "islenskast:gildi,seigla",
+          "start_s": 355.96,
+          "end_s": 358.22,
+          "fidelity": 1,
+          "expected_words": 3,
+          "matched_words": 3
+        },
+        {
+          "n": 5,
+          "text": "Seigla",
+          "source": "islenskast:seigla",
+          "start_s": 360.415,
+          "end_s": 362.61,
+          "fidelity": 0,
+          "expected_words": 1,
+          "matched_words": 0
+        },
+        {
+          "n": 6,
+          "text": "Þrautseigja, náttúrufegurð",
+          "source": "islenskast:landid,seigla",
+          "start_s": 362.61,
+          "end_s": 364.805,
+          "fidelity": 0,
+          "expected_words": 2,
+          "matched_words": 0
+        },
+        {
+          "n": 7,
+          "text": "Túngunálið",
+          "source": "islenskast:tungumal",
+          "start_s": 364.805,
+          "end_s": 367,
+          "fidelity": 0,
+          "expected_words": 1,
+          "matched_words": 0
+        },
+        {
+          "n": 8,
+          "text": "Menningin",
+          "source": "islenskast:menning",
+          "start_s": 367,
+          "end_s": 367.88,
+          "fidelity": 1,
+          "expected_words": 1,
+          "matched_words": 1
+        },
+        {
+          "n": 9,
+          "text": "Íslenskan Náttúran",
+          "source": "islenskast:landid,tungumal",
+          "start_s": 370,
+          "end_s": 371.9,
+          "fidelity": 0.5,
+          "expected_words": 2,
+          "matched_words": 1
+        },
+        {
+          "n": 10,
+          "text": "Dugur",
+          "source": "islenskast:seigla",
+          "start_s": 372,
+          "end_s": 374.5,
+          "fidelity": 1,
+          "expected_words": 1,
+          "matched_words": 1
+        }
+      ]
+    },
+    {
+      "movement": 5,
+      "chunk": 2,
+      "title_is": "Þetta reddast",
+      "section": "main",
+      "start_s": 390,
+      "end_s": 410,
+      "duration_ms": 20000,
+      "lines": [
+        {
+          "n": 11,
+          "text": "Tungumálið",
+          "source": "islenskast:tungumal",
+          "start_s": 394.02,
+          "end_s": 398.96,
+          "fidelity": 1,
+          "expected_words": 1,
+          "matched_words": 1
+        },
+        {
+          "n": 12,
+          "text": "Þetta reddast",
+          "source": "islenskast:reddast",
+          "start_s": 399,
+          "end_s": 399.44,
+          "fidelity": 0.5,
+          "expected_words": 2,
+          "matched_words": 1
+        }
+      ]
+    },
+    {
+      "movement": 6,
+      "chunk": 1,
+      "title_is": "Hvað viltu tala um?",
+      "section": "main",
+      "start_s": 410,
+      "end_s": 448,
+      "duration_ms": 38000,
+      "lines": [
+        {
+          "n": 1,
+          "text": "menntun, framtíðina, gervigreind, samskipti",
+          "source": "topics:menntun,framtíðina,gervigreind,samskipti",
+          "start_s": 410.08,
+          "end_s": 413.56,
+          "fidelity": 0.75,
+          "expected_words": 4,
+          "matched_words": 3
+        },
+        {
+          "n": 2,
+          "text": "samfélagsmiðla, samfélagið, náttúran, tungumálið",
+          "source": "topics:samfélagsmiðla,samfélagið,náttúran,tungumálið",
+          "start_s": 414,
+          "end_s": 418.88,
+          "fidelity": 1,
+          "expected_words": 4,
+          "matched_words": 4
+        },
+        {
+          "n": 3,
+          "text": "lýðræðið, heilbrigðiskerfið, umburðarlyndi, húsnæði",
+          "source": "topics:lýðræðið,heilbrigðiskerfið,umburðarlyndi,húsnæði",
+          "start_s": 419,
+          "end_s": 422.94,
+          "fidelity": 1,
+          "expected_words": 4,
+          "matched_words": 4
+        },
+        {
+          "n": 4,
+          "text": "útlendingamál, rasismi, fjölmiðla, peningar",
+          "source": "topics:útlendingamál,rasismi,fjölmiðla,peningar",
+          "start_s": 423.04,
+          "end_s": 426.68,
+          "fidelity": 1,
+          "expected_words": 4,
+          "matched_words": 4
+        },
+        {
+          "n": 5,
+          "text": "samgöngur, alþjóðasamfélagið, grunnskólamenntun, æskulýðstarf",
+          "source": "topics:samgöngur,alþjóðasamfélagið,grunnskólamenntun,æskulýðstarf",
+          "start_s": 427.02,
+          "end_s": 430.52,
+          "fidelity": 0.5,
+          "expected_words": 4,
+          "matched_words": 2
+        },
+        {
+          "n": 6,
+          "text": "framhaldsskólakerfið, leikskólar, kynjaskiptingu",
+          "source": "topics:framhaldsskólakerfið,leikskólar,kynjaskiptingu",
+          "start_s": 432,
+          "end_s": 435.54,
+          "fidelity": 1,
+          "expected_words": 3,
+          "matched_words": 3
+        },
+        {
+          "n": 7,
+          "text": "Hvernig samfélag viljum við skapa saman?",
+          "source": "samtal:tagline",
+          "start_s": 436.02,
+          "end_s": 440.42,
+          "fidelity": 1,
+          "expected_words": 6,
+          "matched_words": 6
+        }
+      ]
+    }
+  ]
+}

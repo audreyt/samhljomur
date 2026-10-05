@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Hér lærði ég falleg samskipti, kynntist ég plöntutegundunum og lærði að elska náttúruna og manneskjuna“\nEnglish gloss: “Here I learned beautiful communication, got to know the plant species, and learned to love nature and humanity.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.6176933734696373
+      }
+    },
+    "usage": {
+      "input_tokens": 214,
+      "output_tokens": 0
+    }
+  }
+}

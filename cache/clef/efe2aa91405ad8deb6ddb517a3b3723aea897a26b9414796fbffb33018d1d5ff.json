@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Þetta er minn uppáhalds staður því þetta er minn heima og fæðingarbær. Falleg tútsýni, fallegt sólsetur og svakalega fallegt að geta séð sjóinn þegar maður vaknar.“\nEnglish gloss: “This is my favorite place because this is my hometown and where I was born. Beautiful views, beautiful sunset, and it is so beautiful to see the sea when one wakes up.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.7988987691868364
+      }
+    },
+    "usage": {
+      "input_tokens": 248,
+      "output_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Orð sem þátttakendur völdu undir „Hvað viltu tala um?“ á talasaman.is: traust",
+    "questions": {
+      "topic_theme": {
+        "type": "choice",
+        "instructions": "Which theme does this topic word belong to?",
+        "criteria": {
+          "education": "schools, preschools, education",
+          "future": "the future, hopes",
+          "technology": "AI, technology, innovation",
+          "communication": "communication, social media, media, misinformation, phone manners",
+          "democracy": "democracy, trust, corruption, governance, politics",
+          "nature": "nature, environment",
+          "health": "health care, ageing, wellbeing, addiction",
+          "economy": "money, housing, transport, traffic, fees, fishing quota, food industry",
+          "equality": "equality, gender, racism, immigration, prejudice, LGBTQ, tolerance, respect",
+          "culture": "language, culture, arts, music, coffee",
+          "youth": "youth work, youth movements",
+          "mindset": "optimism, joy, courage, purpose, open-mindedness, creativity"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "topic_theme": {
+        "type": "choice",
+        "choice": "democracy",
+        "probabilities": {
+          "communication": 0.0166779037459924,
+          "culture": 0.007001064944889432,
+          "democracy": 0.8937190871784835,
+          "economy": 0.0039859169451207654,
+          "education": 0.005631822365876219,
+          "equality": 0.008958075120338707,
+          "future": 0.014069153989684753,
+          "health": 0.006777076355682845,
+          "mindset": 0.022409764474781508,
+          "nature": 0.004153846531190834,
+          "technology": 0.01217858152585997,
+          "youth": 0.004437706822098875
+        },
+        "confidence": 0.7680720842421942
+      }
+    },
+    "usage": {
+      "input_tokens": 423,
+      "output_tokens": 0
+    }
+  }
+}

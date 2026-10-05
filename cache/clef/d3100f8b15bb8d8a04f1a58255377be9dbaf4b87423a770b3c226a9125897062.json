@@ -1,0 +1,31 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Þetta er gullfallegur staður á suðverðum vestfyrðum. Heit laug til að slaka á og fallegt útsýni yfir sjóin og fjöllin.“\nEnglish gloss: “This is a beautiful place on the southern west fjords. A hot spring to relax in and a beautiful view over the sea and the mountains.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.8006125462579988
+      }
+    },
+    "usage": {
+      "input_tokens": 229,
+      "output_tokens": 0
+    }
+  },
+  "latency_ms": 453
+}

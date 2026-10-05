@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Fátt sem toppar frelsið og kyrrðina í sveitinni“\nEnglish gloss: “Gained the top of freedom and quiet in the group”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.04449388728748309
+      }
+    },
+    "usage": {
+      "input_tokens": 183,
+      "output_tokens": 0
+    }
+  }
+}

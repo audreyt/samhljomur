@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Fegurðin á Hornströndum er ólýsanleg og tilhugsunin um að fólk hafi búið þarna í mörghundruð ár á hjara veraldar fyllir mann bjartsýni um þrautsegju Íslendinga.“\nEnglish gloss: “The beauty of Hornstrandir is indescribable and the thought that people lived there for hundreds of years at the edge of the world fills one with optimism about the perseverance of Icelanders.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.8420431531474847
+      }
+    },
+    "usage": {
+      "input_tokens": 255,
+      "output_tokens": 0
+    }
+  }
+}

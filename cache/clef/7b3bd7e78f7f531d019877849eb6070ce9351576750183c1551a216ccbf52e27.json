@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „(Brimnesá) Fjallið er einstaklega fallegt á haustin því þá skartar það öllum fegurstu haustlitunum þar sem fjallið er þakið berjalyngi.“\nEnglish gloss: “(Brimnesá) The mountain is exceptionally beautiful in the autumn because then it displays all the most beautiful autumn colors as the mountain is covered in berry heath.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.8646321405509935
+      }
+    },
+    "usage": {
+      "input_tokens": 238,
+      "output_tokens": 0
+    }
+  }
+}

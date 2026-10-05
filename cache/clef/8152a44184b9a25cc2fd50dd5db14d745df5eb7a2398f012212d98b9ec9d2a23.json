@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „bragðarefi, ungt fólk sem prjónar“\nEnglish gloss: “bragðarefi, ungt fólk sem prjónar [bragðarefi: a young person who prions (i.e., engages in prion-related activities or uses prion-related terminology, though note that 'prjónar' may be a dialectal or context-specific term; without further context, it is translated literally as 'prions')]”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.19709906101008245
+      }
+    },
+    "usage": {
+      "input_tokens": 246,
+      "output_tokens": 0
+    }
+  }
+}

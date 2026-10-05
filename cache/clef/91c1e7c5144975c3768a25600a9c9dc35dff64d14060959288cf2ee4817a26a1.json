@@ -1,0 +1,55 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Orð sem þátttakendur völdu undir „Hvað viltu tala um?“ á talasaman.is: peningar",
+    "questions": {
+      "topic_theme": {
+        "type": "choice",
+        "instructions": "Which theme does this topic word belong to?",
+        "criteria": {
+          "education": "schools, preschools, education",
+          "future": "the future, hopes",
+          "technology": "AI, technology, innovation",
+          "communication": "communication, social media, media, misinformation, phone manners",
+          "democracy": "democracy, trust, corruption, governance, politics",
+          "nature": "nature, environment",
+          "health": "health care, ageing, wellbeing, addiction",
+          "economy": "money, housing, transport, traffic, fees, fishing quota, food industry",
+          "equality": "equality, gender, racism, immigration, prejudice, LGBTQ, tolerance, respect",
+          "culture": "language, culture, arts, music, coffee",
+          "youth": "youth work, youth movements",
+          "mindset": "optimism, joy, courage, purpose, open-mindedness, creativity"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "topic_theme": {
+        "type": "choice",
+        "choice": "economy",
+        "probabilities": {
+          "communication": 0.01448883905257403,
+          "culture": 0.01619311058588074,
+          "democracy": 0.03778013411501803,
+          "economy": 0.8273658526896703,
+          "education": 0.01293826157847109,
+          "equality": 0.01043069802938368,
+          "future": 0.019904711677623442,
+          "health": 0.010428276097078835,
+          "mindset": 0.012156365806162039,
+          "nature": 0.00952436041557726,
+          "technology": 0.015450273686901788,
+          "youth": 0.013339116265658783
+        },
+        "confidence": 0.6547068256701527
+      }
+    },
+    "usage": {
+      "input_tokens": 423,
+      "output_tokens": 0
+    }
+  }
+}

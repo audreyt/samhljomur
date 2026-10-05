@@ -1,0 +1,41 @@
+{
+  "request": {
+    "model": "granite4.2:30b",
+    "stream": false,
+    "think": false,
+    "messages": [
+      {
+        "role": "system",
+        "content": "You translate short Icelandic texts written by members of the public into plain English. Translate faithfully; add nothing and leave nothing out. Keep place names in Icelandic. Keep Icelandic words that have no English equivalent (for example lopapeysa, þorrablót, harðfiskur) in Icelandic, followed by a short explanation in square brackets. Do not correct, praise, or comment. Output only the English text."
+      },
+      {
+        "role": "user",
+        "content": "Höfði í Mývatnssveit er náttúruperla. Kyrrð, ró og dásamlegt útsýni."
+      }
+    ],
+    "options": {
+      "temperature": 0.2,
+      "num_ctx": 4096,
+      "seed": 1010
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "granite4.2:30b",
+    "created_at": "2026-10-05T00:11:51.680785Z",
+    "message": {
+      "role": "assistant",
+      "content": "Höfði in Mývatnssveit is a natural gem. Quiet, peaceful, and with beautiful views."
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 1352098958,
+    "load_duration": 16326916,
+    "prompt_eval_count": 139,
+    "prompt_eval_cached_count": 94,
+    "prompt_eval_duration": 302736000,
+    "eval_count": 28,
+    "eval_duration": 1030565000
+  },
+  "latency_ms": 1353
+}

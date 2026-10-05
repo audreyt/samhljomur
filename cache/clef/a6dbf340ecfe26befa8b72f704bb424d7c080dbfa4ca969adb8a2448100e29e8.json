@@ -1,0 +1,37 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Uppáhaldsstaður þátttakanda á Íslandi (talasaman.is/stadir).\nStaður: Böggvisstaðafjall, Dalvíkurbyggð\nÁstæða, orðrétt: „Býður upp á hæfilega krefjandi göngu í dásamlegri, fallegri og kyrrlátri náttúru. Þarna hef ég gengið síðan ég var barn og á góðar mnningar bæði úr fjallinu og dalnum sem nefnist Böggvisstaðardalur því hann er þeim megin árinnar. (Brimnesá) Fjallið er einstaklega fallegt á haustin því þá skartar það öllum fegurstu haustlitunum þar sem fjallið er þakið berjalyngi.“",
+    "questions": {
+      "excerpt": {
+        "type": "choice",
+        "instructions": "Which single sentence of the reason is the most beautiful to sing, word for word?",
+        "criteria": {
+          "s1": "Býður upp á hæfilega krefjandi göngu í dásamlegri, fallegri og kyrrlátri náttúru.",
+          "s2": "Þarna hef ég gengið síðan ég var barn og á góðar mnningar bæði úr fjallinu og dalnum sem nefnist Böggvisstaðardalur því hann er þeim megin árinnar.",
+          "s3": "(Brimnesá) Fjallið er einstaklega fallegt á haustin því þá skartar það öllum fegurstu haustlitunum þar sem fjallið er þakið berjalyngi."
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "excerpt": {
+        "type": "choice",
+        "choice": "s3",
+        "probabilities": {
+          "s1": 0.06322822910568043,
+          "s2": 0.06330039556513271,
+          "s3": 0.873471375329187
+        },
+        "confidence": 0.5745204870967804
+      }
+    },
+    "usage": {
+      "input_tokens": 481,
+      "output_tokens": 0
+    }
+  }
+}

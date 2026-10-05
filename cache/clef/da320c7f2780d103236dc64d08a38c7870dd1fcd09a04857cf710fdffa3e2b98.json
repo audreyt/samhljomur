@@ -1,0 +1,31 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Ég á heima þarna og hef alltaf búið þarna“\nEnglish gloss: “I live there and have always lived there.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.8464690431251913
+      }
+    },
+    "usage": {
+      "input_tokens": 179,
+      "output_tokens": 0
+    }
+  },
+  "latency_ms": 431
+}

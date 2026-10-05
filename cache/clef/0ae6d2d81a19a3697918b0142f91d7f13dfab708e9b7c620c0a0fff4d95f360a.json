@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Það er ekki mikið af fólki svo þú getur verið einn með hugsunum þínum en samt ertu ekki einmanna vegna þess að fuglarnir syngja svo fallega.“\nEnglish gloss: “There aren't many people around, so you can be alone with your thoughts, yet you're not truly alone because the birds sing so beautifully.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.8687053996899231
+      }
+    },
+    "usage": {
+      "input_tokens": 233,
+      "output_tokens": 0
+    }
+  }
+}

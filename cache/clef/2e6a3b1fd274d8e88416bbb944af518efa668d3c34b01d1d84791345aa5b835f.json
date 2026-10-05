@@ -1,0 +1,31 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Fyrsti útilegustaðurinn þegar ég varð\r\nmamma. Vatnið, landslagið, gróðurinn og sagan - einfaldleikinn og rólegheitin.“\nEnglish gloss: “The first place where I became a mother: the water, the landscape, the vegetation, and the story—simplicity and tranquility.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.7224746101656732
+      }
+    },
+    "usage": {
+      "input_tokens": 226,
+      "output_tokens": 0
+    }
+  },
+  "latency_ms": 449
+}

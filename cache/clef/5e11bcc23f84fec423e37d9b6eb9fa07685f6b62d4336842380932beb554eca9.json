@@ -1,0 +1,31 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Mér ekki gott“\nEnglish gloss: “I don't feel good. [Expression of personal discomfort or unhappiness]”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.5576100992598263
+      }
+    },
+    "usage": {
+      "input_tokens": 174,
+      "output_tokens": 0
+    }
+  },
+  "latency_ms": 434
+}

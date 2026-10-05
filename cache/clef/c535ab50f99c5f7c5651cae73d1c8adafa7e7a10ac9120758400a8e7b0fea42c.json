@@ -1,0 +1,55 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Orð sem þátttakendur völdu undir „Hvað viltu tala um?“ á talasaman.is: samskipti",
+    "questions": {
+      "topic_theme": {
+        "type": "choice",
+        "instructions": "Which theme does this topic word belong to?",
+        "criteria": {
+          "education": "schools, preschools, education",
+          "future": "the future, hopes",
+          "technology": "AI, technology, innovation",
+          "communication": "communication, social media, media, misinformation, phone manners",
+          "democracy": "democracy, trust, corruption, governance, politics",
+          "nature": "nature, environment",
+          "health": "health care, ageing, wellbeing, addiction",
+          "economy": "money, housing, transport, traffic, fees, fishing quota, food industry",
+          "equality": "equality, gender, racism, immigration, prejudice, LGBTQ, tolerance, respect",
+          "culture": "language, culture, arts, music, coffee",
+          "youth": "youth work, youth movements",
+          "mindset": "optimism, joy, courage, purpose, open-mindedness, creativity"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "topic_theme": {
+        "type": "choice",
+        "choice": "communication",
+        "probabilities": {
+          "communication": 0.8069605398302472,
+          "culture": 0.0206272035517845,
+          "democracy": 0.014807948801029277,
+          "economy": 0.008204582585361766,
+          "education": 0.019852525574301172,
+          "equality": 0.01994576088756607,
+          "future": 0.019247779551523195,
+          "health": 0.013062318389624591,
+          "mindset": 0.01299692351721619,
+          "nature": 0.010787726593315273,
+          "technology": 0.04101838598100154,
+          "youth": 0.012488304737029493
+        },
+        "confidence": 0.6239054733630449
+      }
+    },
+    "usage": {
+      "input_tokens": 426,
+      "output_tokens": 0
+    }
+  }
+}

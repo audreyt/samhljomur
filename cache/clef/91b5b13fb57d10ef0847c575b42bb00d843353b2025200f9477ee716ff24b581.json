@@ -1,0 +1,31 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Matarkistan á Suðurlandi, hægt að kaupa afurðir beint frá bændum, mikið menningarlíf. Stutt í hálendið þar sem er friðsæld og víðátta.“\nEnglish gloss: “In Matarkistan in the Southland, it's possible to buy products directly from farmers, there's a rich cultural life. It's short to the highlands where there is peace and wide-open spaces.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.7018496216703503
+      }
+    },
+    "usage": {
+      "input_tokens": 247,
+      "output_tokens": 0
+    }
+  },
+  "latency_ms": 454
+}

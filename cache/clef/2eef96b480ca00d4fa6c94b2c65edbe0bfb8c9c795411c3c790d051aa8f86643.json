@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Fallegasta umhverfi á Íslandi, rólegur bær og hlýtt í sálina að eyða tímanum sínum þarna, sérstaklega á sumrin.“\nEnglish gloss: “A beautiful environment in Iceland, a peaceful village, and a cozy way to spend one’s time there, especially in summer.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.5523743278430171
+      }
+    },
+    "usage": {
+      "input_tokens": 221,
+      "output_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Mér finnst Egilsstaðir vera uppáhaldsstaðurinn minn vegna þess að það er fallegt og rólegt hér. Ég elska náttúruna og mér líður vel þegar ég er hér“\nEnglish gloss: “I consider Egilsstaðir to be my favorite place because it is beautiful and peaceful here. I love nature and feel well when I am here.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.8852506481536342
+      }
+    },
+    "usage": {
+      "input_tokens": 236,
+      "output_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Uppáhaldsstaður þátttakanda á Íslandi (talasaman.is/stadir).\nStaður: Víganes, Árneshreppur\nÁstæða, orðrétt: „Alla mína ævi hef ég farið til Gjögurs á sumrin. Það er eitthvað ólýsanlegt við það að fara í sveitina, slökkva á öllum áreitinu úr símanum og tengjast ósnertri náttúrunni í sveitinni.“",
+    "questions": {
+      "excerpt": {
+        "type": "choice",
+        "instructions": "Which single sentence of the reason is the most beautiful to sing, word for word?",
+        "criteria": {
+          "s1": "Alla mína ævi hef ég farið til Gjögurs á sumrin.",
+          "s2": "Það er eitthvað ólýsanlegt við það að fara í sveitina, slökkva á öllum áreitinu úr símanum og tengjast ósnertri náttúrunni í sveitinni."
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "excerpt": {
+        "type": "choice",
+        "choice": "s2",
+        "probabilities": {
+          "s1": 0.043460037428495024,
+          "s2": 0.9565399625715049
+        },
+        "confidence": 0.7420626032854714
+      }
+    },
+    "usage": {
+      "input_tokens": 330,
+      "output_tokens": 0
+    }
+  }
+}

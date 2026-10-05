@@ -1,0 +1,31 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „kynjakerfið“\nEnglish gloss: “The gender system. [kynjakerfið refers to the Icelandic gender system, which traditionally classifies nouns into three grammatical genders: common, neuter, and weak.]”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.29264626027568263
+      }
+    },
+    "usage": {
+      "input_tokens": 197,
+      "output_tokens": 0
+    }
+  },
+  "latency_ms": 434
+}

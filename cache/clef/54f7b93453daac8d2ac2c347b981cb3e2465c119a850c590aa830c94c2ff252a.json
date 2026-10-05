@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Ég finn öryggi og stolt í litlu bæjarfélaginu mínu. Mér finnst ég eiga mikið stærri þátt í öllu því sem tekur stað í heimbænum mínum.“\nEnglish gloss: “I find safety and pride in my small community. I feel I have a much larger role in everything that takes place in my home town.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.845137572977343
+      }
+    },
+    "usage": {
+      "input_tokens": 231,
+      "output_tokens": 0
+    }
+  }
+}

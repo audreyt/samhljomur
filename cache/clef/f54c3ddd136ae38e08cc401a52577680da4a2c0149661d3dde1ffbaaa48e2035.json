@@ -1,0 +1,31 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Töfrar hálendisins“\nEnglish gloss: “The magic of the highlands. [A description of the enchanting nature of Iceland's highland areas]”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.14208173857897094
+      }
+    },
+    "usage": {
+      "input_tokens": 184,
+      "output_tokens": 0
+    }
+  },
+  "latency_ms": 452
+}

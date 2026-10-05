@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Þetta er fjölskyldu bustaður okkar og eg man alltaf sem krakki að fara þangað og mer liður bara mjög vel þar.“\nEnglish gloss: “This is our family home and I always remember going there as a kid and feeling very well there.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.6314861960025665
+      }
+    },
+    "usage": {
+      "input_tokens": 212,
+      "output_tokens": 0
+    }
+  }
+}

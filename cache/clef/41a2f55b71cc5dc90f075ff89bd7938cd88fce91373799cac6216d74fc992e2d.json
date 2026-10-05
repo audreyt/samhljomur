@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Náttúran er mjög falleg bæði á veturnar og sumrin og margar góðar minningar þaðan“\nEnglish gloss: “Nature is very beautiful both in winter and summer, and many good memories come from there.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.780721339855212
+      }
+    },
+    "usage": {
+      "input_tokens": 200,
+      "output_tokens": 0
+    }
+  }
+}

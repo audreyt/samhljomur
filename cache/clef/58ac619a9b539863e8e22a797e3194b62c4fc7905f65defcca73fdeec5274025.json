@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Heimabærinn minn, mér finnst fólkið í bænum skemmtilegt og yndislegt fólk. Við erum með duglegt og kraftmikið íþróttafólk, listrænt og hæfileikaríkt leiklistar fólk, sterka og vinnusama iðnaðarmenn og margt fleira sem heldur bænum uppi og ýtir okkur áfram að betra samfélagi.“\nEnglish gloss: “My hometown, I find the people in the town entertaining and pleasant. We have skilled and strong athletes, artistic and talented performers, hardworking and industrious craftsmen, and many others who keep the town going and help us continue to improve our community.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.7694762316694537
+      }
+    },
+    "usage": {
+      "input_tokens": 313,
+      "output_tokens": 0
+    }
+  }
+}

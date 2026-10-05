@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Ég á frábærar minningar af langafa mínum í þessu húsi og útsýnið er frábært. Sérstaklega þegar það er blækyrrt“\nEnglish gloss: “I have wonderful memories of my grandfather in this house, and the view is excellent. Especially when it is misty.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.7794720812299879
+      }
+    },
+    "usage": {
+      "input_tokens": 221,
+      "output_tokens": 0
+    }
+  }
+}

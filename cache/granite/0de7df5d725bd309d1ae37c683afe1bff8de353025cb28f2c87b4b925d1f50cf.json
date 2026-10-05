@@ -1,0 +1,41 @@
+{
+  "request": {
+    "model": "granite4.2:30b",
+    "stream": false,
+    "think": false,
+    "messages": [
+      {
+        "role": "system",
+        "content": "You translate short Icelandic texts written by members of the public into plain English. Translate faithfully; add nothing and leave nothing out. Keep place names in Icelandic. Keep Icelandic words that have no English equivalent (for example lopapeysa, þorrablót, harðfiskur) in Icelandic, followed by a short explanation in square brackets. Do not correct, praise, or comment. Output only the English text."
+      },
+      {
+        "role": "user",
+        "content": "Translate literally: Það er ekkert betra en að fara í sund á Íslandi. Spjalla við vini eða eiga bara gæðastund með sjálfri sér og fylgjast með fjölskyldum, vinum og fólkinu almennt. Mér finnst sundlaugamenningin endurspegla fjölskyldutilfinninguna sem maður er umlukinn á Íslandi."
+      }
+    ],
+    "options": {
+      "temperature": 0,
+      "num_ctx": 4096,
+      "seed": 1010
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "granite4.2:30b",
+    "created_at": "2026-10-05T00:04:26.924528Z",
+    "message": {
+      "role": "assistant",
+      "content": "There is nothing better than going for a swim in Iceland. Chat with friends or simply have a good time alone, and be accompanied by family, friends, and the general public. I find that the swimming culture reflects the family-oriented mindset of a person living in Iceland."
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 2771183125,
+    "load_duration": 16650042,
+    "prompt_eval_count": 219,
+    "prompt_eval_cached_count": 98,
+    "prompt_eval_duration": 343864000,
+    "eval_count": 56,
+    "eval_duration": 2405303000
+  },
+  "latency_ms": 2771
+}

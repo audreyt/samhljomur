@@ -1,0 +1,41 @@
+{
+  "request": {
+    "model": "granite4.2:30b",
+    "stream": false,
+    "think": false,
+    "messages": [
+      {
+        "role": "system",
+        "content": "You translate short Icelandic texts written by members of the public into plain English. Translate faithfully; add nothing and leave nothing out. Keep place names in Icelandic. Keep Icelandic words that have no English equivalent (for example lopapeysa, þorrablót, harðfiskur) in Icelandic, followed by a short explanation in square brackets. Do not correct, praise, or comment. Output only the English text."
+      },
+      {
+        "role": "user",
+        "content": "Fallegar minningar, fallegt útivistarsvæði og náttúra og tenging við fjölbreyttan hóp"
+      }
+    ],
+    "options": {
+      "temperature": 0.2,
+      "num_ctx": 4096,
+      "seed": 1010
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "granite4.2:30b",
+    "created_at": "2026-10-05T00:05:17.165344Z",
+    "message": {
+      "role": "assistant",
+      "content": "Gentle memories, beautiful places of hope, and nature and connection with a diverse group"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 988736291,
+    "load_duration": 15654500,
+    "prompt_eval_count": 137,
+    "prompt_eval_cached_count": 94,
+    "prompt_eval_duration": 299025000,
+    "eval_count": 19,
+    "eval_duration": 671788000
+  },
+  "latency_ms": 989
+}

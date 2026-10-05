@@ -1,0 +1,31 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Þetta er staðurinn sem hugurinn heimsækir þegar erfiðleikar steðja.“\nEnglish gloss: “This is the place where the mind goes when difficulties arise.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.8285248984063317
+      }
+    },
+    "usage": {
+      "input_tokens": 190,
+      "output_tokens": 0
+    }
+  },
+  "latency_ms": 471
+}

@@ -1,0 +1,31 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Þessi rödd sem við höfum, skoðanapistlar, okkur finnst við geta lagt að mörkum í umræðu um landsmál“\nEnglish gloss: “This voice that we have, our opinions, we feel we can put to the mark in the discussion about national issues.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.23082535345575994
+      }
+    },
+    "usage": {
+      "input_tokens": 214,
+      "output_tokens": 0
+    }
+  },
+  "latency_ms": 444
+}

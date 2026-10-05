@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Þetta er staðurinn þangað sem ég fer á hverju einasta ári. Þetta er staðurinn sem hugurinn heimsækir þegar erfiðleikar steðja. Þetta er fallegasti staðurinn á Íslandi. Orkan þar er áþreifanleg.“\nEnglish gloss: “This is the place that I go to every single year. This is the place that the mind visits when difficulties arise. This is the most beautiful place in Ísland. The energy there is tangible.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.8705171517357383
+      }
+    },
+    "usage": {
+      "input_tokens": 265,
+      "output_tokens": 0
+    }
+  }
+}

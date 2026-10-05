@@ -1,0 +1,174 @@
+Samhljómur: lyric sheet (stage 4 arrangement)
+Gögn: Samtal, félag til almannaheilla (talasaman.is), CC BY 4.0
+Þetta er hvorki afstaða né niðurstaða Samtals. / This is not Samtal's position or finding.
+EN lines are vélþýðing / machine gloss.
+
+=== 1. Gluggaveður / Window-weather ===
+   1. Birta og myrkur
+      comp  0.32 | s 2.7 | tone calm | islenskast:arstidir | Light and darkness
+   2. Veðrið og kleinur
+      comp  0.42 | s 2.7 | tone proud | islenskast:saett,vedrid | The weather and kleinur [twisted doughnuts]
+   3. Lykt af grænu grasi á sumrin og kaldar rauðar kynnar eftir að inn er komið að vetri
+      comp  0.27 | s 5.9 | tone tender | islenskast:arstidir | The smell of green grass in summer, and cold red cheeks after coming inside in winter [ritstýrt/edited]
+   4. Náttúran og veðrið
+      comp  0.31 | s 2.7 | tone proud | islenskast:landid,vedrid | Nature and the weather
+   5. Veðrið [ed:popularity] ×3
+      comp  0.29 | s 2.7 | tone proud | islenskast:vedrid | The weather
+   6. Ístlenskar pönukökur út í sveit með gott veður og vontveður
+      comp  0.25 | s 4.3 | tone proud | islenskast:saett,vedrid | Icelandic pancakes out in the countryside with good weather and bad weather
+   7. Gluggaveður [ed:title]
+      comp  0.33 | s 2.8 | tone proud | islenskast:vedrid | Window-weather [weather that looks lovely through the window but is bitter outside] [ritstýrt/edited]
+  -- chunk 1 [main] lines 1,2,3,4,5,6,7 -> 41000 ms (41 s)
+
+=== 2. Ís í fárviðri / Ice cream in a storm ===
+   1. Að borða ís þegar það er vont veður
+      comp  0.46 | s 3.5 | tone proud | islenskast:is | Eating ice cream when the weather is bad
+   2. Kjötsúpa og Bæjarins bestu pullur
+      comp  0.48 | s 3.2 | tone proud | islenskast:kjotsupa,pylsa | Meat soup and hot dogs from Bæjarins bestu [the famous Reykjavík hot-dog stand] [ritstýrt/edited]
+   3. Flatkaka með hangikjöti
+      comp  0.45 | s 2.9 | tone proud | islenskast:flatkaka | Flatkaka [flatbread] with hangikjöt [smoked lamb]
+   4. Að borða harðfisk í lopapeysu daglega
+      comp  0.45 | s 3.9 | tone proud | islenskast:hardfiskur,lopi | Eating harðfiskur [dried fish] in a lopapeysa [traditional Icelandic wool sweater] daily
+   5. ættarmót og soðin ýsa, flatkaka með hangikjöti
+      comp  0.44 | s 4.1 | tone proud | islenskast:kjotsupa,flatkaka,hefdir | family reunion and boiled haddock, flatbread with hangikjöt [smoked lamb]
+   6. Lopapeysa og kjötsúpa
+      comp  0.44 | s 2.8 | tone proud | islenskast:kjotsupa,lopi | Lopapeysa [traditional Icelandic wool sweater] and meat soup
+   7. Pönnsur með sykri
+      comp  0.44 | s 2.8 | tone proud | islenskast:saett | Pancakes with sugar
+   8. Pylsa og kókómjólk❤️
+      comp  0.43 | s 2.7 | tone proud | islenskast:pylsa | Hot dog and chocolate milk❤️
+   9. Flatkökur með hangikjöti
+      comp  0.43 | s 2.9 | tone proud | islenskast:flatkaka | Flatkökur [flatbread] with hangikjöt [smoked lamb]
+  10. Kjötsúpa [ed:popularity] ×3
+      comp  0.36 | s 2.7 | tone proud | islenskast:kjotsupa | Meat soup
+  11. Harðfiskur [ed:popularity] ×5
+      comp  0.31 | s 2.8 | tone proud | islenskast:hardfiskur | Harðfiskur [dried fish]
+  12. Ís í fárviðri [ed:title]
+      comp  0.41 | s 2.9 | tone proud | islenskast:is | Ice cream in a storm [ritstýrt/edited]
+  -- chunk 1 [main] lines 1,2,3,4,5,6,7,8,9,10 -> 52000 ms (52 s)
+  -- chunk 2 [main] lines 11,12 -> 20000 ms (20 s)
+
+=== 3. Hringvegurinn / The Ring Road ===
+   1. Akranes. Falleg tútsýni, fallegt sólsetur og svakalega fallegt að geta séð sjóinn þegar maður vaknar.
+      comp  0.46 | s 6.6 | tone tender | place:3d9cd44e-4847-4e2a-9231-953f06c17d84 | Beautiful view, beautiful sunset and incredibly beautiful to be able to see the sea when one wakes up.
+   2. Tálknafjörður. þar var ég öll sumur sem krakki hjá ömmu minni, frelsi og ævintýri
+      comp  0.44 | s 4.9 | tone tender | place:a42ef66d-2df7-4602-a2a6-073f1406b041 | I was there every summer as a kid with my grandmother, freedom and adventure
+   3. Hesteyri. Þetta er staðurinn sem hugurinn heimsækir þegar erfiðleikar steðja.
+      comp  0.46 | s 7.1 | tone tender | place:225dfddb-2f68-41f3-8a5f-a6ec93ac8e32 | This is the place the mind visits when difficulties arise.
+   4. Reynistaður. Því það er gaman þar
+      comp  0.32 | s 3.2 | tone joyful | place:49d9ec15-7433-49d6-82a5-64deaccd5292 | Because it is fun there
+   5. blóðberg, Íslenski hesturinn [refrain]
+      comp   -   | s 5.6 | tone - | islenskast:hraun; islenskast:dyr | Wild thyme; The Icelandic horse
+   6. Hálendi Sauðkindin, Töfrar hálendisins [refrain]
+      comp   -   | s 5.6 | tone - | islenskast:halendi,dyr; islenskast:halendi | The highlands, the sheep; The magic of the highlands
+   7. Svarfaðardalur. Hér lærði ég falleg samskipti, kynntist ég plöntutegundunum og lærði að elska náttúruna og manneskjuna
+      comp  0.40 | s 6.5 | tone tender | place:65ce88ed-e98b-4542-90ab-6edc2672aa0b | Here I learned beautiful communication, got to know the plant species and learned to love nature and the human being
+   8. Ásbyrgi. Þetta er hófur Sleipnis
+      comp  0.42 | s 3.3 | tone proud | place:81741d0a-7c1f-4d39-b364-b8e29440cb99 | This is the hoof of Sleipnir
+   9. Grímastaðir á fjöllum. það var ég uppalin að hluta og lærði að elska landið og virða
+      comp  0.44 | s 5.2 | tone tender | place:d7b23189-cad6-4d27-9f3b-5e3334b6d4ef | I was partly raised there and learned to love and respect the land
+  10. Víkurnes. Ég á frábærar minningar af langafa mínum í þessu húsi og útsýnið er frábært. Sérstaklega þegar það er blækyrrt
+      comp  0.45 | s 6.3 | tone tender | place:dc31c706-5f7e-42b4-9559-0ea82a408e7e | I have great memories of my great-grandfather in this house and the view is great. Especially when it is blækyrrt [completely calm/still weather].
+  11. Stórurð. vegna þess að ég átti eitt sinn innilegt samband þarna við náttúruna á fallegu sumarkvöldi
+      comp  0.41 | s 5.9 | tone tender | place:dc58e2db-e287-4a2f-844e-1b71373bdabf | because I once had an intimate connection there with nature on a beautiful summer evening
+  12. Fáskrúðsfjörður. Þangað hef ég farið hvert einasta sumar, og flesta páska, að hitta ömmu og afa.
+      comp  0.23 | s 7.2 | tone tender | place:400bbb30-dac9-476c-8648-b8891982f2f4 | I have gone there every single summer, and most Easter holidays, to visit grandma and grandpa.
+  13. Vatnajökull. Kyngimagnaður kraftur
+      comp  0.32 | s 3.2 | tone calm | place:343f7500-4cf7-49ec-9975-e56dda52c11f | Spellbinding power [ritstýrt/edited]
+  14. Skaftafell. Nátturan, fólkið, ferðamennirnir og núvitundin sem skilur mann eftir orðlausan
+      comp  0.39 | s 5.9 | tone calm | place:20a1e205-2522-4493-88f7-c7206101e45e | Nature, the people, the tourists and the mindfulness that leaves one speechless
+  15. blóðberg, Íslenski hesturinn [refrain]
+      comp   -   | s 5.6 | tone - | islenskast:hraun; islenskast:dyr | Wild thyme; The Icelandic horse
+  16. Hálendi Sauðkindin, Töfrar hálendisins [refrain]
+      comp   -   | s 5.6 | tone - | islenskast:halendi,dyr; islenskast:halendi | The highlands, the sheep; The magic of the highlands
+  17. Hálendið. Hálendið hefur einstaka töfra: Kyrrð og víðáttu.
+      comp  0.35 | s 4.0 | tone calm | place:0c6b6cc7-2577-4ae6-8837-c6e1d2fa5aad | The highlands have a unique magic: Stillness and expanse.
+  18. Hvolsvöllur. Fallegi heimabærinn minn
+      comp  0.48 | s 3.0 | tone proud | place:d69d08d0-11f6-4e0c-bba5-1e04d94323ba | My beautiful hometown
+  19. Kerlingarfjöll. Dásamleg náttúra og tignarleg fjöll í öllum regnboganslitum
+      comp  0.44 | s 4.6 | tone joyful | place:a91fcea5-f675-4798-96ee-31c1dc6958b2 | Wonderful nature and majestic mountains in all the colors of the rainbow
+  20. Nesjar. Ég á ótrúlega margar fallegar og góðar minningar þaðan - að veiða, sigla á bát, leika í hrauninu, spila og vera með fjölskyldunni.
+      comp  0.48 | s 7.2 | tone tender | place:71f2fd59-98f2-418a-9fdc-1def22015636 | I have incredibly many beautiful and good memories from there - fishing, sailing on a boat, playing in the lava field, playing games and being with the family.
+  -- chunk 1 [main] lines 1,2,3,4,5,6,7,8,9,10 -> 72000 ms (72 s)
+  -- chunk 2 [main] lines 11,12,13,14,15,16,17,18,19,20 -> 70000 ms (70 s)
+
+=== 4. Lopinn og laugin / Wool and the pool ===
+   1. Lopapeysa [ed:popularity] ×5
+      comp  0.38 | s 2.7 | tone proud | islenskast:lopi | Lopapeysa [traditional Icelandic wool sweater]
+   2. tuðandi hamingjusöm
+      comp  0.38 | s 2.7 | tone joyful | islenskast:sjalfsmynd | Grumbling and happy [ritstýrt/edited]
+   3. Þorramatur lopapeysur
+      comp  0.41 | s 2.7 | tone proud | islenskast:thorri,lopi | Þorramatur [traditional midwinter food] lopapeysur [traditional Icelandic wool sweaters]
+   4. Lopapeysur
+      comp  0.38 | s 2.7 | tone proud | islenskast:lopi | Lopapeysur [Icelandic wool sweaters]
+   5. Íslenskt lopapeysa
+      comp  0.36 | s 2.7 | tone proud | islenskast:lopi | Icelandic lopapeysa [traditional wool sweater] [ritstýrt/edited]
+   6. sundlaug
+      comp  0.36 | s 2.8 | tone proud | islenskast:sund | swimming pool
+   7. Íslenski fáninn
+      comp  0.36 | s 2.6 | tone proud | islenskast:sjalfstaedi | The Icelandic flag
+   8. öryggi, loppapeysur
+      comp  0.35 | s 2.8 | tone proud | islenskast:samheldni,lopi | safety, lopapeysur [traditional Icelandic wool sweaters]
+   9. Sundlaugar [ed:popularity] ×3
+      comp  0.32 | s 2.7 | tone proud | islenskast:sund | Swimming pools
+  10. Það íslenskasta í heimi finnst mér vera hlýi, fallegi lopinn okkar og sú samstaða sem einkennir okkur þegar á móti blæs. Við stöndum saman, höldum hita hvert á öðru og gefumst ekki upp.
+      comp  0.46 | s 7.2 | tone proud | islenskast:samheldni,lopi,seigla | I think the most Icelandic thing in the world is our warm, beautiful lopi [unspun wool] and the solidarity that characterizes us when times are tough. We stand together, keep each other warm, and do not give up.
+  11. Hjarðhegðun
+      comp  0.26 | s 3.1 | tone proud | islenskast:skuggi | Herd behavior
+  12. Kynþáttahyggja
+      comp  0.15 | s 3.1 | tone critical | islenskast:skuggi | Racism
+  13. hópgerving
+      comp  0.31 | s 3.2 | tone proud | islenskast:skuggi | Group-making [treating people as one lump] [ritstýrt/edited]
+  14. Frændhygli, jákvæð og neikvæð
+      comp  0.25 | s 2.9 | tone proud | islenskast:skuggi | Nepotism, positive and negative
+  15. Hjörð
+      comp  0.32 | s 3.1 | tone proud | islenskast:skuggi | The herd [ritstýrt/edited]
+  -- chunk 1 [main] lines 1,2,3,4,5,6,7,8,9,10 -> 55000 ms (55 s)
+  -- chunk 2 [bridge] lines 11,12,13,14,15 -> 29000 ms (29 s)
+
+=== 5. Þetta reddast / It'll all work out ===
+   1. Náttúran og heiðni
+      comp  0.30 | s 2.8 | tone proud | islenskast:landid,sagan | Nature and paganism
+   2. friður og viljastyrkur
+      comp  0.30 | s 2.8 | tone calm | islenskast:gildi,seigla | peace and willpower
+   3. sviðasulta, skinnhandrit
+      comp  0.32 | s 3.1 | tone proud | islenskast:thorri,sagan | sviðasulta [sheep's head jelly], skinnhandrit [parchment manuscript]
+   4. Styrkur og friðsemi
+      comp  0.29 | s 2.7 | tone calm | islenskast:gildi,seigla | Strength and peacefulness
+   5. Seigla
+      comp  0.32 | s 3.1 | tone proud | islenskast:seigla | Resilience [ritstýrt/edited]
+   6. Þrautseigja, náttúrufegurð
+      comp  0.31 | s 2.8 | tone proud | islenskast:landid,seigla | Perseverance, natural beauty
+   7. Túngunálið
+      comp  0.31 | s 2.8 | tone proud | islenskast:tungumal | The language [typed as Túngunálið] [ritstýrt/edited]
+   8. Menningin
+      comp  0.30 | s 3.0 | tone proud | islenskast:menning | The culture
+   9. Íslenskan Náttúran
+      comp  0.30 | s 2.6 | tone proud | islenskast:landid,tungumal | Icelandic Nature
+  10. Dugur
+      comp  0.30 | s 3.1 | tone proud | islenskast:seigla | Drive [ritstýrt/edited]
+  11. Tungumálið [ed:popularity] ×3
+      comp  0.21 | s 2.7 | tone proud | islenskast:tungumal | The language
+  12. Þetta reddast [ed:title] ×10
+      comp  0.22 | s 2.6 | tone calm | islenskast:reddast | It will all work out
+  -- chunk 1 [main] lines 1,2,3,4,5,6,7,8,9,10 -> 51000 ms (51 s)
+  -- chunk 2 [main] lines 11,12 -> 20000 ms (20 s)
+
+=== 6. Hvað viltu tala um? / What do you want to talk about? ===
+   1. menntun, framtíðina, gervigreind, samskipti [topics]
+      comp   -   | s - | tone - | topics:menntun,framtíðina,gervigreind,samskipti | education; the future; artificial intelligence; communication
+   2. samfélagsmiðla, samfélagið, náttúran, tungumálið [topics]
+      comp   -   | s - | tone - | topics:samfélagsmiðla,samfélagið,náttúran,tungumálið | social media; society; nature; the language
+   3. lýðræðið, heilbrigðiskerfið, umburðarlyndi, húsnæði [topics]
+      comp   -   | s - | tone - | topics:lýðræðið,heilbrigðiskerfið,umburðarlyndi,húsnæði | democracy; the healthcare system; tolerance; housing
+   4. útlendingamál, rasismi, fjölmiðla, peningar [topics]
+      comp   -   | s - | tone - | topics:útlendingamál,rasismi,fjölmiðla,peningar | immigration; racism; media; money
+   5. samgöngur, alþjóðasamfélagið, grunnskólamenntun, æskulýðstarf [topics]
+      comp   -   | s - | tone - | topics:samgöngur,alþjóðasamfélagið,grunnskólamenntun,æskulýðstarf | transportation; the international community; primary and lower secondary education; youth work
+   6. framhaldsskólakerfið, leikskólar, kynjaskiptingu [topics]
+      comp   -   | s - | tone - | topics:framhaldsskólakerfið,leikskólar,kynjaskiptingu | the upper secondary school system; preschools; gender division
+   7. Hvernig samfélag viljum við skapa saman? [Samtal's own tagline / Einkunnarorð Samtals]
+      comp   -   | s - | tone - | samtal:tagline | What kind of society do we want to create together?
+  -- chunk 1 [main] lines 1,2,3,4,5,6,7 -> 38000 ms (38 s)
+
+TOTAL: 448000 ms (448.0 s)

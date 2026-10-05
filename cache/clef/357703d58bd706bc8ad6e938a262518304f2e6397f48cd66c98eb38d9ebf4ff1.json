@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Við erum með duglegt og kraftmikið íþróttafólk, listrænt og hæfileikaríkt leiklistar fólk, sterka og vinnusama iðnaðarmenn og margt fleira sem heldur bænum uppi og ýtir okkur áfram að betra samfélagi.“\nEnglish gloss: “We have capable and strong athletes, artistic and skilled performers, hardworking and industrious craftsmen, and many others who keep the town going and help us continually improve our community.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.7386712777005172
+      }
+    },
+    "usage": {
+      "input_tokens": 267,
+      "output_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,79 @@
+[
+  {
+    "movement": 1,
+    "action": "include_popularity",
+    "target": "Veðrið",
+    "count": 3,
+    "reason_is": "Valið vegna þess hve mörg sögðu þetta, þótt Clef gæfi því lága einkunn.",
+    "reason_en": "Chosen because so many people said it, even where Clef scored it low."
+  },
+  {
+    "movement": 1,
+    "action": "title_closer",
+    "target": "Gluggaveður",
+    "reason_is": "Þessi lína gefur kaflanum nafn og lokar honum.",
+    "reason_en": "This line names the movement and closes it."
+  },
+  {
+    "movement": 2,
+    "action": "include_popularity",
+    "target": "Harðfiskur",
+    "count": 5,
+    "reason_is": "Valið vegna þess hve mörg sögðu þetta, þótt Clef gæfi því lága einkunn.",
+    "reason_en": "Chosen because so many people said it, even where Clef scored it low."
+  },
+  {
+    "movement": 2,
+    "action": "include_popularity",
+    "target": "Kjötsúpa",
+    "count": 3,
+    "reason_is": "Valið vegna þess hve mörg sögðu þetta, þótt Clef gæfi því lága einkunn.",
+    "reason_en": "Chosen because so many people said it, even where Clef scored it low."
+  },
+  {
+    "movement": 2,
+    "action": "title_closer",
+    "target": "Ís í fárviðri",
+    "reason_is": "Þessi lína gefur kaflanum nafn og lokar honum.",
+    "reason_en": "This line names the movement and closes it."
+  },
+  {
+    "movement": 4,
+    "action": "include_popularity",
+    "target": "Lopapeysa",
+    "count": 5,
+    "reason_is": "Valið vegna þess hve mörg sögðu þetta, þótt Clef gæfi því lága einkunn.",
+    "reason_en": "Chosen because so many people said it, even where Clef scored it low."
+  },
+  {
+    "movement": 4,
+    "action": "include_popularity",
+    "target": "Sundlaugar",
+    "count": 3,
+    "reason_is": "Valið vegna þess hve mörg sögðu þetta, þótt Clef gæfi því lága einkunn.",
+    "reason_en": "Chosen because so many people said it, even where Clef scored it low."
+  },
+  {
+    "movement": 5,
+    "action": "include_popularity",
+    "target": "Þetta reddast",
+    "count": 10,
+    "reason_is": "Valið vegna þess hve mörg sögðu þetta, þótt Clef gæfi því lága einkunn.",
+    "reason_en": "Chosen because so many people said it, even where Clef scored it low."
+  },
+  {
+    "movement": 5,
+    "action": "include_popularity",
+    "target": "Tungumálið",
+    "count": 3,
+    "reason_is": "Valið vegna þess hve mörg sögðu þetta, þótt Clef gæfi því lága einkunn.",
+    "reason_en": "Chosen because so many people said it, even where Clef scored it low."
+  },
+  {
+    "movement": 5,
+    "action": "title_closer",
+    "target": "Þetta reddast",
+    "reason_is": "Þessi lína gefur kaflanum nafn og lokar honum.",
+    "reason_en": "This line names the movement and closes it."
+  }
+]

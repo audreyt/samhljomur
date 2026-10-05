@@ -1,0 +1,37 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Uppáhaldsstaður þátttakanda á Íslandi (talasaman.is/stadir).\nStaður: Norðurgarður, Vestmannaeyjabær\nÁstæða, orðrétt: „Gamla hraunið er þakið mjúkum mosa og útsýnið er yndislegt yfir smáeyjar og fjöllin. Það er fjölbreytt plöntulíf og ég fer alltaf í berjamó þarna að tína krækiber og hrútaber. Ég fer oft ein og leggst í mosann og hlusta á vindinn og fuglasönginn.“",
+    "questions": {
+      "excerpt": {
+        "type": "choice",
+        "instructions": "Which single sentence of the reason is the most beautiful to sing, word for word?",
+        "criteria": {
+          "s1": "Gamla hraunið er þakið mjúkum mosa og útsýnið er yndislegt yfir smáeyjar og fjöllin.",
+          "s2": "Það er fjölbreytt plöntulíf og ég fer alltaf í berjamó þarna að tína krækiber og hrútaber.",
+          "s3": "Ég fer oft ein og leggst í mosann og hlusta á vindinn og fuglasönginn."
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "excerpt": {
+        "type": "choice",
+        "choice": "s3",
+        "probabilities": {
+          "s1": 0.11760805686025208,
+          "s2": 0.0364432236510546,
+          "s3": 0.8459487194886933
+        },
+        "confidence": 0.5321804952330145
+      }
+    },
+    "usage": {
+      "input_tokens": 393,
+      "output_tokens": 0
+    }
+  }
+}

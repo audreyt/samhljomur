@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Staðfesting íslensks UI-texta: „Granite 4.2 30B þýddi fyrst. Clef mat hverja þýðingu og margar stóðust ekki, svo við prófuðum Gemma 4 31B á sömu vél með sömu fyrirmælum og völdum þá þýðingu sem Clef taldi trúrri. Báðar eru geymdar.“",
+    "questions": {
+      "natural_is": {
+        "type": "noul",
+        "instructions": "Is this natural, grammatical Icelandic?",
+        "criteria": {
+          "true": "natural Icelandic",
+          "false": "unnatural or ungrammatical"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "natural_is": {
+        "type": "noul",
+        "noul": 0.534807859881462
+      }
+    },
+    "usage": {
+      "input_tokens": 236,
+      "output_tokens": 0
+    }
+  }
+}

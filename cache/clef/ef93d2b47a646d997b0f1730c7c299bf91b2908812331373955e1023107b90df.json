@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Ég er ættuð frá Seyðisfirði og finnst Seyðisfjörður vera fallegasti bær á Íslandi og alltaf gott að koma þangað.“\nEnglish gloss: “I am from Seyðisfjörður and I find Seyðisfjörður to be the most beautiful town in Iceland and it is always nice to go there.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.8453545521824695
+      }
+    },
+    "usage": {
+      "input_tokens": 236,
+      "output_tokens": 0
+    }
+  }
+}

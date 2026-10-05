@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Það íslenskasta í heimi finnst mér vera hlýi, fallegi lopinn okkar og sú samstaða sem einkennir okkur þegar á móti blæs. Við stöndum saman, höldum hita hvert á öðru og gefumst ekki upp.“\nEnglish gloss: “I think the most Icelandic thing in the world is our warm, beautiful lopi [unspun wool] and the solidarity that characterizes us when times are tough. We stand together, keep each other warm, and do not give up.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.807013600865054
+      }
+    },
+    "usage": {
+      "input_tokens": 270,
+      "output_tokens": 0
+    }
+  }
+}

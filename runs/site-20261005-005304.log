@@ -1,0 +1,15 @@
+warn: This project does not use vite-plus. Learn how to migrate: https://viteplus.dev/guide/migrate
+$ bun run src/cli.ts site ⊘ cache disabled
+72 |       return { x, y, th, id: p.id };
+73 |     });
+74 | 
+75 |   // places list (verbatim reason + gloss + theme) — excludes hidden ones
+76 |   const excludedIds = new Set(
+77 |     lyrics.exclusions.filter((e) => e.kind === "place").map((e) => e.source.slice(6)),
+                ^
+TypeError: undefined is not an object (evaluating 'lyrics.exclusions.filter')
+      at reportHtml (/Users/au/w/samhljomur/src/site-report.ts:77:12)
+      at stage7 (/Users/au/w/samhljomur/src/stage7.ts:62:5)
+      at main (/Users/au/w/samhljomur/src/cli.ts:234:11)
+
+

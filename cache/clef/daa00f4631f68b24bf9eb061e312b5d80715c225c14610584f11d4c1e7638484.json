@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Falleg tútsýni, fallegt sólsetur og svakalega fallegt að geta séð sjóinn þegar maður vaknar.“\nEnglish gloss: “A beautiful view, a beautiful sunset, and it is very beautiful to see the sea when one wakes up.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.877930079964752
+      }
+    },
+    "usage": {
+      "input_tokens": 207,
+      "output_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Orð sem þátttakendur völdu undir „Hvað viltu tala um?“ á talasaman.is: náttúran",
+    "questions": {
+      "topic_theme": {
+        "type": "choice",
+        "instructions": "Which theme does this topic word belong to?",
+        "criteria": {
+          "education": "schools, preschools, education",
+          "future": "the future, hopes",
+          "technology": "AI, technology, innovation",
+          "communication": "communication, social media, media, misinformation, phone manners",
+          "democracy": "democracy, trust, corruption, governance, politics",
+          "nature": "nature, environment",
+          "health": "health care, ageing, wellbeing, addiction",
+          "economy": "money, housing, transport, traffic, fees, fishing quota, food industry",
+          "equality": "equality, gender, racism, immigration, prejudice, LGBTQ, tolerance, respect",
+          "culture": "language, culture, arts, music, coffee",
+          "youth": "youth work, youth movements",
+          "mindset": "optimism, joy, courage, purpose, open-mindedness, creativity"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "topic_theme": {
+        "type": "choice",
+        "choice": "nature",
+        "probabilities": {
+          "communication": 0.002391245040157299,
+          "culture": 0.0037609852599087695,
+          "democracy": 0.002240763138266071,
+          "economy": 0.0025498379999023906,
+          "education": 0.0019453555600416862,
+          "equality": 0.0022423396993386294,
+          "future": 0.00455363927801438,
+          "health": 0.0025139299859183797,
+          "mindset": 0.0034722262343381168,
+          "nature": 0.9679331209567605,
+          "technology": 0.004116007047732295,
+          "youth": 0.0022805497996215202
+        },
+        "confidence": 0.9124940335486944
+      }
+    },
+    "usage": {
+      "input_tokens": 425,
+      "output_tokens": 0
+    }
+  }
+}

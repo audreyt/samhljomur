@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Einfaldlega fallegasti staður á landinu. Svo margar góðar minningar.“\nEnglish gloss: “Simply the most beautiful place in the country. So many good memories.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.9225595083022895
+      }
+    },
+    "usage": {
+      "input_tokens": 189,
+      "output_tokens": 0
+    }
+  }
+}

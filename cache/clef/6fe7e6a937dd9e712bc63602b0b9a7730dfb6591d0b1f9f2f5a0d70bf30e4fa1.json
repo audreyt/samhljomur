@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Stórbrotið landslagið, hafið og nálægðin við náttúruna gefa mér ró og rými.“\nEnglish gloss: “The vastness of the landscape, the sea, and the closeness to nature give me peace and space.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.9022178475683047
+      }
+    },
+    "usage": {
+      "input_tokens": 207,
+      "output_tokens": 0
+    }
+  }
+}

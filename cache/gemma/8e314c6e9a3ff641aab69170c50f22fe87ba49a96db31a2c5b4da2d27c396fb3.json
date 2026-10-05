@@ -1,0 +1,41 @@
+{
+  "request": {
+    "model": "gemma4:31b-it-qat-google-official",
+    "stream": false,
+    "think": false,
+    "messages": [
+      {
+        "role": "system",
+        "content": "You translate short Icelandic texts written by members of the public into plain English. Translate faithfully; add nothing and leave nothing out. Keep place names in Icelandic. Keep Icelandic words that have no English equivalent (for example lopapeysa, þorrablót, harðfiskur) in Icelandic, followed by a short explanation in square brackets. Do not correct, praise, or comment. Output only the English text."
+      },
+      {
+        "role": "user",
+        "content": "Býður upp á hæfilega krefjandi göngu í dásamlegri, fallegri og kyrrlátri náttúru. Þarna hef ég gengið síðan ég var barn og á góðar mnningar bæði úr fjallinu og dalnum sem nefnist Böggvisstaðardalur því hann er þeim megin árinnar. (Brimnesá) Fjallið er einstaklega fallegt á haustin því þá skartar það öllum fegurstu haustlitunum þar sem fjallið er þakið berjalyngi."
+      }
+    ],
+    "options": {
+      "temperature": 0.2,
+      "num_ctx": 4096,
+      "seed": 1010
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "gemma4:31b-it-qat-google-official",
+    "created_at": "2026-10-05T00:33:24.86572Z",
+    "message": {
+      "role": "assistant",
+      "content": "Offers a moderately challenging hike in wonderful, beautiful, and quiet nature. I have walked there since I was a child and have good memories of both the mountain and the valley called Böggvisstaðardalur because it is on that side of the river (Brimnesá). The mountain is exceptionally beautiful in the autumn because then it displays all the most beautiful autumn colors as the mountain is covered in berry heath."
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 4248851292,
+    "load_duration": 16806000,
+    "prompt_eval_count": 244,
+    "prompt_eval_cached_count": 0,
+    "prompt_eval_duration": 733636000,
+    "eval_count": 85,
+    "eval_duration": 3496736000
+  },
+  "latency_ms": 4249
+}

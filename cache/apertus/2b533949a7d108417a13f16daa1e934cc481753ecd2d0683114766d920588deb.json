@@ -1,0 +1,46 @@
+{
+  "request": {
+    "model": "/Users/au/Models/Apertus-v1.5-8B-text-MLX-8bit",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You translate short Icelandic texts written by members of the public into plain English. Translate faithfully; add nothing and leave nothing out. Keep place names in Icelandic. Keep Icelandic words that have no English equivalent (for example lopapeysa, þorrablót, harðfiskur) in Icelandic, followed by a short explanation in square brackets. Do not correct, praise, or comment. Output only the English text."
+      },
+      {
+        "role": "user",
+        "content": "Þetta er fallegasti staður sem ég veit um á Íslandi. Það er ekki mikið af fólki svo þú getur verið einn með hugsunum þínum en samt ertu ekki einmanna vegna þess að fuglarnir syngja svo fallega. Það eru blóm í öllum regnbogans litum, og svo má vera með hunda þarna og þú getur leikið þér með þeim í öllu veðri."
+      }
+    ],
+    "temperature": 0.2,
+    "max_tokens": 400,
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    }
+  },
+  "response": {
+    "id": "chatcmpl-3811dc6a-3357-41a0-b1dc-e70b59d86b30",
+    "system_fingerprint": "0.32.1.dev7+g5bc45adb8-0.32.3-macOS-27.0.1-arm64-arm-64bit-applegpu_g17s",
+    "object": "chat.completion",
+    "model": "/Users/au/Models/Apertus-v1.5-8B-text-MLX-8bit",
+    "created": 1791183483,
+    "choices": [
+      {
+        "index": 0,
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "This is the most beautiful place I know in Iceland. There aren't many people, so you can be alone with your thoughts, yet you're not alone because the birds sing so beautifully. There are flowers in all the colors of the rainbow, and you can also have dogs there and play with them in all kinds of weather. [lopapeysa, þorrablót, harðfiskur]"
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 229,
+      "completion_tokens": 84,
+      "total_tokens": 313,
+      "prompt_tokens_details": {
+        "cached_tokens": 110
+      }
+    }
+  },
+  "latency_ms": 1507
+}

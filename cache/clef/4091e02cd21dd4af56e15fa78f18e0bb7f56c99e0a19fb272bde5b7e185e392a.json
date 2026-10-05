@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Það var yndislegt að tjalda þarna. Allt hrátt og ósnortið til sjávar, kröftugar öldur. Í hina áttina golfvöllur, hótel veitingastaður. Snæfellsjökull vakir svo yfir öllu.“\nEnglish gloss: “It was lovely to stay there. All rough and raw towards the sea, strong old age. In the direction of the golf course, hotel restaurant. Snæfellsjökull rises so above everything.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.03693072600730792
+      }
+    },
+    "usage": {
+      "input_tokens": 261,
+      "output_tokens": 0
+    }
+  }
+}

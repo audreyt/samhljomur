@@ -1,0 +1,31 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Staðfesting íslensks UI-texta: „Gemma 4 31B gerði ensku vélþýðingarnar á sömu vél. Hún skrifaði enga íslensku.“",
+    "questions": {
+      "natural_is": {
+        "type": "noul",
+        "instructions": "Is this natural, grammatical Icelandic?",
+        "criteria": {
+          "true": "natural Icelandic",
+          "false": "unnatural or ungrammatical"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "natural_is": {
+        "type": "noul",
+        "noul": 0.31928499654793246
+      }
+    },
+    "usage": {
+      "input_tokens": 184,
+      "output_tokens": 0
+    }
+  },
+  "latency_ms": 398
+}

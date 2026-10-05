@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Einnig er Elliðaárdalur þar, sem er einn fallegasti staður höfuðborgarsvæðisins.“\nEnglish gloss: “Also, Elliðaárdalur is there, which is one of the most beautiful spots in the capital area.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.8696357582139121
+      }
+    },
+    "usage": {
+      "input_tokens": 205,
+      "output_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "request": {
+    "model": "granite4.2:30b",
+    "stream": false,
+    "think": false,
+    "messages": [
+      {
+        "role": "system",
+        "content": "You translate short Icelandic texts written by members of the public into plain English. Translate faithfully; add nothing and leave nothing out. Keep place names in Icelandic. Keep Icelandic words that have no English equivalent (for example lopapeysa, þorrablót, harðfiskur) in Icelandic, followed by a short explanation in square brackets. Do not correct, praise, or comment. Output only the English text."
+      },
+      {
+        "role": "user",
+        "content": "ularpeisa"
+      }
+    ],
+    "options": {
+      "temperature": 0.2,
+      "num_ctx": 4096,
+      "seed": 1010
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "granite4.2:30b",
+    "created_at": "2026-10-05T00:02:40.30909Z",
+    "message": {
+      "role": "assistant",
+      "content": "ularpeisa [a type of traditional Icelandic knitted sweater, often with geometric patterns]"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 1105276958,
+    "load_duration": 16032500,
+    "prompt_eval_count": 104,
+    "prompt_eval_cached_count": 94,
+    "prompt_eval_duration": 292919000,
+    "eval_count": 19,
+    "eval_duration": 794216000
+  },
+  "latency_ms": 1106
+}

@@ -1,0 +1,29 @@
+warn: This project does not use vite-plus. Learn how to migrate: https://viteplus.dev/guide/migrate
+$ bun run src/cli.ts verify ⊘ cache disabled
+FAIL coverage: {
+ "missing": [
+  "report.html:blóðberg, Íslenski hesturinn",
+  "report.html:Hálendi Sauðkindin, Töfrar hálendisins",
+  "report.html:blóðberg, Íslenski hesturinn",
+  "report.html:Hálendi Sauðkindin, Töfrar hálendisins",
+  "report.html:menntun, framtíðina, gervigreind, samski",
+  "report.html:samfélagsmiðla, samfélagið, náttúran, tu",
+  "report.html:lýðræðið, heilbrigðiskerfið, umburðarlyn",
+  "report.html:útlendingamál, rasismi, fjölmiðla, penin",
+  "report.html:samgöngur, alþjóðasamfélagið, grunnskóla",
+  "report.html:framhaldsskólakerfið, leikskólar, kynjas"
+ ],
+ "missing_count": 10,
+ "empty_strings": 0,
+ "bad_strings": [],
+ "gloss_labels_present": true,
+ "attribution_missing_pages": [],
+ "disclaimer_missing_pages": []
+}
+PASS verbatim: 0 non-verbatim segments []
+FAIL privacy: 13 leaks ["Þetta er fallegasti staður sem ég veit um á Ísland","Þetta er fallegasti staður sem ég veit um á Ísland","Fyrsti útilegustaðurinn þegar ég varð\r\nmamma. Vatn","Ég elska Vatnskóg hann hefur kennt mér mjög mikið","outside_iceland text: Bara besti staðurinn","vegna þess að eg á svo margar og góðar minningar m","Samfélagið,","Sveitin hennar ömmu minnar","Stór himinn, fegurð, friður og kyrrð","outside_iceland text: Fallegur staður og rólegur staðaur"]
+PASS natural_is: 72 strings < 0.70 (qa/natural-is.json)
+PASS screenshots: no console errors
+PASS frames: qa/frames/m*-mid.png
+PASS ffprobe: mp4=448.00s audio=448.03s Δ=0.032
+

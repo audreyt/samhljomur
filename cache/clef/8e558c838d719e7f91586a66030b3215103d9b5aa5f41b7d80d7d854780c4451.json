@@ -1,0 +1,39 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Uppáhaldsstaður þátttakanda á Íslandi (talasaman.is/stadir).\nStaður: Hesteyri, Ísafjarðarbær\nÁstæða, orðrétt: „Þetta er staðurinn þangað sem ég fer á hverju einasta ári. Þetta er staðurinn sem hugurinn heimsækir þegar erfiðleikar steðja. Þetta er fallegasti staðurinn á Íslandi. Orkan þar er áþreifanleg.“",
+    "questions": {
+      "excerpt": {
+        "type": "choice",
+        "instructions": "Which single sentence of the reason is the most beautiful to sing, word for word?",
+        "criteria": {
+          "s1": "Þetta er staðurinn þangað sem ég fer á hverju einasta ári.",
+          "s2": "Þetta er staðurinn sem hugurinn heimsækir þegar erfiðleikar steðja.",
+          "s3": "Þetta er fallegasti staðurinn á Íslandi.",
+          "s4": "Orkan þar er áþreifanleg."
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "excerpt": {
+        "type": "choice",
+        "choice": "s2",
+        "probabilities": {
+          "s1": 0.06241894143868524,
+          "s2": 0.7566136694136658,
+          "s3": 0.10289166232980593,
+          "s4": 0.078075726817843
+        },
+        "confidence": 0.41048070125224223
+      }
+    },
+    "usage": {
+      "input_tokens": 361,
+      "output_tokens": 0
+    }
+  }
+}

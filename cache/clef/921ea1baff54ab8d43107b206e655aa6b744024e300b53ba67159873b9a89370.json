@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Staðfesting íslensks UI-texta: „Á ásunum tveimur eru dómar og þýðingar „Byggja eða stjórna sjálf“ en tónlistin „Kaupa með opnum möguleikum“.“",
+    "questions": {
+      "natural_is": {
+        "type": "noul",
+        "instructions": "Is this natural, grammatical Icelandic?",
+        "criteria": {
+          "true": "natural Icelandic",
+          "false": "unnatural or ungrammatical"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "natural_is": {
+        "type": "noul",
+        "noul": 0.08042202708304069
+      }
+    },
+    "usage": {
+      "input_tokens": 195,
+      "output_tokens": 0
+    }
+  }
+}

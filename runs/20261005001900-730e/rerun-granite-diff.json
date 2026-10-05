@@ -1,0 +1,78 @@
+{
+  "model": "granite",
+  "run_id": "20261005001900-730e",
+  "requests_recalled": 6,
+  "identical": 0,
+  "changed": 6,
+  "diffs": [
+    {
+      "sha": "003016eeb35159b104a21d5cc7e299879b776975fb2f0dcfcccae5682297f585",
+      "label": "003016eeb35159b104a21d5cc7e299879b776975fb2f0dcfcccae5682297f585.json",
+      "changed": [
+        "created_at",
+        "total_duration",
+        "load_duration",
+        "prompt_eval_duration",
+        "eval_duration"
+      ]
+    },
+    {
+      "sha": "003c7148f3e8c706e5a12da4a803b329d3597b1ecb3643c4a784677c418cbb77",
+      "label": "003c7148f3e8c706e5a12da4a803b329d3597b1ecb3643c4a784677c418cbb77.json",
+      "changed": [
+        "created_at",
+        "total_duration",
+        "load_duration",
+        "prompt_eval_duration",
+        "eval_duration"
+      ]
+    },
+    {
+      "sha": "0065e9cc2c55d8efb8b92e4431d2a18cac52061f1fb74197b0b13ada5e74b8ad",
+      "label": "0065e9cc2c55d8efb8b92e4431d2a18cac52061f1fb74197b0b13ada5e74b8ad.json",
+      "changed": [
+        "created_at",
+        "total_duration",
+        "load_duration",
+        "prompt_eval_duration",
+        "eval_duration"
+      ]
+    },
+    {
+      "sha": "011c5500e7ed7a8bbbcb13ffa5fe4cd3826317bcc699626cd58f8a48566319e5",
+      "label": "011c5500e7ed7a8bbbcb13ffa5fe4cd3826317bcc699626cd58f8a48566319e5.json",
+      "changed": [
+        "created_at",
+        "total_duration",
+        "load_duration",
+        "prompt_eval_cached_count",
+        "prompt_eval_duration",
+        "eval_duration"
+      ]
+    },
+    {
+      "sha": "0126712201f7380a22bd437edb04049a7a5555c970a62a0bc4c1ec1850b30a8b",
+      "label": "0126712201f7380a22bd437edb04049a7a5555c970a62a0bc4c1ec1850b30a8b.json",
+      "changed": [
+        "created_at",
+        "total_duration",
+        "load_duration",
+        "prompt_eval_duration",
+        "eval_duration"
+      ]
+    },
+    {
+      "sha": "0156f0732baed16dc026bb0ff62abbbd10790c69802b8d65f29463a0c11fed8c",
+      "label": "0156f0732baed16dc026bb0ff62abbbd10790c69802b8d65f29463a0c11fed8c.json",
+      "changed": [
+        "created_at",
+        "total_duration",
+        "load_duration",
+        "prompt_eval_cached_count",
+        "prompt_eval_duration",
+        "eval_duration"
+      ]
+    }
+  ],
+  "note": "fresh responses stored under this run dir as recall-<model>-<sha>.json; cache is NOT modified"
+}

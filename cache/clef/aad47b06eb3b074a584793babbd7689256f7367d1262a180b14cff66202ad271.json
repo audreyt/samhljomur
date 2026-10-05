@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Það er geggjað landslag allsstaðar í kringum þórsmörkina“\nEnglish gloss: “The landscape is insane everywhere around Þórsmörk.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.5929171480324367
+      }
+    },
+    "usage": {
+      "input_tokens": 188,
+      "output_tokens": 0
+    }
+  }
+}

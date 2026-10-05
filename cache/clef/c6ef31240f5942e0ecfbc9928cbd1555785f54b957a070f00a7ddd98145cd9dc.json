@@ -1,0 +1,37 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Uppáhaldsstaður þátttakanda á Íslandi (talasaman.is/stadir).\nStaður: Eyjafjörður, Norðurland eystra\nÁstæða, orðrétt: „Hérna er gaman að fara í fjallgöngu, skíði, góðir veitingastaðir og auðvelt að fara á menningarviðburði.  Svolítið eins og að fara til útlanda.  Margt í boði.“",
+    "questions": {
+      "excerpt": {
+        "type": "choice",
+        "instructions": "Which single sentence of the reason is the most beautiful to sing, word for word?",
+        "criteria": {
+          "s1": "Hérna er gaman að fara í fjallgöngu, skíði, góðir veitingastaðir og auðvelt að fara á menningarviðburði.",
+          "s2": " Svolítið eins og að fara til útlanda.",
+          "s3": " Margt í boði."
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "excerpt": {
+        "type": "choice",
+        "choice": "s2",
+        "probabilities": {
+          "s1": 0.12834218446514425,
+          "s2": 0.8412114159578191,
+          "s3": 0.030446399577036737
+        },
+        "confidence": 0.5309885643711099
+      }
+    },
+    "usage": {
+      "input_tokens": 326,
+      "output_tokens": 0
+    }
+  }
+}

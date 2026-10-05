@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Erum með sumarbústað þar, stutt frá bænum og svo er Golfvöllurinn Dalbúi alveg við sumarbústaðarsvæðið“\nEnglish gloss: “We have a summer cottage there, a short distance from the town, and then the Dalbúi golf course is right by the summer cottage area.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.8948091740151619
+      }
+    },
+    "usage": {
+      "input_tokens": 223,
+      "output_tokens": 0
+    }
+  }
+}

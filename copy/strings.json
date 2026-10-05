@@ -1,0 +1,619 @@
+{
+  "_note": "Lead-authored copy. Use verbatim. Any new string needed: add with is+en and flag it in the report for lead review; never machine-write Icelandic.",
+  "site_title": {
+    "is": "Samhljómur",
+    "en": "Samhljómur"
+  },
+  "subtitle": {
+    "is": "Íslandsmedley úr opnum gögnum Samtals",
+    "en": "An Iceland medley from Samtal's open data"
+  },
+  "tagline": {
+    "is": "Orð þátttakenda, orðrétt. Clef valdi línurnar og raðaði þeim.",
+    "en": "Participants' own words, verbatim. Clef chose the lines and their order."
+  },
+  "dedication": {
+    "is": "Til Finns Magnussonar og Atla Þórs Jóhannssonar, með þökk fyrir samtalið í Grósku 3. október 2026.",
+    "en": "For Finnur Magnusson and Atli Þór Jóhannsson, with thanks for the conversation at Gróska on 3 October 2026."
+  },
+  "gift": {
+    "is": "Gjöf frá Audrey Tang",
+    "en": "A gift from Audrey Tang"
+  },
+  "attribution": {
+    "is": "Gögn: Samtal, félag til almannaheilla (talasaman.is), CC BY 4.0",
+    "en": "Gögn: Samtal, félag til almannaheilla (talasaman.is), CC BY 4.0"
+  },
+  "disclaimer": {
+    "is": "Þetta er hvorki afstaða né niðurstaða Samtals.",
+    "en": "This is not Samtal's position or finding."
+  },
+  "door_video": {
+    "is": "Myndband",
+    "en": "Video"
+  },
+  "door_report": {
+    "is": "Skýrsla",
+    "en": "Report"
+  },
+  "door_songbook": {
+    "is": "Söngbók",
+    "en": "Songbook"
+  },
+  "press_play": {
+    "is": "Ýttu á spila",
+    "en": "Press play"
+  },
+  "play": {
+    "is": "Spila",
+    "en": "Play"
+  },
+  "pause": {
+    "is": "Hlé",
+    "en": "Pause"
+  },
+  "inspect": {
+    "is": "Rýna",
+    "en": "Inspect"
+  },
+  "lang_switch": {
+    "is": "English",
+    "en": "Íslenska"
+  },
+  "gloss_label": {
+    "is": "vélþýðing",
+    "en": "machine gloss"
+  },
+  "gloss_unverified": {
+    "is": "óstaðfest vélþýðing",
+    "en": "unverified machine gloss"
+  },
+  "tagline_label": {
+    "is": "Einkunnarorð Samtals",
+    "en": "Samtal's own tagline"
+  },
+  "m1": {
+    "is": "Gluggaveður",
+    "en": "Window-weather"
+  },
+  "m2": {
+    "is": "Ís í fárviðri",
+    "en": "Ice cream in a storm"
+  },
+  "m3": {
+    "is": "Hringvegurinn",
+    "en": "The Ring Road"
+  },
+  "m3_note": {
+    "is": "Röðin fylgir hringveginum réttsælis frá Reykjavík.",
+    "en": "The order follows the Ring Road clockwise from Reykjavík."
+  },
+  "m4": {
+    "is": "Lopinn og laugin",
+    "en": "Wool and the pool"
+  },
+  "m4_bridge": {
+    "is": "Skuggahliðarnar",
+    "en": "The shadow sides"
+  },
+  "m5": {
+    "is": "Þetta reddast",
+    "en": "It'll all work out"
+  },
+  "m6": {
+    "is": "Hvað viltu tala um?",
+    "en": "What do you want to talk about?"
+  },
+  "insp_source": {
+    "is": "Uppruni",
+    "en": "Source"
+  },
+  "insp_clef": {
+    "is": "Mat Clef",
+    "en": "Clef's judgments"
+  },
+  "insp_singable": {
+    "is": "Sönghæfni",
+    "en": "Singability"
+  },
+  "insp_image": {
+    "is": "Myndræni",
+    "en": "Imagery"
+  },
+  "insp_warmth": {
+    "is": "Hlýja",
+    "en": "Warmth"
+  },
+  "insp_tone": {
+    "is": "Blær",
+    "en": "Tone"
+  },
+  "insp_seconds": {
+    "is": "Sekúndur á skjá",
+    "en": "Seconds on screen"
+  },
+  "insp_opener": {
+    "is": "Sem upphafslína",
+    "en": "As an opening line"
+  },
+  "insp_closer": {
+    "is": "Sem lokalína",
+    "en": "As a closing line"
+  },
+  "insp_privacy": {
+    "is": "Persónuvernd",
+    "en": "Privacy"
+  },
+  "insp_fidelity": {
+    "is": "Heyrist í söngnum",
+    "en": "Heard in the singing"
+  },
+  "tone_joyful": {
+    "is": "glaðvær",
+    "en": "joyful"
+  },
+  "tone_tender": {
+    "is": "blíður",
+    "en": "tender"
+  },
+  "tone_proud": {
+    "is": "stoltur",
+    "en": "proud"
+  },
+  "tone_wry": {
+    "is": "kíminn",
+    "en": "wry"
+  },
+  "tone_critical": {
+    "is": "gagnrýninn",
+    "en": "critical"
+  },
+  "tone_calm": {
+    "is": "kyrr",
+    "en": "calm"
+  },
+  "tone_unclear": {
+    "is": "óljós",
+    "en": "unclear"
+  },
+  "report_title": {
+    "is": "Hvað sögðu þau?",
+    "en": "What did they say?"
+  },
+  "sec_numbers": {
+    "is": "Lykiltölur",
+    "en": "Key numbers"
+  },
+  "num_participants": {
+    "is": "skráðir þátttakendur",
+    "en": "registered participants"
+  },
+  "num_circles": {
+    "is": "hringir með fólki",
+    "en": "circles with people"
+  },
+  "num_places": {
+    "is": "staðir með lýsingu",
+    "en": "places with a reason"
+  },
+  "num_islenskast": {
+    "is": "svör við Íslenskast",
+    "en": "Íslenskast answers"
+  },
+  "num_topics": {
+    "is": "valin umræðuorð",
+    "en": "topic words chosen"
+  },
+  "sec_calibration": {
+    "is": "Íslenskast: handflokkun Samtals og Clef",
+    "en": "Íslenskast: Samtal's hand coding and Clef"
+  },
+  "calibration_intro": {
+    "is": "Samtal flokkaði svörin í höndunum. Clef flokkaði sömu svör sjálfstætt, eftir stuttri flokkalýsingu og án þess að sjá handflokkunina. Samræmið segir okkur hversu vel staðbundið líkan skilur íslensku svörin.",
+    "en": "Samtal coded the answers by hand. Clef coded the same answers independently, from a short codebook and without seeing the hand coding. The agreement tells us how well a local model understands the Icelandic answers."
+  },
+  "sec_disagree": {
+    "is": "Þar sem Clef er ósammála",
+    "en": "Where Clef disagrees"
+  },
+  "disagree_intro": {
+    "is": "Ósamræmið er oft áhugaverðasti lesturinn: svör sem eiga heima á fleiri en einum stað.",
+    "en": "The disagreements are often the most interesting reading: answers that belong in more than one place."
+  },
+  "sec_places": {
+    "is": "Staðirnir",
+    "en": "The places"
+  },
+  "sec_topics": {
+    "is": "Umræðuefnin",
+    "en": "The topics"
+  },
+  "sec_after": {
+    "is": "Eftir 10. október",
+    "en": "After 10 October"
+  },
+  "after_body": {
+    "is": "Á laugardaginn bætast samtölin sjálf við. Sama ferli getur tekið við samantekt hvers hrings: Clef metur hverja samantekt, hver hringur fær sína niðurstöðu fyrst til yfirlestrar, og loks syngur annað medley samtölin aftur fyrir þátttakendurna.",
+    "en": "On Saturday the conversations themselves arrive. The same pipeline can take each circle's summary: Clef judges each one, every circle sees its own result first to check it, and then a second medley sings the conversations back to the people who had them."
+  },
+  "sec_scorecard": {
+    "is": "Matsspjald",
+    "en": "Scorecard"
+  },
+  "scorecard_credit": {
+    "is": "Matsspjaldið er úr grein Atla Þórs Jóhannssonar, „Hvað er gervigreindarfullveldi?“ (Staða gervigreindar, 5. október 2026). Hér er það lagt á þetta ferli sjálft.",
+    "en": "The scorecard comes from Atli Þór Jóhannsson's article “Hvað er gervigreindarfullveldi?” (Staða gervigreindar, 5 October 2026). Here it is applied to this pipeline itself."
+  },
+  "q1": {
+    "is": "Vitum við á hvað við reiðum okkur?",
+    "en": "Do we know what we rely on?"
+  },
+  "q2": {
+    "is": "Höfum við sett skilyrði?",
+    "en": "Have we set conditions?"
+  },
+  "q3": {
+    "is": "Getum við skipt?",
+    "en": "Can we switch?"
+  },
+  "a_yes": {
+    "is": "Liggur fyrir",
+    "en": "In place"
+  },
+  "a_partly": {
+    "is": "Að hluta",
+    "en": "Partly"
+  },
+  "a_no": {
+    "is": "Liggur ekki fyrir",
+    "en": "Not in place"
+  },
+  "row_judgments": {
+    "is": "Dómar (Clef)",
+    "en": "Judgments (Clef)"
+  },
+  "row_glosses": {
+    "is": "Þýðingar (Gemma)",
+    "en": "Glosses (Gemma)"
+  },
+  "row_music": {
+    "is": "Tónlist og talgreining (ElevenLabs)",
+    "en": "Music and speech recognition (ElevenLabs)"
+  },
+  "q1_judgments": {
+    "is": "Clef 27B, opin vigt (Apache-2.0), keyrt á fartölvu í Reykjavík.",
+    "en": "Clef 27B, open weights (Apache-2.0), run on a laptop in Reykjavík."
+  },
+  "q1_glosses": {
+    "is": "Gemma 4 31B, opin vigt (Apache-2.0), keyrt á sömu vél.",
+    "en": "Gemma 4 31B, open weights (Apache-2.0), run on the same machine."
+  },
+  "q1_music": {
+    "is": "ElevenLabs Music v2.5 og Scribe v2 í skýinu. Við vitum hver veitir þjónustuna, hvað var sent og hvað kom til baka (C2PA-undirritað), en ekki hvernig líkanið er gert.",
+    "en": "ElevenLabs Music v2.5 and Scribe v2 in the cloud. We know the vendor, what was sent and what came back (C2PA-signed), but not how the model is made."
+  },
+  "q2_judgments": {
+    "is": "CC BY 4.0 og skilmálar Samtals virtir: persónuverndarsía og fyrirvari.",
+    "en": "CC BY 4.0 and Samtal's terms honoured: a privacy filter and a disclaimer."
+  },
+  "q2_glosses": {
+    "is": "Clef gaf hverri þýðingu einkunn, en handyfirferð réð vali.",
+    "en": "Clef scored every gloss, but a hand check made the choice."
+  },
+  "q2_music": {
+    "is": "Talgreining ber hverja sungna línu saman við textann.",
+    "en": "Speech recognition checks every sung line against the text."
+  },
+  "q3_judgments": {
+    "is": "Hvaða System One líkan sem er á sama viðmóti; vp run rerun ber niðurstöðurnar saman.",
+    "en": "Any System One model on the same endpoint; vp run rerun compares the results."
+  },
+  "q3_glosses": {
+    "is": "Hvaða staðbundna líkan sem er.",
+    "en": "Any local model."
+  },
+  "q3_music": {
+    "is": "Textinn, röðin og tímasetningin eru okkar. Söngvarinn er skiptanlegur, best af öllu kór á Íslandi: sjá söngbókina.",
+    "en": "The lyrics, order and timing are ours. The singer is replaceable, best of all by a choir in Iceland: see the songbook."
+  },
+  "axes": {
+    "is": "Á ásunum tveimur eru dómar og þýðingar „Byggja eða stjórna sjálf“ en tónlistin „Kaupa með opnum möguleikum“.",
+    "en": "On the two axes, judgments and glosses are “build or control ourselves”, and the music is “buy with open options”."
+  },
+  "sec_replay": {
+    "is": "Endurspilun",
+    "en": "Replay"
+  },
+  "replay_body": {
+    "is": "Allt hér er hægt að endurgera. Hver fyrirspurn til líkananna er skráð og vp run build endurbyggir allt úr skránni, án nets og án líkana.",
+    "en": "Everything here can be rebuilt. Every model request is logged, and vp run build rebuilds it all from the log, offline and without the models."
+  },
+  "privacy_note": {
+    "is": "Ein staðsetning með húsnúmeri er aðeins sýnd sem sveitarfélag. Svör sem Clef taldi geta bent á einstakling eru talin með en hvergi birt.",
+    "en": "One location with a house number is shown only as its municipality. Answers Clef judged could point to a person are counted but shown nowhere."
+  },
+  "about_clef": {
+    "is": "Clef er opið flokkunarlíkan með 27 milljarða færibreyta. Það skrifar engan texta heldur svarar spurningum með líkum.",
+    "en": "Clef is an open classifier with 27 billion parameters. It writes no text; it answers questions with probabilities."
+  },
+  "about_granite": {
+    "is": "Gemma 4 31B gerði ensku vélþýðingarnar á sömu vél. Hún skrifaði enga íslensku.",
+    "en": "Gemma 4 31B made the English machine glosses, on the same machine. It wrote no Icelandic."
+  },
+  "about_music": {
+    "is": "Söngurinn er gerður með ElevenLabs Music. Talgreining (Scribe) mælir hve skýrt hver lína heyrist.",
+    "en": "The singing was made with ElevenLabs Music. Speech recognition (Scribe) measures how clearly each line comes through."
+  },
+  "sec_sources": {
+    "is": "Heimildir og leyfi",
+    "en": "Sources and licence"
+  },
+  "songbook_title": {
+    "is": "Söngbók",
+    "en": "Songbook"
+  },
+  "songbook_intro": {
+    "is": "Hver lína er orðrétt svar þátttakanda á talasaman.is. Kór, bekkur eða hringur getur sungið hana 10. október.",
+    "en": "Every line is a participant's verbatim answer on talasaman.is. A choir, a class or a circle could sing it on 10 October."
+  },
+  "editor_credit": {
+    "is": "Ritstjórn: Devin, gervigreindaraðstoðarmaður Audrey",
+    "en": "Editing: Devin, Audrey's AI assistant"
+  },
+  "insp_editorial": {
+    "is": "Ritstjórn",
+    "en": "Editorial"
+  },
+  "gloss_edited": {
+    "is": "ritstýrt",
+    "en": "edited"
+  },
+  "outside_iceland": {
+    "is": "utan Íslands",
+    "en": "outside Iceland"
+  },
+  "said_by": {
+    "is": "sögðu þetta",
+    "en": "said this"
+  },
+  "override_title": {
+    "is": "Þessi lína gefur kaflanum nafn og lokar honum.",
+    "en": "This line names the movement and closes it."
+  },
+  "override_count": {
+    "is": "Valið vegna þess hve mörg sögðu þetta, þótt Clef gæfi því lága einkunn.",
+    "en": "Chosen because so many people said it, even where Clef scored it low."
+  },
+  "sec_bakeoff": {
+    "is": "Getum við skipt? Þrjú þýðingarlíkön",
+    "en": "Can we switch? Three translation models"
+  },
+  "bakeoff_body": {
+    "is": "Granite 4.2 30B þýddi fyrst og margar þýðingar voru rangar. Við prófuðum líka Gemma 4 31B og Apertus 1.5, opna svissneska líkanið, á sömu vél með sömu fyrirmælum. Clef gaf hverri þýðingu einkunn en reyndist lélegur dómari um þýðingar: það taldi „Sail“ trúa þýðingu á „Seigla“. Því réð handyfirferð. Gemma hafði oftast rétt fyrir sér og þýðingar hennar eru notaðar, með leiðréttingum ritstjórnar. Allar þýðingarnar og einkunnir Clef eru sýndar hér.",
+    "en": "Granite 4.2 30B translated first, and many glosses were wrong. We also tried Gemma 4 31B and Apertus 1.5, the open Swiss model, on the same machine with the same instructions. Clef scored every gloss but turned out to be a poor judge of translation: it rated “Sail” a faithful gloss of “Seigla” (resilience). So a hand check decided. Gemma was right most often, and its glosses are used, with editorial corrections. Every gloss and Clef's scores are shown here."
+  },
+  "door_video_desc": {
+    "is": "Sex kaflar, sjö og hálf mínúta",
+    "en": "Six movements, seven and a half minutes"
+  },
+  "door_report_desc": {
+    "is": "Tölur, staðir, umræðuefni og endurspilun",
+    "en": "Numbers, places, topics and replay"
+  },
+  "door_songbook_desc": {
+    "is": "Textinn, fyrir kór, bekk eða hring",
+    "en": "The words, for a choir, a class or a circle"
+  },
+  "tag_refrain": {
+    "is": "viðlag",
+    "en": "refrain"
+  },
+  "tag_topics": {
+    "is": "umræðuorð",
+    "en": "topic words"
+  },
+  "sec_editorial": {
+    "is": "Ritstjórnarákvarðanir",
+    "en": "Editorial decisions"
+  },
+  "editorial_body": {
+    "is": "Clef velur og raðar. Hér eru undantekningarnar sem ritstjórnin gerði.",
+    "en": "Clef selects and orders. These are the exceptions the edit made."
+  },
+  "outside_note": {
+    "is": "staðir utan Íslands: taldir með, ekki sýndir",
+    "en": "locations outside Iceland: counted, not shown"
+  },
+  "col_mov": {
+    "is": "kafli",
+    "en": "mov."
+  },
+  "col_item": {
+    "is": "lína / atriði",
+    "en": "line / item"
+  },
+  "col_reason": {
+    "is": "ástæða",
+    "en": "reason"
+  },
+  "col_answer": {
+    "is": "Svar",
+    "en": "Answer"
+  },
+  "col_truth": {
+    "is": "Handflokkun",
+    "en": "Hand-coded"
+  },
+  "col_chosen": {
+    "is": "valdar",
+    "en": "chosen"
+  },
+  "col_line_gloss": {
+    "is": "lína (orðrétt) og vélþýðing",
+    "en": "line (verbatim) and machine gloss"
+  },
+  "col_source": {
+    "is": "uppruni",
+    "en": "source"
+  },
+  "sec_sung": {
+    "is": "Sungnar línur",
+    "en": "Sung lines"
+  },
+  "num_sung": {
+    "is": "sungnar línur",
+    "en": "sung lines"
+  },
+  "num_duration": {
+    "is": "heildarlengd",
+    "en": "total duration"
+  },
+  "bakeoff_all": {
+    "is": "Allar þýðingarnar hlið við hlið",
+    "en": "Every gloss side by side"
+  },
+  "excl_title": {
+    "is": "Útilokanir (texti ekki sýndur)",
+    "en": "Exclusions (text not shown)"
+  },
+  "hidden_label": {
+    "is": "hidden",
+    "en": "hidden"
+  },
+  "sec_takes": {
+    "is": "Upptökurnar bornar saman",
+    "en": "The takes compared"
+  },
+  "sec_digests": {
+    "is": "Fingraför líkananna",
+    "en": "Model digests"
+  },
+  "sec_snapshot": {
+    "is": "Snapshot (sha256)",
+    "en": "Snapshot (sha256)"
+  },
+  "all_themes": {
+    "is": "all",
+    "en": "all"
+  },
+  "col_islang": {
+    "is": "Íslenska",
+    "en": "Icelandic"
+  },
+  "cat_matur": {
+    "is": "Matur",
+    "en": "Food"
+  },
+  "cat_nattura": {
+    "is": "Náttúran",
+    "en": "Nature"
+  },
+  "cat_samfelag": {
+    "is": "Samfélagið",
+    "en": "Society"
+  },
+  "cat_sidir": {
+    "is": "Siðir og hefðir",
+    "en": "Customs and traditions"
+  },
+  "cat_hugarfar": {
+    "is": "Hugarfarið",
+    "en": "Mindset"
+  },
+  "cat_tunga": {
+    "is": "Tungumálið og menningin",
+    "en": "Language and culture"
+  },
+  "cat_vedur": {
+    "is": "Veðrið",
+    "en": "Weather"
+  },
+  "cat_annad": {
+    "is": "Annað",
+    "en": "Other"
+  },
+  "theme_nature": {
+    "is": "náttúra",
+    "en": "nature"
+  },
+  "theme_stillness": {
+    "is": "kyrrð",
+    "en": "stillness"
+  },
+  "theme_memory": {
+    "is": "minningar",
+    "en": "memories"
+  },
+  "theme_home": {
+    "is": "heimili",
+    "en": "home"
+  },
+  "theme_community": {
+    "is": "samfélag",
+    "en": "community"
+  },
+  "theme_activity": {
+    "is": "athafnir",
+    "en": "activities"
+  },
+  "theme_food": {
+    "is": "matur",
+    "en": "food"
+  },
+  "theme_culture": {
+    "is": "menning og saga",
+    "en": "culture and history"
+  },
+  "ttheme_education": {
+    "is": "menntun",
+    "en": "education"
+  },
+  "ttheme_future": {
+    "is": "framtíðin",
+    "en": "the future"
+  },
+  "ttheme_technology": {
+    "is": "tækni",
+    "en": "technology"
+  },
+  "ttheme_communication": {
+    "is": "samskipti og miðlar",
+    "en": "communication and media"
+  },
+  "ttheme_democracy": {
+    "is": "lýðræði og stjórnarfar",
+    "en": "democracy and governance"
+  },
+  "ttheme_nature": {
+    "is": "náttúra",
+    "en": "nature"
+  },
+  "ttheme_health": {
+    "is": "heilsa og umönnun",
+    "en": "health and care"
+  },
+  "ttheme_economy": {
+    "is": "efnahagur, húsnæði og samgöngur",
+    "en": "economy, housing and transport"
+  },
+  "ttheme_equality": {
+    "is": "jafnrétti og fjölbreytni",
+    "en": "equality and diversity"
+  },
+  "ttheme_culture": {
+    "is": "tunga og menning",
+    "en": "language and culture"
+  },
+  "ttheme_youth": {
+    "is": "ungt fólk",
+    "en": "young people"
+  },
+  "ttheme_mindset": {
+    "is": "hugarfar",
+    "en": "mindset"
+  },
+  "proof_of_place": {
+    "is": "Vélin: fartölva (Mac17,6) á tímabelti Atlantic/Reykjavik með íslenska IP-tölu, nóttina 4. til 5. október 2026.",
+    "en": "The machine: a laptop (Mac17,6) in the Atlantic/Reykjavik time zone with an Icelandic IP address, on the night of 4 to 5 October 2026."
+  }
+}

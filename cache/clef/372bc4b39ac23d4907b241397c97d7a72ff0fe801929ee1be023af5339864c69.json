@@ -1,0 +1,35 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Uppáhaldsstaður þátttakanda á Íslandi (talasaman.is/stadir).\nStaður: Hornvík\nÁstæða, orðrétt: „Fegurðin á Hornströndum er ólýsanleg og tilhugsunin um að fólk hafi búið þarna í mörghundruð ár á hjara veraldar fyllir mann bjartsýni um þrautsegju Íslendinga. Skortur á síma- og netsambandi leyfir manni að öðlast hugarró á þessum ysta sjó.“",
+    "questions": {
+      "excerpt": {
+        "type": "choice",
+        "instructions": "Which single sentence of the reason is the most beautiful to sing, word for word?",
+        "criteria": {
+          "s1": "Fegurðin á Hornströndum er ólýsanleg og tilhugsunin um að fólk hafi búið þarna í mörghundruð ár á hjara veraldar fyllir mann bjartsýni um þrautsegju Íslendinga.",
+          "s2": "Skortur á síma- og netsambandi leyfir manni að öðlast hugarró á þessum ysta sjó."
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "excerpt": {
+        "type": "choice",
+        "choice": "s1",
+        "probabilities": {
+          "s1": 0.5823133896276875,
+          "s2": 0.4176866103723125
+        },
+        "confidence": 0.019639221983916988
+      }
+    },
+    "usage": {
+      "input_tokens": 371,
+      "output_tokens": 0
+    }
+  }
+}

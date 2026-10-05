@@ -1,0 +1,31 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Gamla hraunið er þakið mjúkum mosa og útsýnið er yndislegt yfir smáeyjar og fjöllin. Það er fjölbreytt plöntulíf og ég fer alltaf í berjamó þarna að tína krækiber og hrútaber. Ég fer oft ein og leggst í mosann og hlusta á vindinn og fuglasönginn.“\nEnglish gloss: “The old lava field is covered in soft moss, and the view is lovely over small islands and the mountains. There is a diverse plant life, and I always go there to pick crowberries and bilberries. I often go alone, lie down in the moss, and listen to the wind and the birdsong.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.8544480100427148
+      }
+    },
+    "usage": {
+      "input_tokens": 310,
+      "output_tokens": 0
+    }
+  },
+  "latency_ms": 664
+}

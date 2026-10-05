@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Að vera staddur í Hvammsvík er eins og vera ídraumaveröld“\nEnglish gloss: “Being in Hvammsvík is like being in a dream world”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.9140409095771393
+      }
+    },
+    "usage": {
+      "input_tokens": 189,
+      "output_tokens": 0
+    }
+  }
+}

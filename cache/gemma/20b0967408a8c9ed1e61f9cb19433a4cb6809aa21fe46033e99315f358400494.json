@@ -1,0 +1,41 @@
+{
+  "request": {
+    "model": "gemma4:31b-it-qat-google-official",
+    "stream": false,
+    "think": false,
+    "messages": [
+      {
+        "role": "system",
+        "content": "You translate short Icelandic texts written by members of the public into plain English. Translate faithfully; add nothing and leave nothing out. Keep place names in Icelandic. Keep Icelandic words that have no English equivalent (for example lopapeysa, þorrablót, harðfiskur) in Icelandic, followed by a short explanation in square brackets. Do not correct, praise, or comment. Output only the English text."
+      },
+      {
+        "role": "user",
+        "content": "traust"
+      }
+    ],
+    "options": {
+      "temperature": 0.2,
+      "num_ctx": 4096,
+      "seed": 1010
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "gemma4:31b-it-qat-google-official",
+    "created_at": "2026-10-05T00:40:14.503336Z",
+    "message": {
+      "role": "assistant",
+      "content": "trust"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 413498667,
+    "load_duration": 15758083,
+    "prompt_eval_count": 104,
+    "prompt_eval_cached_count": 0,
+    "prompt_eval_duration": 355617000,
+    "eval_count": 2,
+    "eval_duration": 40808000
+  },
+  "latency_ms": 414
+}

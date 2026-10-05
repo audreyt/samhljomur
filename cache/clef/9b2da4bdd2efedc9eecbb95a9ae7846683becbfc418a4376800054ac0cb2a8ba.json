@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Íslenskt lopapeysa“\nEnglish gloss: “Icelandic lopapeysa [traditional Icelandic sweater]”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.3284846965175463
+      }
+    },
+    "usage": {
+      "input_tokens": 174,
+      "output_tokens": 0
+    }
+  }
+}

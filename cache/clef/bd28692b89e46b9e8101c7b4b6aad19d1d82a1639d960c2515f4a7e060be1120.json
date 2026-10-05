@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Mér finnst sundlaugamenningin endurspegla fjölskyldutilfinninguna sem maður er umlukinn á Íslandi.“\nEnglish gloss: “I find the public bath culture reflects the family-oriented mindset that people are surrounded by in Iceland.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.7980286133167499
+      }
+    },
+    "usage": {
+      "input_tokens": 207,
+      "output_tokens": 0
+    }
+  }
+}

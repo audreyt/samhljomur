@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Þetta er staður nálægt miðju höfuððborgar Íslands sem er full af náttúru, ánægju og ró. Mjóg góður staður til að labba eða hjóla smá og hugsa.“\nEnglish gloss: “This is a place near the center of Iceland's capital that is full of nature, pleasure and peace. A very good place to walk or cycle a bit and think.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.810535345537847
+      }
+    },
+    "usage": {
+      "input_tokens": 244,
+      "output_tokens": 0
+    }
+  }
+}

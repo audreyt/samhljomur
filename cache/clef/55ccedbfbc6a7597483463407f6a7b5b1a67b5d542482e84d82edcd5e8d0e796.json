@@ -1,0 +1,31 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Lopi, þrautseigja“\nEnglish gloss: “Lopi, toughness [lopi: a type of Icelandic wool sweater; þrautseigja: toughness or resilience]”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.8351128673963958
+      }
+    },
+    "usage": {
+      "input_tokens": 189,
+      "output_tokens": 0
+    }
+  },
+  "latency_ms": 431
+}

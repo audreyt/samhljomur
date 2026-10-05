@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Alla mína ævi hef ég farið til Gjögurs á sumrin. Það er eitthvað ólýsanlegt við það að fara í sveitina, slökkva á öllum áreitinu úr símanum og tengjast ósnertri náttúrunni í sveitinni.“\nEnglish gloss: “All my life I have gone to Gjögur in the summer. There is something inexplicable about going to the camp, turning off all notifications from the phone, and connecting with the unspoiled nature in the camp.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.5755385210683862
+      }
+    },
+    "usage": {
+      "input_tokens": 269,
+      "output_tokens": 0
+    }
+  }
+}

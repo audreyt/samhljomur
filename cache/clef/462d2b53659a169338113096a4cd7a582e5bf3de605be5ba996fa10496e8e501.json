@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Ég ólst upp á Ísafirði og mest megni vina og fjölskyldu býr þar enn“\nEnglish gloss: “I was born in Ísafjörður and most of my friends and family still live there.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.6271819770540775
+      }
+    },
+    "usage": {
+      "input_tokens": 200,
+      "output_tokens": 0
+    }
+  }
+}

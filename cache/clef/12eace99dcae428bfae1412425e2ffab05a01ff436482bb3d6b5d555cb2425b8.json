@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Sveitinn hjá fjölskyldu minni, fer þangað 2-3 á ári. Öll fjölskyldan mætir og er haldið stærsta sveitball á bóndabæ árlega. Ögurballið“\nEnglish gloss: “The team from my family's household goes there 2-3 times a year. The whole family meets and the largest team ball at the farmer's village is held annually. The team ball [sveitinn]”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.15346802204289844
+      }
+    },
+    "usage": {
+      "input_tokens": 259,
+      "output_tokens": 0
+    }
+  }
+}

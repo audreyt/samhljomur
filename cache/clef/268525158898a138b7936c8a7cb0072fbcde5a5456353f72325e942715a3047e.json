@@ -1,0 +1,31 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „matvælaiðnaðurinn“\nEnglish gloss: “The food industry. [matvælaiðnaðurinn refers to the sector of industry involved in the production, processing, and distribution of food products]”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.18013205402628996
+      }
+    },
+    "usage": {
+      "input_tokens": 194,
+      "output_tokens": 0
+    }
+  },
+  "latency_ms": 431
+}

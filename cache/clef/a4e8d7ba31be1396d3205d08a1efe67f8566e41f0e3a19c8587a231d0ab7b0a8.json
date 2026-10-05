@@ -1,0 +1,31 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Samfélag einstaklinga sem kunna að vera einstakir saman. Samfélag sem fagnar fjölbreytileika. Þessi fjörður er líka einstakur. Heilagur staður. Friðsældin hjúpar og tengingin við náttúruna er djúp. Tenging við ræturnar.“\nEnglish gloss: “A community of individuals who can be unique together. A community that celebrates diversity. This fjord is also unique. A sacred place. The peace helps and the connection to nature is deep. Connection to the roots.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.5647323318223919
+      }
+    },
+    "usage": {
+      "input_tokens": 271,
+      "output_tokens": 0
+    }
+  },
+  "latency_ms": 655
+}

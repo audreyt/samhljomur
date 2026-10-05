@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Þetta var dásamlegur tími sem ég átti þarna, með ömmu og afa, svo mömmu og pabba, með vinum og svo með börnunum mínum og systrabörnum.“\nEnglish gloss: “That was a wonderful time I had there, with grandma and grandpa, then mom and dad, with friends and then with my children and nieces and nephews.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.854595692904407
+      }
+    },
+    "usage": {
+      "input_tokens": 238,
+      "output_tokens": 0
+    }
+  }
+}

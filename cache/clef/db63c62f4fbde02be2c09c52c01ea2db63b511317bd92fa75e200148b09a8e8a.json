@@ -1,0 +1,35 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Uppáhaldsstaður þátttakanda á Íslandi (talasaman.is/stadir).\nStaður: Vífilsstaðavatn, Garðabær\nÁstæða, orðrétt: „mér finnst þetta vera langbesti staðurinn til þess að fara út að labba með hundinn. þetta er líka staðurinn sem ég fékk fyrst sjálfstraustið til að byrja að tala íslensku eftir að ég flutti til landsins.“",
+    "questions": {
+      "excerpt": {
+        "type": "choice",
+        "instructions": "Which single sentence of the reason is the most beautiful to sing, word for word?",
+        "criteria": {
+          "s1": "mér finnst þetta vera langbesti staðurinn til þess að fara út að labba með hundinn.",
+          "s2": "þetta er líka staðurinn sem ég fékk fyrst sjálfstraustið til að byrja að tala íslensku eftir að ég flutti til landsins."
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "excerpt": {
+        "type": "choice",
+        "choice": "s2",
+        "probabilities": {
+          "s1": 0.2214007966914376,
+          "s2": 0.7785992033085624
+        },
+        "confidence": 0.23728291948522273
+      }
+    },
+    "usage": {
+      "input_tokens": 322,
+      "output_tokens": 0
+    }
+  }
+}

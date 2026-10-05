@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Þetta er bær sem ég hef miklar fjölskildu teyngíngar og hef ferðast þángað öll sumar frá því að ég var lítill strákur og búinn að leika mér í hrauninu og fara í bíltúra um aðaldalinn og vera með fólkinnu mínu“\nEnglish gloss: “This is a town that I have great family ties to and have traveled there every summer since I was a little boy and played in the lava and gone for car rides around the main valley and been with my people.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.7357159886849942
+      }
+    },
+    "usage": {
+      "input_tokens": 270,
+      "output_tokens": 0
+    }
+  }
+}

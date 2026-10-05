@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „vegna þess að ég átti eitt sinn innilegt samband þarna við náttúruna á fallegu sumarkvöldi“\nEnglish gloss: “because I once had an intimate connection there with nature on a beautiful summer evening”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.8833394934147305
+      }
+    },
+    "usage": {
+      "input_tokens": 202,
+      "output_tokens": 0
+    }
+  }
+}

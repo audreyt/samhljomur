@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Að mínu mati er landslagið á Íslandi vera það Íslenskasta í heimi“\nEnglish gloss: “In my opinion, the landscape in Ísland is the most Icelandic thing in the world.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.7972988135768984
+      }
+    },
+    "usage": {
+      "input_tokens": 196,
+      "output_tokens": 0
+    }
+  }
+}

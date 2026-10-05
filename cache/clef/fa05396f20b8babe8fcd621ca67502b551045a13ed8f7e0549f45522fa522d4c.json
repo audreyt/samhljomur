@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Harðfiskur“\nEnglish gloss: “Harðfiskur [dried fish, traditionally made from cod or haddock, air-dried and often eaten with butter]”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.21956509719960238
+      }
+    },
+    "usage": {
+      "input_tokens": 186,
+      "output_tokens": 0
+    }
+  }
+}

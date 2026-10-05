@@ -1,0 +1,31 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Þetta er fallegasti staður sem ég veit um á Íslandi. Það er ekki mikið af fólki svo þú getur verið einn með hugsunum þínum en samt ertu ekki einmanna vegna þess að fuglarnir syngja svo fallega. Það eru blóm í öllum regnbogans litum, og svo má vera með hunda þarna og þú getur leikið þér með þeim í öllu veðri.“\nEnglish gloss: “This is the most beautiful place I know in Iceland. There isn't much people so you can be alone with your thoughts, but you aren't alone because the birds sing so beautifully. There are flowers in all the colors of the rainbow, and you can also have dogs there and play with them in all weather. [lopapeysa, þorrablót, harðfiskur]”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.18316746357796315
+      }
+    },
+    "usage": {
+      "input_tokens": 348,
+      "output_tokens": 0
+    }
+  },
+  "latency_ms": 709
+}

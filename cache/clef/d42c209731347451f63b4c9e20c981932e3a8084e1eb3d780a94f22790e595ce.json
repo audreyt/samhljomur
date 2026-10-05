@@ -1,0 +1,35 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Uppáhaldsstaður þátttakanda á Íslandi (talasaman.is/stadir).\nStaður: Fáskrúðsfjörður\nÁstæða, orðrétt: „Mjög fallegur, flottur, vinsamlegur bær þar sem alltaf er hægt að finna sér eitthvað að gera. Þangað hef ég farið hvert einasta sumar, og flesta páska, að hitta ömmu og afa.“",
+    "questions": {
+      "excerpt": {
+        "type": "choice",
+        "instructions": "Which single sentence of the reason is the most beautiful to sing, word for word?",
+        "criteria": {
+          "s1": "Mjög fallegur, flottur, vinsamlegur bær þar sem alltaf er hægt að finna sér eitthvað að gera.",
+          "s2": "Þangað hef ég farið hvert einasta sumar, og flesta páska, að hitta ömmu og afa."
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "excerpt": {
+        "type": "choice",
+        "choice": "s2",
+        "probabilities": {
+          "s1": 0.3551796877013946,
+          "s2": 0.6448203122986054
+        },
+        "confidence": 0.06139092172121852
+      }
+    },
+    "usage": {
+      "input_tokens": 312,
+      "output_tokens": 0
+    }
+  }
+}

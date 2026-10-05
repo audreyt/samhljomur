@@ -1,0 +1,31 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Norðurþing er frábært samfélag fyrir fjölskyldufólk. Fyrir utan fegurð svæðisins og alla afþreyinguna sem í boði er er Norðurþing veðursælt og fólkið kærleiksríkt. Í Norðurþingi líður mér alltaf vel og er mitt heima.“\nEnglish gloss: “North Þing is a wonderful community for families. Besides the beauty of the area and all the entertainment on offer, North Þing has pleasant weather and the people are loving. In North Þing, I always feel good and it is my home.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.6705984199940848
+      }
+    },
+    "usage": {
+      "input_tokens": 288,
+      "output_tokens": 0
+    }
+  },
+  "latency_ms": 679
+}

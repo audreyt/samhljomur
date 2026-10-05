@@ -1,0 +1,41 @@
+{
+  "request": {
+    "model": "granite4.2:30b",
+    "stream": false,
+    "think": false,
+    "messages": [
+      {
+        "role": "system",
+        "content": "You translate short Icelandic texts written by members of the public into plain English. Translate faithfully; add nothing and leave nothing out. Keep place names in Icelandic. Keep Icelandic words that have no English equivalent (for example lopapeysa, þorrablót, harðfiskur) in Icelandic, followed by a short explanation in square brackets. Do not correct, praise, or comment. Output only the English text."
+      },
+      {
+        "role": "user",
+        "content": "Þetta var dásamlegur tími sem ég átti þarna, með ömmu og afa, svo mömmu og pabba, með vinum og svo með börnunum mínum og systrabörnum."
+      }
+    ],
+    "options": {
+      "temperature": 0.2,
+      "num_ctx": 4096,
+      "seed": 1010
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "granite4.2:30b",
+    "created_at": "2026-10-05T00:04:16.279412Z",
+    "message": {
+      "role": "assistant",
+      "content": "This was a wonderful time I had with my grandmother and grandfather, so with my mother and father, with friends, and with my children and my nieces and nephews."
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 1757717833,
+    "load_duration": 17267750,
+    "prompt_eval_count": 159,
+    "prompt_eval_cached_count": 97,
+    "prompt_eval_duration": 328971000,
+    "eval_count": 36,
+    "eval_duration": 1397884000
+  },
+  "latency_ms": 1758
+}

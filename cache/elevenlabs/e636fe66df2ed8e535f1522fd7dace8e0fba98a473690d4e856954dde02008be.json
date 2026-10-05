@@ -1,0 +1,266 @@
+{
+  "request": {
+    "url": "https://api.elevenlabs.io/v1/music?output_format=mp3_48000_192",
+    "json": {
+      "model_id": "music_v2_5",
+      "seed": 1010,
+      "sign_with_c2pa": true,
+      "composition_plan": {
+        "chunks": [
+          {
+            "movement": 1,
+            "chunk": 1,
+            "text": "[Gluggaveður]\nBirta og myrkur\nVeðrið og kleinur\nLykt af grænu grasi á sumrin og kaldar rauðar kynnar eftir að inn er komið að vetri\nNáttúran og veðrið\nVeðrið\nÍstlenskar pönukökur út í sveit með gott veður og vontveður\nGluggaveður",
+            "duration_ms": 41000,
+            "positive_styles": [
+              "Icelandic indie folk",
+              "intimate solo female vocal sung in Icelandic",
+              "felt piano",
+              "harmonium drone",
+              "rain on a window",
+              "slow 66 bpm",
+              "warm analog production",
+              "great production quality"
+            ],
+            "negative_styles": [
+              "English lyrics",
+              "rap",
+              "autotune",
+              "EDM drop"
+            ],
+            "context_adherence": "high"
+          },
+          {
+            "movement": 2,
+            "chunk": 1,
+            "text": "[Ís í fárviðri]\nAð borða ís þegar það er vont veður\nKjötsúpa og Bæjarins bestu pullur\nFlatkaka með hangikjöti\nAð borða harðfisk í lopapeysu daglega\nættarmót og soðin ýsa, flatkaka með hangikjöti\nLopapeysa og kjötsúpa\nPönnsur með sykri\nPylsa og kókómjólk\nFlatkökur með hangikjöti\nKjötsúpa",
+            "duration_ms": 52000,
+            "positive_styles": [
+              "playful Icelandic folk dance",
+              "rímur-style chanted male vocal in Icelandic with group shouts",
+              "fiddle",
+              "accordion",
+              "stomping kitchen percussion",
+              "brisk 120 bpm",
+              "humorous",
+              "great production quality"
+            ],
+            "negative_styles": [
+              "English lyrics",
+              "rap",
+              "autotune",
+              "EDM drop"
+            ],
+            "context_adherence": "medium"
+          },
+          {
+            "movement": 2,
+            "chunk": 2,
+            "text": "[Ís í fárviðri]\nHarðfiskur\nÍs í fárviðri",
+            "duration_ms": 20000,
+            "positive_styles": [
+              "playful Icelandic folk dance",
+              "rímur-style chanted male vocal in Icelandic with group shouts",
+              "fiddle",
+              "accordion",
+              "stomping kitchen percussion",
+              "brisk 120 bpm",
+              "humorous",
+              "great production quality"
+            ],
+            "negative_styles": [
+              "English lyrics",
+              "rap",
+              "autotune",
+              "EDM drop"
+            ],
+            "context_adherence": "medium"
+          },
+          {
+            "movement": 3,
+            "chunk": 1,
+            "text": "[Hringvegurinn]\nAkranes. Falleg tútsýni, fallegt sólsetur og svakalega fallegt að geta séð sjóinn þegar maður vaknar.\nTálknafjörður. þar var ég öll sumur sem krakki hjá ömmu minni, frelsi og ævintýri\nHesteyri. Þetta er staðurinn sem hugurinn heimsækir þegar erfiðleikar steðja.\nReynistaður. Því það er gaman þar\nblóðberg, Íslenski hesturinn\nHálendi Sauðkindin, Töfrar hálendisins\nSvarfaðardalur. Hér lærði ég falleg samskipti, kynntist ég plöntutegundunum og lærði að elska náttúruna og manneskjuna\nÁsbyrgi. Þetta er hófur Sleipnis\nGrímastaðir á fjöllum. það var ég uppalin að hluta og lærði að elska landið og virða\nVíkurnes. Ég á frábærar minningar af langafa mínum í þessu húsi og útsýnið er frábært. Sérstaklega þegar það er blækyrrt",
+            "duration_ms": 72000,
+            "positive_styles": [
+              "cinematic road-trip ballad",
+              "warm male and female duet sung in Icelandic",
+              "fingerpicked acoustic guitar",
+              "glockenspiel",
+              "brushed drums",
+              "rolling 92 bpm",
+              "wide open and hopeful",
+              "great production quality"
+            ],
+            "negative_styles": [
+              "English lyrics",
+              "rap",
+              "autotune",
+              "EDM drop"
+            ],
+            "context_adherence": "medium"
+          },
+          {
+            "movement": 3,
+            "chunk": 2,
+            "text": "[Hringvegurinn]\nStórurð. vegna þess að ég átti eitt sinn innilegt samband þarna við náttúruna á fallegu sumarkvöldi\nFáskrúðsfjörður. Þangað hef ég farið hvert einasta sumar, og flesta páska, að hitta ömmu og afa.\nVatnajökull. Kyngimagnaður kraftur\nSkaftafell. Nátturan, fólkið, ferðamennirnir og núvitundin sem skilur mann eftir orðlausan\nblóðberg, Íslenski hesturinn\nHálendi Sauðkindin, Töfrar hálendisins\nHálendið. Hálendið hefur einstaka töfra: Kyrrð og víðáttu.\nHvolsvöllur. Fallegi heimabærinn minn\nKerlingarfjöll. Dásamleg náttúra og tignarleg fjöll í öllum regnboganslitum\nNesjar. Ég á ótrúlega margar fallegar og góðar minningar þaðan - að veiða, sigla á bát, leika í hrauninu, spila og vera með fjölskyldunni.",
+            "duration_ms": 70000,
+            "positive_styles": [
+              "cinematic road-trip ballad",
+              "warm male and female duet sung in Icelandic",
+              "fingerpicked acoustic guitar",
+              "glockenspiel",
+              "brushed drums",
+              "rolling 92 bpm",
+              "wide open and hopeful",
+              "great production quality"
+            ],
+            "negative_styles": [
+              "English lyrics",
+              "rap",
+              "autotune",
+              "EDM drop"
+            ],
+            "context_adherence": "medium"
+          },
+          {
+            "movement": 4,
+            "chunk": 1,
+            "text": "[Lopinn og laugin]\nLopapeysa\ntuðandi hamingjusöm\nÞorramatur lopapeysur\nLopapeysur\nÍslenskt lopapeysa\nsundlaug\nÍslenski fáninn\nöryggi, loppapeysur\nSundlaugar\nÞað íslenskasta í heimi finnst mér vera hlýi, fallegi lopinn okkar og sú samstaða sem einkennir okkur þegar á móti blæs. Við stöndum saman, höldum hita hvert á öðru og gefumst ekki upp.",
+            "duration_ms": 55000,
+            "positive_styles": [
+              "cozy Icelandic choral folk",
+              "small mixed choir singing in Icelandic",
+              "upright bass",
+              "Rhodes piano",
+              "handclaps",
+              "100 bpm",
+              "great production quality"
+            ],
+            "negative_styles": [
+              "English lyrics",
+              "rap",
+              "autotune",
+              "EDM drop"
+            ],
+            "context_adherence": "medium"
+          },
+          {
+            "movement": 4,
+            "chunk": 2,
+            "text": "[Skuggahliðarnar]\nHjarðhegðun\nKynþáttahyggja\nhópgerving\nFrændhygli, jákvæð og neikvæð\nHjörð",
+            "duration_ms": 29000,
+            "positive_styles": [
+              "sudden hush",
+              "wry half-spoken vocal in Icelandic",
+              "pizzicato strings",
+              "minor key",
+              "dry humour",
+              "great production quality"
+            ],
+            "negative_styles": [
+              "English lyrics",
+              "rap",
+              "autotune",
+              "EDM drop"
+            ],
+            "context_adherence": "medium"
+          },
+          {
+            "movement": 5,
+            "chunk": 1,
+            "text": "[Þetta reddast]\nNáttúran og heiðni\nfriður og viljastyrkur\nsviðasulta, skinnhandrit\nStyrkur og friðsemi\nSeigla\nÞrautseigja, náttúrufegurð\nTúngunálið\nMenningin\nÍslenskan Náttúran\nDugur",
+            "duration_ms": 51000,
+            "positive_styles": [
+              "Icelandic post-rock anthem",
+              "soaring choir and lead vocal in Icelandic",
+              "bowed guitar",
+              "brass swell",
+              "timpani build",
+              "glacial crescendo",
+              "euphoric",
+              "great production quality"
+            ],
+            "negative_styles": [
+              "English lyrics",
+              "rap",
+              "autotune",
+              "EDM drop"
+            ],
+            "context_adherence": "medium"
+          },
+          {
+            "movement": 5,
+            "chunk": 2,
+            "text": "[Þetta reddast]\nTungumálið\nÞetta reddast",
+            "duration_ms": 20000,
+            "positive_styles": [
+              "Icelandic post-rock anthem",
+              "soaring choir and lead vocal in Icelandic",
+              "bowed guitar",
+              "brass swell",
+              "timpani build",
+              "glacial crescendo",
+              "euphoric",
+              "great production quality"
+            ],
+            "negative_styles": [
+              "English lyrics",
+              "rap",
+              "autotune",
+              "EDM drop"
+            ],
+            "context_adherence": "medium"
+          },
+          {
+            "movement": 6,
+            "chunk": 1,
+            "text": "[Hvað viltu tala um?]\nmenntun, framtíðina, gervigreind, samskipti\nsamfélagsmiðla, samfélagið, náttúran, tungumálið\nlýðræðið, heilbrigðiskerfið, umburðarlyndi, húsnæði\nútlendingamál, rasismi, fjölmiðla, peningar\nsamgöngur, alþjóðasamfélagið, grunnskólamenntun, æskulýðstarf\nframhaldsskólakerfið, leikskólar, kynjaskiptingu\nHvernig samfélag viljum við skapa saman?",
+            "duration_ms": 38000,
+            "positive_styles": [
+              "ambient choral coda",
+              "layered whispered and chanted Icelandic words",
+              "music box",
+              "solo voice ends on a question",
+              "decrescendo to silence",
+              "great production quality"
+            ],
+            "negative_styles": [
+              "English lyrics",
+              "rap",
+              "autotune",
+              "EDM drop"
+            ],
+            "context_adherence": "medium"
+          }
+        ]
+      }
+    },
+    "headers": {
+      "xi-api-key": "***"
+    }
+  },
+  "response": {
+    "meta": {
+      "status": 200,
+      "headers": {
+        "access-control-allow-headers": "*",
+        "access-control-allow-methods": "POST, PATCH, OPTIONS, DELETE, GET, PUT",
+        "access-control-allow-origin": "*",
+        "access-control-max-age": "600",
+        "alt-svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+        "content-length": "10769706",
+        "content-type": "audio/mpeg",
+        "date": "Mon, 05 Oct 2026 00:41:22 GMT",
+        "server": "uvicorn",
+        "song-id": "vM84KSyaYwXhpaAQ0U2k",
+        "strict-transport-security": "max-age=1800;",
+        "vary": "Accept-Language",
+        "via": "1.1 google",
+        "x-region": "us-central1",
+        "x-trace-id": "289cf73ed8d3d43b49758df88c038096"
+      },
+      "body_file": "media/takes/take-seed-1010.mp3",
+      "body_sha256": "cc155b9884dd4ed367fcc1cb17f67735c42c85992f959a16c9eb96186abaa37e"
+    }
+  }
+}

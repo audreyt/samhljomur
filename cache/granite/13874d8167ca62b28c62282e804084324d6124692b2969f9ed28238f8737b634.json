@@ -1,0 +1,41 @@
+{
+  "request": {
+    "model": "granite4.2:30b",
+    "stream": false,
+    "think": false,
+    "messages": [
+      {
+        "role": "system",
+        "content": "You translate short Icelandic texts written by members of the public into plain English. Translate faithfully; add nothing and leave nothing out. Keep place names in Icelandic. Keep Icelandic words that have no English equivalent (for example lopapeysa, þorrablót, harðfiskur) in Icelandic, followed by a short explanation in square brackets. Do not correct, praise, or comment. Output only the English text."
+      },
+      {
+        "role": "user",
+        "content": "Ég varð meira ég sjálf og fann vinni sem ég vill hafa með mér restina af lífinu mínu. Svo lærði ég að taka ábyrgð af lærdómnum mínum sem telst í margt annað í líf mínu."
+      }
+    ],
+    "options": {
+      "temperature": 0.2,
+      "num_ctx": 4096,
+      "seed": 1010
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "granite4.2:30b",
+    "created_at": "2026-10-05T00:05:38.302799Z",
+    "message": {
+      "role": "assistant",
+      "content": "I took more care of myself and found work that I want to have with me for the rest of my life. So I learned to take responsibility for my learning, which counts for much else in my life."
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 2045433625,
+    "load_duration": 16049667,
+    "prompt_eval_count": 175,
+    "prompt_eval_cached_count": 94,
+    "prompt_eval_duration": 314134000,
+    "eval_count": 43,
+    "eval_duration": 1712774000
+  },
+  "latency_ms": 2045
+}

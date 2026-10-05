@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Falleg náttúra, friðsamt umhverfi og í sveitinni er auðvitað alltaf best.“\nEnglish gloss: “Beautiful nature, a peaceful environment, and in the countryside is of course always best.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.6606831119867811
+      }
+    },
+    "usage": {
+      "input_tokens": 198,
+      "output_tokens": 0
+    }
+  }
+}

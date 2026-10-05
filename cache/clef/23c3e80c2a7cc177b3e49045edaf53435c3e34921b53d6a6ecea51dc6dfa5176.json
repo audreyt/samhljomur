@@ -1,0 +1,35 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Uppáhaldsstaður þátttakanda á Íslandi (talasaman.is/stadir).\nStaður: Nesjar, Grímsnes- og Grafningshreppur\nÁstæða, orðrétt: „Fjölskyldan mín átti sumarbústað á Þingvöllum við Nesjarvelli. Ég á ótrúlega margar fallegar og góðar minningar þaðan - að veiða, sigla á bát, leika í hrauninu, spila og vera með fjölskyldunni.“",
+    "questions": {
+      "excerpt": {
+        "type": "choice",
+        "instructions": "Which single sentence of the reason is the most beautiful to sing, word for word?",
+        "criteria": {
+          "s1": "Fjölskyldan mín átti sumarbústað á Þingvöllum við Nesjarvelli.",
+          "s2": "Ég á ótrúlega margar fallegar og góðar minningar þaðan - að veiða, sigla á bát, leika í hrauninu, spila og vera með fjölskyldunni."
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "excerpt": {
+        "type": "choice",
+        "choice": "s2",
+        "probabilities": {
+          "s1": 0.05558037358785624,
+          "s2": 0.9444196264121437
+        },
+        "confidence": 0.6903551365315586
+      }
+    },
+    "usage": {
+      "input_tokens": 343,
+      "output_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,281 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Uppáhaldsstaður þátttakanda á Íslandi (talasaman.is/stadir).\nStaður: Þjórsárver\nÁstæða, orðrétt: „Einn fjölmargra uppáhaldsstaða minna vegna náttúrufegurðar, kyrrðar og lífríkis.“",
+    "questions": {
+      "privacy": {
+        "type": "noul",
+        "instructions": "Does the participant's text (including the place name) contain a street address, a house number, a named private individual, or any other detail that could point to a specific person or household?",
+        "criteria": {
+          "true": "contains identifying detail",
+          "false": "no identifying detail"
+        }
+      },
+      "spelling": {
+        "type": "noul",
+        "instructions": "Does the participant's Icelandic text contain obvious spelling or typing errors?",
+        "criteria": {
+          "true": "has errors",
+          "false": "no errors"
+        }
+      },
+      "singable": {
+        "type": "score",
+        "instructions": "How well would the participant's text work, word for word, as a sung line in an Icelandic folk song?",
+        "criteria": [
+          "would not work",
+          "awkward",
+          "workable",
+          "good",
+          "beautiful"
+        ]
+      },
+      "image": {
+        "type": "score",
+        "instructions": "How vivid and concrete is the image the participant's text evokes?",
+        "criteria": [
+          "abstract",
+          "faint",
+          "some image",
+          "vivid",
+          "unforgettable"
+        ]
+      },
+      "warmth": {
+        "type": "score",
+        "instructions": "How much warmth, humour or affection does the participant's text carry?",
+        "criteria": [
+          "none",
+          "a little",
+          "some",
+          "a lot",
+          "overflowing"
+        ]
+      },
+      "tone": {
+        "type": "choice",
+        "instructions": "Which tone best describes the participant's text?",
+        "criteria": {
+          "joyful": "joy, delight, playfulness",
+          "tender": "tenderness, memory, love",
+          "proud": "pride, identity, belonging",
+          "wry": "self-mocking humour or gentle criticism",
+          "critical": "criticism of society or its shadow sides",
+          "calm": "stillness, peace, solitude",
+          "unclear": "cannot tell"
+        }
+      },
+      "seconds": {
+        "type": "score",
+        "instructions": "If the participant's text were shown on screen in a music video, how many seconds would a reader need to take it in comfortably?",
+        "criteria": [
+          "2 seconds",
+          "3 seconds",
+          "4 seconds",
+          "6 seconds",
+          "8 seconds",
+          "10 seconds"
+        ]
+      },
+      "opener": {
+        "type": "score",
+        "instructions": "How well would the participant's text work as the first line of a song section?",
+        "criteria": [
+          "poorly",
+          "weakly",
+          "fine",
+          "well",
+          "perfectly"
+        ]
+      },
+      "closer": {
+        "type": "score",
+        "instructions": "How well would the participant's text work as the last line of a song section?",
+        "criteria": [
+          "poorly",
+          "weakly",
+          "fine",
+          "well",
+          "perfectly"
+        ]
+      },
+      "theme": {
+        "type": "choice",
+        "instructions": "What is the main reason this place is loved?",
+        "criteria": {
+          "nature": "landscape, mountains, sea, wildlife, natural beauty",
+          "stillness": "peace, quiet, solitude, freedom",
+          "memory": "childhood, family memories, grandparents, summer houses",
+          "home": "where the person lives now, their town",
+          "community": "people together, pools, gatherings, welcome",
+          "activity": "hiking, riding, swimming, skiing, or work done there",
+          "food": "food, restaurants, cafés",
+          "culture": "history, stories, culture, art"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "privacy": {
+        "type": "noul",
+        "noul": 0.019069999918711028
+      },
+      "spelling": {
+        "type": "noul",
+        "noul": 0.06555787234422471
+      },
+      "singable": {
+        "type": "score",
+        "score": 1.036428149161883,
+        "legend": {
+          "0": "would not work",
+          "1": "awkward",
+          "2": "workable",
+          "3": "good",
+          "4": "beautiful"
+        },
+        "probabilities": {
+          "0": 0.4021844812617801,
+          "1": 0.36476518124598717,
+          "2": 0.09762777739209341,
+          "3": 0.06528282726884868,
+          "4": 0.07013973283129074
+        },
+        "confidence": 0.17618922703793571
+      },
+      "image": {
+        "type": "score",
+        "score": 1.7375516741926484,
+        "legend": {
+          "0": "abstract",
+          "1": "faint",
+          "2": "some image",
+          "3": "vivid",
+          "4": "unforgettable"
+        },
+        "probabilities": {
+          "0": 0.2091399780427612,
+          "1": 0.13404345033464538,
+          "2": 0.40296935432093667,
+          "3": 0.21781935399049704,
+          "4": 0.03602786331115967
+        },
+        "confidence": 0.12106285455409238
+      },
+      "warmth": {
+        "type": "score",
+        "score": 1.3614107542820126,
+        "legend": {
+          "0": "none",
+          "1": "a little",
+          "2": "some",
+          "3": "a lot",
+          "4": "overflowing"
+        },
+        "probabilities": {
+          "0": 0.2228958144161769,
+          "1": 0.3222409014056791,
+          "2": 0.3590556201085266,
+          "3": 0.06217204361918925,
+          "4": 0.03363562045042812
+        },
+        "confidence": 0.15866487975211352
+      },
+      "tone": {
+        "type": "choice",
+        "choice": "calm",
+        "probabilities": {
+          "calm": 0.6739171716223675,
+          "critical": 0.005295886144844348,
+          "joyful": 0.11694658846075558,
+          "proud": 0.06356913810101107,
+          "tender": 0.12070495132833153,
+          "unclear": 0.015400961733199032,
+          "wry": 0.004165302609490829
+        },
+        "confidence": 0.4541464415226466
+      },
+      "seconds": {
+        "type": "score",
+        "score": 2.1720384685661536,
+        "legend": {
+          "0": "2 seconds",
+          "1": "3 seconds",
+          "2": "4 seconds",
+          "3": "6 seconds",
+          "4": "8 seconds",
+          "5": "10 seconds"
+        },
+        "probabilities": {
+          "0": 0.09630369215822751,
+          "1": 0.25809772094114036,
+          "2": 0.23925641217777985,
+          "3": 0.23906391190515747,
+          "4": 0.11815512653449355,
+          "5": 0.049123136283201384
+        },
+        "confidence": 0.07374760689156468
+      },
+      "opener": {
+        "type": "score",
+        "score": 1.4333329843876934,
+        "legend": {
+          "0": "poorly",
+          "1": "weakly",
+          "2": "fine",
+          "3": "well",
+          "4": "perfectly"
+        },
+        "probabilities": {
+          "0": 0.31452351025588476,
+          "1": 0.20453718046082922,
+          "2": 0.2639262680106817,
+          "3": 0.16710889718491675,
+          "4": 0.04990414408768761
+        },
+        "confidence": 0.07510966696028154
+      },
+      "closer": {
+        "type": "score",
+        "score": 1.8702046866237896,
+        "legend": {
+          "0": "poorly",
+          "1": "weakly",
+          "2": "fine",
+          "3": "well",
+          "4": "perfectly"
+        },
+        "probabilities": {
+          "0": 0.19115376519337465,
+          "1": 0.1894979156329254,
+          "2": 0.2974394368134333,
+          "3": 0.20180763207706853,
+          "4": 0.12010125028319794
+        },
+        "confidence": 0.024697407717155784
+      },
+      "theme": {
+        "type": "choice",
+        "choice": "nature",
+        "probabilities": {
+          "activity": 0.004776565249023549,
+          "community": 0.001914732032259376,
+          "culture": 0.002569436333978376,
+          "food": 0.0011019735474572852,
+          "home": 0.0034944264940980924,
+          "memory": 0.0029524651744087444,
+          "nature": 0.8971381803486671,
+          "stillness": 0.08605222082010747
+        },
+        "confidence": 0.8048743129454672
+      }
+    },
+    "usage": {
+      "input_tokens": 1525,
+      "output_tokens": 0
+    }
+  }
+}

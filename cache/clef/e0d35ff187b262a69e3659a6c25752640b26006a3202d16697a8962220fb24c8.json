@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Flatey býður upp á kyrrð og ró, fallega fjallasýn á Flateyjarskaga, víðáttu og ilm af hafinu. Þar er alltaf gott veður. Færir mann aftur til fortíðar þar sem þurfti að hafa aðeins meira fyrir lífinu.“\nEnglish gloss: “Flatey offers quiet and peace, beautiful mountain views on the Flateyjarskagi, spaciousness, and the scent of the sea. There is always good weather there. Returning a person to the past there where one needed to have only more for life.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.12005866055495658
+      }
+    },
+    "usage": {
+      "input_tokens": 286,
+      "output_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "request": {
+    "model": "granite4.2:30b",
+    "stream": false,
+    "think": false,
+    "messages": [
+      {
+        "role": "system",
+        "content": "You translate short Icelandic texts written by members of the public into plain English. Translate faithfully; add nothing and leave nothing out. Keep place names in Icelandic. Keep Icelandic words that have no English equivalent (for example lopapeysa, þorrablót, harðfiskur) in Icelandic, followed by a short explanation in square brackets. Do not correct, praise, or comment. Output only the English text."
+      },
+      {
+        "role": "user",
+        "content": "Vestmannaeyjar eru heimahöfnin mín. Hér finn ég friðsæld, frelsi og sterka tilfinningu fyrir því að tilheyra. Stórbrotið landslagið, hafið og nálægðin við náttúruna gefa mér ró og rými. En það sem gerir Eyjarnar einstakar er fólkið – samkenndin, samstaðan og sterka samfélagið. Hér er einfaldlega heima."
+      }
+    ],
+    "options": {
+      "temperature": 0.2,
+      "num_ctx": 4096,
+      "seed": 1010
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "granite4.2:30b",
+    "created_at": "2026-10-05T00:11:16.822362Z",
+    "message": {
+      "role": "assistant",
+      "content": "Vestmannaeyjar are my home. Here I find peace, freedom, and a strong sense of belonging. The vast landscape, the sea, and the closeness to nature give me calm and space. But what makes the Eyjarnar special is the people—the mutual understanding, the solidarity, and the strong community. Here, simply, is home."
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 4452674625,
+    "load_duration": 17522250,
+    "prompt_eval_count": 238,
+    "prompt_eval_cached_count": 94,
+    "prompt_eval_duration": 663410000,
+    "eval_count": 76,
+    "eval_duration": 3768852000
+  },
+  "latency_ms": 4453
+}

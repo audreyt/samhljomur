@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „þar var ég öll sumur sem krakki hjá ömmu minni, frelsi og ævintýri“\nEnglish gloss: “There I was all summer as a child with my grandmother, free and adventurous.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.5693671818825835
+      }
+    },
+    "usage": {
+      "input_tokens": 197,
+      "output_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Ég væri ekki sá sami án skátafélagsins Árbúa sem er á staðnum og allra vinanna sem ég hef eignast þar. Einnig er Elliðaárdalur þar, sem er einn fallegasti staður höfuðborgarsvæðisins.“\nEnglish gloss: “I would not be the same as the Árbúa community association that is on the site and all the friends I have there. Also, Elliðaárdalur is there, which is one of the most beautiful places in the capital area.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.04521801079191178
+      }
+    },
+    "usage": {
+      "input_tokens": 268,
+      "output_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Já orðatiltækið að vera úti á túni hefur kannski rétta merkingu, því maður getur algjörlega slökkt á hausnum og slakað á þegar maður liggur einhverstaðar úti á túni eða í móa eða hvar sem er. Svo lengi þar sem það er langt frá  stað og stund“\nEnglish gloss: “The phrase \"já orðatiltækið að vera úti á túni\" may have the correct meaning, as one can completely turn off the head and relax when lying somewhere outdoors on a field, in a meadow, or wherever, as long as it's far from place and time.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.7478333902911843
+      }
+    },
+    "usage": {
+      "input_tokens": 307,
+      "output_tokens": 0
+    }
+  }
+}

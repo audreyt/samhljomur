@@ -1,0 +1,31 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Sérstaklega sterka og nálæga náttúru, þar sem fjölbreytt fuglalíf grípur mann.“\nEnglish gloss: “Especially strong and nearby nature, where diverse birdlife captivates people.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.7953270537527438
+      }
+    },
+    "usage": {
+      "input_tokens": 200,
+      "output_tokens": 0
+    }
+  },
+  "latency_ms": 458
+}

@@ -1,0 +1,41 @@
+{
+  "request": {
+    "model": "gemma4:31b-it-qat-google-official",
+    "stream": false,
+    "think": false,
+    "messages": [
+      {
+        "role": "system",
+        "content": "You translate short Icelandic texts written by members of the public into plain English. Translate faithfully; add nothing and leave nothing out. Keep place names in Icelandic. Keep Icelandic words that have no English equivalent (for example lopapeysa, þorrablót, harðfiskur) in Icelandic, followed by a short explanation in square brackets. Do not correct, praise, or comment. Output only the English text."
+      },
+      {
+        "role": "user",
+        "content": "Það íslenskasta í heimi finnst mér vera hlýi, fallegi lopinn okkar og sú samstaða sem einkennir okkur þegar á móti blæs. Við stöndum saman, höldum hita hvert á öðru og gefumst ekki upp."
+      }
+    ],
+    "options": {
+      "temperature": 0.2,
+      "num_ctx": 4096,
+      "seed": 1010
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "gemma4:31b-it-qat-google-official",
+    "created_at": "2026-10-05T00:30:44.73196Z",
+    "message": {
+      "role": "assistant",
+      "content": "I think the most Icelandic thing in the world is our warm, beautiful lopi [unspun wool] and the solidarity that characterizes us when times are tough. We stand together, keep each other warm, and do not give up."
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 2417717792,
+    "load_duration": 16576250,
+    "prompt_eval_count": 169,
+    "prompt_eval_cached_count": 0,
+    "prompt_eval_duration": 559756000,
+    "eval_count": 48,
+    "eval_duration": 1839753000
+  },
+  "latency_ms": 2418
+}

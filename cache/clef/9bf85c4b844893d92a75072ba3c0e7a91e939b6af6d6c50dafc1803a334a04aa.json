@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Staðfesting íslensks UI-texta: „Söngurinn er gerður með ElevenLabs Music. Talgreining (Scribe) mælir hve skýrt hver lína heyrist.“",
+    "questions": {
+      "natural_is": {
+        "type": "noul",
+        "instructions": "Is this natural, grammatical Icelandic?",
+        "criteria": {
+          "true": "natural Icelandic",
+          "false": "unnatural or ungrammatical"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "natural_is": {
+        "type": "noul",
+        "noul": 0.7888399033323078
+      }
+    },
+    "usage": {
+      "input_tokens": 184,
+      "output_tokens": 0
+    }
+  }
+}

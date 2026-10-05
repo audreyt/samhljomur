@@ -1,0 +1,37 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Uppáhaldsstaður þátttakanda á Íslandi (talasaman.is/stadir).\nStaður: Húsavík, Norðurþing\nÁstæða, orðrétt: „Norðurþing er frábært samfélag fyrir fjölskyldufólk. Fyrir utan fegurð svæðisins og alla afþreyinguna sem í boði er er Norðurþing veðursælt og fólkið kærleiksríkt. Í Norðurþingi líður mér alltaf vel og er mitt heima.“",
+    "questions": {
+      "excerpt": {
+        "type": "choice",
+        "instructions": "Which single sentence of the reason is the most beautiful to sing, word for word?",
+        "criteria": {
+          "s1": "Norðurþing er frábært samfélag fyrir fjölskyldufólk.",
+          "s2": "Fyrir utan fegurð svæðisins og alla afþreyinguna sem í boði er er Norðurþing veðursælt og fólkið kærleiksríkt.",
+          "s3": "Í Norðurþingi líður mér alltaf vel og er mitt heima."
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "excerpt": {
+        "type": "choice",
+        "choice": "s3",
+        "probabilities": {
+          "s1": 0.047899571331097825,
+          "s2": 0.3628382137767246,
+          "s3": 0.5892622148921776
+        },
+        "confidence": 0.2490106993968948
+      }
+    },
+    "usage": {
+      "input_tokens": 372,
+      "output_tokens": 0
+    }
+  }
+}

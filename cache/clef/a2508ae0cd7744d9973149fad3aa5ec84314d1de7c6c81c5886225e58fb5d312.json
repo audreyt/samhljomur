@@ -1,0 +1,31 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Flatkökur með hangikjöti“\nEnglish gloss: “Flatkökur with hangikjöt [Flatkökur are a type of Icelandic flatbread, and hangikjöt is smoked Icelandic lamb]”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.5317958330163175
+      }
+    },
+    "usage": {
+      "input_tokens": 192,
+      "output_tokens": 0
+    }
+  },
+  "latency_ms": 452
+}

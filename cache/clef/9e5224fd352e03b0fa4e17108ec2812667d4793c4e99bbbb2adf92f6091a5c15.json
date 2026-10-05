@@ -1,0 +1,55 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Orð sem þátttakendur völdu undir „Hvað viltu tala um?“ á talasaman.is: hegðunarmynstur",
+    "questions": {
+      "topic_theme": {
+        "type": "choice",
+        "instructions": "Which theme does this topic word belong to?",
+        "criteria": {
+          "education": "schools, preschools, education",
+          "future": "the future, hopes",
+          "technology": "AI, technology, innovation",
+          "communication": "communication, social media, media, misinformation, phone manners",
+          "democracy": "democracy, trust, corruption, governance, politics",
+          "nature": "nature, environment",
+          "health": "health care, ageing, wellbeing, addiction",
+          "economy": "money, housing, transport, traffic, fees, fishing quota, food industry",
+          "equality": "equality, gender, racism, immigration, prejudice, LGBTQ, tolerance, respect",
+          "culture": "language, culture, arts, music, coffee",
+          "youth": "youth work, youth movements",
+          "mindset": "optimism, joy, courage, purpose, open-mindedness, creativity"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "topic_theme": {
+        "type": "choice",
+        "choice": "health",
+        "probabilities": {
+          "communication": 0.07571007405266536,
+          "culture": 0.03681904887797247,
+          "democracy": 0.04063944847545594,
+          "economy": 0.0201266309794846,
+          "education": 0.05785469803935237,
+          "equality": 0.10122789085002146,
+          "future": 0.043690122199723326,
+          "health": 0.3451024771118509,
+          "mindset": 0.04220315410054969,
+          "nature": 0.058066596742254076,
+          "technology": 0.06095704464168992,
+          "youth": 0.11760281392897981
+        },
+        "confidence": 0.13577875667782113
+      }
+    },
+    "usage": {
+      "input_tokens": 427,
+      "output_tokens": 0
+    }
+  }
+}

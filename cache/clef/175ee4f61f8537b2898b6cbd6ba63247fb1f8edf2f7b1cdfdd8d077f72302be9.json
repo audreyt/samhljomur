@@ -1,0 +1,31 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Ég er í MH þannig það er mjög þægilegt að geta farið í Kringlunna eftir skólann. Sérstaklega er að það hefur borgabókasafnið sem er frekar aðgengilegt til að ná sér í bækur eða hins vegar að læra“\nEnglish gloss: “I am in MH so it is very convenient to go to Kringlan after school. Especially it has the city library which is quite accessible to get books or alternatively to study.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.7481998507948457
+      }
+    },
+    "usage": {
+      "input_tokens": 264,
+      "output_tokens": 0
+    }
+  },
+  "latency_ms": 654
+}

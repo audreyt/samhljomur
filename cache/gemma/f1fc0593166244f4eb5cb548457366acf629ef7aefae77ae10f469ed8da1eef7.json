@@ -1,0 +1,41 @@
+{
+  "request": {
+    "model": "gemma4:31b-it-qat-google-official",
+    "stream": false,
+    "think": false,
+    "messages": [
+      {
+        "role": "system",
+        "content": "You translate short Icelandic texts written by members of the public into plain English. Translate faithfully; add nothing and leave nothing out. Keep place names in Icelandic. Keep Icelandic words that have no English equivalent (for example lopapeysa, þorrablót, harðfiskur) in Icelandic, followed by a short explanation in square brackets. Do not correct, praise, or comment. Output only the English text."
+      },
+      {
+        "role": "user",
+        "content": "Hér er allt nálægt – fólkið, náttúran og hafið. Samfélagið er sterkt, mannlífið gott og hvergi líður mér betur en í Eyjum."
+      }
+    ],
+    "options": {
+      "temperature": 0.2,
+      "num_ctx": 4096,
+      "seed": 1010
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "gemma4:31b-it-qat-google-official",
+    "created_at": "2026-10-05T00:36:56.423592Z",
+    "message": {
+      "role": "assistant",
+      "content": "Everything is close here – the people, nature and the ocean. The community is strong, the social life is good and nowhere do I feel better than in Eyjum."
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 1959084334,
+    "load_duration": 16322125,
+    "prompt_eval_count": 153,
+    "prompt_eval_cached_count": 0,
+    "prompt_eval_duration": 620588000,
+    "eval_count": 35,
+    "eval_duration": 1320752000
+  },
+  "latency_ms": 1959
+}

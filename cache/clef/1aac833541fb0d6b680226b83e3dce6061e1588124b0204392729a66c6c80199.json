@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Þessi rödd sem við höfum, skoðanapistlar, okkur finnst við geta lagt að mörkum í umræðu um landsmál“\nEnglish gloss: “This voice we have, the survey letters, we find we can contribute meaningfully to the discussion on national affairs”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.4762078929525305
+      }
+    },
+    "usage": {
+      "input_tokens": 213,
+      "output_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „símasiðir“\nEnglish gloss: “Phone scams. [Símasiðir refers to fraudulent phone calls or scams conducted over the phone.]”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.5712780634315542
+      }
+    },
+    "usage": {
+      "input_tokens": 180,
+      "output_tokens": 0
+    }
+  },
+  "latency_ms": 432
+}

@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Hálendið hefur einstaka töfra: Kyrrð og víðáttu.“\nEnglish gloss: “The highlands have a single charm: stillness and vastness.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.7983533681142897
+      }
+    },
+    "usage": {
+      "input_tokens": 187,
+      "output_tokens": 0
+    }
+  }
+}

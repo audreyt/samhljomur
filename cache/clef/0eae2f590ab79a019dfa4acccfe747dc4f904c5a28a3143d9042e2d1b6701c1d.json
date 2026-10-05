@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „það var ég uppalin að hluta og lærði að elska landið og virða“\nEnglish gloss: “It was I who was raised partly and learned to love the country and appreciate it.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.21469354956819836
+      }
+    },
+    "usage": {
+      "input_tokens": 192,
+      "output_tokens": 0
+    }
+  }
+}

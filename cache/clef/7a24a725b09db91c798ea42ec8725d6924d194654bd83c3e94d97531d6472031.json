@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Friðsældin hjúpar og tengingin við náttúruna er djúp.“\nEnglish gloss: “Peacefulness nurtures and the connection with nature is deep.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.6707750549255713
+      }
+    },
+    "usage": {
+      "input_tokens": 185,
+      "output_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Úteyjarnar í Vestmannaeyjum hafa svo ótal margt upp á bjóða. Sérstaklega sterka og nálæga náttúru, þar sem fjölbreytt fuglalíf grípur mann. Menning og saga Eyjamanna er að finna á hverjum stað.“\nEnglish gloss: “The islands in the Westman Islands have so much to offer. Especially strong and nearby nature, where diverse birdlife captivates people. The culture and history of the islanders can be found everywhere.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.6316621766067533
+      }
+    },
+    "usage": {
+      "input_tokens": 265,
+      "output_tokens": 0
+    }
+  },
+  "latency_ms": 661
+}

@@ -1,0 +1,31 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Hákarl“\nEnglish gloss: “Hákarl [a type of fermented shark meat, a traditional Icelandic food]”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.4898494995602138
+      }
+    },
+    "usage": {
+      "input_tokens": 175,
+      "output_tokens": 0
+    }
+  },
+  "latency_ms": 408
+}

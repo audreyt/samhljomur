@@ -1,0 +1,41 @@
+{
+  "request": {
+    "model": "granite4.2:30b",
+    "stream": false,
+    "think": false,
+    "messages": [
+      {
+        "role": "system",
+        "content": "You translate short Icelandic texts written by members of the public into plain English. Translate faithfully; add nothing and leave nothing out. Keep place names in Icelandic. Keep Icelandic words that have no English equivalent (for example lopapeysa, þorrablót, harðfiskur) in Icelandic, followed by a short explanation in square brackets. Do not correct, praise, or comment. Output only the English text."
+      },
+      {
+        "role": "user",
+        "content": "Translate literally: Já orðatiltækið að vera úti á túni hefur kannski rétta merkingu, því maður getur algjörlega slökkt á hausnum og slakað á þegar maður liggur einhverstaðar úti á túni eða í móa eða hvar sem er."
+      }
+    ],
+    "options": {
+      "temperature": 0,
+      "num_ctx": 4096,
+      "seed": 1010
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "granite4.2:30b",
+    "created_at": "2026-10-05T00:04:52.480004Z",
+    "message": {
+      "role": "assistant",
+      "content": "The phrase \"Já orðatiltækið að vera úti á túni hefur kannski rétta merkingu, því maður getur algjörlega slökkt á hausnum og slakað á þegar maður liggur einhverstaðar úti á túni eða í móa eða hvar sem er\" literally translates to:\n\nYes, the expression to be out on the plain may perhaps have the correct meaning, since a person can completely turn off the head and turn off when the person lies somewhere out on the plain or in the moss or wherever.\n\nNote: \"túni\" refers to an open plain or field; \"mó\" (or \"mó\" as in \"í móa\") refers to a type of moss common in Icelandic terrain. The phrases \"slökkt á hausnum\" and \"slakað á\" are literal translations of the Icelandic verbs meaning \"to turn off the head\" and \"to turn off,\" which in context likely imply lying down or being still, though the exact idiomatic meaning may depend on regional usage."
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 12372224041,
+    "load_duration": 16205875,
+    "prompt_eval_count": 190,
+    "prompt_eval_cached_count": 94,
+    "prompt_eval_duration": 344961000,
+    "eval_count": 247,
+    "eval_duration": 12004389000
+  },
+  "latency_ms": 12373
+}

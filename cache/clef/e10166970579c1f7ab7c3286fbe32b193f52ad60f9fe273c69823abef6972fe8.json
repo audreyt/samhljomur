@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Staðfesting íslensks UI-texta: „Hver lína er orðrétt svar þátttakanda á talasaman.is. Kór, bekkur eða hringur getur sungið hana 10. október.“",
+    "questions": {
+      "natural_is": {
+        "type": "noul",
+        "instructions": "Is this natural, grammatical Icelandic?",
+        "criteria": {
+          "true": "natural Icelandic",
+          "false": "unnatural or ungrammatical"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "natural_is": {
+        "type": "noul",
+        "noul": 0.6462673478989298
+      }
+    },
+    "usage": {
+      "input_tokens": 196,
+      "output_tokens": 0
+    }
+  }
+}

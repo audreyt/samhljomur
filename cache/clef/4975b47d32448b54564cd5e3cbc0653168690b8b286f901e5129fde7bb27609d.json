@@ -1,0 +1,31 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „ættarmót og soðin ýsa, flatkaka með hangikjöti“\nEnglish gloss: “Family gathering and boiled eel, flat cake with smoked lamb [ættarmót: family gathering; soðin ýsa: boiled eel; flatkaka: flat cake; hangikjöt: smoked lamb]”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.9024817979161838
+      }
+    },
+    "usage": {
+      "input_tokens": 219,
+      "output_tokens": 0
+    }
+  },
+  "latency_ms": 447
+}

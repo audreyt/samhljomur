@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Staðfesting íslensks UI-texta: „Ein staðsetning með húsnúmeri er aðeins sýnd sem sveitarfélag. Svör sem Clef taldi geta bent á einstakling eru talin með en hvergi birt.“",
+    "questions": {
+      "natural_is": {
+        "type": "noul",
+        "instructions": "Is this natural, grammatical Icelandic?",
+        "criteria": {
+          "true": "natural Icelandic",
+          "false": "unnatural or ungrammatical"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "natural_is": {
+        "type": "noul",
+        "noul": 0.3440528851068471
+      }
+    },
+    "usage": {
+      "input_tokens": 196,
+      "output_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Ísafjörður er uppáhaldsstaðurinn minn vegna þess að pabbi er þaðan. Lítill bær þar sem allir þekkja hvorn annan.“\nEnglish gloss: “Ísafjörður is my favorite place because my dad is from there. It's a small town where everyone knows each other.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.9162613028818656
+      }
+    },
+    "usage": {
+      "input_tokens": 223,
+      "output_tokens": 0
+    }
+  },
+  "latency_ms": 442
+}

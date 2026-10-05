@@ -1,0 +1,35 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Uppáhaldsstaður þátttakanda á Íslandi (talasaman.is/stadir).\nStaður: Vestmannaeyjar, Vestmannaeyjabær\nÁstæða, orðrétt: „Svo fallegt í eyjum alltaf, er ekki þaðan en mín besta vinkona er þaðan og mér finnst við ekki hafa gert nægilega vel til að tryggja samgöngur á milli lands og eyja. Mér líður alltaf þegar ég er í eyjum eins og ég sé á sérstakasta stað á jörðinni.“",
+    "questions": {
+      "excerpt": {
+        "type": "choice",
+        "instructions": "Which single sentence of the reason is the most beautiful to sing, word for word?",
+        "criteria": {
+          "s1": "Svo fallegt í eyjum alltaf, er ekki þaðan en mín besta vinkona er þaðan og mér finnst við ekki hafa gert nægilega vel til að tryggja samgöngur á milli lands og eyja.",
+          "s2": "Mér líður alltaf þegar ég er í eyjum eins og ég sé á sérstakasta stað á jörðinni."
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "excerpt": {
+        "type": "choice",
+        "choice": "s2",
+        "probabilities": {
+          "s1": 0.034634264289679466,
+          "s2": 0.9653657357103205
+        },
+        "confidence": 0.7828752226493724
+      }
+    },
+    "usage": {
+      "input_tokens": 361,
+      "output_tokens": 0
+    }
+  }
+}

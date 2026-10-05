@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Kjötsúpa og Bæjarins bestu pullur“\nEnglish gloss: “Meat soup and Bæjarins bestu pullur [the city's best hot dogs]”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.5488299008031137
+      }
+    },
+    "usage": {
+      "input_tokens": 188,
+      "output_tokens": 0
+    }
+  }
+}

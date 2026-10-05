@@ -1,0 +1,31 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „mér finnst þetta vera langbesti staðurinn til þess að fara út að labba með hundinn. þetta er líka staðurinn sem ég fékk fyrst sjálfstraustið til að byrja að tala íslensku eftir að ég flutti til landsins.“\nEnglish gloss: “I find this to be the best place to take the dog for a walk. This is also the place where I first gained confidence to start speaking Icelandic after I moved to the country.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.8836446065584892
+      }
+    },
+    "usage": {
+      "input_tokens": 256,
+      "output_tokens": 0
+    }
+  },
+  "latency_ms": 472
+}

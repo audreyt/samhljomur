@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Amma mín og afi búa á Dalvík og ég hef komið í heimsókn á hverju ári með frænku minni. Ég man sérstaklega vel eftir að fara á fiskidaginn með þeim og frænku minni áður en það hætti og að borða jarðarberin og annað sem amma ræktar.“\nEnglish gloss: “My grandmother and grandfather live in Dalvík and I have visited every year with my cousin. I remember especially well going to the fish day with them and my cousin before it stopped and eating the strawberries and other things that grandma grows.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.792687803368314
+      }
+    },
+    "usage": {
+      "input_tokens": 286,
+      "output_tokens": 0
+    }
+  }
+}

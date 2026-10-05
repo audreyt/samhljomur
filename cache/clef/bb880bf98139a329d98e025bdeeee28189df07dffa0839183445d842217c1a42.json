@@ -1,0 +1,31 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Það er eitthvað sérstakt við þetta safn og stykkishólm. Ég var alveg dáleidd af því og vildi ekki fara þaðan. Ég hef  aldrei fundið fyrir jafn mikilli ró og ég fann fyrir þar.“\nEnglish gloss: “There is something special about this collection and the little island. I was completely enchanted by it and didn't want to leave. I have never experienced such great peace as I did there. [Safn and stykkishólm are Icelandic terms for a collection and a small island, respectively.]”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.30325360040523436
+      }
+    },
+    "usage": {
+      "input_tokens": 277,
+      "output_tokens": 0
+    }
+  },
+  "latency_ms": 657
+}

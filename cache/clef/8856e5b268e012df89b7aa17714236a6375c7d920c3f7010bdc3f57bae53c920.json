@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Það er svo kósý að fara út í heiðmörk um sumrin“\nEnglish gloss: “It is so lovely to go out into the countryside in summer.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.7837186446698569
+      }
+    },
+    "usage": {
+      "input_tokens": 185,
+      "output_tokens": 0
+    }
+  }
+}

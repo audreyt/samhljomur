@@ -1,0 +1,42 @@
+{
+  "request": {
+    "url": "https://api.elevenlabs.io/v1/speech-to-text",
+    "multipart": true,
+    "body_sha256": "b939ae2d1be3cea43528b5a474c41808fa1520869462bee69908314a251c5c03",
+    "headers": {
+      "xi-api-key": "***",
+      "Content-Type": "multipart/form-data; boundary=samhljomurBoundary0x1"
+    }
+  },
+  "response": {
+    "meta": {
+      "status": 200,
+      "headers": {
+        "access-control-allow-headers": "*",
+        "access-control-allow-methods": "POST, PATCH, OPTIONS, DELETE, GET, PUT",
+        "access-control-allow-origin": "*",
+        "access-control-expose-headers": "current-concurrent-requests, maximum-concurrent-requests, workspace-concurrent-requests, character-cost, fiat-cost-before-overages, fiat-currency",
+        "access-control-max-age": "600",
+        "alt-svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+        "character-cost": "166",
+        "content-encoding": "gzip",
+        "content-type": "application/json",
+        "current-concurrent-requests": "1",
+        "date": "Mon, 05 Oct 2026 00:42:45 GMT",
+        "fiat-cost-before-overages": "0.02739",
+        "fiat-currency": "usd",
+        "maximum-concurrent-requests": "40",
+        "server": "uvicorn",
+        "strict-transport-security": "max-age=1800;",
+        "transfer-encoding": "chunked",
+        "vary": "Accept-Language, Accept-Encoding",
+        "via": "1.1 google",
+        "workspace-concurrent-requests": "1",
+        "x-region": "us-central1",
+        "x-trace-id": "760a7b82a95fd78e9901b79293ce8fbe"
+      },
+      "body_file": "media/takes/take-seed-1010.scribe.json",
+      "body_sha256": "a49d1c4c4cad1d2843a24752604169608291a622c9a6c7389117ba5aceb92e37"
+    }
+  }
+}

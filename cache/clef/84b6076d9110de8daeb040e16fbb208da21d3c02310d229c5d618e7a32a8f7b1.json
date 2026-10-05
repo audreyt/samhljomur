@@ -1,0 +1,35 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Uppáhaldsstaður þátttakanda á Íslandi (talasaman.is/stadir).\nStaður: Úti á túni\nÁstæða, orðrétt: „Já orðatiltækið að vera úti á túni hefur kannski rétta merkingu, því maður getur algjörlega slökkt á hausnum og slakað á þegar maður liggur einhverstaðar úti á túni eða í móa eða hvar sem er. Svo lengi þar sem það er langt frá  stað og stund“",
+    "questions": {
+      "excerpt": {
+        "type": "choice",
+        "instructions": "Which single sentence of the reason is the most beautiful to sing, word for word?",
+        "criteria": {
+          "s1": "Já orðatiltækið að vera úti á túni hefur kannski rétta merkingu, því maður getur algjörlega slökkt á hausnum og slakað á þegar maður liggur einhverstaðar úti á túni eða í móa eða hvar sem er.",
+          "s2": "Svo lengi þar sem það er langt frá  stað og stund"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "excerpt": {
+        "type": "choice",
+        "choice": "s1",
+        "probabilities": {
+          "s1": 0.803923368052192,
+          "s2": 0.19607663194780794
+        },
+        "confidence": 0.28598838252897685
+      }
+    },
+    "usage": {
+      "input_tokens": 367,
+      "output_tokens": 0
+    }
+  }
+}

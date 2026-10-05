@@ -1,0 +1,41 @@
+{
+  "request": {
+    "model": "granite4.2:30b",
+    "stream": false,
+    "think": false,
+    "messages": [
+      {
+        "role": "system",
+        "content": "You translate short Icelandic texts written by members of the public into plain English. Translate faithfully; add nothing and leave nothing out. Keep place names in Icelandic. Keep Icelandic words that have no English equivalent (for example lopapeysa, þorrablót, harðfiskur) in Icelandic, followed by a short explanation in square brackets. Do not correct, praise, or comment. Output only the English text."
+      },
+      {
+        "role": "user",
+        "content": "slátur"
+      }
+    ],
+    "options": {
+      "temperature": 0.2,
+      "num_ctx": 4096,
+      "seed": 1010
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "granite4.2:30b",
+    "created_at": "2026-10-04T23:39:26.068674Z",
+    "message": {
+      "role": "assistant",
+      "content": "slátur [traditional Icelandic Christmas food, often made from sheep's offal such as liver, heart, and stomach]"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 2920310417,
+    "load_duration": 1798761792,
+    "prompt_eval_count": 104,
+    "prompt_eval_cached_count": 0,
+    "prompt_eval_duration": 248317000,
+    "eval_count": 26,
+    "eval_duration": 866490000
+  },
+  "latency_ms": 0
+}

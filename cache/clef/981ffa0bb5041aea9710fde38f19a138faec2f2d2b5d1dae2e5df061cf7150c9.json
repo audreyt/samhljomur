@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Langamma mín er fædd og uppalin þar og einnig er engin staður eins og flatey“\nEnglish gloss: “My mother was born and raised there, and there is no place like Flatey.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.7350292905893354
+      }
+    },
+    "usage": {
+      "input_tokens": 198,
+      "output_tokens": 0
+    }
+  }
+}

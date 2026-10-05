@@ -1,0 +1,41 @@
+{
+  "request": {
+    "model": "gemma4:31b-it-qat-google-official",
+    "stream": false,
+    "think": false,
+    "messages": [
+      {
+        "role": "system",
+        "content": "You translate short Icelandic texts written by members of the public into plain English. Translate faithfully; add nothing and leave nothing out. Keep place names in Icelandic. Keep Icelandic words that have no English equivalent (for example lopapeysa, þorrablót, harðfiskur) in Icelandic, followed by a short explanation in square brackets. Do not correct, praise, or comment. Output only the English text."
+      },
+      {
+        "role": "user",
+        "content": "Mjög fallegur, flottur, vinsamlegur bær þar sem alltaf er hægt að finna sér eitthvað að gera. Þangað hef ég farið hvert einasta sumar, og flesta páska, að hitta ömmu og afa."
+      }
+    ],
+    "options": {
+      "temperature": 0.2,
+      "num_ctx": 4096,
+      "seed": 1010
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "gemma4:31b-it-qat-google-official",
+    "created_at": "2026-10-05T00:36:14.638633Z",
+    "message": {
+      "role": "assistant",
+      "content": "Very beautiful, great, friendly town where there is always something to do. I have gone there every single summer, and most Easter holidays, to visit grandma and grandpa."
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 2082120791,
+    "load_duration": 17311458,
+    "prompt_eval_count": 166,
+    "prompt_eval_cached_count": 0,
+    "prompt_eval_duration": 723414000,
+    "eval_count": 35,
+    "eval_duration": 1339867000
+  },
+  "latency_ms": 2082
+}

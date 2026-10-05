@@ -1,0 +1,559 @@
+{
+  "unit": 128,
+  "hits": 105,
+  "misses": 23,
+  "hit_rate": 0.8203125,
+  "per_category": {
+    "matur": {
+      "truth_count": 37,
+      "hits": 26,
+      "hit_rate": 0.7027027027027027
+    },
+    "nattura": {
+      "truth_count": 30,
+      "hits": 30,
+      "hit_rate": 1
+    },
+    "samfelag": {
+      "truth_count": 29,
+      "hits": 23,
+      "hit_rate": 0.7931034482758621
+    },
+    "sidir": {
+      "truth_count": 21,
+      "hits": 18,
+      "hit_rate": 0.8571428571428571
+    },
+    "hugarfar": {
+      "truth_count": 14,
+      "hits": 12,
+      "hit_rate": 0.8571428571428571
+    },
+    "tunga": {
+      "truth_count": 17,
+      "hits": 17,
+      "hit_rate": 1
+    },
+    "vedur": {
+      "truth_count": 7,
+      "hits": 6,
+      "hit_rate": 0.8571428571428571
+    },
+    "annad": {
+      "truth_count": 2,
+      "hits": 1,
+      "hit_rate": 0.5
+    }
+  },
+  "single_category": {
+    "n": 100,
+    "kappa": 0.7392438070404173,
+    "po": 0.78,
+    "pe": 0.1563,
+    "confusion": {
+      "matur": {
+        "matur": 15,
+        "nattura": 5,
+        "samfelag": 0,
+        "sidir": 2,
+        "hugarfar": 0,
+        "tunga": 2,
+        "vedur": 1,
+        "annad": 0
+      },
+      "nattura": {
+        "matur": 0,
+        "nattura": 19,
+        "samfelag": 0,
+        "sidir": 0,
+        "hugarfar": 0,
+        "tunga": 0,
+        "vedur": 0,
+        "annad": 0
+      },
+      "samfelag": {
+        "matur": 0,
+        "nattura": 1,
+        "samfelag": 13,
+        "sidir": 0,
+        "hugarfar": 0,
+        "tunga": 2,
+        "vedur": 0,
+        "annad": 2
+      },
+      "sidir": {
+        "matur": 0,
+        "nattura": 0,
+        "samfelag": 0,
+        "sidir": 9,
+        "hugarfar": 0,
+        "tunga": 1,
+        "vedur": 0,
+        "annad": 2
+      },
+      "hugarfar": {
+        "matur": 0,
+        "nattura": 1,
+        "samfelag": 0,
+        "sidir": 0,
+        "hugarfar": 6,
+        "tunga": 1,
+        "vedur": 0,
+        "annad": 0
+      },
+      "tunga": {
+        "matur": 0,
+        "nattura": 0,
+        "samfelag": 0,
+        "sidir": 0,
+        "hugarfar": 0,
+        "tunga": 12,
+        "vedur": 0,
+        "annad": 0
+      },
+      "vedur": {
+        "matur": 0,
+        "nattura": 1,
+        "samfelag": 0,
+        "sidir": 0,
+        "hugarfar": 0,
+        "tunga": 0,
+        "vedur": 3,
+        "annad": 0
+      },
+      "annad": {
+        "matur": 0,
+        "nattura": 1,
+        "samfelag": 0,
+        "sidir": 0,
+        "hugarfar": 0,
+        "tunga": 0,
+        "vedur": 0,
+        "annad": 1
+      }
+    }
+  },
+  "confidence": {
+    "mean_on_hits": 0.500062596009916,
+    "mean_on_misses": 0.21907346200239933,
+    "n_hits": 105,
+    "n_misses": 23
+  },
+  "miss_list": [
+    {
+      "answer": "slátur",
+      "truth": [
+        "matur"
+      ],
+      "pred": "tunga",
+      "confidence": 0.06329783261549915,
+      "probabilities": {
+        "annad": 0.13643744562462293,
+        "hugarfar": 0.06634695670659584,
+        "matur": 0.18907579841684904,
+        "nattura": 0.11402591134522017,
+        "samfelag": 0.08591370258846664,
+        "sidir": 0.1663468278104246,
+        "tunga": 0.2165677957218645,
+        "vedur": 0.025285561785956392
+      }
+    },
+    {
+      "answer": "Hrútspungar",
+      "truth": [
+        "matur"
+      ],
+      "pred": "nattura",
+      "confidence": 0.11391699500669805,
+      "probabilities": {
+        "annad": 0.1166469559540845,
+        "hugarfar": 0.05162010156298396,
+        "matur": 0.10536953274156394,
+        "nattura": 0.2993785883869977,
+        "samfelag": 0.06114066220034989,
+        "sidir": 0.20317274384778422,
+        "tunga": 0.14738793519514018,
+        "vedur": 0.01528348011109552
+      }
+    },
+    {
+      "answer": "Hákarl",
+      "truth": [
+        "matur"
+      ],
+      "pred": "nattura",
+      "confidence": 0.53625861910279,
+      "probabilities": {
+        "annad": 0.04712004595986725,
+        "hugarfar": 0.035503559435441735,
+        "matur": 0.017639891752139883,
+        "nattura": 0.7702690812025856,
+        "samfelag": 0.048266122420549236,
+        "sidir": 0.024578130419240094,
+        "tunga": 0.04433914501885636,
+        "vedur": 0.01228402379131986
+      }
+    },
+    {
+      "answer": "Sviðakjammi",
+      "truth": [
+        "matur"
+      ],
+      "pred": "tunga",
+      "confidence": 0.0721613343554196,
+      "probabilities": {
+        "annad": 0.18727254022537188,
+        "hugarfar": 0.05428915158644573,
+        "matur": 0.11644992399789,
+        "nattura": 0.11689456855187869,
+        "samfelag": 0.07690576868680273,
+        "sidir": 0.18047985598130728,
+        "tunga": 0.23614514883202403,
+        "vedur": 0.031563042138279755
+      }
+    },
+    {
+      "answer": "Þorrablót",
+      "truth": [
+        "matur"
+      ],
+      "pred": "sidir",
+      "confidence": 0.2509377832923346,
+      "probabilities": {
+        "annad": 0.04110759036847304,
+        "hugarfar": 0.04193745805007209,
+        "matur": 0.16951357695048072,
+        "nattura": 0.04760767077700074,
+        "samfelag": 0.050204162522660335,
+        "sidir": 0.49822778296557513,
+        "tunga": 0.1284080837875304,
+        "vedur": 0.022993674578207505
+      }
+    },
+    {
+      "answer": "Þorramatur og þjóðhátíðardagurinn",
+      "truth": [
+        "matur",
+        "samfelag"
+      ],
+      "pred": "sidir",
+      "confidence": 0.2934205025543867,
+      "probabilities": {
+        "annad": 0.027303926977246037,
+        "hugarfar": 0.021496138993450507,
+        "matur": 0.2265288440233843,
+        "nattura": 0.02006471377146878,
+        "samfelag": 0.12044943774449882,
+        "sidir": 0.4793376338773452,
+        "tunga": 0.09619512601222273,
+        "vedur": 0.008624178600383791
+      }
+    },
+    {
+      "answer": "Harðfiskur",
+      "truth": [
+        "matur"
+      ],
+      "pred": "nattura",
+      "confidence": 0.18247505620454674,
+      "probabilities": {
+        "annad": 0.0812131360170966,
+        "hugarfar": 0.09747403865745306,
+        "matur": 0.2602528186931554,
+        "nattura": 0.37896537778309697,
+        "samfelag": 0.04851714698534697,
+        "sidir": 0.04837918262001734,
+        "tunga": 0.06384960675451218,
+        "vedur": 0.021348692489321457
+      }
+    },
+    {
+      "answer": "Ís að vetri",
+      "truth": [
+        "matur"
+      ],
+      "pred": "vedur",
+      "confidence": 0.42717703679886376,
+      "probabilities": {
+        "annad": 0.058397998072793854,
+        "hugarfar": 0.033319207718545636,
+        "matur": 0.0057622965599838805,
+        "nattura": 0.27143766879761516,
+        "samfelag": 0.019909957894135712,
+        "sidir": 0.011085140972947482,
+        "tunga": 0.021877412420330818,
+        "vedur": 0.5782103175636474
+      }
+    },
+    {
+      "answer": "Ís í fárviðri",
+      "truth": [
+        "matur"
+      ],
+      "pred": "nattura",
+      "confidence": 0.2246345011515265,
+      "probabilities": {
+        "annad": 0.05819781136053044,
+        "hugarfar": 0.06897883948904765,
+        "matur": 0.03529526029361054,
+        "nattura": 0.3611704455194864,
+        "samfelag": 0.037162086459976006,
+        "sidir": 0.02954092903000857,
+        "tunga": 0.06825202366812246,
+        "vedur": 0.3414026041792181
+      }
+    },
+    {
+      "answer": "Ísbíltúrar á veturna",
+      "truth": [
+        "matur"
+      ],
+      "pred": "nattura",
+      "confidence": 0.18960295897097035,
+      "probabilities": {
+        "annad": 0.17174893012923662,
+        "hugarfar": 0.06202611012884547,
+        "matur": 0.026308097346511992,
+        "nattura": 0.4318668735664252,
+        "samfelag": 0.05285621851281423,
+        "sidir": 0.12463388276633484,
+        "tunga": 0.030595631834430044,
+        "vedur": 0.09996425571540161
+      }
+    },
+    {
+      "answer": "Prins póló",
+      "truth": [
+        "matur"
+      ],
+      "pred": "sidir",
+      "confidence": 0.08647131471022107,
+      "probabilities": {
+        "annad": 0.20755284666591536,
+        "hugarfar": 0.06372719855046591,
+        "matur": 0.19223005778215257,
+        "nattura": 0.08916764006864984,
+        "samfelag": 0.06853199695767008,
+        "sidir": 0.23221081540781918,
+        "tunga": 0.12509575583635482,
+        "vedur": 0.02148368873097227
+      }
+    },
+    {
+      "answer": "Ættjarðarást",
+      "truth": [
+        "samfelag"
+      ],
+      "pred": "tunga",
+      "confidence": 0.11351927036201648,
+      "probabilities": {
+        "annad": 0.14866024376620143,
+        "hugarfar": 0.13014638257244407,
+        "matur": 0.01912529528539012,
+        "nattura": 0.24005977316603472,
+        "samfelag": 0.08101020236321209,
+        "sidir": 0.07482614011261111,
+        "tunga": 0.2673297059035779,
+        "vedur": 0.03884225683052845
+      }
+    },
+    {
+      "answer": "Hjörð",
+      "truth": [
+        "samfelag"
+      ],
+      "pred": "nattura",
+      "confidence": 0.14431200194308214,
+      "probabilities": {
+        "annad": 0.09004357975051812,
+        "hugarfar": 0.0736927781516816,
+        "matur": 0.021939112507341617,
+        "nattura": 0.2689225832518524,
+        "samfelag": 0.2232007694924946,
+        "sidir": 0.06696357868555883,
+        "tunga": 0.23565118320188527,
+        "vedur": 0.019586414958667656
+      }
+    },
+    {
+      "answer": "Þessi rödd sem við höfum, skoðanapistlar, okkur finnst við geta lagt að mörkum í umræðu um landsmál",
+      "truth": [
+        "samfelag"
+      ],
+      "pred": "tunga",
+      "confidence": 0.6653140173915684,
+      "probabilities": {
+        "annad": 0.0486889080906777,
+        "hugarfar": 0.02503735199198129,
+        "matur": 0.0026833668032983553,
+        "nattura": 0.01298931394190646,
+        "samfelag": 0.0616066919989044,
+        "sidir": 0.009381702344555534,
+        "tunga": 0.8362533294079648,
+        "vedur": 0.0033593354207114242
+      }
+    },
+    {
+      "answer": "Dýrt en fallegt",
+      "truth": [
+        "samfelag"
+      ],
+      "pred": "annad",
+      "confidence": 0.22547687302971053,
+      "probabilities": {
+        "annad": 0.43664938017810034,
+        "hugarfar": 0.13452577532579613,
+        "matur": 0.01235420794487165,
+        "nattura": 0.17180624857238275,
+        "samfelag": 0.13750869741354,
+        "sidir": 0.03347030509960279,
+        "tunga": 0.05345918375149167,
+        "vedur": 0.020226201714214586
+      }
+    },
+    {
+      "answer": "tuðandi hamingjusöm",
+      "truth": [
+        "samfelag"
+      ],
+      "pred": "annad",
+      "confidence": 0.15981819637865047,
+      "probabilities": {
+        "annad": 0.37391007896011336,
+        "hugarfar": 0.18486927468568914,
+        "matur": 0.018253803905732658,
+        "nattura": 0.09672427940927425,
+        "samfelag": 0.1545410991128227,
+        "sidir": 0.04222953762811871,
+        "tunga": 0.0878675877572042,
+        "vedur": 0.04160433854104496
+      }
+    },
+    {
+      "answer": "ularpeisa",
+      "truth": [
+        "sidir"
+      ],
+      "pred": "annad",
+      "confidence": 0.08204396577068307,
+      "probabilities": {
+        "annad": 0.2786282843066649,
+        "hugarfar": 0.07422913590161288,
+        "matur": 0.07173553502331438,
+        "nattura": 0.17925776559649734,
+        "samfelag": 0.0901911608745261,
+        "sidir": 0.09218537031313817,
+        "tunga": 0.17831762056822753,
+        "vedur": 0.03545512741601861
+      }
+    },
+    {
+      "answer": "Hefðir",
+      "truth": [
+        "sidir"
+      ],
+      "pred": "tunga",
+      "confidence": 0.16084072161900664,
+      "probabilities": {
+        "annad": 0.2111988221556806,
+        "hugarfar": 0.08170045086119478,
+        "matur": 0.026542305459077358,
+        "nattura": 0.06073759934258543,
+        "samfelag": 0.0540057791198486,
+        "sidir": 0.1957446078013799,
+        "tunga": 0.34145134222337653,
+        "vedur": 0.028619093036856804
+      }
+    },
+    {
+      "answer": "Facebook og AirForce skór",
+      "truth": [
+        "sidir"
+      ],
+      "pred": "annad",
+      "confidence": 0.2123032921546445,
+      "probabilities": {
+        "annad": 0.44993224480538946,
+        "hugarfar": 0.060005922279861984,
+        "matur": 0.026196127365031574,
+        "nattura": 0.047041302809379515,
+        "samfelag": 0.13916925031792773,
+        "sidir": 0.13566558275865648,
+        "tunga": 0.1269425576281271,
+        "vedur": 0.015047012035626162
+      }
+    },
+    {
+      "answer": "Dugur",
+      "truth": [
+        "hugarfar"
+      ],
+      "pred": "nattura",
+      "confidence": 0.11843508005889436,
+      "probabilities": {
+        "annad": 0.08565885662399429,
+        "hugarfar": 0.07466568639868298,
+        "matur": 0.059516336003984247,
+        "nattura": 0.32119247810110635,
+        "samfelag": 0.06840876699254583,
+        "sidir": 0.07404933318706577,
+        "tunga": 0.254999200335849,
+        "vedur": 0.061509342356771565
+      }
+    },
+    {
+      "answer": "Seigla",
+      "truth": [
+        "hugarfar"
+      ],
+      "pred": "tunga",
+      "confidence": 0.11480803311263788,
+      "probabilities": {
+        "annad": 0.0822548689288502,
+        "hugarfar": 0.24786485660129695,
+        "matur": 0.022367989796527134,
+        "nattura": 0.1889847010701634,
+        "samfelag": 0.09408845496841928,
+        "sidir": 0.0633462845656221,
+        "tunga": 0.2537115423871193,
+        "vedur": 0.04738130168200155
+      }
+    },
+    {
+      "answer": "Lykt af grænu grasi á sumrin og kaldar rauðar kynnar eftir að inn er komið að vetri",
+      "truth": [
+        "vedur"
+      ],
+      "pred": "nattura",
+      "confidence": 0.37855737912064735,
+      "probabilities": {
+        "annad": 0.0639474718081396,
+        "hugarfar": 0.02419494887687354,
+        "matur": 0.01022984601095754,
+        "nattura": 0.5173814011291279,
+        "samfelag": 0.03714426135035165,
+        "sidir": 0.024193420265950418,
+        "tunga": 0.015166800055527688,
+        "vedur": 0.30774185050307173
+      }
+    },
+    {
+      "answer": "Grasystingur",
+      "truth": [
+        "annad"
+      ],
+      "pred": "nattura",
+      "confidence": 0.22290686035038565,
+      "probabilities": {
+        "annad": 0.06891106798964987,
+        "hugarfar": 0.06235285049711481,
+        "matur": 0.03165030119732863,
+        "nattura": 0.481285324330464,
+        "samfelag": 0.07177757314252005,
+        "sidir": 0.1259676173307006,
+        "tunga": 0.14022904322105048,
+        "vedur": 0.01782622229117171
+      }
+    }
+  ]
+}

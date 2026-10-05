@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Vestmannaeyjar eru heimahöfnin mín. Hér finn ég friðsæld, frelsi og sterka tilfinningu fyrir því að tilheyra. Stórbrotið landslagið, hafið og nálægðin við náttúruna gefa mér ró og rými. En það sem gerir Eyjarnar einstakar er fólkið – samkenndin, samstaðan og sterka samfélagið. Hér er einfaldlega heima.“\nEnglish gloss: “Vestmannaeyjar are my home port. Here I find peace, freedom, and a strong sense of belonging. The magnificent landscape, the ocean, and the proximity to nature give me calm and space. But what makes the Islands unique is the people – the empathy, the solidarity, and the strong community. Here is simply home.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.8275384017658143
+      }
+    },
+    "usage": {
+      "input_tokens": 337,
+      "output_tokens": 0
+    }
+  }
+}

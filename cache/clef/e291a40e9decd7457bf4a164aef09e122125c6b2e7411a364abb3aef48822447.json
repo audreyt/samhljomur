@@ -1,0 +1,43 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Uppáhaldsstaður þátttakanda á Íslandi (talasaman.is/stadir).\nStaður: Seyðisfjörður, Seyðisfjörður\nÁstæða, orðrétt: „Samfélag einstaklinga sem kunna að vera einstakir saman. Samfélag sem fagnar fjölbreytileika. Þessi fjörður er líka einstakur. Heilagur staður. Friðsældin hjúpar og tengingin við náttúruna er djúp. Tenging við ræturnar.“",
+    "questions": {
+      "excerpt": {
+        "type": "choice",
+        "instructions": "Which single sentence of the reason is the most beautiful to sing, word for word?",
+        "criteria": {
+          "s1": "Samfélag einstaklinga sem kunna að vera einstakir saman.",
+          "s2": "Samfélag sem fagnar fjölbreytileika.",
+          "s3": "Þessi fjörður er líka einstakur.",
+          "s4": "Heilagur staður.",
+          "s5": "Friðsældin hjúpar og tengingin við náttúruna er djúp.",
+          "s6": "Tenging við ræturnar."
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "excerpt": {
+        "type": "choice",
+        "choice": "s5",
+        "probabilities": {
+          "s1": 0.044633187087696584,
+          "s2": 0.03170632867186246,
+          "s3": 0.04082425848742044,
+          "s4": 0.060967198120782364,
+          "s5": 0.8097468846499577,
+          "s6": 0.012122142982280417
+        },
+        "confidence": 0.568187105324909
+      }
+    },
+    "usage": {
+      "input_tokens": 404,
+      "output_tokens": 0
+    }
+  }
+}

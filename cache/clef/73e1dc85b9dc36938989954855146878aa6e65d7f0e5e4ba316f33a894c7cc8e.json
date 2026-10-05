@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Lykt af grænu grasi á sumrin og kaldar rauðar kynnar eftir að inn er komið að vetri“\nEnglish gloss: “Smell of green grass in the summers and cold red berries after winter has arrived”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.5048635632613153
+      }
+    },
+    "usage": {
+      "input_tokens": 200,
+      "output_tokens": 0
+    }
+  }
+}

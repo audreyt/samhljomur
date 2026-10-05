@@ -1,0 +1,55 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Orð sem þátttakendur völdu undir „Hvað viltu tala um?“ á talasaman.is: fjölmiðla",
+    "questions": {
+      "topic_theme": {
+        "type": "choice",
+        "instructions": "Which theme does this topic word belong to?",
+        "criteria": {
+          "education": "schools, preschools, education",
+          "future": "the future, hopes",
+          "technology": "AI, technology, innovation",
+          "communication": "communication, social media, media, misinformation, phone manners",
+          "democracy": "democracy, trust, corruption, governance, politics",
+          "nature": "nature, environment",
+          "health": "health care, ageing, wellbeing, addiction",
+          "economy": "money, housing, transport, traffic, fees, fishing quota, food industry",
+          "equality": "equality, gender, racism, immigration, prejudice, LGBTQ, tolerance, respect",
+          "culture": "language, culture, arts, music, coffee",
+          "youth": "youth work, youth movements",
+          "mindset": "optimism, joy, courage, purpose, open-mindedness, creativity"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "topic_theme": {
+        "type": "choice",
+        "choice": "communication",
+        "probabilities": {
+          "communication": 0.8149381243197104,
+          "culture": 0.023222252281637004,
+          "democracy": 0.031754877048778024,
+          "economy": 0.007978792772856718,
+          "education": 0.011403056189762993,
+          "equality": 0.01156518029899043,
+          "future": 0.010062026988693544,
+          "health": 0.006767441433220261,
+          "mindset": 0.006707223059186064,
+          "nature": 0.010296015273181604,
+          "technology": 0.055944976658532666,
+          "youth": 0.009360033675450258
+        },
+        "confidence": 0.6496321874396023
+      }
+    },
+    "usage": {
+      "input_tokens": 426,
+      "output_tokens": 0
+    }
+  }
+}

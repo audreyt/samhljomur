@@ -1,0 +1,31 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „blóðberg“\nEnglish gloss: “Blóðberg [a mountain or hill with a name meaning \"blood mountain\" in Icelandic]”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.7081004936566169
+      }
+    },
+    "usage": {
+      "input_tokens": 178,
+      "output_tokens": 0
+    }
+  },
+  "latency_ms": 438
+}

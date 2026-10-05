@@ -1,0 +1,25 @@
+{
+  "name": "samhljomur",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "judge": "bun run src/cli.ts judge",
+    "arrange": "bun run src/cli.ts arrange",
+    "build": "bun run src/cli.ts build",
+    "music": "bun run src/cli.ts music",
+    "align": "bun run src/cli.ts align",
+    "site": "bun run src/cli.ts site",
+    "verify": "bun run src/cli.ts verify",
+    "rerun": "bun run src/cli.ts rerun",
+    "smoke": "bun run src/cli.ts smoke"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/topojson-client": "^3.1.5",
+    "playwright": "^1.63.0",
+    "topojson-client": "^3.1.0",
+    "typescript": "^5.6.0",
+    "world-atlas": "^2.0.2"
+  }
+}

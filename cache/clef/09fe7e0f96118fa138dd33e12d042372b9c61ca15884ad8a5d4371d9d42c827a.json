@@ -1,0 +1,35 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Uppáhaldsstaður þátttakanda á Íslandi (talasaman.is/stadir).\nStaður: Egilsstaðir, Múlaþing\nÁstæða, orðrétt: „Mér finnst Egilsstaðir vera uppáhaldsstaðurinn minn vegna þess að það er fallegt og rólegt hér. Ég elska náttúruna og mér líður vel þegar ég er hér“",
+    "questions": {
+      "excerpt": {
+        "type": "choice",
+        "instructions": "Which single sentence of the reason is the most beautiful to sing, word for word?",
+        "criteria": {
+          "s1": "Mér finnst Egilsstaðir vera uppáhaldsstaðurinn minn vegna þess að það er fallegt og rólegt hér.",
+          "s2": "Ég elska náttúruna og mér líður vel þegar ég er hér"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "excerpt": {
+        "type": "choice",
+        "choice": "s2",
+        "probabilities": {
+          "s1": 0.23402250137291333,
+          "s2": 0.7659774986270866
+        },
+        "confidence": 0.2150422113567646
+      }
+    },
+    "usage": {
+      "input_tokens": 293,
+      "output_tokens": 0
+    }
+  }
+}

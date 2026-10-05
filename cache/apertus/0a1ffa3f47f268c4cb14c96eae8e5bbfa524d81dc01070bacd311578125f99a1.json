@@ -1,0 +1,46 @@
+{
+  "request": {
+    "model": "/Users/au/Models/Apertus-v1.5-8B-text-MLX-8bit",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You translate short Icelandic texts written by members of the public into plain English. Translate faithfully; add nothing and leave nothing out. Keep place names in Icelandic. Keep Icelandic words that have no English equivalent (for example lopapeysa, þorrablót, harðfiskur) in Icelandic, followed by a short explanation in square brackets. Do not correct, praise, or comment. Output only the English text."
+      },
+      {
+        "role": "user",
+        "content": "Translate literally: Grábrók, mikið hlegið af nafninu og fyrsta stopp þegar fjölskyldan lagði af stað í hringferð um landið þar sem hver staður var öðrum fallegri, fossar, vötn og lækir, íslensku jurtirnar okkar, bláber, krækiber og hundasúrur um allt land, ferskt og ískalt vatn og heitt vatn, náttúrulaugar og fallegir baðstaðir út um allt land, ferskt loft, vera með fjölskyldunni í undurfagri náttúru út um allt land, kyrðin, góður matur og ........"
+      }
+    ],
+    "temperature": 0,
+    "max_tokens": 400,
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    }
+  },
+  "response": {
+    "id": "chatcmpl-5ae6bf32-778b-4c5d-b38f-106167fd8818",
+    "system_fingerprint": "0.32.1.dev7+g5bc45adb8-0.32.3-macOS-27.0.1-arm64-arm-64bit-applegpu_g17s",
+    "object": "chat.completion",
+    "model": "/Users/au/Models/Apertus-v1.5-8B-text-MLX-8bit",
+    "created": 1791183551,
+    "choices": [
+      {
+        "index": 0,
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "Grábrók, a name that evokes great joy, and the first stop when the family set off on a journey around the country where each place was more beautiful than the last, with waterfalls, lakes, and streams, our Icelandic plants, blueberries, crowberries, and bilberries throughout the land, fresh and icy water and hot water, natural hot springs and beautiful bathing places throughout the country, fresh air, being with the family in wonderful nature throughout the country, peace, good food and......"
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 281,
+      "completion_tokens": 105,
+      "total_tokens": 386,
+      "prompt_tokens_details": {
+        "cached_tokens": 111
+      }
+    }
+  },
+  "latency_ms": 1863
+}

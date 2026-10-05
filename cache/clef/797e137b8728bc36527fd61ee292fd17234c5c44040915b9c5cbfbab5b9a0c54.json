@@ -1,0 +1,31 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Á toppinum á hvanadalshnúk er hæsti púntur landsins og er með því glæsinlega útsýni yfir allt sem við ístlendingar höfum gert“\nEnglish gloss: “At the top of Hvanadalshnúkur is the highest point in the country, offering a clear view over everything we Icelanders have done.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.5578812998261057
+      }
+    },
+    "usage": {
+      "input_tokens": 228,
+      "output_tokens": 0
+    }
+  },
+  "latency_ms": 437
+}

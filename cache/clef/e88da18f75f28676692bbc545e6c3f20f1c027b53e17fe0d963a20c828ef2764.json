@@ -1,0 +1,31 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Býður upp á hæfilega krefjandi göngu í dásamlegri, fallegri og kyrrlátri náttúru. Þarna hef ég gengið síðan ég var barn og á góðar mnningar bæði úr fjallinu og dalnum sem nefnist Böggvisstaðardalur því hann er þeim megin árinnar. (Brimnesá) Fjallið er einstaklega fallegt á haustin því þá skartar það öllum fegurstu haustlitunum þar sem fjallið er þakið berjalyngi.“\nEnglish gloss: “It offers a suitably challenging walk in beautiful, lovely, and peaceful nature. I have been walking there since I was a child, and it has good memories both from the mountain and the valley called Böggvisstaðardalur, as it is on that side of the river (Brimnesá). The mountain is particularly beautiful in autumn, when it is adorned with all the most beautiful autumn colors, as the mountain is covered with heather.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.5828558661265894
+      }
+    },
+    "usage": {
+      "input_tokens": 382,
+      "output_tokens": 0
+    }
+  },
+  "latency_ms": 742
+}

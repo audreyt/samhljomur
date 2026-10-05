@@ -1,0 +1,35 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Uppáhaldsstaður þátttakanda á Íslandi (talasaman.is/stadir).\nStaður: Húsavík, Norðurþing\nÁstæða, orðrétt: „Heimabærinn minn, mér finnst fólkið í bænum skemmtilegt og yndislegt fólk. Við erum með duglegt og kraftmikið íþróttafólk, listrænt og hæfileikaríkt leiklistar fólk, sterka og vinnusama iðnaðarmenn og margt fleira sem heldur bænum uppi og ýtir okkur áfram að betra samfélagi.“",
+    "questions": {
+      "excerpt": {
+        "type": "choice",
+        "instructions": "Which single sentence of the reason is the most beautiful to sing, word for word?",
+        "criteria": {
+          "s1": "Heimabærinn minn, mér finnst fólkið í bænum skemmtilegt og yndislegt fólk.",
+          "s2": "Við erum með duglegt og kraftmikið íþróttafólk, listrænt og hæfileikaríkt leiklistar fólk, sterka og vinnusama iðnaðarmenn og margt fleira sem heldur bænum uppi og ýtir okkur áfram að betra samfélagi."
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "excerpt": {
+        "type": "choice",
+        "choice": "s2",
+        "probabilities": {
+          "s1": 0.4688072360950611,
+          "s2": 0.5311927639049389
+        },
+        "confidence": 0.002809275344994977
+      }
+    },
+    "usage": {
+      "input_tokens": 405,
+      "output_tokens": 0
+    }
+  }
+}

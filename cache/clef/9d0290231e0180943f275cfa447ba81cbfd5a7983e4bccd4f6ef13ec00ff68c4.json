@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Mjög fallegur, flottur, vinsamlegur bær þar sem alltaf er hægt að finna sér eitthvað að gera. Þangað hef ég farið hvert einasta sumar, og flesta páska, að hitta ömmu og afa.“\nEnglish gloss: “Very beautiful, great, friendly town where there is always something to do. I have gone there every single summer, and most Easter holidays, to visit grandma and grandpa.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.8620384193365198
+      }
+    },
+    "usage": {
+      "input_tokens": 251,
+      "output_tokens": 0
+    }
+  }
+}

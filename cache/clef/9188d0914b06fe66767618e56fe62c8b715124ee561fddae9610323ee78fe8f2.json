@@ -1,0 +1,35 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Uppáhaldsstaður þátttakanda á Íslandi (talasaman.is/stadir).\nStaður: Hraunbær, Reykjavík\nÁstæða, orðrétt: „Ég væri ekki sá sami án skátafélagsins Árbúa sem er á staðnum og allra vinanna sem ég hef eignast þar. Einnig er Elliðaárdalur þar, sem er einn fallegasti staður höfuðborgarsvæðisins.“",
+    "questions": {
+      "excerpt": {
+        "type": "choice",
+        "instructions": "Which single sentence of the reason is the most beautiful to sing, word for word?",
+        "criteria": {
+          "s1": "Ég væri ekki sá sami án skátafélagsins Árbúa sem er á staðnum og allra vinanna sem ég hef eignast þar.",
+          "s2": "Einnig er Elliðaárdalur þar, sem er einn fallegasti staður höfuðborgarsvæðisins."
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "excerpt": {
+        "type": "choice",
+        "choice": "s2",
+        "probabilities": {
+          "s1": 0.10721747222686873,
+          "s2": 0.8927825277731314
+        },
+        "confidence": 0.5085344605384863
+      }
+    },
+    "usage": {
+      "input_tokens": 322,
+      "output_tokens": 0
+    }
+  }
+}

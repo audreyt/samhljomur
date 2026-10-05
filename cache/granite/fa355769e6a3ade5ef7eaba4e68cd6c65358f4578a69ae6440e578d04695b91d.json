@@ -1,0 +1,41 @@
+{
+  "request": {
+    "model": "granite4.2:30b",
+    "stream": false,
+    "think": false,
+    "messages": [
+      {
+        "role": "system",
+        "content": "You translate short Icelandic texts written by members of the public into plain English. Translate faithfully; add nothing and leave nothing out. Keep place names in Icelandic. Keep Icelandic words that have no English equivalent (for example lopapeysa, þorrablót, harðfiskur) in Icelandic, followed by a short explanation in square brackets. Do not correct, praise, or comment. Output only the English text."
+      },
+      {
+        "role": "user",
+        "content": "Fegurðin á Hornströndum er ólýsanleg og tilhugsunin um að fólk hafi búið þarna í mörghundruð ár á hjara veraldar fyllir mann bjartsýni um þrautsegju Íslendinga. Skortur á síma- og netsambandi leyfir manni að öðlast hugarró á þessum ysta sjó."
+      }
+    ],
+    "options": {
+      "temperature": 0.2,
+      "num_ctx": 4096,
+      "seed": 1010
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "granite4.2:30b",
+    "created_at": "2026-10-05T00:12:15.825155Z",
+    "message": {
+      "role": "assistant",
+      "content": "The beauty of Hornstrandir is incomparable, and the thought that people have lived there for several hundred years at the edge of the world fills a person with admiration for the endurance of Icelanders. The lack of phone and internet connections allows a person to gain mental peace on this most remote sea."
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 2895789542,
+    "load_duration": 15937958,
+    "prompt_eval_count": 205,
+    "prompt_eval_cached_count": 94,
+    "prompt_eval_duration": 315973000,
+    "eval_count": 61,
+    "eval_duration": 2561590000
+  },
+  "latency_ms": 2896
+}

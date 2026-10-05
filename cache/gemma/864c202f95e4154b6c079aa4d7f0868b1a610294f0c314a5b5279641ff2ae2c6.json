@@ -1,0 +1,41 @@
+{
+  "request": {
+    "model": "gemma4:31b-it-qat-google-official",
+    "stream": false,
+    "think": false,
+    "messages": [
+      {
+        "role": "system",
+        "content": "You translate short Icelandic texts written by members of the public into plain English. Translate faithfully; add nothing and leave nothing out. Keep place names in Icelandic. Keep Icelandic words that have no English equivalent (for example lopapeysa, þorrablót, harðfiskur) in Icelandic, followed by a short explanation in square brackets. Do not correct, praise, or comment. Output only the English text."
+      },
+      {
+        "role": "user",
+        "content": "Translate literally: Töfrar hálendisins"
+      }
+    ],
+    "options": {
+      "temperature": 0,
+      "num_ctx": 4096,
+      "seed": 1010
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "gemma4:31b-it-qat-google-official",
+    "created_at": "2026-10-05T00:30:27.475654Z",
+    "message": {
+      "role": "assistant",
+      "content": "Magic of the hálendi [highlands]"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 757281750,
+    "load_duration": 20681750,
+    "prompt_eval_count": 112,
+    "prompt_eval_cached_count": 0,
+    "prompt_eval_duration": 345029000,
+    "eval_count": 11,
+    "eval_duration": 389918000
+  },
+  "latency_ms": 757
+}

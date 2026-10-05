@@ -1,0 +1,41 @@
+{
+  "request": {
+    "model": "granite4.2:30b",
+    "stream": false,
+    "think": false,
+    "messages": [
+      {
+        "role": "system",
+        "content": "You translate short Icelandic texts written by members of the public into plain English. Translate faithfully; add nothing and leave nothing out. Keep place names in Icelandic. Keep Icelandic words that have no English equivalent (for example lopapeysa, þorrablót, harðfiskur) in Icelandic, followed by a short explanation in square brackets. Do not correct, praise, or comment. Output only the English text."
+      },
+      {
+        "role": "user",
+        "content": "Þorrablót"
+      }
+    ],
+    "options": {
+      "temperature": 0.2,
+      "num_ctx": 4096,
+      "seed": 1010
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "granite4.2:30b",
+    "created_at": "2026-10-04T23:59:57.874049Z",
+    "message": {
+      "role": "assistant",
+      "content": "Þorrablót [a traditional Icelandic feast held in mid-February, featuring traditional foods such as fermented shark, lamb, and blood sausage]"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 1646471541,
+    "load_duration": 16342666,
+    "prompt_eval_count": 106,
+    "prompt_eval_cached_count": 94,
+    "prompt_eval_duration": 314190000,
+    "eval_count": 31,
+    "eval_duration": 1313713000
+  },
+  "latency_ms": 1647
+}

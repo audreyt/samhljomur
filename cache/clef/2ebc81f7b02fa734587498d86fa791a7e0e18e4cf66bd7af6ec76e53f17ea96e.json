@@ -1,0 +1,55 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Orð sem þátttakendur völdu undir „Hvað viltu tala um?“ á talasaman.is: menntun",
+    "questions": {
+      "topic_theme": {
+        "type": "choice",
+        "instructions": "Which theme does this topic word belong to?",
+        "criteria": {
+          "education": "schools, preschools, education",
+          "future": "the future, hopes",
+          "technology": "AI, technology, innovation",
+          "communication": "communication, social media, media, misinformation, phone manners",
+          "democracy": "democracy, trust, corruption, governance, politics",
+          "nature": "nature, environment",
+          "health": "health care, ageing, wellbeing, addiction",
+          "economy": "money, housing, transport, traffic, fees, fishing quota, food industry",
+          "equality": "equality, gender, racism, immigration, prejudice, LGBTQ, tolerance, respect",
+          "culture": "language, culture, arts, music, coffee",
+          "youth": "youth work, youth movements",
+          "mindset": "optimism, joy, courage, purpose, open-mindedness, creativity"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "topic_theme": {
+        "type": "choice",
+        "choice": "education",
+        "probabilities": {
+          "communication": 0.005007777212873316,
+          "culture": 0.005551227161369466,
+          "democracy": 0.005508855870505631,
+          "economy": 0.0030098149437069663,
+          "education": 0.9431535027839913,
+          "equality": 0.004992308495220525,
+          "future": 0.008112237538836421,
+          "health": 0.0029280284997110616,
+          "mindset": 0.0030934713418237086,
+          "nature": 0.0030878446019034136,
+          "technology": 0.0096624116103764,
+          "youth": 0.005892519939681757
+        },
+        "confidence": 0.8591157618253757
+      }
+    },
+    "usage": {
+      "input_tokens": 424,
+      "output_tokens": 0
+    }
+  }
+}

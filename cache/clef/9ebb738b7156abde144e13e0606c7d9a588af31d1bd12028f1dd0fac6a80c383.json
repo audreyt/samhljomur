@@ -1,0 +1,35 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Uppáhaldsstaður þátttakanda á Íslandi (talasaman.is/stadir).\nStaður: Laugaskóli, Laugar\nÁstæða, orðrétt: „Ég varð meira ég sjálf og fann vinni sem ég vill hafa með mér restina af lífinu mínu. Svo lærði ég að taka ábyrgð af lærdómnum mínum sem telst í margt annað í líf mínu.“",
+    "questions": {
+      "excerpt": {
+        "type": "choice",
+        "instructions": "Which single sentence of the reason is the most beautiful to sing, word for word?",
+        "criteria": {
+          "s1": "Ég varð meira ég sjálf og fann vinni sem ég vill hafa með mér restina af lífinu mínu.",
+          "s2": "Svo lærði ég að taka ábyrgð af lærdómnum mínum sem telst í margt annað í líf mínu."
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "excerpt": {
+        "type": "choice",
+        "choice": "s1",
+        "probabilities": {
+          "s1": 0.8175092825313981,
+          "s2": 0.18249071746860193
+        },
+        "confidence": 0.31450440358903764
+      }
+    },
+    "usage": {
+      "input_tokens": 310,
+      "output_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,281 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Spurning á talasaman.is: „Hvað er það íslenskasta í heimi?“\nSvar þátttakanda, orðrétt: „Lopi, þrautseigja“",
+    "questions": {
+      "privacy": {
+        "type": "noul",
+        "instructions": "Does the participant's text (including the place name) contain a street address, a house number, a named private individual, or any other detail that could point to a specific person or household?",
+        "criteria": {
+          "true": "contains identifying detail",
+          "false": "no identifying detail"
+        }
+      },
+      "spelling": {
+        "type": "noul",
+        "instructions": "Does the participant's Icelandic text contain obvious spelling or typing errors?",
+        "criteria": {
+          "true": "has errors",
+          "false": "no errors"
+        }
+      },
+      "singable": {
+        "type": "score",
+        "instructions": "How well would the participant's text work, word for word, as a sung line in an Icelandic folk song?",
+        "criteria": [
+          "would not work",
+          "awkward",
+          "workable",
+          "good",
+          "beautiful"
+        ]
+      },
+      "image": {
+        "type": "score",
+        "instructions": "How vivid and concrete is the image the participant's text evokes?",
+        "criteria": [
+          "abstract",
+          "faint",
+          "some image",
+          "vivid",
+          "unforgettable"
+        ]
+      },
+      "warmth": {
+        "type": "score",
+        "instructions": "How much warmth, humour or affection does the participant's text carry?",
+        "criteria": [
+          "none",
+          "a little",
+          "some",
+          "a lot",
+          "overflowing"
+        ]
+      },
+      "tone": {
+        "type": "choice",
+        "instructions": "Which tone best describes the participant's text?",
+        "criteria": {
+          "joyful": "joy, delight, playfulness",
+          "tender": "tenderness, memory, love",
+          "proud": "pride, identity, belonging",
+          "wry": "self-mocking humour or gentle criticism",
+          "critical": "criticism of society or its shadow sides",
+          "calm": "stillness, peace, solitude",
+          "unclear": "cannot tell"
+        }
+      },
+      "seconds": {
+        "type": "score",
+        "instructions": "If the participant's text were shown on screen in a music video, how many seconds would a reader need to take it in comfortably?",
+        "criteria": [
+          "2 seconds",
+          "3 seconds",
+          "4 seconds",
+          "6 seconds",
+          "8 seconds",
+          "10 seconds"
+        ]
+      },
+      "opener": {
+        "type": "score",
+        "instructions": "How well would the participant's text work as the first line of a song section?",
+        "criteria": [
+          "poorly",
+          "weakly",
+          "fine",
+          "well",
+          "perfectly"
+        ]
+      },
+      "closer": {
+        "type": "score",
+        "instructions": "How well would the participant's text work as the last line of a song section?",
+        "criteria": [
+          "poorly",
+          "weakly",
+          "fine",
+          "well",
+          "perfectly"
+        ]
+      },
+      "category": {
+        "type": "choice",
+        "instructions": "Which category does the participant's answer belong to?",
+        "criteria": {
+          "matur": "Food and drink: dishes, sweets, snacks, eating habits",
+          "nattura": "Nature: landscape, water, air, energy, volcanoes, animals, wilderness",
+          "samfelag": "Society: solidarity, trust, safety, independence, equality, national self-image, and its shadow sides",
+          "sidir": "Customs and traditions: knitwear, swimming pools, family reunions, everyday habits",
+          "hugarfar": "Mindset: attitudes such as þetta reddast, resilience, stubbornness",
+          "tunga": "Language and culture: the Icelandic language, sagas, manuscripts, culture, special words",
+          "vedur": "Weather: the weather, the seasons, light and darkness",
+          "annad": "Other: unclear or hard to interpret"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "privacy": {
+        "type": "noul",
+        "noul": 0.021274847825477578
+      },
+      "spelling": {
+        "type": "noul",
+        "noul": 0.2077985256368248
+      },
+      "singable": {
+        "type": "score",
+        "score": 1.3841238579340505,
+        "legend": {
+          "0": "would not work",
+          "1": "awkward",
+          "2": "workable",
+          "3": "good",
+          "4": "beautiful"
+        },
+        "probabilities": {
+          "0": 0.28711864094807693,
+          "1": 0.3174399667384243,
+          "2": 0.19312897104967996,
+          "3": 0.12882373595900937,
+          "4": 0.07348868530480956
+        },
+        "confidence": 0.07050321265410686
+      },
+      "image": {
+        "type": "score",
+        "score": 1.0237970980298827,
+        "legend": {
+          "0": "abstract",
+          "1": "faint",
+          "2": "some image",
+          "3": "vivid",
+          "4": "unforgettable"
+        },
+        "probabilities": {
+          "0": 0.43577521485854703,
+          "1": 0.2435717500208819,
+          "2": 0.210692109346432,
+          "3": 0.08100257378041897,
+          "4": 0.02895835199371996
+        },
+        "confidence": 0.1672580024029625
+      },
+      "warmth": {
+        "type": "score",
+        "score": 0.5653698135999454,
+        "legend": {
+          "0": "none",
+          "1": "a little",
+          "2": "some",
+          "3": "a lot",
+          "4": "overflowing"
+        },
+        "probabilities": {
+          "0": 0.67284728219958,
+          "1": 0.16886655128659994,
+          "2": 0.10000306802638521,
+          "3": 0.03663526768916475,
+          "4": 0.021647830798270193
+        },
+        "confidence": 0.3778326855221049
+      },
+      "tone": {
+        "type": "choice",
+        "choice": "proud",
+        "probabilities": {
+          "calm": 0.20920647689180122,
+          "critical": 0.022158151850916286,
+          "joyful": 0.0531534644541355,
+          "proud": 0.5026161931678329,
+          "tender": 0.03679085455170884,
+          "unclear": 0.13699297327901327,
+          "wry": 0.03908188580459207
+        },
+        "confidence": 0.2630819779542478
+      },
+      "seconds": {
+        "type": "score",
+        "score": 0.5611534209375284,
+        "legend": {
+          "0": "2 seconds",
+          "1": "3 seconds",
+          "2": "4 seconds",
+          "3": "6 seconds",
+          "4": "8 seconds",
+          "5": "10 seconds"
+        },
+        "probabilities": {
+          "0": 0.6540797392320639,
+          "1": 0.21598080385828564,
+          "2": 0.08085146925937026,
+          "3": 0.025322766870378936,
+          "4": 0.011324725950141928,
+          "5": 0.01244049482975955
+        },
+        "confidence": 0.4360645275410626
+      },
+      "opener": {
+        "type": "score",
+        "score": 1.226143598724486,
+        "legend": {
+          "0": "poorly",
+          "1": "weakly",
+          "2": "fine",
+          "3": "well",
+          "4": "perfectly"
+        },
+        "probabilities": {
+          "0": 0.35400488429513816,
+          "1": 0.28657196300732585,
+          "2": 0.19644707716914195,
+          "3": 0.10522682073470054,
+          "4": 0.05774925479369361
+        },
+        "confidence": 0.10088749539711506
+      },
+      "closer": {
+        "type": "score",
+        "score": 1.5968714397291173,
+        "legend": {
+          "0": "poorly",
+          "1": "weakly",
+          "2": "fine",
+          "3": "well",
+          "4": "perfectly"
+        },
+        "probabilities": {
+          "0": 0.2527284360956114,
+          "1": 0.244683236196868,
+          "2": 0.25651434049794075,
+          "3": 0.14513642630195187,
+          "4": 0.10093756090762798
+        },
+        "confidence": 0.03526449252763908
+      },
+      "category": {
+        "type": "choice",
+        "choice": "hugarfar",
+        "probabilities": {
+          "annad": 0.08098276747766374,
+          "hugarfar": 0.46431868901036605,
+          "matur": 0.02306365310696791,
+          "nattura": 0.132765597600483,
+          "samfelag": 0.08421794992694422,
+          "sidir": 0.10532189663088994,
+          "tunga": 0.08947086073497686,
+          "vedur": 0.01985858551170814
+        },
+        "confidence": 0.20458592307003187
+      }
+    },
+    "usage": {
+      "input_tokens": 1547,
+      "output_tokens": 0
+    }
+  }
+}

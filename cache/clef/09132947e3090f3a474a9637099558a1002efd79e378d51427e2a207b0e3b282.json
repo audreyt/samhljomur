@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Í fyrsta lagi er þetta heimili mitt og þar sem ég ólst upp, en ég elska að búa þar af því að það er svo fallegt og það er bara mjög næs að vera á stað sem allir þekkjast og er ekki fullur af fólki.“\nEnglish gloss: “Firstly, this is my home and where I grew up, but I love living there because it is so beautiful and it is just very nice to be in a place where everyone knows each other and is not full of people.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.7578118364913873
+      }
+    },
+    "usage": {
+      "input_tokens": 264,
+      "output_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Ættaður þaðan, fer þangað minnsta lagi einu sinni á ári. Mjög fallegur og kósý fjörður“\nEnglish gloss: “From there, go there at least once a year. Very beautiful and cozy fjord”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.6850138064971255
+      }
+    },
+    "usage": {
+      "input_tokens": 206,
+      "output_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Uppáhaldsstaður þátttakanda á Íslandi (talasaman.is/stadir).\nStaður: Langaholt Garðar, Snæfellsbær\nÁstæða, orðrétt: „Það var yndislegt að tjalda þarna. Allt hrátt og ósnortið til sjávar, kröftugar öldur. Í hina áttina golfvöllur, hótel veitingastaður. Snæfellsjökull vakir svo yfir öllu.“",
+    "questions": {
+      "excerpt": {
+        "type": "choice",
+        "instructions": "Which single sentence of the reason is the most beautiful to sing, word for word?",
+        "criteria": {
+          "s1": "Það var yndislegt að tjalda þarna.",
+          "s2": "Allt hrátt og ósnortið til sjávar, kröftugar öldur.",
+          "s3": "Í hina áttina golfvöllur, hótel veitingastaður.",
+          "s4": "Snæfellsjökull vakir svo yfir öllu."
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "excerpt": {
+        "type": "choice",
+        "choice": "s4",
+        "probabilities": {
+          "s1": 0.04173866631030836,
+          "s2": 0.30850667985809227,
+          "s3": 0.009972025746561025,
+          "s4": 0.6397826280850383
+        },
+        "confidence": 0.40338930780546267
+      }
+    },
+    "usage": {
+      "input_tokens": 353,
+      "output_tokens": 0
+    }
+  }
+}

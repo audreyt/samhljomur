@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Ístlenskar pönukökur út í sveit með gott veður og vontveður“\nEnglish gloss: “Icelandic penguins go out into the field with good weather and bad weather”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.44728131502831403
+      }
+    },
+    "usage": {
+      "input_tokens": 193,
+      "output_tokens": 0
+    }
+  }
+}

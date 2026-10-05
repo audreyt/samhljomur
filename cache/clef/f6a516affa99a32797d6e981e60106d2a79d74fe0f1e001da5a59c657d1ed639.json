@@ -1,0 +1,37 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Uppáhaldsstaður þátttakanda á Íslandi (talasaman.is/stadir).\nStaður: Kópavogslaug, Kópavogur\nÁstæða, orðrétt: „Það er ekkert betra en að fara í sund á Íslandi. Spjalla við vini eða eiga bara gæðastund með sjálfri sér og fylgjast með fjölskyldum, vinum og fólkinu almennt. Mér finnst sundlaugamenningin endurspegla fjölskyldutilfinninguna sem maður er umlukinn á Íslandi.“",
+    "questions": {
+      "excerpt": {
+        "type": "choice",
+        "instructions": "Which single sentence of the reason is the most beautiful to sing, word for word?",
+        "criteria": {
+          "s1": "Það er ekkert betra en að fara í sund á Íslandi.",
+          "s2": "Spjalla við vini eða eiga bara gæðastund með sjálfri sér og fylgjast með fjölskyldum, vinum og fólkinu almennt.",
+          "s3": "Mér finnst sundlaugamenningin endurspegla fjölskyldutilfinninguna sem maður er umlukinn á Íslandi."
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "excerpt": {
+        "type": "choice",
+        "choice": "s3",
+        "probabilities": {
+          "s1": 0.05168738471158666,
+          "s2": 0.2273284934409255,
+          "s3": 0.720984121847488
+        },
+        "confidence": 0.3394006157473921
+      }
+    },
+    "usage": {
+      "input_tokens": 400,
+      "output_tokens": 0
+    }
+  }
+}

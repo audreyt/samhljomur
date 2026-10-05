@@ -1,0 +1,42 @@
+warn: This project does not use vite-plus. Learn how to migrate: https://viteplus.dev/guide/migrate
+$ bun run src/cli.ts judge ⊘ cache disabled
+[stage1] isl 20/128
+[stage1] isl 40/128
+[stage1] isl 60/128
+[stage1] isl 80/128
+[stage1] isl 100/128
+[stage1] isl 120/128
+[stage1] places 20/158
+[stage1] places 40/158
+[stage1] places 60/158
+[stage1] places 80/158
+[stage1] places 100/158
+[stage1] places 120/158
+[stage1] places 140/158
+[stage1] topics 20/68
+[stage1] topics 40/68
+[stage1] topics 60/68
+[stage1] 128 isl, 158 places, 68 topics judged
+[stage2] glosses 20/386
+[stage2] glosses 40/386
+[stage2] glosses 60/386
+[stage2] glosses 80/386
+[stage2] glosses 100/386
+[stage2] glosses 120/386
+[stage2] glosses 140/386
+[stage2] glosses 160/386
+[stage2] glosses 180/386
+[stage2] glosses 200/386
+[stage2] glosses 220/386
+[stage2] glosses 240/386
+[stage2] glosses 260/386
+[stage2] glosses 280/386
+[stage2] glosses 300/386
+[stage2] glosses 320/386
+[stage2] glosses 340/386
+[stage2] glosses 360/386
+[stage2] glosses 380/386
+[stage2] 386 glosses, 11 unverified (<0.60 after retries)
+[stage3] calibration written
+done in 380.9s — runs/20261005065558-2lso
+

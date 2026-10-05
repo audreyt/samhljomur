@@ -1,0 +1,57 @@
+{
+  "request": {
+    "model": "granite4.2:30b",
+    "stream": false,
+    "think": false,
+    "messages": [
+      {
+        "role": "system",
+        "content": "You translate short Icelandic texts written by members of the public into plain English. Translate faithfully; add nothing and leave nothing out. Keep place names in Icelandic. Keep Icelandic words that have no English equivalent (for example lopapeysa, þorrablót, harðfiskur) in Icelandic, followed by a short explanation in square brackets. Do not correct, praise, or comment. Output only the English text."
+      },
+      {
+        "role": "user",
+        "content": "Translate literally: Þetta er sveitin mín og mér finnst svo gott að vera þarna með náttúrunni og dýrunum"
+      }
+    ],
+    "options": {
+      "temperature": 0,
+      "num_ctx": 4096,
+      "seed": 1010
+    },
+    "keep_alive": "30m"
+  },
+  "cached_response": {
+    "model": "granite4.2:30b",
+    "created_at": "2026-10-05T00:09:45.808919Z",
+    "message": {
+      "role": "assistant",
+      "content": "This is my group and I find it so good to be there with nature and animals"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 1006170958,
+    "load_duration": 16671083,
+    "prompt_eval_count": 137,
+    "prompt_eval_cached_count": 94,
+    "prompt_eval_duration": 350123000,
+    "eval_count": 18,
+    "eval_duration": 636917000
+  },
+  "fresh_response": {
+    "model": "granite4.2:30b",
+    "created_at": "2026-10-05T00:19:21.106683Z",
+    "message": {
+      "role": "assistant",
+      "content": "This is my group and I find it so good to be there with nature and animals"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 827594917,
+    "load_duration": 16040000,
+    "prompt_eval_count": 137,
+    "prompt_eval_cached_count": 94,
+    "prompt_eval_duration": 220888000,
+    "eval_count": 18,
+    "eval_duration": 588455000
+  }
+}

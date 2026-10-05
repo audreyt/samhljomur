@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Staðfesting íslensks UI-texta: „Clef er opið flokkunarlíkan með 27 milljarða færibreyta. Það skrifar engan texta heldur svarar spurningum með líkum.“",
+    "questions": {
+      "natural_is": {
+        "type": "noul",
+        "instructions": "Is this natural, grammatical Icelandic?",
+        "criteria": {
+          "true": "natural Icelandic",
+          "false": "unnatural or ungrammatical"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "natural_is": {
+        "type": "noul",
+        "noul": 0.5466787646849561
+      }
+    },
+    "usage": {
+      "input_tokens": 193,
+      "output_tokens": 0
+    }
+  }
+}

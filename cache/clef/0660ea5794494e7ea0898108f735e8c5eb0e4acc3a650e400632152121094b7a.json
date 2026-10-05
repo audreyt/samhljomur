@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Þorrablót“\nEnglish gloss: “Þorrablót [a traditional Icelandic feast held in mid-February, featuring traditional foods such as fermented shark, lamb, and blood sausage]”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.10564104432887958
+      }
+    },
+    "usage": {
+      "input_tokens": 187,
+      "output_tokens": 0
+    }
+  }
+}

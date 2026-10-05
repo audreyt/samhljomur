@@ -1,0 +1,31 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Sérstaklega er að það hefur borgabókasafnið sem er frekar aðgengilegt til að ná sér í bækur eða hins vegar að læra“\nEnglish gloss: “Especially, the city library is quite accessible for obtaining books or alternatively for learning.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.7179422920858399
+      }
+    },
+    "usage": {
+      "input_tokens": 212,
+      "output_tokens": 0
+    }
+  },
+  "latency_ms": 447
+}

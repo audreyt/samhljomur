@@ -1,0 +1,29 @@
+[
+  {
+    "seed": 1010,
+    "file": "media/takes/take-seed-1010.mp3",
+    "request_sha": "e636fe66df2ed8e535f1522fd7dace8e0fba98a473690d4e856954dde02008be",
+    "status": 200,
+    "song_id": "vM84KSyaYwXhpaAQ0U2k",
+    "bytes": 10769706,
+    "mp3_sha256": "cc155b9884dd4ed367fcc1cb17f67735c42c85992f959a16c9eb96186abaa37e"
+  },
+  {
+    "seed": 463,
+    "file": "media/takes/take-seed-463.mp3",
+    "request_sha": "6ba3e271c57a6eb634487dbebd5fad9ff87c72669294b7914f189956acc49541",
+    "status": 200,
+    "song_id": "fAmv2XbPcKo0IRVMTpWk",
+    "bytes": 10769706,
+    "mp3_sha256": "682e08f698e57d10ee9279a6dc3f8dded4a6f35f8077a7f60a902a146da5367d"
+  },
+  {
+    "seed": 2026,
+    "file": "media/takes/take-seed-2026.mp3",
+    "request_sha": "4d555fcf7c7880149aa8b04e494b81fedfc794f6c7f0efdff904b053ed58898f",
+    "status": 200,
+    "song_id": "xPt25NgSNWRAFsp4R2am",
+    "bytes": 10769706,
+    "mp3_sha256": "971fc7a7c657bd652a165be9c766480a8c3c3197cad0c102e7708b9df938325d"
+  }
+]

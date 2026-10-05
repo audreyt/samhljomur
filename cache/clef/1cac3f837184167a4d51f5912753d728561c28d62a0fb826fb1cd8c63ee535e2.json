@@ -1,0 +1,31 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Gamman að koma í frí og gott veður.“\nEnglish gloss: “It's great to come on vacation and have good weather.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.750309056709918
+      }
+    },
+    "usage": {
+      "input_tokens": 178,
+      "output_tokens": 0
+    }
+  },
+  "latency_ms": 452
+}

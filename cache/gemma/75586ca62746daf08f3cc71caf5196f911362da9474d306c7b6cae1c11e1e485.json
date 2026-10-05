@@ -1,0 +1,41 @@
+{
+  "request": {
+    "model": "gemma4:31b-it-qat-google-official",
+    "stream": false,
+    "think": false,
+    "messages": [
+      {
+        "role": "system",
+        "content": "You translate short Icelandic texts written by members of the public into plain English. Translate faithfully; add nothing and leave nothing out. Keep place names in Icelandic. Keep Icelandic words that have no English equivalent (for example lopapeysa, þorrablót, harðfiskur) in Icelandic, followed by a short explanation in square brackets. Do not correct, praise, or comment. Output only the English text."
+      },
+      {
+        "role": "user",
+        "content": "Ísafjörður er uppáhaldsstaðurinn minn vegna þess að pabbi er þaðan. Lítill bær þar sem allir þekkja hvorn annan."
+      }
+    ],
+    "options": {
+      "temperature": 0.2,
+      "num_ctx": 4096,
+      "seed": 1010
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "gemma4:31b-it-qat-google-official",
+    "created_at": "2026-10-05T00:38:00.569316Z",
+    "message": {
+      "role": "assistant",
+      "content": "Ísafjörður is my favorite place because my dad is from there. A small town where everyone knows each other."
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 1632928333,
+    "load_duration": 17024917,
+    "prompt_eval_count": 146,
+    "prompt_eval_cached_count": 0,
+    "prompt_eval_duration": 623029000,
+    "eval_count": 26,
+    "eval_duration": 991329000
+  },
+  "latency_ms": 1633
+}

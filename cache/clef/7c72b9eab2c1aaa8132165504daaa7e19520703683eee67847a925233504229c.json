@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Já orðatiltækið að vera úti á túni hefur kannski rétta merkingu, því maður getur algjörlega slökkt á hausnum og slakað á þegar maður liggur einhverstaðar úti á túni eða í móa eða hvar sem er.“\nEnglish gloss: “Yes, the idiom of being out in the field [meaning to be clueless or confused] perhaps has the right meaning, because one can completely switch off the head and relax when one lies somewhere out in a field or in a moor or wherever.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.7577583332243857
+      }
+    },
+    "usage": {
+      "input_tokens": 279,
+      "output_tokens": 0
+    }
+  }
+}

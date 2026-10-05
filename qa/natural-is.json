@@ -1,0 +1,402 @@
+{
+  "note": "informational only; Clef scores even correct verbatim IS strings (incl. Atli's questions) below 0.70, so this is not a grammar gate",
+  "threshold": 0.7,
+  "checked": 154,
+  "low": [
+    {
+      "key": "subtitle",
+      "is": "Íslandsmedley úr opnum gögnum Samtals",
+      "p": 0.14305279389841796
+    },
+    {
+      "key": "tagline",
+      "is": "Orð þátttakenda, orðrétt. Clef valdi línurnar og raðaði þeim.",
+      "p": 0.6625028918020708
+    },
+    {
+      "key": "dedication",
+      "is": "Til Finns Magnussonar og Atla Þórs Jóhannssonar, með þökk fyrir samtalið í Grósku 3. október 2026.",
+      "p": 0.5650433843950422
+    },
+    {
+      "key": "attribution",
+      "is": "Gögn: Samtal, félag til almannaheilla (talasaman.is), CC BY 4.0",
+      "p": 0.3375414724453934
+    },
+    {
+      "key": "disclaimer",
+      "is": "Þetta er hvorki afstaða né niðurstaða Samtals.",
+      "p": 0.3571737625186274
+    },
+    {
+      "key": "lang_switch",
+      "is": "English",
+      "p": 0.11145173382949053
+    },
+    {
+      "key": "gloss_unverified",
+      "is": "óstaðfest vélþýðing",
+      "p": 0.5185284818062191
+    },
+    {
+      "key": "tagline_label",
+      "is": "Einkunnarorð Samtals",
+      "p": 0.2791814788248668
+    },
+    {
+      "key": "m2",
+      "is": "Ís í fárviðri",
+      "p": 0.19345513954939475
+    },
+    {
+      "key": "m3_note",
+      "is": "Röðin fylgir hringveginum réttsælis frá Reykjavík.",
+      "p": 0.6262425051742102
+    },
+    {
+      "key": "m4",
+      "is": "Lopinn og laugin",
+      "p": 0.4257630805532014
+    },
+    {
+      "key": "m4_bridge",
+      "is": "Skuggahliðarnar",
+      "p": 0.6683512466710962
+    },
+    {
+      "key": "insp_clef",
+      "is": "Mat Clef",
+      "p": 0.16181310377955632
+    },
+    {
+      "key": "insp_singable",
+      "is": "Sönghæfni",
+      "p": 0.48737392832259313
+    },
+    {
+      "key": "insp_tone",
+      "is": "Blær",
+      "p": 0.5954886186524994
+    },
+    {
+      "key": "insp_closer",
+      "is": "Sem lokalína",
+      "p": 0.14590412591276736
+    },
+    {
+      "key": "insp_fidelity",
+      "is": "Heyrist í söngnum",
+      "p": 0.3506956375631448
+    },
+    {
+      "key": "tone_wry",
+      "is": "kíminn",
+      "p": 0.35973248231920885
+    },
+    {
+      "key": "tone_critical",
+      "is": "gagnrýninn",
+      "p": 0.47861559265944226
+    },
+    {
+      "key": "tone_unclear",
+      "is": "óljós",
+      "p": 0.43142713994904336
+    },
+    {
+      "key": "num_circles",
+      "is": "hringir með fólki",
+      "p": 0.3477153286922449
+    },
+    {
+      "key": "num_places",
+      "is": "staðir með lýsingu",
+      "p": 0.6549864544417712
+    },
+    {
+      "key": "num_islenskast",
+      "is": "svör við Íslenskast",
+      "p": 0.1041741604793173
+    },
+    {
+      "key": "num_topics",
+      "is": "valin umræðuorð",
+      "p": 0.4496717216219017
+    },
+    {
+      "key": "sec_calibration",
+      "is": "Íslenskast: handflokkun Samtals og Clef",
+      "p": 0.2289742231945639
+    },
+    {
+      "key": "calibration_intro",
+      "is": "Samtal flokkaði svörin í höndunum. Clef flokkaði sömu svör sjálfstætt, eftir stuttri flokkalýsingu og án þess að sjá handflokkunina. Samræmið segir okkur hversu vel staðbundið líkan skilur íslensku svörin.",
+      "p": 0.4812815687625721
+    },
+    {
+      "key": "sec_disagree",
+      "is": "Þar sem Clef er ósammála",
+      "p": 0.48704485795861974
+    },
+    {
+      "key": "disagree_intro",
+      "is": "Ósamræmið er oft áhugaverðasti lesturinn: svör sem eiga heima á fleiri en einum stað.",
+      "p": 0.5030359848743974
+    },
+    {
+      "key": "sec_places",
+      "is": "Staðirnir",
+      "p": 0.6659600180644791
+    },
+    {
+      "key": "after_body",
+      "is": "Á laugardaginn bætast samtölin sjálf við. Sama ferli getur tekið við samantekt hvers hrings: Clef metur hverja samantekt, hver hringur fær sína niðurstöðu fyrst til yfirlestrar, og loks syngur annað medley samtölin aftur fyrir þátttakendurna.",
+      "p": 0.28826712035845625
+    },
+    {
+      "key": "scorecard_credit",
+      "is": "Matsspjaldið er úr grein Atla Þórs Jóhannssonar, „Hvað er gervigreindarfullveldi?“ (Staða gervigreindar, 5. október 2026). Hér er það lagt á þetta ferli sjálft.",
+      "p": 0.5291890307468298
+    },
+    {
+      "key": "q1",
+      "is": "Vitum við á hvað við reiðum okkur?",
+      "p": 0.46928579719037383
+    },
+    {
+      "key": "q2",
+      "is": "Höfum við sett skilyrði?",
+      "p": 0.6994025606265755
+    },
+    {
+      "key": "a_yes",
+      "is": "Liggur fyrir",
+      "p": 0.5370063461498094
+    },
+    {
+      "key": "a_no",
+      "is": "Liggur ekki fyrir",
+      "p": 0.5092889408611322
+    },
+    {
+      "key": "row_judgments",
+      "is": "Dómar (Clef)",
+      "p": 0.438856876744642
+    },
+    {
+      "key": "q1_judgments",
+      "is": "Clef 27B, opin vigt (Apache-2.0), keyrt á fartölvu í Reykjavík.",
+      "p": 0.5839339885670158
+    },
+    {
+      "key": "q1_glosses",
+      "is": "Gemma 4 31B, opin vigt (Apache-2.0), keyrt á sömu vél.",
+      "p": 0.6339679127835147
+    },
+    {
+      "key": "q1_music",
+      "is": "ElevenLabs Music v2.5 og Scribe v2 í skýinu. Við vitum hver veitir þjónustuna, hvað var sent og hvað kom til baka (C2PA-undirritað), en ekki hvernig líkanið er gert.",
+      "p": 0.6652542093628876
+    },
+    {
+      "key": "q2_judgments",
+      "is": "CC BY 4.0 og skilmálar Samtals virtir: persónuverndarsía og fyrirvari.",
+      "p": 0.09097074615897925
+    },
+    {
+      "key": "q2_glosses",
+      "is": "Clef gaf hverri þýðingu einkunn, en handyfirferð réð vali.",
+      "p": 0.2885697428049863
+    },
+    {
+      "key": "q2_music",
+      "is": "Talgreining ber hverja sungna línu saman við textann.",
+      "p": 0.4313312843349493
+    },
+    {
+      "key": "q3_judgments",
+      "is": "Hvaða System One líkan sem er á sama viðmóti; vp run rerun ber niðurstöðurnar saman.",
+      "p": 0.08442251892139704
+    },
+    {
+      "key": "q3_glosses",
+      "is": "Hvaða staðbundna líkan sem er.",
+      "p": 0.24823910895516152
+    },
+    {
+      "key": "q3_music",
+      "is": "Textinn, röðin og tímasetningin eru okkar. Söngvarinn er skiptanlegur, best af öllu kór á Íslandi: sjá söngbókina.",
+      "p": 0.315414991490131
+    },
+    {
+      "key": "axes",
+      "is": "Á ásunum tveimur eru dómar og þýðingar „Byggja eða stjórna sjálf“ en tónlistin „Kaupa með opnum möguleikum“.",
+      "p": 0.08042202708304069
+    },
+    {
+      "key": "replay_body",
+      "is": "Allt hér er hægt að endurgera. Hver fyrirspurn til líkananna er skráð og vp run build endurbyggir allt úr skránni, án nets og án líkana.",
+      "p": 0.3064651841014784
+    },
+    {
+      "key": "privacy_note",
+      "is": "Ein staðsetning með húsnúmeri er aðeins sýnd sem sveitarfélag. Svör sem Clef taldi geta bent á einstakling eru talin með en hvergi birt.",
+      "p": 0.3440528851068471
+    },
+    {
+      "key": "about_clef",
+      "is": "Clef er opið flokkunarlíkan með 27 milljarða færibreyta. Það skrifar engan texta heldur svarar spurningum með líkum.",
+      "p": 0.5466787646849561
+    },
+    {
+      "key": "about_granite",
+      "is": "Gemma 4 31B gerði ensku vélþýðingarnar á sömu vél. Hún skrifaði enga íslensku.",
+      "p": 0.31928499654793246
+    },
+    {
+      "key": "songbook_intro",
+      "is": "Hver lína er orðrétt svar þátttakanda á talasaman.is. Kór, bekkur eða hringur getur sungið hana 10. október.",
+      "p": 0.6462673478989298
+    },
+    {
+      "key": "editor_credit",
+      "is": "Ritstjórn: Devin, gervigreindaraðstoðarmaður Audrey",
+      "p": 0.6785482980571116
+    },
+    {
+      "key": "gloss_edited",
+      "is": "ritstýrt",
+      "p": 0.6684306978685234
+    },
+    {
+      "key": "said_by",
+      "is": "sögðu þetta",
+      "p": 0.6972094354062945
+    },
+    {
+      "key": "override_title",
+      "is": "Þessi lína gefur kaflanum nafn og lokar honum.",
+      "p": 0.24694413087724748
+    },
+    {
+      "key": "override_count",
+      "is": "Valið vegna þess hve mörg sögðu þetta, þótt Clef gæfi því lága einkunn.",
+      "p": 0.5270742935817258
+    },
+    {
+      "key": "sec_bakeoff",
+      "is": "Getum við skipt? Þrjú þýðingarlíkön",
+      "p": 0.3224987916150166
+    },
+    {
+      "key": "bakeoff_body",
+      "is": "Granite 4.2 30B þýddi fyrst og margar þýðingar voru rangar. Við prófuðum líka Gemma 4 31B og Apertus 1.5, opna svissneska líkanið, á sömu vél með sömu fyrirmælum. Clef gaf hverri þýðingu einkunn en reyndist lélegur dómari um þýðingar: það taldi „Sail“ trúa þýðingu á „Seigla“. Því réð handyfirferð. Gemma hafði oftast rétt fyrir sér og þýðingar hennar eru notaðar, með leiðréttingum ritstjórnar. Allar þýðingarnar og einkunnir Clef eru sýndar hér.",
+      "p": 0.6052286013361663
+    },
+    {
+      "key": "door_video_desc",
+      "is": "Sex kaflar, sjö og hálf mínúta",
+      "p": 0.5780277107247552
+    },
+    {
+      "key": "door_report_desc",
+      "is": "Tölur, staðir, umræðuefni og endurspilun",
+      "p": 0.6006288278824755
+    },
+    {
+      "key": "door_songbook_desc",
+      "is": "Textinn, fyrir kór, bekk eða hring",
+      "p": 0.4289072779071625
+    },
+    {
+      "key": "tag_topics",
+      "is": "umræðuorð",
+      "p": 0.6615600332821683
+    },
+    {
+      "key": "sec_editorial",
+      "is": "Ritstjórnarákvarðanir",
+      "p": 0.5974300194607739
+    },
+    {
+      "key": "editorial_body",
+      "is": "Clef velur og raðar. Hér eru undantekningarnar sem ritstjórnin gerði.",
+      "p": 0.6384428315709405
+    },
+    {
+      "key": "outside_note",
+      "is": "staðir utan Íslands: taldir með, ekki sýndir",
+      "p": 0.3141005027443996
+    },
+    {
+      "key": "col_item",
+      "is": "lína / atriði",
+      "p": 0.40318367887902284
+    },
+    {
+      "key": "col_chosen",
+      "is": "valdar",
+      "p": 0.668257330230281
+    },
+    {
+      "key": "col_line_gloss",
+      "is": "lína (orðrétt) og vélþýðing",
+      "p": 0.3252861088377542
+    },
+    {
+      "key": "sec_sung",
+      "is": "Sungnar línur",
+      "p": 0.6660297295044382
+    },
+    {
+      "key": "num_sung",
+      "is": "sungnar línur",
+      "p": 0.3917472757912617
+    },
+    {
+      "key": "excl_title",
+      "is": "Útilokanir (texti ekki sýndur)",
+      "p": 0.6765955857852277
+    },
+    {
+      "key": "hidden_label",
+      "is": "hidden",
+      "p": 0.046885291176153684
+    },
+    {
+      "key": "sec_takes",
+      "is": "Upptökurnar bornar saman",
+      "p": 0.2577726971182576
+    },
+    {
+      "key": "sec_digests",
+      "is": "Fingraför líkananna",
+      "p": 0.31427365429644694
+    },
+    {
+      "key": "sec_snapshot",
+      "is": "Snapshot (sha256)",
+      "p": 0.2648835026221105
+    },
+    {
+      "key": "all_themes",
+      "is": "all",
+      "p": 0.07338287008570846
+    },
+    {
+      "key": "ttheme_culture",
+      "is": "tunga og menning",
+      "p": 0.5568841390952688
+    },
+    {
+      "key": "ttheme_mindset",
+      "is": "hugarfar",
+      "p": 0.6858815745271355
+    },
+    {
+      "key": "proof_of_place",
+      "is": "Vélin: fartölva (Mac17,6) á tímabelti Atlantic/Reykjavik með íslenska IP-tölu, nóttina 4. til 5. október 2026.",
+      "p": 0.6193592325963585
+    }
+  ]
+}

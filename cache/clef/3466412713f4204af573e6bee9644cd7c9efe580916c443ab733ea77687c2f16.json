@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Vegna þess að fjölskylda pabba míns er frá Bakkafirði, og það er mjög friðsælt að vera þar. Það eru mjög fáir sem búa þarna enn held ég en það gerir þetta ennþá betra. Maður er langt frá öllu og er bara að lifa í núinu.“\nEnglish gloss: “Because my father's family is from Bakkafirði, and it is very peaceful to be there. There are very few people living there now, but I still live there, which makes this even better. A person is far from everything and is just living in the present.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.11304729404639688
+      }
+    },
+    "usage": {
+      "input_tokens": 289,
+      "output_tokens": 0
+    }
+  }
+}

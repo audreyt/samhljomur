@@ -1,0 +1,37 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Uppáhaldsstaður þátttakanda á Íslandi (talasaman.is/stadir).\nStaður: Bakkafjörður, Langanesbyggð\nÁstæða, orðrétt: „Vegna þess að fjölskylda pabba míns er frá Bakkafirði, og það er mjög friðsælt að vera þar. Það eru mjög fáir sem búa þarna enn held ég en það gerir þetta ennþá betra. Maður er langt frá öllu og er bara að lifa í núinu.“",
+    "questions": {
+      "excerpt": {
+        "type": "choice",
+        "instructions": "Which single sentence of the reason is the most beautiful to sing, word for word?",
+        "criteria": {
+          "s1": "Vegna þess að fjölskylda pabba míns er frá Bakkafirði, og það er mjög friðsælt að vera þar.",
+          "s2": "Það eru mjög fáir sem búa þarna enn held ég en það gerir þetta ennþá betra.",
+          "s3": "Maður er langt frá öllu og er bara að lifa í núinu."
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "excerpt": {
+        "type": "choice",
+        "choice": "s3",
+        "probabilities": {
+          "s1": 0.017891840744257204,
+          "s2": 0.026066241979362588,
+          "s3": 0.9560419172763802
+        },
+        "confidence": 0.8088222447773422
+      }
+    },
+    "usage": {
+      "input_tokens": 364,
+      "output_tokens": 0
+    }
+  }
+}

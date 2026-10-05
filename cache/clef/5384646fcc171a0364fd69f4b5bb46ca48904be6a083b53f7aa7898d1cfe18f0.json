@@ -1,0 +1,37 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Uppáhaldsstaður þátttakanda á Íslandi (talasaman.is/stadir).\nStaður: Suðurey, Vestmannaeyjabær\nÁstæða, orðrétt: „Úteyjarnar í Vestmannaeyjum hafa svo ótal margt upp á bjóða. Sérstaklega sterka og nálæga náttúru, þar sem fjölbreytt fuglalíf grípur mann. Menning og saga Eyjamanna er að finna á hverjum stað.“",
+    "questions": {
+      "excerpt": {
+        "type": "choice",
+        "instructions": "Which single sentence of the reason is the most beautiful to sing, word for word?",
+        "criteria": {
+          "s1": "Úteyjarnar í Vestmannaeyjum hafa svo ótal margt upp á bjóða.",
+          "s2": "Sérstaklega sterka og nálæga náttúru, þar sem fjölbreytt fuglalíf grípur mann.",
+          "s3": "Menning og saga Eyjamanna er að finna á hverjum stað."
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "excerpt": {
+        "type": "choice",
+        "choice": "s2",
+        "probabilities": {
+          "s1": 0.09887850756368351,
+          "s2": 0.8164015212322049,
+          "s3": 0.08471997120411164
+        },
+        "confidence": 0.4506517974181372
+      }
+    },
+    "usage": {
+      "input_tokens": 347,
+      "output_tokens": 0
+    }
+  }
+}

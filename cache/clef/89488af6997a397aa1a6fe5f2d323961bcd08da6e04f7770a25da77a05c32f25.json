@@ -1,0 +1,37 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Uppáhaldsstaður þátttakanda á Íslandi (talasaman.is/stadir).\nStaður: Flatey, Þingeyjarsveit\nÁstæða, orðrétt: „Flatey býður upp á kyrrð og ró, fallega fjallasýn á Flateyjarskaga, víðáttu og ilm af hafinu. Þar er alltaf gott veður. Færir mann aftur til fortíðar þar sem þurfti að hafa aðeins meira fyrir lífinu.“",
+    "questions": {
+      "excerpt": {
+        "type": "choice",
+        "instructions": "Which single sentence of the reason is the most beautiful to sing, word for word?",
+        "criteria": {
+          "s1": "Flatey býður upp á kyrrð og ró, fallega fjallasýn á Flateyjarskaga, víðáttu og ilm af hafinu.",
+          "s2": "Þar er alltaf gott veður.",
+          "s3": "Færir mann aftur til fortíðar þar sem þurfti að hafa aðeins meira fyrir lífinu."
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "excerpt": {
+        "type": "choice",
+        "choice": "s1",
+        "probabilities": {
+          "s1": 0.7639949406855367,
+          "s2": 0.032121302650244196,
+          "s3": 0.2038837566642191
+        },
+        "confidence": 0.41715509290535
+      }
+    },
+    "usage": {
+      "input_tokens": 362,
+      "output_tokens": 0
+    }
+  }
+}

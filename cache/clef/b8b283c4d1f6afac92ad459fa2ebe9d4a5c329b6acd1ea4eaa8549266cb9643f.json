@@ -1,0 +1,31 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Í Norðurþingi líður mér alltaf vel og er mitt heima.“\nEnglish gloss: “In Norðurþing I always feel good and it is my home.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.8427250648590159
+      }
+    },
+    "usage": {
+      "input_tokens": 185,
+      "output_tokens": 0
+    }
+  },
+  "latency_ms": 446
+}

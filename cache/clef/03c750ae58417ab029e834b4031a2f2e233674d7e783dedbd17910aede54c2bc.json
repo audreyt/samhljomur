@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Lakkrís“\nEnglish gloss: “Lakkrís [a type of Icelandic potato dish, often made with boiled potatoes, onions, and sometimes bacon or other additions]”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.15065757980914665
+      }
+    },
+    "usage": {
+      "input_tokens": 185,
+      "output_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "request": {
+    "model": "granite4.2:30b",
+    "stream": false,
+    "think": false,
+    "messages": [
+      {
+        "role": "system",
+        "content": "You translate short Icelandic texts written by members of the public into plain English. Translate faithfully; add nothing and leave nothing out. Keep place names in Icelandic. Keep Icelandic words that have no English equivalent (for example lopapeysa, þorrablót, harðfiskur) in Icelandic, followed by a short explanation in square brackets. Do not correct, praise, or comment. Output only the English text."
+      },
+      {
+        "role": "user",
+        "content": "Translate literally: Svo fallegt í eyjum alltaf, er ekki þaðan en mín besta vinkona er þaðan og mér finnst við ekki hafa gert nægilega vel til að tryggja samgöngur á milli lands og eyja. Mér líður alltaf þegar ég er í eyjum eins og ég sé á sérstakasta stað á jörðinni."
+      }
+    ],
+    "options": {
+      "temperature": 0,
+      "num_ctx": 4096,
+      "seed": 1010
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "granite4.2:30b",
+    "created_at": "2026-10-05T00:08:28.478535Z",
+    "message": {
+      "role": "assistant",
+      "content": "So pretty in the islands always, it isn’t from there but my best friend is from there and I don’t feel I’ve done enough to ensure communication between the mainland and the islands. I always feel when I’m in the islands as if I’m in a special place on earth."
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 3114879500,
+    "load_duration": 16925083,
+    "prompt_eval_count": 210,
+    "prompt_eval_cached_count": 98,
+    "prompt_eval_duration": 334166000,
+    "eval_count": 64,
+    "eval_duration": 2754778000
+  },
+  "latency_ms": 3115
+}

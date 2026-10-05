@@ -1,0 +1,31 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Kyrrlátur og fallegur staður í náttúru þar sem allir eru velkomnir.“\nEnglish gloss: “A peaceful and beautiful natural place where everyone is welcome.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.9327326769457122
+      }
+    },
+    "usage": {
+      "input_tokens": 189,
+      "output_tokens": 0
+    }
+  },
+  "latency_ms": 485
+}

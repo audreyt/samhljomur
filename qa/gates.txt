@@ -1,0 +1,20 @@
+PASS coverage: {
+ "missing": [],
+ "missing_count": 0,
+ "empty_strings": 0,
+ "bad_strings": [],
+ "gloss_labels_present": true,
+ "attribution_missing_pages": [],
+ "disclaimer_missing_pages": [],
+ "line_visible_pct": 82.3,
+ "with_title_card_pct": 86.9
+}
+PASS verbatim: 0 non-verbatim segments []
+PASS privacy: 0 leaks []
+PASS is_strings: 0 non-strings.json Icelandic text nodes 
+PASS em_dash: 0 em/en dashes in visible authored copy
+PASS natural_is: 79 strings < 0.70 (qa/natural-is.json; informational)
+PASS screenshots: no console errors
+PASS frames: qa/frames/m*-{mid,q1,q3}.png · m2 overlap pairs: 0
+PASS crops: qa/report-crops/, qa/songbook-crops/, qa/songbook-pdf-1.png
+PASS ffprobe: mp4=448.00s audio=448.03s Δ=0.032

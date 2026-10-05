@@ -1,0 +1,41 @@
+{
+  "request": {
+    "model": "granite4.2:30b",
+    "stream": false,
+    "think": false,
+    "messages": [
+      {
+        "role": "system",
+        "content": "You translate short Icelandic texts written by members of the public into plain English. Translate faithfully; add nothing and leave nothing out. Keep place names in Icelandic. Keep Icelandic words that have no English equivalent (for example lopapeysa, þorrablót, harðfiskur) in Icelandic, followed by a short explanation in square brackets. Do not correct, praise, or comment. Output only the English text."
+      },
+      {
+        "role": "user",
+        "content": "Translate literally: Fallegasta umhverfi á Íslandi, rólegur bær og hlýtt í sálina að eyða tímanum sínum þarna, sérstaklega á sumrin."
+      }
+    ],
+    "options": {
+      "temperature": 0,
+      "num_ctx": 4096,
+      "seed": 1010
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "granite4.2:30b",
+    "created_at": "2026-10-05T00:07:27.456805Z",
+    "message": {
+      "role": "assistant",
+      "content": "Beautiful surroundings in Iceland, a peaceful village and a warm feeling in the soul to spend one’s time there, especially in summer."
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 1405282542,
+    "load_duration": 17280750,
+    "prompt_eval_count": 155,
+    "prompt_eval_cached_count": 94,
+    "prompt_eval_duration": 329618000,
+    "eval_count": 28,
+    "eval_duration": 1056032999
+  },
+  "latency_ms": 1405
+}

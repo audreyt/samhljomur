@@ -1,0 +1,41 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Uppáhaldsstaður þátttakanda á Íslandi (talasaman.is/stadir).\nStaður: Vestmannaeyjabær\nÁstæða, orðrétt: „Vestmannaeyjar eru heimahöfnin mín. Hér finn ég friðsæld, frelsi og sterka tilfinningu fyrir því að tilheyra. Stórbrotið landslagið, hafið og nálægðin við náttúruna gefa mér ró og rými. En það sem gerir Eyjarnar einstakar er fólkið – samkenndin, samstaðan og sterka samfélagið. Hér er einfaldlega heima.“",
+    "questions": {
+      "excerpt": {
+        "type": "choice",
+        "instructions": "Which single sentence of the reason is the most beautiful to sing, word for word?",
+        "criteria": {
+          "s1": "Vestmannaeyjar eru heimahöfnin mín.",
+          "s2": "Hér finn ég friðsæld, frelsi og sterka tilfinningu fyrir því að tilheyra.",
+          "s3": "Stórbrotið landslagið, hafið og nálægðin við náttúruna gefa mér ró og rými.",
+          "s4": "En það sem gerir Eyjarnar einstakar er fólkið – samkenndin, samstaðan og sterka samfélagið.",
+          "s5": "Hér er einfaldlega heima."
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "excerpt": {
+        "type": "choice",
+        "choice": "s3",
+        "probabilities": {
+          "s1": 0.09146974514255823,
+          "s2": 0.32125809888162177,
+          "s3": 0.3274125506036586,
+          "s4": 0.14408850907304124,
+          "s5": 0.1157710962991202
+        },
+        "confidence": 0.08173089264800548
+      }
+    },
+    "usage": {
+      "input_tokens": 459,
+      "output_tokens": 0
+    }
+  }
+}

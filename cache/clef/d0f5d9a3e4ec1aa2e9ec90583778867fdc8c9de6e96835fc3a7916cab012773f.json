@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Hvilft er sveitabær fjölskyldunnar minnar, ég á ótrúlega margar góðar minningar hérna.“\nEnglish gloss: “Hvilft is the village of my extended family, I have an incredibly many good memories here.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.7733713650868496
+      }
+    },
+    "usage": {
+      "input_tokens": 206,
+      "output_tokens": 0
+    }
+  }
+}

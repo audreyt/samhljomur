@@ -1,0 +1,30 @@
+{
+  "request": {
+    "model": "clef",
+    "state": "Icelandic original: „Þó að það sé kalt á toppnum er það samt þess virði að stefna þangað.“\nEnglish gloss: “Although it is cold at the top, it is still worth heading there.”",
+    "questions": {
+      "faithful": {
+        "type": "noul",
+        "instructions": "Is the English gloss a faithful translation of the Icelandic original, with no added or missing meaning?",
+        "criteria": {
+          "true": "faithful",
+          "false": "not faithful"
+        }
+      }
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "clef",
+    "answers": {
+      "faithful": {
+        "type": "noul",
+        "noul": 0.9060822408982145
+      }
+    },
+    "usage": {
+      "input_tokens": 190,
+      "output_tokens": 0
+    }
+  }
+}
