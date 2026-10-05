@@ -163,7 +163,7 @@ export function htmlShell(opts: {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>${opts.title} · Samhljómur</title>
+<title>${opts.title === "Samhljómur" ? opts.title : `${opts.title} · Samhljómur`}</title>
 <meta name="description" content="${opts.titleOther}">
 <style>${fontCss()}</style>
 <style>${BASE_CSS}</style>
