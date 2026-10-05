@@ -1,0 +1,41 @@
+{
+  "request": {
+    "model": "gemma4:31b-it-qat-google-official",
+    "stream": false,
+    "think": false,
+    "messages": [
+      {
+        "role": "system",
+        "content": "你把冰島民眾寫的短句翻成台灣慣用的繁體中文。你會拿到冰島語原文和一則已經查核過的英文譯文；以冰島語原文為準，英文譯文只用來確認意思。忠實翻譯，不增不減，不評論，不糾正錯字。地名保留冰島語原文。沒有對應中文的冰島詞（例如 lopapeysa、þorrablót、harðfiskur）保留原文，後面用全形括號加上簡短說明。使用全形標點；中文與拉丁字母或數字之間加半形空格。只輸出中文譯文。"
+      },
+      {
+        "role": "user",
+        "content": "冰島語原文：Vegna þess að fjölskylda pabba míns er frá Bakkafirði, og það er mjög friðsælt að vera þar. Það eru mjög fáir sem búa þarna enn held ég en það gerir þetta ennþá betra. Maður er langt frá öllu og er bara að lifa í núinu.\n英文譯文：Because my dad's family is from Bakkafjörður, and it is very peaceful to be there. There are very few people who still live there I think, but that makes it even better. You are far from everything and are just living in the moment."
+      }
+    ],
+    "options": {
+      "temperature": 0.2,
+      "num_ctx": 4096,
+      "seed": 1010
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "gemma4:31b-it-qat-google-official",
+    "created_at": "2026-10-05T09:06:20.012393Z",
+    "message": {
+      "role": "assistant",
+      "content": "因為我父親的家人來自 Bakkafjörður，在那裡感覺非常寧靜。我想現在住在在那裡的人已經很少了，但這讓那裡變得更好。人遠離了一切，就只是活在當下。"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 3299406542,
+    "load_duration": 17192542,
+    "prompt_eval_count": 306,
+    "prompt_eval_cached_count": 0,
+    "prompt_eval_duration": 1158481000,
+    "eval_count": 51,
+    "eval_duration": 2122146000
+  },
+  "latency_ms": 3300
+}

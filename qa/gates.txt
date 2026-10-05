@@ -14,7 +14,14 @@ PASS privacy: 0 leaks []
 PASS is_strings: 0 non-strings.json Icelandic text nodes 
 PASS em_dash: 0 em/en dashes in visible authored copy
 PASS natural_is: 79 strings < 0.70 (qa/natural-is.json; informational)
+PASS zh_opencc: 0 simplified-only chars · 25 s2twp variant diffs (qa/zh-opencc.txt)
+PASS zh_pangu: 0 pangu spacing diffs 
+PASS zh_dash: 0 zh strings with em/en dash 
+PASS zh_strings: 0 non-strings.json zh text nodes 
+PASS lang_isolation: 0 wrong-language elements, 0 mixed CJK/IS nodes
 PASS screenshots: no console errors
 PASS frames: qa/frames/m*-{mid,q1,q3}.png · m2 overlap pairs: 0
 PASS crops: qa/report-crops/, qa/songbook-crops/, qa/songbook-pdf-1.png
+PASS zh_font: fonts.check Iansui=true · tofu chars 0
+PASS songbook_pdf: 10 pages · 0 IS lines missing · 0 EN glosses missing · fonts Fraunces+Inter
 PASS ffprobe: mp4=448.00s audio=448.03s Δ=0.032

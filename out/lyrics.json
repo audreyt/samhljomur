@@ -182,7 +182,8 @@
           },
           "gloss": {
             "en": "Light and darkness",
-            "faithful": 0.9673735336476492
+            "faithful": 0.9673735336476492,
+            "zh": "光明與黑暗"
           },
           "rowIndex": 163,
           "opener": 1.718176164428605,
@@ -363,7 +364,8 @@
           },
           "gloss": {
             "en": "The weather and kleinur [twisted doughnuts]",
-            "faithful": 0.8854290064303336
+            "faithful": 0.8854290064303336,
+            "zh": "天氣與 kleinur（扭結甜甜圈）"
           },
           "rowIndex": 23,
           "opener": 1.6869602330935694,
@@ -543,7 +545,9 @@
           "gloss": {
             "en": "The smell of green grass in summer, and cold red cheeks after coming inside in winter",
             "faithful": 0.5048635632613153,
-            "edited": true
+            "edited": true,
+            "zh": "夏天青草的氣味，還有冬天進屋後冰冷泛紅的臉頰",
+            "zh_edited": true
           },
           "rowIndex": 164,
           "opener": 1.6429342451600681,
@@ -724,7 +728,8 @@
           },
           "gloss": {
             "en": "Nature and the weather",
-            "faithful": 0.9576287159698267
+            "faithful": 0.9576287159698267,
+            "zh": "自然與天氣"
           },
           "rowIndex": 47,
           "opener": 1.5439864895328899,
@@ -903,7 +908,8 @@
           },
           "gloss": {
             "en": "The weather",
-            "faithful": 0.9227651292036989
+            "faithful": 0.9227651292036989,
+            "zh": "天氣"
           },
           "rowIndex": 158,
           "opener": 1.4270464202972857,
@@ -1089,7 +1095,9 @@
           },
           "gloss": {
             "en": "Icelandic pancakes out in the countryside with good weather and bad weather",
-            "faithful": 0.8169684592266899
+            "faithful": 0.8169684592266899,
+            "zh": "在鄉下吃冰島煎餅，不論天氣好壞",
+            "zh_edited": true
           },
           "rowIndex": 24,
           "opener": 1.3761679130935687,
@@ -1269,7 +1277,9 @@
           "gloss": {
             "en": "Window-weather [weather that looks lovely through the window but is bitter outside]",
             "faithful": 0.4028402436837677,
-            "edited": true
+            "edited": true,
+            "zh": "窗外看似好天（從窗內看很美，出門卻冷得刺骨的天氣）",
+            "zh_edited": true
           },
           "rowIndex": 159,
           "opener": 1.6675085233036488,
@@ -1496,7 +1506,8 @@
           },
           "gloss": {
             "en": "Eating ice cream when the weather is bad",
-            "faithful": 0.9293701436975937
+            "faithful": 0.9293701436975937,
+            "zh": "在天氣糟糕時吃冰淇淋。"
           },
           "rowIndex": 12,
           "opener": 2.007509475082783,
@@ -1677,7 +1688,9 @@
           "gloss": {
             "en": "Meat soup and hot dogs from Bæjarins bestu [the famous Reykjavík hot-dog stand]",
             "faithful": 0.5491883208864509,
-            "edited": true
+            "edited": true,
+            "zh": "肉湯，和 Bæjarins bestu（雷克雅維克知名熱狗攤）的熱狗",
+            "zh_edited": true
           },
           "rowIndex": 26,
           "opener": 1.6838096295221712,
@@ -1856,7 +1869,8 @@
           },
           "gloss": {
             "en": "Flatkaka [flatbread] with hangikjöt [smoked lamb]",
-            "faithful": 0.9083976333422034
+            "faithful": 0.9083976333422034,
+            "zh": "Flatkaka（薄餅）配 hangikjöt（煙燻羊肉）"
           },
           "rowIndex": 33,
           "opener": 1.563895252146942,
@@ -2037,7 +2051,8 @@
           },
           "gloss": {
             "en": "Eating harðfiskur [dried fish] in a lopapeysa [traditional Icelandic wool sweater] daily",
-            "faithful": 0.8886057303866826
+            "faithful": 0.8886057303866826,
+            "zh": "每天穿著 lopapeysa（冰島傳統毛衣）吃 harðfiskur（乾魚）"
           },
           "rowIndex": 10,
           "opener": 1.688269347243367,
@@ -2219,7 +2234,8 @@
           },
           "gloss": {
             "en": "family reunion and boiled haddock, flatbread with hangikjöt [smoked lamb]",
-            "faithful": 0.8201098972172108
+            "faithful": 0.8201098972172108,
+            "zh": "家族聚會和煮過的 ýsa（黑線鱈），搭配 hangikjöt（煙燻羊肉）的 flatkaka（扁麵包）。"
           },
           "rowIndex": 28,
           "opener": 1.3917801709401898,
@@ -2400,7 +2416,8 @@
           },
           "gloss": {
             "en": "Lopapeysa [traditional Icelandic wool sweater] and meat soup",
-            "faithful": 0.8227453428999897
+            "faithful": 0.8227453428999897,
+            "zh": "Lopapeysa（冰島傳統羊毛衫）和肉湯"
           },
           "rowIndex": 27,
           "opener": 1.5385179749489697,
@@ -2579,7 +2596,9 @@
           },
           "gloss": {
             "en": "Pancakes with sugar",
-            "faithful": 0.8358933393737541
+            "faithful": 0.8358933393737541,
+            "zh": "撒糖的冰島薄煎餅",
+            "zh_edited": true
           },
           "rowIndex": 22,
           "opener": 1.3322087494473163,
@@ -2758,7 +2777,8 @@
           },
           "gloss": {
             "en": "Hot dog and chocolate milk❤️",
-            "faithful": 0.8238234140472936
+            "faithful": 0.8238234140472936,
+            "zh": "熱狗和 kókómjólk（巧克力牛奶）❤️"
           },
           "rowIndex": 32,
           "opener": 1.2147117837424384,
@@ -2937,7 +2957,8 @@
           },
           "gloss": {
             "en": "Flatkökur [flatbread] with hangikjöt [smoked lamb]",
-            "faithful": 0.9122545101828075
+            "faithful": 0.9122545101828075,
+            "zh": "Flatkökur（薄餅）配 hangikjöt（煙燻羊肉）"
           },
           "rowIndex": 35,
           "opener": 1.4746207162247669,
@@ -3116,7 +3137,8 @@
           },
           "gloss": {
             "en": "Meat soup",
-            "faithful": 0.9232063216104718
+            "faithful": 0.9232063216104718,
+            "zh": "肉湯"
           },
           "rowIndex": 25,
           "opener": 1.3520623155992837,
@@ -3300,7 +3322,8 @@
           },
           "gloss": {
             "en": "Harðfiskur [dried fish]",
-            "faithful": 0.9033317623184325
+            "faithful": 0.9033317623184325,
+            "zh": "harðfiskur（乾魚）"
           },
           "rowIndex": 9,
           "opener": 1.2945097567547368,
@@ -3485,7 +3508,9 @@
           "gloss": {
             "en": "Ice cream in a storm",
             "faithful": 0.8000603732789074,
-            "edited": true
+            "edited": true,
+            "zh": "暴風雨裡吃冰淇淋",
+            "zh_edited": true
           },
           "rowIndex": 16,
           "opener": 1.7148764622008965,
@@ -3741,7 +3766,8 @@
           },
           "gloss": {
             "en": "Beautiful view, beautiful sunset and incredibly beautiful to be able to see the sea when one wakes up.",
-            "faithful": 0.8957806306375868
+            "faithful": 0.8957806306375868,
+            "zh": "美麗的風景，美麗的日落，而且醒來時能看到大海真的超級美。"
           },
           "rowIndex": 116,
           "opener": 1.232081219800109,
@@ -3917,7 +3943,9 @@
           },
           "gloss": {
             "en": "I was there every summer as a kid with my grandmother, freedom and adventure",
-            "faithful": 0.8132123146423577
+            "faithful": 0.8132123146423577,
+            "zh": "小時候每個夏天我都待在那裡的祖母家，自由與冒險。",
+            "zh_edited": true
           },
           "rowIndex": 122,
           "opener": 1.638662439901923,
@@ -4093,7 +4121,8 @@
           },
           "gloss": {
             "en": "This is the place the mind visits when difficulties arise.",
-            "faithful": 0.8732748248198389
+            "faithful": 0.8732748248198389,
+            "zh": "這是當困難產生時，心靈會造訪的地方。"
           },
           "rowIndex": 38,
           "opener": 1.6182891513537176,
@@ -4269,7 +4298,8 @@
           },
           "gloss": {
             "en": "Because it is fun there",
-            "faithful": 0.9379263754376689
+            "faithful": 0.9379263754376689,
+            "zh": "因為那裡很有趣。"
           },
           "rowIndex": 58,
           "opener": 1.2063712769094554,
@@ -4286,7 +4316,8 @@
           "tone": null,
           "gloss": {
             "en": "Wild thyme; The Icelandic horse",
-            "faithful": 0.3695928806081798
+            "faithful": 0.3695928806081798,
+            "zh": "blóðberg（野百里香）; 冰島馬"
           },
           "parts": [
             {
@@ -4297,6 +4328,7 @@
               "tone": "proud",
               "gloss_en": "Wild thyme",
               "gloss_faithful": 0.3695928806081798,
+              "gloss_zh": "blóðberg（野百里香）",
               "clef": {
                 "privacy": {
                   "type": "noul",
@@ -4461,6 +4493,7 @@
               "tone": "proud",
               "gloss_en": "The Icelandic horse",
               "gloss_faithful": 0.9644400455470202,
+              "gloss_zh": "冰島馬",
               "clef": {
                 "privacy": {
                   "type": "noul",
@@ -4630,7 +4663,8 @@
           "tone": null,
           "gloss": {
             "en": "The highlands, the sheep; The magic of the highlands",
-            "faithful": 0.3600823746349791
+            "faithful": 0.3600823746349791,
+            "zh": "高地，綿羊; 高地的魔力"
           },
           "parts": [
             {
@@ -4641,6 +4675,8 @@
               "tone": "proud",
               "gloss_en": "The highlands, the sheep",
               "gloss_faithful": 0.3600823746349791,
+              "gloss_zh": "高地，綿羊",
+              "gloss_zh_edited": true,
               "clef": {
                 "privacy": {
                   "type": "noul",
@@ -4805,6 +4841,8 @@
               "tone": "calm",
               "gloss_en": "The magic of the highlands",
               "gloss_faithful": 0.6168033461265522,
+              "gloss_zh": "高地的魔力",
+              "gloss_zh_edited": true,
               "clef": {
                 "privacy": {
                   "type": "noul",
@@ -5133,7 +5171,8 @@
           },
           "gloss": {
             "en": "Here I learned beautiful communication, got to know the plant species and learned to love nature and the human being",
-            "faithful": 0.5994491705729353
+            "faithful": 0.5994491705729353,
+            "zh": "我在這裡學習了美好的溝通，認識了植物種類，並學會愛自然與人類。"
           },
           "rowIndex": 63,
           "opener": 1.3468926555029042,
@@ -5309,7 +5348,8 @@
           },
           "gloss": {
             "en": "This is the hoof of Sleipnir",
-            "faithful": 0.8940654479584675
+            "faithful": 0.8940654479584675,
+            "zh": "這是 Sleipnir 的蹄子。"
           },
           "rowIndex": 136,
           "opener": 1.804818127795022,
@@ -5485,7 +5525,8 @@
           },
           "gloss": {
             "en": "I was partly raised there and learned to love and respect the land",
-            "faithful": 0.8479642082721591
+            "faithful": 0.8479642082721591,
+            "zh": "我在那裡部分長大，並學會愛與尊重這片土地。"
           },
           "rowIndex": 75,
           "opener": 1.4906820537499081,
@@ -5661,7 +5702,8 @@
           },
           "gloss": {
             "en": "I have great memories of my great-grandfather in this house and the view is great. Especially when it is blækyrrt [completely calm/still weather].",
-            "faithful": 0.8410515169263134
+            "faithful": 0.8410515169263134,
+            "zh": "我在這棟房子裡對我的曾祖父有美好的回憶，而且風景很棒。特別是在 blækyrrt（無風寧靜的天氣）的時候。"
           },
           "rowIndex": 124,
           "opener": 1.416107669423188,
@@ -5837,7 +5879,8 @@
           },
           "gloss": {
             "en": "because I once had an intimate connection there with nature on a beautiful summer evening",
-            "faithful": 0.8833394934147305
+            "faithful": 0.8833394934147305,
+            "zh": "因為我曾在一個美麗的夏日夜晚，在那裡與大自然有過一段親密的連結。"
           },
           "rowIndex": 10,
           "opener": 1.0671091612762569,
@@ -6013,7 +6056,9 @@
           },
           "gloss": {
             "en": "I have gone there every single summer, and most Easter holidays, to visit grandma and grandpa.",
-            "faithful": 0.8437174610001196
+            "faithful": 0.8437174610001196,
+            "zh": "我每年夏天，以及大多數的復活節，都會去那裡探望祖父母。",
+            "zh_edited": true
           },
           "rowIndex": 89,
           "opener": 1.1092667047516884,
@@ -6190,7 +6235,8 @@
           "gloss": {
             "en": "Spellbinding power",
             "faithful": 0.6176859730105498,
-            "edited": true
+            "edited": true,
+            "zh": "令人著迷的力量"
           },
           "rowIndex": 155,
           "opener": 1.6481938643288425,
@@ -6366,7 +6412,9 @@
           },
           "gloss": {
             "en": "Nature, the people, the tourists and the mindfulness that leaves one speechless",
-            "faithful": 0.674439131078821
+            "faithful": 0.674439131078821,
+            "zh": "自然、人們、遊客，還有讓人說不出話來的正念",
+            "zh_edited": true
           },
           "rowIndex": 147,
           "opener": 1.855755251478211,
@@ -6383,7 +6431,8 @@
           "tone": null,
           "gloss": {
             "en": "Wild thyme; The Icelandic horse",
-            "faithful": 0.3695928806081798
+            "faithful": 0.3695928806081798,
+            "zh": "blóðberg（野百里香）; 冰島馬"
           },
           "parts": [
             {
@@ -6394,6 +6443,7 @@
               "tone": "proud",
               "gloss_en": "Wild thyme",
               "gloss_faithful": 0.3695928806081798,
+              "gloss_zh": "blóðberg（野百里香）",
               "clef": {
                 "privacy": {
                   "type": "noul",
@@ -6558,6 +6608,7 @@
               "tone": "proud",
               "gloss_en": "The Icelandic horse",
               "gloss_faithful": 0.9644400455470202,
+              "gloss_zh": "冰島馬",
               "clef": {
                 "privacy": {
                   "type": "noul",
@@ -6727,7 +6778,8 @@
           "tone": null,
           "gloss": {
             "en": "The highlands, the sheep; The magic of the highlands",
-            "faithful": 0.3600823746349791
+            "faithful": 0.3600823746349791,
+            "zh": "高地，綿羊; 高地的魔力"
           },
           "parts": [
             {
@@ -6738,6 +6790,8 @@
               "tone": "proud",
               "gloss_en": "The highlands, the sheep",
               "gloss_faithful": 0.3600823746349791,
+              "gloss_zh": "高地，綿羊",
+              "gloss_zh_edited": true,
               "clef": {
                 "privacy": {
                   "type": "noul",
@@ -6902,6 +6956,8 @@
               "tone": "calm",
               "gloss_en": "The magic of the highlands",
               "gloss_faithful": 0.6168033461265522,
+              "gloss_zh": "高地的魔力",
+              "gloss_zh_edited": true,
               "clef": {
                 "privacy": {
                   "type": "noul",
@@ -7230,7 +7286,9 @@
           },
           "gloss": {
             "en": "The highlands have a unique magic: Stillness and expanse.",
-            "faithful": 0.897236517671658
+            "faithful": 0.897236517671658,
+            "zh": "高地有一種獨特的魔力：寧靜與遼闊。",
+            "zh_edited": true
           },
           "rowIndex": 114,
           "opener": 2.054833773792982,
@@ -7406,7 +7464,8 @@
           },
           "gloss": {
             "en": "My beautiful hometown",
-            "faithful": 0.9208018453791729
+            "faithful": 0.9208018453791729,
+            "zh": "我美麗的家鄉"
           },
           "rowIndex": 151,
           "opener": 1.9056869849857783,
@@ -7582,7 +7641,8 @@
           },
           "gloss": {
             "en": "Wonderful nature and majestic mountains in all the colors of the rainbow",
-            "faithful": 0.8936892455251978
+            "faithful": 0.8936892455251978,
+            "zh": "絕美的自然景觀與壯麗的山脈，擁有彩虹的所有色彩。"
           },
           "rowIndex": 2,
           "opener": 1.96475350423851,
@@ -7758,7 +7818,9 @@
           },
           "gloss": {
             "en": "I have incredibly many beautiful and good memories from there - fishing, sailing on a boat, playing in the lava field, playing games and being with the family.",
-            "faithful": 0.7358491294649292
+            "faithful": 0.7358491294649292,
+            "zh": "我在那裡有好多美好的回憶：釣魚、划船、在熔岩原上玩耍、玩遊戲，還有和家人在一起。",
+            "zh_edited": true
           },
           "rowIndex": 86,
           "opener": 1.1874613995238863,
@@ -8020,7 +8082,8 @@
           },
           "gloss": {
             "en": "Lopapeysa [traditional Icelandic wool sweater]",
-            "faithful": 0.7855327631406092
+            "faithful": 0.7855327631406092,
+            "zh": "Lopapeysa（冰島傳統羊毛衫）"
           },
           "rowIndex": 101,
           "opener": 1.5026198165866718,
@@ -8205,7 +8268,9 @@
           "gloss": {
             "en": "Grumbling and happy",
             "faithful": 0.4971830919395192,
-            "edited": true
+            "edited": true,
+            "zh": "愛發牢騷又幸福",
+            "zh_edited": true
           },
           "rowIndex": 100,
           "opener": 1.1420379996122587,
@@ -8386,7 +8451,9 @@
           },
           "gloss": {
             "en": "Þorramatur [traditional midwinter food] lopapeysur [traditional Icelandic wool sweaters]",
-            "faithful": 0.7216104680574077
+            "faithful": 0.7216104680574077,
+            "zh": "Þorramatur（隆冬節令的傳統食物）、lopapeysur（冰島傳統毛衣）",
+            "zh_edited": true
           },
           "rowIndex": 7,
           "opener": 1.3307790598967892,
@@ -8565,7 +8632,8 @@
           },
           "gloss": {
             "en": "Lopapeysur [Icelandic wool sweaters]",
-            "faithful": 0.6107122527988308
+            "faithful": 0.6107122527988308,
+            "zh": "Lopapeysur（冰島羊毛衫）"
           },
           "rowIndex": 105,
           "opener": 1.3858424394440911,
@@ -8745,7 +8813,8 @@
           "gloss": {
             "en": "Icelandic lopapeysa [traditional wool sweater]",
             "faithful": 0.3331452339567002,
-            "edited": true
+            "edited": true,
+            "zh": "冰島 lopapeysa（傳統羊毛衫）"
           },
           "rowIndex": 108,
           "opener": 1.3482009411891607,
@@ -8924,7 +8993,8 @@
           },
           "gloss": {
             "en": "swimming pool",
-            "faithful": 0.8959742625793853
+            "faithful": 0.8959742625793853,
+            "zh": "游泳池"
           },
           "rowIndex": 114,
           "opener": 1.3365151703596558,
@@ -9103,7 +9173,8 @@
           },
           "gloss": {
             "en": "The Icelandic flag",
-            "faithful": 0.9607864554482702
+            "faithful": 0.9607864554482702,
+            "zh": "冰島國旗"
           },
           "rowIndex": 82,
           "opener": 1.4287204802553757,
@@ -9284,7 +9355,8 @@
           },
           "gloss": {
             "en": "safety, lopapeysur [traditional Icelandic wool sweaters]",
-            "faithful": 0.8567372359316551
+            "faithful": 0.8567372359316551,
+            "zh": "安全，lopapeysur（冰島傳統羊毛衫）"
           },
           "rowIndex": 77,
           "opener": 1.1175385647056386,
@@ -9463,7 +9535,8 @@
           },
           "gloss": {
             "en": "Swimming pools",
-            "faithful": 0.8313330840970882
+            "faithful": 0.8313330840970882,
+            "zh": "游泳池"
           },
           "rowIndex": 112,
           "opener": 1.3246510793864392,
@@ -9651,7 +9724,8 @@
           },
           "gloss": {
             "en": "I think the most Icelandic thing in the world is our warm, beautiful lopi [unspun wool] and the solidarity that characterizes us when times are tough. We stand together, keep each other warm, and do not give up.",
-            "faithful": 0.807013600865054
+            "faithful": 0.807013600865054,
+            "zh": "我覺得世界上最像冰島的事物，是我們溫暖、美麗的 lopi（未紡原羊毛），以及當我們面臨困境時所展現的團結。我們共同面對，彼此溫暖，且永不放棄。"
           },
           "rowIndex": 78,
           "opener": 1.4424689248687517,
@@ -9830,7 +9904,8 @@
           },
           "gloss": {
             "en": "Herd behavior",
-            "faithful": 0.8422968139791424
+            "faithful": 0.8422968139791424,
+            "zh": "羊群效應"
           },
           "rowIndex": 86,
           "opener": 1.2900400400799046,
@@ -10009,7 +10084,9 @@
           },
           "gloss": {
             "en": "Racism",
-            "faithful": 0.9350624582210655
+            "faithful": 0.9350624582210655,
+            "zh": "種族主義",
+            "zh_edited": true
           },
           "rowIndex": 89,
           "opener": 1.025236082782493,
@@ -10189,7 +10266,8 @@
           "gloss": {
             "en": "Group-making [treating people as one lump]",
             "faithful": 0.5243170269090275,
-            "edited": true
+            "edited": true,
+            "zh": "群體化（將人們視為同一塊整體）"
           },
           "rowIndex": 88,
           "opener": 1.2293163828079616,
@@ -10368,7 +10446,8 @@
           },
           "gloss": {
             "en": "Nepotism, positive and negative",
-            "faithful": 0.7130854782333649
+            "faithful": 0.7130854782333649,
+            "zh": "裙帶關係，正面的與負面的"
           },
           "rowIndex": 85,
           "opener": 1.041480898671098,
@@ -10548,7 +10627,9 @@
           "gloss": {
             "en": "The herd",
             "faithful": 0.636015911182928,
-            "edited": true
+            "edited": true,
+            "zh": "羊群",
+            "zh_edited": true
           },
           "rowIndex": 87,
           "opener": 1.4084798410130888,
@@ -10805,7 +10886,8 @@
           },
           "gloss": {
             "en": "Nature and paganism",
-            "faithful": 0.9152849741155588
+            "faithful": 0.9152849741155588,
+            "zh": "自然與異教"
           },
           "rowIndex": 46,
           "opener": 1.5888323169062686,
@@ -10986,7 +11068,8 @@
           },
           "gloss": {
             "en": "peace and willpower",
-            "faithful": 0.9111901242137345
+            "faithful": 0.9111901242137345,
+            "zh": "和平與意志力"
           },
           "rowIndex": 92,
           "opener": 1.5537746631591556,
@@ -11167,7 +11250,9 @@
           },
           "gloss": {
             "en": "sviðasulta [sheep's head jelly], skinnhandrit [parchment manuscript]",
-            "faithful": 0.8605387546892752
+            "faithful": 0.8605387546892752,
+            "zh": "sviðasulta（羊頭肉凍）、skinnhandrit（羊皮紙手稿）",
+            "zh_edited": true
           },
           "rowIndex": 5,
           "opener": 1.2760888039325295,
@@ -11348,7 +11433,8 @@
           },
           "gloss": {
             "en": "Strength and peacefulness",
-            "faithful": 0.9021361046863926
+            "faithful": 0.9021361046863926,
+            "zh": "力量與寧靜"
           },
           "rowIndex": 94,
           "opener": 1.4877840821279424,
@@ -11528,7 +11614,8 @@
           "gloss": {
             "en": "Resilience",
             "faithful": 0.4693779629998154,
-            "edited": true
+            "edited": true,
+            "zh": "韌性"
           },
           "rowIndex": 130,
           "opener": 1.4736544584099562,
@@ -11709,7 +11796,8 @@
           },
           "gloss": {
             "en": "Perseverance, natural beauty",
-            "faithful": 0.9264382942205732
+            "faithful": 0.9264382942205732,
+            "zh": "堅毅，自然之美"
           },
           "rowIndex": 51,
           "opener": 1.464408898282443,
@@ -11889,7 +11977,9 @@
           "gloss": {
             "en": "The language [typed as Túngunálið]",
             "faithful": 0.5199186496059852,
-            "edited": true
+            "edited": true,
+            "zh": "語言（原文拼作 Túngunálið）",
+            "zh_edited": true
           },
           "rowIndex": 142,
           "opener": 1.5387610170024117,
@@ -12068,7 +12158,8 @@
           },
           "gloss": {
             "en": "The culture",
-            "faithful": 0.6694340196532994
+            "faithful": 0.6694340196532994,
+            "zh": "文化"
           },
           "rowIndex": 148,
           "opener": 1.3565608865930858,
@@ -12249,7 +12340,8 @@
           },
           "gloss": {
             "en": "Icelandic Nature",
-            "faithful": 0.9545944181001145
+            "faithful": 0.9545944181001145,
+            "zh": "冰島的自然"
           },
           "rowIndex": 48,
           "opener": 1.304045661337728,
@@ -12429,7 +12521,8 @@
           "gloss": {
             "en": "Drive",
             "faithful": 0.8489316980123228,
-            "edited": true
+            "edited": true,
+            "zh": "幹勁"
           },
           "rowIndex": 127,
           "opener": 1.2727203205623687,
@@ -12608,7 +12701,8 @@
           },
           "gloss": {
             "en": "The language",
-            "faithful": 0.9586739233725319
+            "faithful": 0.9586739233725319,
+            "zh": "語言"
           },
           "rowIndex": 137,
           "opener": 1.0919583939221758,
@@ -12792,7 +12886,9 @@
           },
           "gloss": {
             "en": "It will all work out",
-            "faithful": 0.8055254483174334
+            "faithful": 0.8055254483174334,
+            "zh": "船到橋頭自然直",
+            "zh_edited": true
           },
           "rowIndex": 122,
           "opener": 1.200705012968122,
@@ -12889,7 +12985,8 @@
           "tone": null,
           "gloss": {
             "en": "education; the future; artificial intelligence; communication",
-            "faithful": 0.9215014540396793
+            "faithful": 0.9215014540396793,
+            "zh": "教育; 未來; 人工智慧; 溝通"
           },
           "parts": [
             {
@@ -12900,6 +12997,7 @@
               "tone": null,
               "gloss_en": "education",
               "gloss_faithful": 0.9494643099771464,
+              "gloss_zh": "教育",
               "clef": {
                 "topic_theme": {
                   "type": "choice",
@@ -12930,6 +13028,7 @@
               "tone": null,
               "gloss_en": "the future",
               "gloss_faithful": 0.9384871539110359,
+              "gloss_zh": "未來",
               "clef": {
                 "topic_theme": {
                   "type": "choice",
@@ -12960,6 +13059,7 @@
               "tone": null,
               "gloss_en": "artificial intelligence",
               "gloss_faithful": 0.9215014540396793,
+              "gloss_zh": "人工智慧",
               "clef": {
                 "topic_theme": {
                   "type": "choice",
@@ -12990,6 +13090,7 @@
               "tone": null,
               "gloss_en": "communication",
               "gloss_faithful": 0.921920580422738,
+              "gloss_zh": "溝通",
               "clef": {
                 "topic_theme": {
                   "type": "choice",
@@ -13025,7 +13126,8 @@
           "tone": null,
           "gloss": {
             "en": "social media; society; nature; the language",
-            "faithful": 0.9054554312712736
+            "faithful": 0.9054554312712736,
+            "zh": "社群媒體; 社會; 大自然; 語言"
           },
           "parts": [
             {
@@ -13036,6 +13138,7 @@
               "tone": null,
               "gloss_en": "social media",
               "gloss_faithful": 0.9236502806014049,
+              "gloss_zh": "社群媒體",
               "clef": {
                 "topic_theme": {
                   "type": "choice",
@@ -13066,6 +13169,7 @@
               "tone": null,
               "gloss_en": "society",
               "gloss_faithful": 0.9054554312712736,
+              "gloss_zh": "社會",
               "clef": {
                 "topic_theme": {
                   "type": "choice",
@@ -13096,6 +13200,7 @@
               "tone": null,
               "gloss_en": "nature",
               "gloss_faithful": 0.9635723896728391,
+              "gloss_zh": "大自然",
               "clef": {
                 "topic_theme": {
                   "type": "choice",
@@ -13126,6 +13231,7 @@
               "tone": null,
               "gloss_en": "the language",
               "gloss_faithful": 0.9399150869960702,
+              "gloss_zh": "語言",
               "clef": {
                 "topic_theme": {
                   "type": "choice",
@@ -13161,7 +13267,8 @@
           "tone": null,
           "gloss": {
             "en": "democracy; the healthcare system; tolerance; housing",
-            "faithful": 0.7684845498824682
+            "faithful": 0.7684845498824682,
+            "zh": "民主制度; 醫療體系; 寬容; 住房"
           },
           "parts": [
             {
@@ -13172,6 +13279,7 @@
               "tone": null,
               "gloss_en": "democracy",
               "gloss_faithful": 0.9228365563202532,
+              "gloss_zh": "民主制度",
               "clef": {
                 "topic_theme": {
                   "type": "choice",
@@ -13202,6 +13310,7 @@
               "tone": null,
               "gloss_en": "the healthcare system",
               "gloss_faithful": 0.9221279492581712,
+              "gloss_zh": "醫療體系",
               "clef": {
                 "topic_theme": {
                   "type": "choice",
@@ -13232,6 +13341,7 @@
               "tone": null,
               "gloss_en": "tolerance",
               "gloss_faithful": 0.7684845498824682,
+              "gloss_zh": "寬容",
               "clef": {
                 "topic_theme": {
                   "type": "choice",
@@ -13262,6 +13372,7 @@
               "tone": null,
               "gloss_en": "housing",
               "gloss_faithful": 0.8672928740928441,
+              "gloss_zh": "住房",
               "clef": {
                 "topic_theme": {
                   "type": "choice",
@@ -13297,7 +13408,8 @@
           "tone": null,
           "gloss": {
             "en": "immigration; racism; media; money",
-            "faithful": 0.859199294497716
+            "faithful": 0.859199294497716,
+            "zh": "移民議題; 種族主義; 媒體; 錢"
           },
           "parts": [
             {
@@ -13308,6 +13420,8 @@
               "tone": null,
               "gloss_en": "immigration",
               "gloss_faithful": 0.8807096730522812,
+              "gloss_zh": "移民議題",
+              "gloss_zh_edited": true,
               "clef": {
                 "topic_theme": {
                   "type": "choice",
@@ -13338,6 +13452,7 @@
               "tone": null,
               "gloss_en": "racism",
               "gloss_faithful": 0.969076312773263,
+              "gloss_zh": "種族主義",
               "clef": {
                 "topic_theme": {
                   "type": "choice",
@@ -13368,6 +13483,7 @@
               "tone": null,
               "gloss_en": "media",
               "gloss_faithful": 0.859199294497716,
+              "gloss_zh": "媒體",
               "clef": {
                 "topic_theme": {
                   "type": "choice",
@@ -13398,6 +13514,7 @@
               "tone": null,
               "gloss_en": "money",
               "gloss_faithful": 0.9655085239310812,
+              "gloss_zh": "錢",
               "clef": {
                 "topic_theme": {
                   "type": "choice",
@@ -13433,7 +13550,8 @@
           "tone": null,
           "gloss": {
             "en": "transportation; the international community; primary and lower secondary education; youth work",
-            "faithful": 0.778319188675155
+            "faithful": 0.778319188675155,
+            "zh": "交通; 國際社會; 基礎教育; 青少年工作"
           },
           "parts": [
             {
@@ -13444,6 +13562,7 @@
               "tone": null,
               "gloss_en": "transportation",
               "gloss_faithful": 0.8716621945172575,
+              "gloss_zh": "交通",
               "clef": {
                 "topic_theme": {
                   "type": "choice",
@@ -13474,6 +13593,7 @@
               "tone": null,
               "gloss_en": "the international community",
               "gloss_faithful": 0.9458686215204849,
+              "gloss_zh": "國際社會",
               "clef": {
                 "topic_theme": {
                   "type": "choice",
@@ -13504,6 +13624,7 @@
               "tone": null,
               "gloss_en": "primary and lower secondary education",
               "gloss_faithful": 0.7813060110135948,
+              "gloss_zh": "基礎教育",
               "clef": {
                 "topic_theme": {
                   "type": "choice",
@@ -13534,6 +13655,7 @@
               "tone": null,
               "gloss_en": "youth work",
               "gloss_faithful": 0.778319188675155,
+              "gloss_zh": "青少年工作",
               "clef": {
                 "topic_theme": {
                   "type": "choice",
@@ -13569,7 +13691,8 @@
           "tone": null,
           "gloss": {
             "en": "the upper secondary school system; preschools; gender division",
-            "faithful": 0.7690901661542358
+            "faithful": 0.7690901661542358,
+            "zh": "中等教育體系; 幼兒園; 性別區隔"
           },
           "parts": [
             {
@@ -13580,6 +13703,7 @@
               "tone": null,
               "gloss_en": "the upper secondary school system",
               "gloss_faithful": 0.8643043181723354,
+              "gloss_zh": "中等教育體系",
               "clef": {
                 "topic_theme": {
                   "type": "choice",
@@ -13610,6 +13734,7 @@
               "tone": null,
               "gloss_en": "preschools",
               "gloss_faithful": 0.7690901661542358,
+              "gloss_zh": "幼兒園",
               "clef": {
                 "topic_theme": {
                   "type": "choice",
@@ -13640,6 +13765,8 @@
               "tone": null,
               "gloss_en": "gender division",
               "gloss_faithful": 0.8469873285208537,
+              "gloss_zh": "性別區隔",
+              "gloss_zh_edited": true,
               "clef": {
                 "topic_theme": {
                   "type": "choice",
@@ -13676,7 +13803,8 @@
           "tone": null,
           "gloss": {
             "en": "What kind of society do we want to create together?",
-            "faithful": 0.9406021100553146
+            "faithful": 0.9406021100553146,
+            "zh": "我們想要共同創造一個什麼樣的社會？"
           }
         }
       ],

@@ -1,0 +1,41 @@
+{
+  "request": {
+    "model": "gemma4:31b-it-qat-google-official",
+    "stream": false,
+    "think": false,
+    "messages": [
+      {
+        "role": "system",
+        "content": "你把冰島民眾寫的短句翻成台灣慣用的繁體中文。你會拿到冰島語原文和一則已經查核過的英文譯文；以冰島語原文為準，英文譯文只用來確認意思。忠實翻譯，不增不減，不評論，不糾正錯字。地名保留冰島語原文。沒有對應中文的冰島詞（例如 lopapeysa、þorrablót、harðfiskur）保留原文，後面用全形括號加上簡短說明。使用全形標點；中文與拉丁字母或數字之間加半形空格。只輸出中文譯文。"
+      },
+      {
+        "role": "user",
+        "content": "冰島語原文：Amma og afi áttu bústað við Fimmtu braut og ég fór þangað með þeim þegar ég var lítil. Einnig fengu mamma og pabbi bústaðinn stundum lánaðan og börn bróður pabba voru þarna líka í sumarbústað. Þarna var algjör paradís. Þegar ég var komin með börnin mín fór ég stundum með þeim niður að Álftavatni á góðvirðisdögum og við óðum langt út í vatnið. Þetta var dásamlegur tími sem ég átti þarna, með ömmu og afa, svo mömmu og pabba, með vinum og svo með börnunum mínum og systrabörnum.\n英文譯文：Grandmother and grandfather had a cottage by Fimmtu braut and I went there with them when I was little. Also, mom and dad sometimes borrowed the cottage and my father's brother's children were there too in a summer cottage. It was a total paradise there. When I had my children, I sometimes went with them down to Álftavatn on fair-weather days and we waded far out into the lake. This was a wonderful time that I had there, with grandmother and grandfather, then mom and dad, with friends and then with my children and nieces and nephews."
+      }
+    ],
+    "options": {
+      "temperature": 0.2,
+      "num_ctx": 4096,
+      "seed": 1010
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "gemma4:31b-it-qat-google-official",
+    "created_at": "2026-10-05T09:01:32.078497Z",
+    "message": {
+      "role": "assistant",
+      "content": "奶奶和爺爺在 Fimmtu braut 有一棟度假屋，我小時候常跟他們一起去那裡。爸爸和媽媽有時也會借用那棟度假屋，我父親兄弟的孩子們有時也會在那裡的夏季度假屋。那裡完全是天堂。在我有了孩子後，天氣好的日子我偶爾會帶他們去 Álftavatn，我們在湖裡走得很遠。我在那裡度過了一段美好的時光，先是與奶奶和爺爺，接著是與爸爸和媽媽，與朋友們，然後是與我的孩子和姪子們。"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 6526492084,
+    "load_duration": 15923417,
+    "prompt_eval_count": 468,
+    "prompt_eval_cached_count": 0,
+    "prompt_eval_duration": 1158015000,
+    "eval_count": 128,
+    "eval_duration": 5350812000
+  },
+  "latency_ms": 6527
+}

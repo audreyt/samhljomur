@@ -1,0 +1,41 @@
+{
+  "request": {
+    "model": "gemma4:31b-it-qat-google-official",
+    "stream": false,
+    "think": false,
+    "messages": [
+      {
+        "role": "system",
+        "content": "你把冰島民眾寫的短句翻成台灣慣用的繁體中文。你會拿到冰島語原文和一則已經查核過的英文譯文；以冰島語原文為準，英文譯文只用來確認意思。忠實翻譯，不增不減，不評論，不糾正錯字。地名保留冰島語原文。沒有對應中文的冰島詞（例如 lopapeysa、þorrablót、harðfiskur）保留原文，後面用全形括號加上簡短說明。使用全形標點；中文與拉丁字母或數字之間加半形空格。只輸出中文譯文。"
+      },
+      {
+        "role": "user",
+        "content": "冰島語原文：Já orðatiltækið að vera úti á túni hefur kannski rétta merkingu, því maður getur algjörlega slökkt á hausnum og slakað á þegar maður liggur einhverstaðar úti á túni eða í móa eða hvar sem er.\n英文譯文：Yes, the idiom of being out in the field [meaning to be clueless or confused] perhaps has the right meaning, because one can completely switch off the head and relax when one lies somewhere out in a field or in a moor or wherever."
+      }
+    ],
+    "options": {
+      "temperature": 0.2,
+      "num_ctx": 4096,
+      "seed": 1010
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "gemma4:31b-it-qat-google-official",
+    "created_at": "2026-10-05T09:01:47.402779Z",
+    "message": {
+      "role": "assistant",
+      "content": "是的，「在草地上」這個慣用語或許有正確的含義，因為當一個人躺在草地、荒原或任何地方時，可以完全讓大腦關機並放鬆。"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 2527810667,
+    "load_duration": 16421292,
+    "prompt_eval_count": 292,
+    "prompt_eval_cached_count": 0,
+    "prompt_eval_duration": 849579000,
+    "eval_count": 43,
+    "eval_duration": 1660473000
+  },
+  "latency_ms": 2529
+}

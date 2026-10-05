@@ -32,6 +32,8 @@ export function videoHtml(
         text: src.text,
         sung: src.sung,
         gloss_en: (src.gloss?.en ?? "").replace(/\s*[—–]\s*/g, ", "),
+        gloss_zh: src.gloss?.zh ?? "",
+        gloss_zh_edited: !!src.gloss?.zh_edited,
         gloss_edited: !!src.gloss?.edited,
 
         source: src.source,
@@ -62,6 +64,7 @@ export function videoHtml(
         parts: src.parts?.map((p) => ({
           text: p.text,
           gloss_en: p.gloss_en == null ? "" : p.gloss_en.replace(/\s*[—–]\s*/g, ", "),
+          gloss_zh: p.gloss_zh ?? "",
           source: p.source,
         })),
       });
@@ -180,7 +183,9 @@ body.rendering #chrome{display:none}
 <div id="chrome">
   <div id="top"><span class="wm">SAMHLJÓMUR</span>
     <div class="btns">
-      <button class="ctl" id="lang">${S("lang_switch").is}</button>
+      <button class="ctl langbtn" data-lang="is" onclick="setVlang('is')">Íslenska</button>
+      <button class="ctl langbtn" data-lang="en" onclick="setVlang('en')">English</button>
+      <button class="ctl langbtn" data-lang="zh" onclick="setVlang('zh')">華文</button>
       <button class="ctl" id="insp">${S("inspect").is}</button>
     </div>
   </div>
@@ -599,21 +604,25 @@ function drawLyrics(t,m){
   // movement tag
   const mlab=m.n===4&&m.bridge_start_s!=null&&t>=m.bridge_start_s?STR.m4_bridge:STR.m[m.n];
   g.font='500 15px Inter,sans-serif';g.fillStyle='rgba(160,175,200,.85)';
-  g.fillText((LANG==='en'?mlab.en:mlab.is).toUpperCase(),W/2,H*.60);
+  g.fillText(pick(mlab).toUpperCase(),W/2,H*.60);
   // lyric line(s), Fraunces, wrapped
   const lines2=wrap(l.text,'600 40px Fraunces,serif',maxW);
   g.font='600 40px Fraunces,serif';g.fillStyle='#f2eee4';
   lines2.forEach((ln,i)=>{g.fillText(ln,W/2,cy+i*50-(lines2.length-1)*25)});
   let y2=cy+(lines2.length-1)*25+44;
   if(l.count>=2){g.font='500 16px Inter,sans-serif';g.fillStyle='rgba(232,196,124,.9)';g.fillText('×'+l.count,W/2,y2-28)}
-  // EN gloss + provenance label, wrapped to the same width
-  if(l.gloss_en){
-    const gl=wrap(l.gloss_en,'400 19px Inter,sans-serif',maxW);
-    g.font='400 19px Inter,sans-serif';g.fillStyle='rgba(150,160,180,.92)';
+  // gloss + provenance label; zh mode shows the zh gloss (D2)
+  const gz=LANG==='zh'?l.gloss_zh:l.gloss_en;
+  if(gz){
+    const gf=LANG==='zh'?'400 19px Iansui,Inter,sans-serif':'400 19px Inter,sans-serif';
+    const gl=wrap(gz,gf,maxW);
+    g.font=gf;g.fillStyle='rgba(150,160,180,.92)';
     gl.forEach((ln,i)=>g.fillText(ln,W/2,y2+4+i*24));
-    const lbl=l.gloss_edited?STR.gloss_edited:STR.gloss_label;
-    g.font='400 12px Inter,sans-serif';g.fillStyle='rgba(120,130,150,.7)';
-    g.fillText(lbl[LANG==='is'?'is':'en'],W/2,y2+4+gl.length*24+4);
+    const edited=LANG==='zh'?l.gloss_zh_edited:l.gloss_edited;
+    const lbl=edited?STR.gloss_edited:STR.gloss_label;
+    g.font=(LANG==='zh'?'400 12px Iansui,Inter,sans-serif':'400 12px Inter,sans-serif');
+    g.fillStyle='rgba(120,130,150,.7)';
+    g.fillText(lbl[pickKey()],W/2,y2+4+gl.length*24+4);
   }
   g.restore();
 }
@@ -633,6 +642,8 @@ window.renderAt=function(t){
 };
 // ---- player chrome ----
 let LANG='is';
+const pickKey=()=>LANG==='zh'?'zh':LANG==='en'?'en':'is';
+const pick=o=>LANG==='zh'?(o.zh||o.en):LANG==='en'?o.en:o.is;
 const au=document.getElementById('au');
 const TOTAL=DATA.total_s;
 document.getElementById('ticks').innerHTML=DATA.movements.slice(1).map(m=>'<div class="tick" style="left:'+(m.start_s/TOTAL*100)+'%"></div>').join('');
@@ -644,33 +655,38 @@ function tickUi(){
 }
 document.getElementById('play').onclick=()=>{au.paused?au.play():au.pause()};
 document.getElementById('playbig').onclick=()=>{document.getElementById('pre').classList.add('gone');au.play()};
-au.addEventListener('play',()=>{document.getElementById('pl').textContent=STR.pause[LANG==='is'?'is':'en']});
-au.addEventListener('pause',()=>{document.getElementById('pl').textContent=STR.play[LANG==='is'?'is':'en']});
+au.addEventListener('play',()=>{document.getElementById('pl').textContent=STR.pause[pickKey()]});
+au.addEventListener('pause',()=>{document.getElementById('pl').textContent=STR.play[pickKey()]});
 document.getElementById('bar').onclick=(e)=>{const r=e.currentTarget.getBoundingClientRect();au.currentTime=TOTAL*(e.clientX-r.left)/r.width};
-document.getElementById('lang').onclick=()=>{
-  LANG=LANG==='is'?'en':'is';
-  document.getElementById('lang').textContent=STR.lang_switch[LANG==='is'?'is':'en'];
-  document.getElementById('insp').textContent=STR.inspect[LANG==='is'?'is':'en'];
-  const pre=document.querySelector('#pre .sub');if(pre)pre.innerHTML=STR.tagline[LANG==='is'?'is':'en']+'<br>'+STR.disclaimer[LANG==='is'?'is':'en'];
-  document.getElementById('playbig').textContent=STR.press_play[LANG==='is'?'is':'en'];
-};
+function setVlang(l){
+  LANG=['is','en','zh'].includes(l)?l:'is';
+  try{localStorage.setItem('samhljomur-lang',LANG)}catch(e){}
+  document.documentElement.lang=LANG==='zh'?'zh-Hant-TW':LANG;
+  document.querySelectorAll('.langbtn').forEach(x=>x.classList.toggle('on',x.dataset.lang===LANG));
+  document.getElementById('insp').textContent=STR.inspect[pickKey()];
+  const pre=document.querySelector('#pre .sub');if(pre)pre.innerHTML=STR.tagline[pickKey()]+'<br>'+STR.disclaimer[pickKey()];
+  document.getElementById('playbig').textContent=STR.press_play[pickKey()];
+  const pl=document.getElementById('pl');if(pl)pl.textContent=(au.paused?STR.play:STR.pause)[pickKey()];
+}
+try{const l0=localStorage.getItem('samhljomur-lang');if(l0&&l0!=='is')setVlang(l0)}catch(e){}
 document.getElementById('insp').onclick=()=>document.getElementById('inspect').classList.toggle('open');
-function toneName(k){const s=STR['tone_'+k];return s?s[LANG==='is'?'is':'en']:k}
+function toneName(k){const s=STR['tone_'+k];return s?s[pickKey()]:k}
 function updateInspect(t){
   const el=document.getElementById('inspect');if(!el.classList.contains('open'))return;
   const l=lineAt(t);
-  if(!l){el.innerHTML='<h3>'+STR.inspect[LANG==='is'?'is':'en']+'</h3>';return}
-  const is=LANG==='is';
+  if(!l){el.innerHTML='<h3>'+STR.inspect[pickKey()]+'</h3>';return}
+  const pk=pickKey();
   const f=x=>x==null?'–':Number(x).toFixed(2);
-  let h='<h3>'+STR.inspect[is?'is':'en']+'</h3>';
+  let h='<h3>'+STR.inspect[pk]+'</h3>';
   h+='<div class="is-line">'+esc(l.text)+'</div>';
-  if(l.gloss_en)h+='<div class="en-line">'+esc(l.gloss_en)+' <span class="k">· '+(l.gloss_edited?STR.gloss_edited[is?'is':'en']:STR.gloss_label[is?'is':'en'])+'</span></div>';
-  h+='<div class="row"><span class="k">'+STR.insp_source[is?'is':'en']+':</span> '+esc(l.source)+(l.url?' · <a href="'+l.url+'" target="_blank">talasaman.is</a>':'')+(l.count>=2?' · ×'+l.count:'')+'</div>';
+  const gz=LANG==='zh'?l.gloss_zh:l.gloss_en;
+  if(gz)h+='<div class="en-line">'+esc(gz)+' <span class="k">· '+((LANG==='zh'?l.gloss_zh_edited:l.gloss_edited)?STR.gloss_edited[pk]:STR.gloss_label[pk])+'</span></div>';
+  h+='<div class="row"><span class="k">'+STR.insp_source[pk]+':</span> '+esc(l.source)+(l.url?' · <a href="'+l.url+'" target="_blank">talasaman.is</a>':'')+(l.count>=2?' · ×'+l.count:'')+'</div>';
   if(l.label)h+='<div class="row"><span class="k">'+esc(l.label)+'</span></div>';
   if(l.clef){
-    h+='<div class="row"><span class="k">'+STR.insp_clef[is?'is':'en']+'</span></div>';
-    h+='<div class="row">'+STR.insp_singable[is?'is':'en']+' '+f(l.clef.singable)+' · '+STR.insp_image[is?'is':'en']+' '+f(l.clef.image)+' · '+STR.insp_warmth[is?'is':'en']+' '+f(l.clef.warmth)+'</div>';
-    h+='<div class="row">'+STR.insp_opener[is?'is':'en']+' '+f(l.clef.opener)+' · '+STR.insp_closer[is?'is':'en']+' '+f(l.clef.closer)+' · '+STR.insp_seconds[is?'is':'en']+' '+f(l.seconds)+'s</div>';
+    h+='<div class="row"><span class="k">'+STR.insp_clef[pk]+'</span></div>';
+    h+='<div class="row">'+STR.insp_singable[pk]+' '+f(l.clef.singable)+' · '+STR.insp_image[pk]+' '+f(l.clef.image)+' · '+STR.insp_warmth[pk]+' '+f(l.clef.warmth)+'</div>';
+    h+='<div class="row">'+STR.insp_opener[pk]+' '+f(l.clef.opener)+' · '+STR.insp_closer[pk]+' '+f(l.clef.closer)+' · '+STR.insp_seconds[pk]+' '+f(l.seconds)+'s</div>';
     h+='<div class="row">'+STR.insp_tone[is?'is':'en']+' '+toneName(l.tone)+' · '+STR.insp_privacy[is?'is':'en']+' '+f(l.clef.privacy)+'</div>';
   }
   if(l.fidelity!=null)h+='<div class="row">'+STR.insp_fidelity[is?'is':'en']+' '+Math.round(l.fidelity*100)+'%</div>';

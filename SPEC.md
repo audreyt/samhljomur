@@ -132,3 +132,15 @@ C2. **Selection**: chosen gloss = Gemma 4 31B for every text, unless `copy/gloss
 C3. Drop the `óstaðfest vélþýðing / unverified machine gloss` label everywhere (it was derived from Clef faithful). Machine glosses are `vélþýðing / machine gloss`; edited ones `ritstýrt / edited`.
 C4. Matsspjald: Q2 for glosses becomes **Að hluta** (string `q2_glosses` updated). Q1 and Q3 unchanged.
 C5. Apertus 1.5 70B, when it lands (port 8004), is a display candidate under the same rule; the lead decides separately whether it replaces Gemma as default.
+
+## Amendment D (lead): 華文 (zh-Hant-TW) as a third language
+D1. Toggle becomes three buttons, `Íslenska / English / 華文`, on every page (index, video, standalone, report, songbook HTML). Default stays Íslenska. Persist choice in localStorage. `<html lang>` follows the mode (`is`, `en`, `zh-Hant-TW`). Every authored string now has `is`, `en`, `zh` in `copy/strings.json` (lead-authored, verbatim); coverage gate requires all three.
+D2. Participant text stays byte-verbatim Icelandic in every mode. In 華文 mode the gloss line shows the zh gloss; the EN gloss is not shown. The MP4 stays Icelandic + English (no re-render needed for D); the songbook PDF stays IS + EN.
+D3. **zh glosses**: one per text that has an EN gloss (all 386 + refrain parts + topic words + tagline), produced by Gemma 4 31B (`gemma4:31b-it-qat-google-official`, /api/chat, `think:false, temperature 0.2, num_ctx 4096, seed 1010`), logged and cached like every other model call. Input is the Icelandic original plus the final EN gloss (chosen or edited).
+System prompt (verbatim):
+`你把冰島民眾寫的短句翻成台灣慣用的繁體中文。你會拿到冰島語原文和一則已經查核過的英文譯文；以冰島語原文為準，英文譯文只用來確認意思。忠實翻譯，不增不減，不評論，不糾正錯字。地名保留冰島語原文。沒有對應中文的冰島詞（例如 lopapeysa、þorrablót、harðfiskur）保留原文，後面用全形括號加上簡短說明。使用全形標點；中文與拉丁字母或數字之間加半形空格。只輸出中文譯文。`
+User message: `冰島語原文：{is}\n英文譯文：{en}`
+No Clef scoring of zh glosses (C1). zh glosses are labelled `機器譯文`; lead edits go in `copy/gloss-edits-zh.json` (`{ "<IS text>": "<zh>" }`, label `已校訂`), applied if present.
+D4. zh text checks (gate): `opencc -c t2s` round-trip shows no Simplified-only characters (i.e. `opencc -c s2twp` applied to each zh string is a no-op; list any that change); CJK–Latin/digit spacing per pangu (`~/.local/bin/pangu.pl` must be a no-op on each zh string; list diffs); no em dashes.
+D5. Font: Iansui (OFL; `~/Library/Fonts/Iansui-Regular.ttf`), subset with `pyftsubset` to exactly the CJK + punctuation glyphs used across all zh strings and zh glosses, embedded as woff2 in each page. Never embed jf fonts (licence forbids redistribution). Browser check: in 華文 mode `document.fonts.check('16px Iansui', '<sample>')` true and no fallback-font glyph boxes; screenshots of every page × 4 widths in 華文.
+D6. Report: the Matsspjald, bake-off and calibration sections render fully in 華文; tables keep model names Latin.

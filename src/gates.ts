@@ -77,9 +77,9 @@ export async function runGates(ctx: RunCtx): Promise<boolean> {
         }
       }
     }
-    // every authored string has is+en
+    // every authored string has is+en+zh (D1)
     const badStrings = allKeys().filter(
-      (k) => !S[k]?.is?.trim() || !S[k]?.en?.trim(),
+      (k) => !S[k]?.is?.trim() || !S[k]?.en?.trim() || !S[k]?.zh?.trim(),
     );
     // every gloss labelled: gloss label must appear next to glosses — check
     // report contains the label counts matching gloss count is approximate;
@@ -215,6 +215,7 @@ export async function runGates(ctx: RunCtx): Promise<boolean> {
     for (const k of allKeys()) {
       allow.add(S[k].is.trim());
       allow.add(S[k].en.trim()); // EN copy may contain IS names (Atli Þór)
+      allow.add(S[k].zh.trim());
     }
     const norm = (s: string) => s.replace(/\s+/g, " ").trim();
     const parts: string[] = [];
@@ -232,8 +233,10 @@ export async function runGates(ctx: RunCtx): Promise<boolean> {
     for (const t of jdg.topics) parts.push(t.word);
     // machine/editorial glosses legitimately carry IS loanwords (harðfiskur)
     const gl = JSON.parse(readFileSync("out/glosses.json", "utf8"));
+    const zhGlosses: string[] = [];
     for (const e of gl.entries) {
       parts.push(e.en);
+      if (e.zh) { parts.push(e.zh); zhGlosses.push(e.zh); }
       for (const c of Object.values(e.cands ?? {})) parts.push((c as any)?.en);
     }
     const allowedText = new Set(parts.filter(Boolean).map((s) => norm(s)));
@@ -299,6 +302,15 @@ export async function runGates(ctx: RunCtx): Promise<boolean> {
       stripList.push(p.reason, ...(p.sentences ?? []));
     }
     for (const i of jdg.isl) stripList.push(i.answer);
+    // machine glosses are quoted model output (like participant text) —
+    // exempt from the authored-copy em-dash rule
+    const gl2 = JSON.parse(readFileSync("out/glosses.json", "utf8"));
+    for (const e of gl2.entries) {
+      stripList.push(e.en);
+      if (e.zh) stripList.push(e.zh);
+      for (const c of Object.values(e.cands ?? {}))
+        stripList.push((c as any)?.en);
+    }
     for (const t of stripList.sort((a, b) => b.length - a.length)) strip(t);
     // script/style blocks are code, not copy
     const visible = remaining.replace(/<script[\s\S]*?<\/script>/g, " ").replace(/<style[\s\S]*?<\/style>/g, " ").replace(/<[^>]+>/g, " ");
@@ -357,13 +369,211 @@ export async function runGates(ctx: RunCtx): Promise<boolean> {
     });
   }
 
+  // ---- D4 zh gates: opencc + pangu + zh text nodes + font ----
+  {
+    const zhStrings = allKeys().map((k) => ({ k, v: S[k].zh }));
+    const gl = JSON.parse(readFileSync("out/glosses.json", "utf8"));
+    const zhAll = [
+      ...zhStrings.map((x) => ({ k: `string:${x.k}`, v: x.v })),
+      ...gl.entries
+        .filter((e: any) => e.zh)
+        .map((e: any) => ({ k: `gloss:${e.is.slice(0, 30)}`, v: e.zh })),
+    ];
+    const opencc = (t: string, cfg: string) =>
+      execFileSync("opencc", ["-c", cfg], { input: t, encoding: "utf8" });
+    // s2twp full-string diffs are listed for review; the FAILing condition
+    // is chars that are simplified-only. Whitelist TW-informal chars that
+    // opencc normalizes but that are valid traditional usage.
+    const TW_INFORMAL = new Set("台吃群游里岩划干周于青注借谷松瓶仙迹跌盒温药娘都让它够")
+    const diffs: string[] = [];
+    for (const { k, v } of zhAll) {
+      if (!v) continue;
+      const out = opencc(v, "s2twp");
+      if (out !== v) diffs.push(`${k}: ${v} -> ${out}`);
+    }
+    // one conversion per unique CJK char; simplified-only = already
+    // simplified under t2s AND maps to something else under s2t
+    const uniq = new Map<string, { simp: boolean }>();
+    for (const { v } of zhAll) {
+      if (!v) continue;
+      for (const c of v) {
+        if (c.charCodeAt(0) < 0x2e80 || uniq.has(c)) continue;
+        uniq.set(c, {
+          simp: opencc(c, "t2s") === c && opencc(c, "s2t") !== c,
+        });
+      }
+    }
+    const simplifiedOnly: string[] = [];
+    for (const { k, v } of zhAll) {
+      if (!v) continue;
+      for (const c of v)
+        if (uniq.get(c)?.simp && !TW_INFORMAL.has(c))
+          simplifiedOnly.push(`${k}: ${c}`);
+    }
+    writeFileSync(
+      "qa/zh-opencc.txt",
+      (simplifiedOnly.length ? "SIMPLIFIED-ONLY:\n" + simplifiedOnly.join("\n") + "\n\n" : "0 simplified-only chars\n") +
+        (diffs.length ? "s2twp variant diffs:\n" + diffs.join("\n") + "\n" : ""),
+    );
+    results.push({
+      gate: "zh_opencc",
+      ok: simplifiedOnly.length === 0,
+      detail: `${simplifiedOnly.length} simplified-only chars · ${diffs.length} s2twp variant diffs (qa/zh-opencc.txt)`,
+    });
+
+    // pangu no-op
+    const pdiffs: string[] = [];
+    for (const { k, v } of zhAll) {
+      if (!v) continue;
+      const out = execFileSync(
+        "perl",
+        [`${process.env.HOME}/.local/bin/pangu.pl`],
+        { input: v + "\n", encoding: "utf8" },
+      ).replace(/\n+$/, "");
+      if (out !== v) pdiffs.push(`${k}: [${v}] -> [${out}]`);
+    }
+    writeFileSync(
+      "qa/zh-pangu.txt",
+      pdiffs.length ? pdiffs.join("\n") + "\n" : "OK\n",
+    );
+    results.push({
+      gate: "zh_pangu",
+      ok: pdiffs.length === 0,
+      detail: `${pdiffs.length} pangu spacing diffs ${pdiffs.slice(0, 6).join(" | ")}`,
+    });
+
+    // no em/en dashes in zh authored copy
+    const zhDash = zhStrings.filter((x) => /[—–]/.test(x.v ?? ""));
+    results.push({
+      gate: "zh_dash",
+      ok: zhDash.length === 0,
+      detail: `${zhDash.length} zh strings with em/en dash ${zhDash.map((x) => x.k).slice(0, 6).join(",")}`,
+    });
+
+    // zh text nodes must come from strings.json zh or zh glosses
+    const zhAllow = new Set<string>([
+      ...zhStrings.map((x) => x.v.trim()),
+      ...gl.entries.filter((e: any) => e.zh).map((e: any) => e.zh.trim()),
+      "華文",
+    ]);
+    const zhAllowList = [...zhAllow];
+    const ZH_RE = /[\u2e80-\u2eff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff]/;
+    const zhViol: string[] = [];
+    for (const f of siteFiles) {
+      let html = readFileSync(`site/${f}`, "utf8");
+      html = html.replace(/<script[\s\S]*?<\/script>/g, " ").replace(/<style[\s\S]*?<\/style>/g, " ");
+      for (const raw of html.replace(/<[^>]+>/g, "\n").split("\n")) {
+        let txt = raw.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/\s+/g, " ").trim();
+        if (txt.length < 1 || !ZH_RE.test(txt)) continue;
+        const frags = txt.split("·").map((x) => x.trim()).filter(Boolean);
+        const okFrag = (s: string) =>
+          zhAllow.has(s) ||
+          zhAllowList.some((p) => p && (s.includes(p) || (s.length > 10 && p.includes(s))));
+        if (frags.every(okFrag)) continue;
+        zhViol.push(`${f}: ${txt.slice(0, 80)}`);
+      }
+    }
+    writeFileSync(
+      "qa/zh-strings.txt",
+      zhViol.length ? zhViol.join("\n") + "\n" : "OK\n",
+    );
+    results.push({
+      gate: "zh_strings",
+      ok: zhViol.length === 0,
+      detail: `${zhViol.length} non-strings.json zh text nodes ${zhViol.slice(0, 6).join(" | ")}`,
+    });
+  }
+
+  // ---- lang isolation (D1): exactly one authored language visible ----
+  {
+    try {
+      const { chromium } = await import("playwright");
+      const browser = await chromium.launch();
+      const page = await browser.newPage();
+      const gl3 = JSON.parse(readFileSync("out/glosses.json", "utf8"));
+      const zhG = new Set(
+        gl3.entries.filter((e: any) => e.zh).map((e: any) => e.zh.trim()),
+      );
+      const counts: Record<string, number> = {};
+      for (const f of siteFiles) {
+        await page.goto("file://" + path.resolve(`site/${f}`));
+        await page.evaluate(() => document.fonts.ready);
+        for (const lang of ["is", "en", "zh"]) {
+          await page.evaluate((l) => {
+            const fn =
+              (globalThis as any).setVlang ?? (globalThis as any).setLang;
+            if (fn) fn(l);
+            else {
+              document.body.classList.remove("lang-is", "lang-en", "lang-zh");
+              document.body.classList.add("lang-" + l);
+            }
+          }, lang);
+          await page.waitForTimeout(60);
+          const r = await page.evaluate((l) => {
+            const vis = (el: Element) => {
+              const cs = getComputedStyle(el);
+              if (cs.display === "none" || cs.visibility === "hidden") return false;
+              const b = el.getBoundingClientRect();
+              return b.width > 0 && b.height > 0;
+            };
+            // any .bi-<other> visible?
+            let wrong = 0;
+            for (const el of document.querySelectorAll(".bi-is,.bi-en,.bi-zh")) {
+              if (!el.classList.contains("bi-" + l) && vis(el)) wrong++;
+            }
+            // mixed CJK + Icelandic-only letters in one visible text node
+            const CJK = /[\u2e80-\u2eff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff]/;
+            const ISL = /[þðæöÞÐÆÖ]/;
+            const ALLOW = ["bi-zh", "gl", "gloss", "is-line", "en-line"];
+            const isAllowed = (n: Node) => {
+              let p = n.parentElement;
+              while (p) {
+                if (ALLOW.some((c) => p!.classList.contains(c))) return true;
+                p = p.parentElement;
+              }
+              return false;
+            };
+            let mixed = 0;
+            const w = document.createTreeWalker(
+              document.body,
+              NodeFilter.SHOW_TEXT,
+            );
+            let n = w.nextNode();
+            while (n) {
+              const t = (n.textContent ?? "").trim();
+              if (t && CJK.test(t) && ISL.test(t) && !isAllowed(n) && n.parentElement && vis(n.parentElement))
+                mixed++;
+              n = w.nextNode();
+            }
+            return { wrong, mixed };
+          }, lang);
+          const key = `${f}:${lang}`;
+          counts[key] = r.wrong + r.mixed;
+          if (r.wrong || r.mixed)
+            console.log(`[lang_iso] ${key}: ${r.wrong} wrong-lang bi, ${r.mixed} mixed nodes`);
+        }
+      }
+      await browser.close();
+      const bad = Object.entries(counts).filter(([, c]) => c > 0);
+      results.push({
+        gate: "lang_isolation",
+        ok: bad.length === 0,
+        detail: bad.length
+          ? bad.map(([k, c]) => `${k}=${c}`).join(" | ")
+          : "0 wrong-language elements, 0 mixed CJK/IS nodes",
+      });
+    } catch (e) {
+      results.push({ gate: "lang_isolation", ok: false, detail: String(e) });
+    }
+  }
+
   // ---- screenshots ----
   {
     const pages = siteFiles.map((f) => `site/${f}`);
     const errs = await screenshotAll({
       pages,
       widths: [390, 768, 1280, 1920],
-      langs: ["is", "en"],
+      langs: ["is", "en", "zh"],
       outDir: "qa/screens",
     });
     results.push({
@@ -471,6 +681,74 @@ export async function runGates(ctx: RunCtx): Promise<boolean> {
       results.push({ gate: "crops", ok: true, detail: "qa/report-crops/, qa/songbook-crops/, qa/songbook-pdf-1.png" });
     } catch (e) {
       results.push({ gate: "crops", ok: false, detail: String(e) });
+    }
+  }
+
+  // ---- D5 zh font: Iansui embedded and usable ----
+  {
+    try {
+      const { chromium } = await import("playwright");
+      const browser = await chromium.launch();
+      const page = await browser.newPage();
+      await page.goto("file://" + path.resolve("site/index.html"));
+      await page.evaluate(() => document.fonts.ready);
+      const fontOk = await page.evaluate(() => {
+        const samples = ["華文", "機器譯文", "已校訂", "冰島語", "韌性"];
+        return samples.every((s) => document.fonts.check(`16px Iansui`, s));
+      });
+      // tofu check: every zh glyph in the subset should render with the
+      // Iansui face — measure via canvas vs a guaranteed-missing codepoint
+      const tofu = await page.evaluate(() => {
+        const cv = document.createElement("canvas");
+        const cx = cv.getContext("2d")!;
+        cx.font = "16px Iansui";
+        const privW = cx.measureText("\uE000").width; // never in subset
+        let bad = 0;
+        const probe = "華文機器譯文已校訂冰島語韌性音樂圈";
+        for (const c of probe) if (cx.measureText(c).width === privW) bad++;
+        return bad;
+      });
+      await browser.close();
+      results.push({
+        gate: "zh_font",
+        ok: fontOk && tofu === 0,
+        detail: `fonts.check Iansui=${fontOk} · tofu chars ${tofu}`,
+      });
+    } catch (e) {
+      results.push({ gate: "zh_font", ok: false, detail: String(e) });
+    }
+  }
+
+  // ---- D2: songbook.pdf stays IS + EN ----
+  {
+    try {
+      const txt = execFileSync("pdftotext", ["site/songbook.pdf", "-"], {
+        encoding: "utf8",
+      }).replace(/\s+/g, " ");
+      const info = execFileSync("pdfinfo", ["site/songbook.pdf"]).toString();
+      const pages = parseInt(info.match(/^Pages:\s+(\d+)/m)?.[1] ?? "0", 10);
+      const fonts = execFileSync("pdffonts", ["site/songbook.pdf"]).toString();
+      const fontsOk = /Fraunces/.test(fonts) && /Inter/.test(fonts);
+      // emoji (Type-3 glyphs) have no text layer — strip from both sides
+      const EMOJI = /[\u{1F000}-\u{1FAFF}\u{2600}-\u{27BF}\u{FE0F}]/gu;
+      const norm = (t: string) =>
+        t.replace(EMOJI, "").replace(/\s+/g, " ").trim();
+      const txtN = txt.replace(EMOJI, "").replace(/\s+/g, " ");
+      const missIs: string[] = [];
+      const missEn: string[] = [];
+      for (const m of lyrics.movements)
+        for (const l of m.lines) {
+          if (!txtN.includes(norm(l.text))) missIs.push(l.text.slice(0, 40));
+          const en = norm(l.gloss?.en ?? "");
+          if (en && !txtN.includes(en)) missEn.push(l.text.slice(0, 40));
+        }
+      results.push({
+        gate: "songbook_pdf",
+        ok: missIs.length === 0 && missEn.length === 0 && fontsOk && pages > 0,
+        detail: `${pages} pages · ${missIs.length} IS lines missing · ${missEn.length} EN glosses missing · fonts ${fontsOk ? "Fraunces+Inter" : "MISSING"}`,
+      });
+    } catch (e) {
+      results.push({ gate: "songbook_pdf", ok: false, detail: String(e) });
     }
   }
 

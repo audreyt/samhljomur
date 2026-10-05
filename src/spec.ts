@@ -449,3 +449,11 @@ export const BRIDGE_STYLES = {
   ],
   context_adherence: "medium",
 };
+
+// ---- D3: zh glosses (Gemma; no Clef scoring per C1) ----
+export const ZH_GLOSS_SYSTEM =
+  "你把冰島民眾寫的短句翻成台灣慣用的繁體中文。你會拿到冰島語原文和一則已經查核過的英文譯文；以冰島語原文為準，英文譯文只用來確認意思。忠實翻譯，不增不減，不評論，不糾正錯字。地名保留冰島語原文。沒有對應中文的冰島詞（例如 lopapeysa、þorrablót、harðfiskur）保留原文，後面用全形括號加上簡短說明。使用全形標點；中文與拉丁字母或數字之間加半形空格。只輸出中文譯文。";
+export const zhGlossUser = (is: string, en: string) =>
+  `冰島語原文：${is}\n英文譯文：${en}`;
+export const ZH_GLOSS_OPTIONS = { temperature: 0.2, num_ctx: 4096, seed: 1010 };
+export const ZH_EDITS_PATH = "copy/gloss-edits-zh.json";

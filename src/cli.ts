@@ -59,6 +59,21 @@ async function runGlosses(ctx: RunCtx, j: Judgments, limit = 0): Promise<Glosses
 async function runArrange(ctx: RunCtx, j: Judgments, g: Glosses): Promise<Stage4Out> {
   const out = stage4(j, g);
   writeLyrics(out);
+  // D3: reviewable zh-gloss dump — sung lines first (marked), then the rest
+  {
+    const sungIs = new Set<string>();
+    for (const m of out.movements)
+      for (const l of m.lines) {
+        sungIs.add(l.text);
+        for (const p of l.parts ?? []) sungIs.add(p.text);
+      }
+    const L = ["# zh glosses — [sung] lines first, then the rest", ""];
+    const row = (mark: string, e: (typeof g.entries)[number]) =>
+      L.push(`${mark}${e.is} | ${e.en} | ${e.zh ?? ""}${e.zh_edited ? " [已校訂]" : ""}`);
+    for (const e of g.entries) if (sungIs.has(e.is)) row("[sung] ", e);
+    for (const e of g.entries) if (!sungIs.has(e.is)) row("", e);
+    writeFileSync("out/zh-glosses.txt", L.join("\n") + "\n");
+  }
   console.log(
     `[stage4] ${out.movements.length} movements, ` +
       `${out.movements.reduce((s, m) => s + m.lines.length, 0)} sung lines, ` +

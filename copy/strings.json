@@ -2,618 +2,772 @@
   "_note": "Lead-authored copy. Use verbatim. Any new string needed: add with is+en and flag it in the report for lead review; never machine-write Icelandic.",
   "site_title": {
     "is": "Samhljómur",
-    "en": "Samhljómur"
+    "en": "Samhljómur",
+    "zh": "Samhljómur"
   },
   "subtitle": {
     "is": "Íslandsmedley úr opnum gögnum Samtals",
-    "en": "An Iceland medley from Samtal's open data"
+    "en": "An Iceland medley from Samtal's open data",
+    "zh": "以 Samtal 開放資料編成的冰島組曲"
   },
   "tagline": {
     "is": "Orð þátttakenda, orðrétt. Clef valdi línurnar og raðaði þeim.",
-    "en": "Participants' own words, verbatim. Clef chose the lines and their order."
+    "en": "Participants' own words, verbatim. Clef chose the lines and their order.",
+    "zh": "參與者的原話，一字不改。由 Clef 挑選詩句並排定順序。"
   },
   "dedication": {
     "is": "Til Finns Magnussonar og Atla Þórs Jóhannssonar, með þökk fyrir samtalið í Grósku 3. október 2026.",
-    "en": "For Finnur Magnusson and Atli Þór Jóhannsson, with thanks for the conversation at Gróska on 3 October 2026."
+    "en": "For Finnur Magnusson and Atli Þór Jóhannsson, with thanks for the conversation at Gróska on 3 October 2026.",
+    "zh": "獻給 Finnur Magnusson 與 Atli Þór Jóhannsson，感謝 2026 年 10 月 3 日在 Gróska 的對話。"
   },
   "gift": {
     "is": "Gjöf frá Audrey Tang",
-    "en": "A gift from Audrey Tang"
+    "en": "A gift from Audrey Tang",
+    "zh": "唐鳳敬贈"
   },
   "attribution": {
     "is": "Gögn: Samtal, félag til almannaheilla (talasaman.is), CC BY 4.0",
-    "en": "Gögn: Samtal, félag til almannaheilla (talasaman.is), CC BY 4.0"
+    "en": "Gögn: Samtal, félag til almannaheilla (talasaman.is), CC BY 4.0",
+    "zh": "Gögn: Samtal, félag til almannaheilla (talasaman.is), CC BY 4.0"
   },
   "disclaimer": {
     "is": "Þetta er hvorki afstaða né niðurstaða Samtals.",
-    "en": "This is not Samtal's position or finding."
+    "en": "This is not Samtal's position or finding.",
+    "zh": "本作品並非 Samtal 的立場或結論。"
   },
   "door_video": {
     "is": "Myndband",
-    "en": "Video"
+    "en": "Video",
+    "zh": "影片"
   },
   "door_report": {
     "is": "Skýrsla",
-    "en": "Report"
+    "en": "Report",
+    "zh": "報告"
   },
   "door_songbook": {
     "is": "Söngbók",
-    "en": "Songbook"
+    "en": "Songbook",
+    "zh": "歌本"
   },
   "press_play": {
     "is": "Ýttu á spila",
-    "en": "Press play"
+    "en": "Press play",
+    "zh": "按下播放"
   },
   "play": {
     "is": "Spila",
-    "en": "Play"
+    "en": "Play",
+    "zh": "播放"
   },
   "pause": {
     "is": "Hlé",
-    "en": "Pause"
+    "en": "Pause",
+    "zh": "暫停"
   },
   "inspect": {
     "is": "Rýna",
-    "en": "Inspect"
+    "en": "Inspect",
+    "zh": "檢視"
   },
   "lang_switch": {
     "is": "English",
-    "en": "Íslenska"
+    "en": "Íslenska",
+    "zh": "Íslenska"
   },
   "gloss_label": {
     "is": "vélþýðing",
-    "en": "machine gloss"
+    "en": "machine gloss",
+    "zh": "機器譯文"
   },
   "gloss_unverified": {
     "is": "óstaðfest vélþýðing",
-    "en": "unverified machine gloss"
+    "en": "unverified machine gloss",
+    "zh": "未經查核的機器譯文"
   },
   "tagline_label": {
     "is": "Einkunnarorð Samtals",
-    "en": "Samtal's own tagline"
+    "en": "Samtal's own tagline",
+    "zh": "Samtal 自己的標語"
   },
   "m1": {
     "is": "Gluggaveður",
-    "en": "Window-weather"
+    "en": "Window-weather",
+    "zh": "窗外看似好天"
   },
   "m2": {
     "is": "Ís í fárviðri",
-    "en": "Ice cream in a storm"
+    "en": "Ice cream in a storm",
+    "zh": "暴風雨裡吃冰淇淋"
   },
   "m3": {
     "is": "Hringvegurinn",
-    "en": "The Ring Road"
+    "en": "The Ring Road",
+    "zh": "環島公路"
   },
   "m3_note": {
     "is": "Röðin fylgir hringveginum réttsælis frá Reykjavík.",
-    "en": "The order follows the Ring Road clockwise from Reykjavík."
+    "en": "The order follows the Ring Road clockwise from Reykjavík.",
+    "zh": "順序沿著環島公路，從雷克雅維克順時針前進。"
   },
   "m4": {
     "is": "Lopinn og laugin",
-    "en": "Wool and the pool"
+    "en": "Wool and the pool",
+    "zh": "羊毛與泳池"
   },
   "m4_bridge": {
     "is": "Skuggahliðarnar",
-    "en": "The shadow sides"
+    "en": "The shadow sides",
+    "zh": "陰影面"
   },
   "m5": {
     "is": "Þetta reddast",
-    "en": "It'll all work out"
+    "en": "It'll all work out",
+    "zh": "船到橋頭自然直"
   },
   "m6": {
     "is": "Hvað viltu tala um?",
-    "en": "What do you want to talk about?"
+    "en": "What do you want to talk about?",
+    "zh": "你想聊什麼？"
   },
   "insp_source": {
     "is": "Uppruni",
-    "en": "Source"
+    "en": "Source",
+    "zh": "出處"
   },
   "insp_clef": {
     "is": "Mat Clef",
-    "en": "Clef's judgments"
+    "en": "Clef's judgments",
+    "zh": "Clef 的判斷"
   },
   "insp_singable": {
     "is": "Sönghæfni",
-    "en": "Singability"
+    "en": "Singability",
+    "zh": "可唱程度"
   },
   "insp_image": {
     "is": "Myndræni",
-    "en": "Imagery"
+    "en": "Imagery",
+    "zh": "畫面感"
   },
   "insp_warmth": {
     "is": "Hlýja",
-    "en": "Warmth"
+    "en": "Warmth",
+    "zh": "溫度"
   },
   "insp_tone": {
     "is": "Blær",
-    "en": "Tone"
+    "en": "Tone",
+    "zh": "語氣"
   },
   "insp_seconds": {
     "is": "Sekúndur á skjá",
-    "en": "Seconds on screen"
+    "en": "Seconds on screen",
+    "zh": "螢幕停留秒數"
   },
   "insp_opener": {
     "is": "Sem upphafslína",
-    "en": "As an opening line"
+    "en": "As an opening line",
+    "zh": "作為開頭句"
   },
   "insp_closer": {
     "is": "Sem lokalína",
-    "en": "As a closing line"
+    "en": "As a closing line",
+    "zh": "作為結尾句"
   },
   "insp_privacy": {
     "is": "Persónuvernd",
-    "en": "Privacy"
+    "en": "Privacy",
+    "zh": "隱私"
   },
   "insp_fidelity": {
     "is": "Heyrist í söngnum",
-    "en": "Heard in the singing"
+    "en": "Heard in the singing",
+    "zh": "歌聲中聽得出來的程度"
   },
   "tone_joyful": {
     "is": "glaðvær",
-    "en": "joyful"
+    "en": "joyful",
+    "zh": "歡快"
   },
   "tone_tender": {
     "is": "blíður",
-    "en": "tender"
+    "en": "tender",
+    "zh": "溫柔"
   },
   "tone_proud": {
     "is": "stoltur",
-    "en": "proud"
+    "en": "proud",
+    "zh": "自豪"
   },
   "tone_wry": {
     "is": "kíminn",
-    "en": "wry"
+    "en": "wry",
+    "zh": "自嘲"
   },
   "tone_critical": {
     "is": "gagnrýninn",
-    "en": "critical"
+    "en": "critical",
+    "zh": "批判"
   },
   "tone_calm": {
     "is": "kyrr",
-    "en": "calm"
+    "en": "calm",
+    "zh": "寧靜"
   },
   "tone_unclear": {
     "is": "óljós",
-    "en": "unclear"
+    "en": "unclear",
+    "zh": "不明"
   },
   "report_title": {
     "is": "Hvað sögðu þau?",
-    "en": "What did they say?"
+    "en": "What did they say?",
+    "zh": "他們說了什麼？"
   },
   "sec_numbers": {
     "is": "Lykiltölur",
-    "en": "Key numbers"
+    "en": "Key numbers",
+    "zh": "關鍵數字"
   },
   "num_participants": {
     "is": "skráðir þátttakendur",
-    "en": "registered participants"
+    "en": "registered participants",
+    "zh": "位註冊參與者"
   },
   "num_circles": {
     "is": "hringir með fólki",
-    "en": "circles with people"
+    "en": "circles with people",
+    "zh": "個有成員的圈子"
   },
   "num_places": {
     "is": "staðir með lýsingu",
-    "en": "places with a reason"
+    "en": "places with a reason",
+    "zh": "個附上理由的地點"
   },
   "num_islenskast": {
     "is": "svör við Íslenskast",
-    "en": "Íslenskast answers"
+    "en": "Íslenskast answers",
+    "zh": "則「最冰島」回答"
   },
   "num_topics": {
     "is": "valin umræðuorð",
-    "en": "topic words chosen"
+    "en": "topic words chosen",
+    "zh": "個被選的話題詞"
   },
   "sec_calibration": {
     "is": "Íslenskast: handflokkun Samtals og Clef",
-    "en": "Íslenskast: Samtal's hand coding and Clef"
+    "en": "Íslenskast: Samtal's hand coding and Clef",
+    "zh": "最冰島：Samtal 的人工分類與 Clef"
   },
   "calibration_intro": {
     "is": "Samtal flokkaði svörin í höndunum. Clef flokkaði sömu svör sjálfstætt, eftir stuttri flokkalýsingu og án þess að sjá handflokkunina. Samræmið segir okkur hversu vel staðbundið líkan skilur íslensku svörin.",
-    "en": "Samtal coded the answers by hand. Clef coded the same answers independently, from a short codebook and without seeing the hand coding. The agreement tells us how well a local model understands the Icelandic answers."
+    "en": "Samtal coded the answers by hand. Clef coded the same answers independently, from a short codebook and without seeing the hand coding. The agreement tells us how well a local model understands the Icelandic answers.",
+    "zh": "Samtal 以人工為回答分類。Clef 只看一份簡短的分類說明，在沒看過人工分類的情況下，獨立為同一批回答分類。兩者的一致程度，告訴我們本機模型對冰島語回答理解得多好。"
   },
   "sec_disagree": {
     "is": "Þar sem Clef er ósammála",
-    "en": "Where Clef disagrees"
+    "en": "Where Clef disagrees",
+    "zh": "Clef 意見不同之處"
   },
   "disagree_intro": {
     "is": "Ósamræmið er oft áhugaverðasti lesturinn: svör sem eiga heima á fleiri en einum stað.",
-    "en": "The disagreements are often the most interesting reading: answers that belong in more than one place."
+    "en": "The disagreements are often the most interesting reading: answers that belong in more than one place.",
+    "zh": "意見分歧之處往往最耐讀：這些回答同時屬於不只一個類別。"
   },
   "sec_places": {
     "is": "Staðirnir",
-    "en": "The places"
+    "en": "The places",
+    "zh": "地點"
   },
   "sec_topics": {
     "is": "Umræðuefnin",
-    "en": "The topics"
+    "en": "The topics",
+    "zh": "話題"
   },
   "sec_after": {
     "is": "Eftir 10. október",
-    "en": "After 10 October"
+    "en": "After 10 October",
+    "zh": "10 月 10 日之後"
   },
   "after_body": {
     "is": "Á laugardaginn bætast samtölin sjálf við. Sama ferli getur tekið við samantekt hvers hrings: Clef metur hverja samantekt, hver hringur fær sína niðurstöðu fyrst til yfirlestrar, og loks syngur annað medley samtölin aftur fyrir þátttakendurna.",
-    "en": "On Saturday the conversations themselves arrive. The same pipeline can take each circle's summary: Clef judges each one, every circle sees its own result first to check it, and then a second medley sings the conversations back to the people who had them."
+    "en": "On Saturday the conversations themselves arrive. The same pipeline can take each circle's summary: Clef judges each one, every circle sees its own result first to check it, and then a second medley sings the conversations back to the people who had them.",
+    "zh": "週六，對話本身就會進來。同一條處理流程可以接手每個圈子的摘要：Clef 逐一判斷，每個圈子先看到並查核自己的結果，接著第二首組曲把這些對話唱回給參與的人聽。"
   },
   "sec_scorecard": {
     "is": "Matsspjald",
-    "en": "Scorecard"
+    "en": "Scorecard",
+    "zh": "評估表"
   },
   "scorecard_credit": {
     "is": "Matsspjaldið er úr grein Atla Þórs Jóhannssonar, „Hvað er gervigreindarfullveldi?“ (Staða gervigreindar, 5. október 2026). Hér er það lagt á þetta ferli sjálft.",
-    "en": "The scorecard comes from Atli Þór Jóhannsson's article “Hvað er gervigreindarfullveldi?” (Staða gervigreindar, 5 October 2026). Here it is applied to this pipeline itself."
+    "en": "The scorecard comes from Atli Þór Jóhannsson's article “Hvað er gervigreindarfullveldi?” (Staða gervigreindar, 5 October 2026). Here it is applied to this pipeline itself.",
+    "zh": "這份評估表出自 Atli Þór Jóhannsson 的文章〈Hvað er gervigreindarfullveldi?〉（什麼是 AI 主權？，Staða gervigreindar，2026 年 10 月 5 日）。這裡用它來評估這條處理流程本身。"
   },
   "q1": {
     "is": "Vitum við á hvað við reiðum okkur?",
-    "en": "Do we know what we rely on?"
+    "en": "Do we know what we rely on?",
+    "zh": "我們知道自己依賴什麼嗎？"
   },
   "q2": {
     "is": "Höfum við sett skilyrði?",
-    "en": "Have we set conditions?"
+    "en": "Have we set conditions?",
+    "zh": "我們設下條件了嗎？"
   },
   "q3": {
     "is": "Getum við skipt?",
-    "en": "Can we switch?"
+    "en": "Can we switch?",
+    "zh": "我們能夠更換嗎？"
   },
   "a_yes": {
     "is": "Liggur fyrir",
-    "en": "In place"
+    "en": "In place",
+    "zh": "已具備"
   },
   "a_partly": {
     "is": "Að hluta",
-    "en": "Partly"
+    "en": "Partly",
+    "zh": "部分具備"
   },
   "a_no": {
     "is": "Liggur ekki fyrir",
-    "en": "Not in place"
+    "en": "Not in place",
+    "zh": "尚未具備"
   },
   "row_judgments": {
     "is": "Dómar (Clef)",
-    "en": "Judgments (Clef)"
+    "en": "Judgments (Clef)",
+    "zh": "判斷（Clef）"
   },
   "row_glosses": {
     "is": "Þýðingar (Gemma)",
-    "en": "Glosses (Gemma)"
+    "en": "Glosses (Gemma)",
+    "zh": "譯文（Gemma）"
   },
   "row_music": {
     "is": "Tónlist og talgreining (ElevenLabs)",
-    "en": "Music and speech recognition (ElevenLabs)"
+    "en": "Music and speech recognition (ElevenLabs)",
+    "zh": "音樂與語音辨識（ElevenLabs）"
   },
   "q1_judgments": {
     "is": "Clef 27B, opin vigt (Apache-2.0), keyrt á fartölvu í Reykjavík.",
-    "en": "Clef 27B, open weights (Apache-2.0), run on a laptop in Reykjavík."
+    "en": "Clef 27B, open weights (Apache-2.0), run on a laptop in Reykjavík.",
+    "zh": "Clef 27B，開放權重（Apache-2.0），在雷克雅維克的一台筆電上執行。"
   },
   "q1_glosses": {
     "is": "Gemma 4 31B, opin vigt (Apache-2.0), keyrt á sömu vél.",
-    "en": "Gemma 4 31B, open weights (Apache-2.0), run on the same machine."
+    "en": "Gemma 4 31B, open weights (Apache-2.0), run on the same machine.",
+    "zh": "Gemma 4 31B，開放權重（Apache-2.0），在同一台電腦上執行。"
   },
   "q1_music": {
     "is": "ElevenLabs Music v2.5 og Scribe v2 í skýinu. Við vitum hver veitir þjónustuna, hvað var sent og hvað kom til baka (C2PA-undirritað), en ekki hvernig líkanið er gert.",
-    "en": "ElevenLabs Music v2.5 and Scribe v2 in the cloud. We know the vendor, what was sent and what came back (C2PA-signed), but not how the model is made."
+    "en": "ElevenLabs Music v2.5 and Scribe v2 in the cloud. We know the vendor, what was sent and what came back (C2PA-signed), but not how the model is made.",
+    "zh": "ElevenLabs Music v2.5 與 Scribe v2，在雲端執行。我們知道供應商是誰、送出了什麼、收回了什麼（附 C2PA 簽章），但不知道模型如何打造。"
   },
   "q2_judgments": {
     "is": "CC BY 4.0 og skilmálar Samtals virtir: persónuverndarsía og fyrirvari.",
-    "en": "CC BY 4.0 and Samtal's terms honoured: a privacy filter and a disclaimer."
+    "en": "CC BY 4.0 and Samtal's terms honoured: a privacy filter and a disclaimer.",
+    "zh": "遵守 CC BY 4.0 與 Samtal 的使用條款：隱私過濾與免責聲明。"
   },
   "q2_glosses": {
     "is": "Clef gaf hverri þýðingu einkunn, en handyfirferð réð vali.",
-    "en": "Clef scored every gloss, but a hand check made the choice."
+    "en": "Clef scored every gloss, but a hand check made the choice.",
+    "zh": "Clef 為每則譯文評分，但由人工查核決定採用哪一則。"
   },
   "q2_music": {
     "is": "Talgreining ber hverja sungna línu saman við textann.",
-    "en": "Speech recognition checks every sung line against the text."
+    "en": "Speech recognition checks every sung line against the text.",
+    "zh": "以語音辨識逐句比對唱出來的歌詞與原文。"
   },
   "q3_judgments": {
     "is": "Hvaða System One líkan sem er á sama viðmóti; vp run rerun ber niðurstöðurnar saman.",
-    "en": "Any System One model on the same endpoint; vp run rerun compares the results."
+    "en": "Any System One model on the same endpoint; vp run rerun compares the results.",
+    "zh": "同一介面上的任何 System One 模型皆可替換；vp run rerun 會比對結果。"
   },
   "q3_glosses": {
     "is": "Hvaða staðbundna líkan sem er.",
-    "en": "Any local model."
+    "en": "Any local model.",
+    "zh": "任何本機模型皆可替換。"
   },
   "q3_music": {
     "is": "Textinn, röðin og tímasetningin eru okkar. Söngvarinn er skiptanlegur, best af öllu kór á Íslandi: sjá söngbókina.",
-    "en": "The lyrics, order and timing are ours. The singer is replaceable, best of all by a choir in Iceland: see the songbook."
+    "en": "The lyrics, order and timing are ours. The singer is replaceable, best of all by a choir in Iceland: see the songbook.",
+    "zh": "歌詞、順序與時間點都在我們手上。歌手可以替換，最好的替換是冰島的合唱團：請見歌本。"
   },
   "axes": {
     "is": "Á ásunum tveimur eru dómar og þýðingar „Byggja eða stjórna sjálf“ en tónlistin „Kaupa með opnum möguleikum“.",
-    "en": "On the two axes, judgments and glosses are “build or control ourselves”, and the music is “buy with open options”."
+    "en": "On the two axes, judgments and glosses are “build or control ourselves”, and the music is “buy with open options”.",
+    "zh": "在文章的兩條軸線上，判斷與譯文屬於「自建或自主掌控」，音樂則屬於「採購，並保留轉換的選項」。"
   },
   "sec_replay": {
     "is": "Endurspilun",
-    "en": "Replay"
+    "en": "Replay",
+    "zh": "重播"
   },
   "replay_body": {
     "is": "Allt hér er hægt að endurgera. Hver fyrirspurn til líkananna er skráð og vp run build endurbyggir allt úr skránni, án nets og án líkana.",
-    "en": "Everything here can be rebuilt. Every model request is logged, and vp run build rebuilds it all from the log, offline and without the models."
+    "en": "Everything here can be rebuilt. Every model request is logged, and vp run build rebuilds it all from the log, offline and without the models.",
+    "zh": "這裡的一切都可以重建。每次對模型的請求都有紀錄，vp run build 能從紀錄重建全部內容，不需要網路，也不需要模型。"
   },
   "privacy_note": {
     "is": "Ein staðsetning með húsnúmeri er aðeins sýnd sem sveitarfélag. Svör sem Clef taldi geta bent á einstakling eru talin með en hvergi birt.",
-    "en": "One location with a house number is shown only as its municipality. Answers Clef judged could point to a person are counted but shown nowhere."
+    "en": "One location with a house number is shown only as its municipality. Answers Clef judged could point to a person are counted but shown nowhere.",
+    "zh": "有一筆地點含門牌號碼，只顯示所在的市鎮。Clef 判斷可能指認出個人的回答，只計入數量，不在任何地方顯示。"
   },
   "about_clef": {
     "is": "Clef er opið flokkunarlíkan með 27 milljarða færibreyta. Það skrifar engan texta heldur svarar spurningum með líkum.",
-    "en": "Clef is an open classifier with 27 billion parameters. It writes no text; it answers questions with probabilities."
+    "en": "Clef is an open classifier with 27 billion parameters. It writes no text; it answers questions with probabilities.",
+    "zh": "Clef 是一個擁有 270 億參數的開放分類模型。它不寫任何文字，只以機率回答問題。"
   },
   "about_granite": {
     "is": "Gemma 4 31B gerði ensku vélþýðingarnar á sömu vél. Hún skrifaði enga íslensku.",
-    "en": "Gemma 4 31B made the English machine glosses, on the same machine. It wrote no Icelandic."
+    "en": "Gemma 4 31B made the English machine glosses, on the same machine. It wrote no Icelandic.",
+    "zh": "英文機器譯文由同一台電腦上的 Gemma 4 31B 產生。它沒有寫任何冰島語。"
   },
   "about_music": {
     "is": "Söngurinn er gerður með ElevenLabs Music. Talgreining (Scribe) mælir hve skýrt hver lína heyrist.",
-    "en": "The singing was made with ElevenLabs Music. Speech recognition (Scribe) measures how clearly each line comes through."
+    "en": "The singing was made with ElevenLabs Music. Speech recognition (Scribe) measures how clearly each line comes through.",
+    "zh": "歌聲由 ElevenLabs Music 生成。語音辨識（Scribe）衡量每一句聽起來有多清楚。"
   },
   "sec_sources": {
     "is": "Heimildir og leyfi",
-    "en": "Sources and licence"
+    "en": "Sources and licence",
+    "zh": "資料來源與授權"
   },
   "songbook_title": {
     "is": "Söngbók",
-    "en": "Songbook"
+    "en": "Songbook",
+    "zh": "歌本"
   },
   "songbook_intro": {
     "is": "Hver lína er orðrétt svar þátttakanda á talasaman.is. Kór, bekkur eða hringur getur sungið hana 10. október.",
-    "en": "Every line is a participant's verbatim answer on talasaman.is. A choir, a class or a circle could sing it on 10 October."
+    "en": "Every line is a participant's verbatim answer on talasaman.is. A choir, a class or a circle could sing it on 10 October.",
+    "zh": "每一句都是參與者在 talasaman.is 上的原話。合唱團、班級或圈子都可以在 10 月 10 日一起唱。"
   },
   "editor_credit": {
     "is": "Ritstjórn: Devin, gervigreindaraðstoðarmaður Audrey",
-    "en": "Editing: Devin, Audrey's AI assistant"
+    "en": "Editing: Devin, Audrey's AI assistant",
+    "zh": "編輯：Devin，唐鳳的 AI 助理"
   },
   "insp_editorial": {
     "is": "Ritstjórn",
-    "en": "Editorial"
+    "en": "Editorial",
+    "zh": "編輯決定"
   },
   "gloss_edited": {
     "is": "ritstýrt",
-    "en": "edited"
+    "en": "edited",
+    "zh": "已校訂"
   },
   "outside_iceland": {
     "is": "utan Íslands",
-    "en": "outside Iceland"
+    "en": "outside Iceland",
+    "zh": "冰島境外"
   },
   "said_by": {
     "is": "sögðu þetta",
-    "en": "said this"
+    "en": "said this",
+    "zh": "人這麼說"
   },
   "override_title": {
     "is": "Þessi lína gefur kaflanum nafn og lokar honum.",
-    "en": "This line names the movement and closes it."
+    "en": "This line names the movement and closes it.",
+    "zh": "這一句為樂章命名，也為它收尾。"
   },
   "override_count": {
     "is": "Valið vegna þess hve mörg sögðu þetta, þótt Clef gæfi því lága einkunn.",
-    "en": "Chosen because so many people said it, even where Clef scored it low."
+    "en": "Chosen because so many people said it, even where Clef scored it low.",
+    "zh": "因為很多人都這麼說而入選，即使 Clef 給的分數不高。"
   },
   "sec_bakeoff": {
     "is": "Getum við skipt? Þrjú þýðingarlíkön",
-    "en": "Can we switch? Three translation models"
+    "en": "Can we switch? Three translation models",
+    "zh": "我們能夠更換嗎？三個翻譯模型"
   },
   "bakeoff_body": {
     "is": "Granite 4.2 30B þýddi fyrst og margar þýðingar voru rangar. Við prófuðum líka Gemma 4 31B og Apertus 1.5, opna svissneska líkanið, á sömu vél með sömu fyrirmælum. Clef gaf hverri þýðingu einkunn en reyndist lélegur dómari um þýðingar: það taldi „Sail“ trúa þýðingu á „Seigla“. Því réð handyfirferð. Gemma hafði oftast rétt fyrir sér og þýðingar hennar eru notaðar, með leiðréttingum ritstjórnar. Allar þýðingarnar og einkunnir Clef eru sýndar hér.",
-    "en": "Granite 4.2 30B translated first, and many glosses were wrong. We also tried Gemma 4 31B and Apertus 1.5, the open Swiss model, on the same machine with the same instructions. Clef scored every gloss but turned out to be a poor judge of translation: it rated “Sail” a faithful gloss of “Seigla” (resilience). So a hand check decided. Gemma was right most often, and its glosses are used, with editorial corrections. Every gloss and Clef's scores are shown here."
+    "en": "Granite 4.2 30B translated first, and many glosses were wrong. We also tried Gemma 4 31B and Apertus 1.5, the open Swiss model, on the same machine with the same instructions. Clef scored every gloss but turned out to be a poor judge of translation: it rated “Sail” a faithful gloss of “Seigla” (resilience). So a hand check decided. Gemma was right most often, and its glosses are used, with editorial corrections. Every gloss and Clef's scores are shown here.",
+    "zh": "最先翻譯的是 Granite 4.2 30B，許多譯文是錯的。我們也在同一台電腦上，以同樣的指示試了 Gemma 4 31B 與瑞士的開放模型 Apertus 1.5。Clef 為每則譯文評分，卻證明是個糟糕的翻譯評審：它認為「Sail」（帆）是「Seigla」（韌性）的忠實譯文。因此最後由人工查核決定。Gemma 最常正確，所以採用它的譯文，再加上編輯校訂。所有譯文與 Clef 的分數都列在這裡。"
   },
   "door_video_desc": {
     "is": "Sex kaflar, sjö og hálf mínúta",
-    "en": "Six movements, seven and a half minutes"
+    "en": "Six movements, seven and a half minutes",
+    "zh": "六個樂章，七分半鐘"
   },
   "door_report_desc": {
     "is": "Tölur, staðir, umræðuefni og endurspilun",
-    "en": "Numbers, places, topics and replay"
+    "en": "Numbers, places, topics and replay",
+    "zh": "數字、地點、話題與重播"
   },
   "door_songbook_desc": {
     "is": "Textinn, fyrir kór, bekk eða hring",
-    "en": "The words, for a choir, a class or a circle"
+    "en": "The words, for a choir, a class or a circle",
+    "zh": "歌詞，給合唱團、班級或圈子"
   },
   "tag_refrain": {
     "is": "viðlag",
-    "en": "refrain"
+    "en": "refrain",
+    "zh": "副歌"
   },
   "tag_topics": {
     "is": "umræðuorð",
-    "en": "topic words"
+    "en": "topic words",
+    "zh": "話題詞"
   },
   "sec_editorial": {
     "is": "Ritstjórnarákvarðanir",
-    "en": "Editorial decisions"
+    "en": "Editorial decisions",
+    "zh": "編輯決定"
   },
   "editorial_body": {
     "is": "Clef velur og raðar. Hér eru undantekningarnar sem ritstjórnin gerði.",
-    "en": "Clef selects and orders. These are the exceptions the edit made."
+    "en": "Clef selects and orders. These are the exceptions the edit made.",
+    "zh": "Clef 負責挑選與排序。以下是編輯所做的例外。"
   },
   "outside_note": {
     "is": "staðir utan Íslands: taldir með, ekki sýndir",
-    "en": "locations outside Iceland: counted, not shown"
+    "en": "locations outside Iceland: counted, not shown",
+    "zh": "冰島境外的地點：計入數量，不予顯示"
   },
   "col_mov": {
     "is": "kafli",
-    "en": "mov."
+    "en": "mov.",
+    "zh": "樂章"
   },
   "col_item": {
     "is": "lína / atriði",
-    "en": "line / item"
+    "en": "line / item",
+    "zh": "詩句／項目"
   },
   "col_reason": {
     "is": "ástæða",
-    "en": "reason"
+    "en": "reason",
+    "zh": "理由"
   },
   "col_answer": {
     "is": "Svar",
-    "en": "Answer"
+    "en": "Answer",
+    "zh": "回答"
   },
   "col_truth": {
     "is": "Handflokkun",
-    "en": "Hand-coded"
+    "en": "Hand-coded",
+    "zh": "人工分類"
   },
   "col_chosen": {
     "is": "valdar",
-    "en": "chosen"
+    "en": "chosen",
+    "zh": "採用"
   },
   "col_line_gloss": {
     "is": "lína (orðrétt) og vélþýðing",
-    "en": "line (verbatim) and machine gloss"
+    "en": "line (verbatim) and machine gloss",
+    "zh": "詩句（原文）與機器譯文"
   },
   "col_source": {
     "is": "uppruni",
-    "en": "source"
+    "en": "source",
+    "zh": "出處"
   },
   "sec_sung": {
     "is": "Sungnar línur",
-    "en": "Sung lines"
+    "en": "Sung lines",
+    "zh": "唱出的詩句"
   },
   "num_sung": {
     "is": "sungnar línur",
-    "en": "sung lines"
+    "en": "sung lines",
+    "zh": "句唱出的詩句"
   },
   "num_duration": {
     "is": "heildarlengd",
-    "en": "total duration"
+    "en": "total duration",
+    "zh": "總長度"
   },
   "bakeoff_all": {
     "is": "Allar þýðingarnar hlið við hlið",
-    "en": "Every gloss side by side"
+    "en": "Every gloss side by side",
+    "zh": "所有譯文並列"
   },
   "excl_title": {
     "is": "Útilokanir (texti ekki sýndur)",
-    "en": "Exclusions (text not shown)"
+    "en": "Exclusions (text not shown)",
+    "zh": "排除項目（不顯示文字）"
   },
   "hidden_label": {
     "is": "hidden",
-    "en": "hidden"
+    "en": "hidden",
+    "zh": "已隱藏"
   },
   "sec_takes": {
     "is": "Upptökurnar bornar saman",
-    "en": "The takes compared"
+    "en": "The takes compared",
+    "zh": "各版錄音比較"
   },
   "sec_digests": {
     "is": "Fingraför líkananna",
-    "en": "Model digests"
+    "en": "Model digests",
+    "zh": "模型雜湊值"
   },
   "sec_snapshot": {
     "is": "Snapshot (sha256)",
-    "en": "Snapshot (sha256)"
+    "en": "Snapshot (sha256)",
+    "zh": "資料快照（sha256）"
   },
   "all_themes": {
     "is": "all",
-    "en": "all"
+    "en": "all",
+    "zh": "全部"
   },
   "col_islang": {
     "is": "Íslenska",
-    "en": "Icelandic"
+    "en": "Icelandic",
+    "zh": "冰島語"
   },
   "cat_matur": {
     "is": "Matur",
-    "en": "Food"
+    "en": "Food",
+    "zh": "食物"
   },
   "cat_nattura": {
     "is": "Náttúran",
-    "en": "Nature"
+    "en": "Nature",
+    "zh": "自然"
   },
   "cat_samfelag": {
     "is": "Samfélagið",
-    "en": "Society"
+    "en": "Society",
+    "zh": "社會"
   },
   "cat_sidir": {
     "is": "Siðir og hefðir",
-    "en": "Customs and traditions"
+    "en": "Customs and traditions",
+    "zh": "習俗與傳統"
   },
   "cat_hugarfar": {
     "is": "Hugarfarið",
-    "en": "Mindset"
+    "en": "Mindset",
+    "zh": "心態"
   },
   "cat_tunga": {
     "is": "Tungumálið og menningin",
-    "en": "Language and culture"
+    "en": "Language and culture",
+    "zh": "語言與文化"
   },
   "cat_vedur": {
     "is": "Veðrið",
-    "en": "Weather"
+    "en": "Weather",
+    "zh": "天氣"
   },
   "cat_annad": {
     "is": "Annað",
-    "en": "Other"
+    "en": "Other",
+    "zh": "其他"
   },
   "theme_nature": {
     "is": "náttúra",
-    "en": "nature"
+    "en": "nature",
+    "zh": "自然"
   },
   "theme_stillness": {
     "is": "kyrrð",
-    "en": "stillness"
+    "en": "stillness",
+    "zh": "寧靜"
   },
   "theme_memory": {
     "is": "minningar",
-    "en": "memories"
+    "en": "memories",
+    "zh": "回憶"
   },
   "theme_home": {
     "is": "heimili",
-    "en": "home"
+    "en": "home",
+    "zh": "家"
   },
   "theme_community": {
     "is": "samfélag",
-    "en": "community"
+    "en": "community",
+    "zh": "社群"
   },
   "theme_activity": {
     "is": "athafnir",
-    "en": "activities"
+    "en": "activities",
+    "zh": "活動"
   },
   "theme_food": {
     "is": "matur",
-    "en": "food"
+    "en": "food",
+    "zh": "食物"
   },
   "theme_culture": {
     "is": "menning og saga",
-    "en": "culture and history"
+    "en": "culture and history",
+    "zh": "文化與歷史"
   },
   "ttheme_education": {
     "is": "menntun",
-    "en": "education"
+    "en": "education",
+    "zh": "教育"
   },
   "ttheme_future": {
     "is": "framtíðin",
-    "en": "the future"
+    "en": "the future",
+    "zh": "未來"
   },
   "ttheme_technology": {
     "is": "tækni",
-    "en": "technology"
+    "en": "technology",
+    "zh": "科技"
   },
   "ttheme_communication": {
     "is": "samskipti og miðlar",
-    "en": "communication and media"
+    "en": "communication and media",
+    "zh": "溝通與媒體"
   },
   "ttheme_democracy": {
     "is": "lýðræði og stjórnarfar",
-    "en": "democracy and governance"
+    "en": "democracy and governance",
+    "zh": "民主與治理"
   },
   "ttheme_nature": {
     "is": "náttúra",
-    "en": "nature"
+    "en": "nature",
+    "zh": "自然"
   },
   "ttheme_health": {
     "is": "heilsa og umönnun",
-    "en": "health and care"
+    "en": "health and care",
+    "zh": "健康與照顧"
   },
   "ttheme_economy": {
     "is": "efnahagur, húsnæði og samgöngur",
-    "en": "economy, housing and transport"
+    "en": "economy, housing and transport",
+    "zh": "經濟、住房與交通"
   },
   "ttheme_equality": {
     "is": "jafnrétti og fjölbreytni",
-    "en": "equality and diversity"
+    "en": "equality and diversity",
+    "zh": "平等與多元"
   },
   "ttheme_culture": {
     "is": "tunga og menning",
-    "en": "language and culture"
+    "en": "language and culture",
+    "zh": "語言與文化"
   },
   "ttheme_youth": {
     "is": "ungt fólk",
-    "en": "young people"
+    "en": "young people",
+    "zh": "年輕人"
   },
   "ttheme_mindset": {
     "is": "hugarfar",
-    "en": "mindset"
+    "en": "mindset",
+    "zh": "心態"
   },
   "proof_of_place": {
     "is": "Vélin: fartölva (Mac17,6) á tímabelti Atlantic/Reykjavik með íslenska IP-tölu, nóttina 4. til 5. október 2026.",
-    "en": "The machine: a laptop (Mac17,6) in the Atlantic/Reykjavik time zone with an Icelandic IP address, on the night of 4 to 5 October 2026."
+    "en": "The machine: a laptop (Mac17,6) in the Atlantic/Reykjavik time zone with an Icelandic IP address, on the night of 4 to 5 October 2026.",
+    "zh": "這台電腦：一台筆電（Mac17,6），時區為 Atlantic/Reykjavik，IP 位址在冰島，時間是 2026 年 10 月 4 日至 5 日的夜裡。"
   }
 }

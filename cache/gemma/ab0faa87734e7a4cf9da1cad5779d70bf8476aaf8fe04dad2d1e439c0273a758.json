@@ -1,0 +1,41 @@
+{
+  "request": {
+    "model": "gemma4:31b-it-qat-google-official",
+    "stream": false,
+    "think": false,
+    "messages": [
+      {
+        "role": "system",
+        "content": "你把冰島民眾寫的短句翻成台灣慣用的繁體中文。你會拿到冰島語原文和一則已經查核過的英文譯文；以冰島語原文為準，英文譯文只用來確認意思。忠實翻譯，不增不減，不評論，不糾正錯字。地名保留冰島語原文。沒有對應中文的冰島詞（例如 lopapeysa、þorrablót、harðfiskur）保留原文，後面用全形括號加上簡短說明。使用全形標點；中文與拉丁字母或數字之間加半形空格。只輸出中文譯文。"
+      },
+      {
+        "role": "user",
+        "content": "冰島語原文：Í fyrsta lagi er þetta heimili mitt og þar sem ég ólst upp, en ég elska að búa þar af því að það er svo fallegt og það er bara mjög næs að vera á stað sem allir þekkjast og er ekki fullur af fólki.\n英文譯文：Firstly, this is my home and where I grew up, but I love living there because it is so beautiful and it is just very nice to be in a place where everyone knows each other and is not full of people."
+      }
+    ],
+    "options": {
+      "temperature": 0.2,
+      "num_ctx": 4096,
+      "seed": 1010
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "gemma4:31b-it-qat-google-official",
+    "created_at": "2026-10-05T09:03:26.744711Z",
+    "message": {
+      "role": "assistant",
+      "content": "首先，這是我的家，也是我長大的地方，但我喜歡住在在那裡，因為那裡非常美麗，而且處在一個每個人都互相認識且沒有擠滿人的地方感覺非常好。"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 2637296250,
+    "load_duration": 16644708,
+    "prompt_eval_count": 283,
+    "prompt_eval_cached_count": 0,
+    "prompt_eval_duration": 988182000,
+    "eval_count": 43,
+    "eval_duration": 1630993000
+  },
+  "latency_ms": 2637
+}

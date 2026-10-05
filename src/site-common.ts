@@ -29,7 +29,10 @@ export function fontCss(): string {
           : "U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF";
       return `@font-face{font-family:'${fam}';font-style:normal;font-weight:${f.wght};font-display:swap;src:url(data:font/woff2;base64,${b64}) format('woff2');unicode-range:${urange};}`;
     })
-    .join("\n");
+    .join("\n")
+    + "\n@font-face{font-family:'Iansui';font-style:normal;font-weight:400;font-display:swap;src:url(data:font/woff2;base64,"
+    + readFileSync("assets/fonts/iansui-subset.woff2").toString("base64")
+    + ") format('woff2');}";
 }
 
 export function icelandPath(): string {
@@ -90,11 +93,18 @@ a{color:var(--accent)}
 .mono{font-variant-numeric:tabular-nums}
 .badge{display:inline-block;background:#26314a;border-radius:4px;padding:0 .35em;font-size:.8em;color:var(--dim)}
 .badge.edit{background:#4a3a26;color:var(--warm)}
-.is{} .en{}
-body.lang-is .en-only{display:none!important}
-body.lang-en .is-only{display:none!important}
-body.lang-is .bi-en{display:none}
-body.lang-en .bi-is{display:none}
+.is{} .en{} .zh{}
+body:not(.lang-is) .is-only{display:none!important}
+body:not(.lang-en) .en-only{display:none!important}
+body:not(.lang-zh) .zh-only{display:none!important}
+.bi-en,.bi-zh{display:none}
+body.lang-en .bi-en{display:revert}
+body.lang-zh .bi-zh{display:revert}
+body:not(.lang-is) .bi-is{display:none}
+body.lang-zh{font-family:Inter,Iansui,sans-serif}
+body.lang-zh .bi-zh,body.lang-zh h1,body.lang-zh h2,body.lang-zh h3,body.lang-zh .wm{font-family:Fraunces,Iansui,serif}
+.langbtn{cursor:pointer;border:1px solid var(--line);background:none;color:var(--ink);border-radius:6px;padding:4px 10px;font:inherit;font-size:13px}
+.langbtn.on{border-color:var(--accent);color:var(--warm)}
 header.site{padding:18px 24px;display:flex;align-items:baseline;gap:18px;border-bottom:1px solid var(--line);flex-wrap:wrap}
 header.site .wm{font-family:Fraunces,serif;font-size:22px;font-weight:600;letter-spacing:.02em}
 header.site .sub{color:var(--dim);font-size:13px}
@@ -113,8 +123,12 @@ table.data th{background:#111c33;font-weight:500}
 `;
 
 // header/footer chrome; `path` = "" for depth-0 pages
+export const triSpan = (k: string) => {
+  const v = bi(k);
+  return `<span class="bi-is">${v.is}</span><span class="bi-en">${v.en}</span><span class="bi-zh">${v.zh}</span>`;
+};
+
 export function chrome(lang: "is" | "en", active: string): string {
-  const t = (k: string) => (lang === "is" ? bi(k).is : bi(k).en);
   const doors: [string, string, string][] = [
     ["video.html", "door_video", "video"],
     ["report.html", "door_report", "report"],
@@ -123,32 +137,35 @@ export function chrome(lang: "is" | "en", active: string): string {
   const nav = doors
     .map(([href, key, id]) => {
       const cur = id === active ? ' style="border-color:var(--accent)"' : "";
-      return `<a href="${href}"${cur}>${t(key)}</a>`;
+      return `<a href="${href}"${cur}>${triSpan(key)}</a>`;
     })
     .join("");
   return `<header class="site"><span class="wm">Samhljómur</span>
-<span class="sub">${t("subtitle")}</span>
-<nav>${nav}<button id="langbtn" onclick="toggleLang()">${t("lang_switch")}</button></nav></header>`;
+<span class="sub">${triSpan("subtitle")}</span>
+<nav>${nav}<button class="langbtn" data-lang="is" onclick="setLang('is')">Íslenska</button><button class="langbtn" data-lang="en" onclick="setLang('en')">English</button><button class="langbtn" data-lang="zh" onclick="setLang('zh')">華文</button></nav></header>`;
 }
 
 export function footer(lang: "is" | "en"): string {
-  const t = (k: string) => (lang === "is" ? bi(k).is : bi(k).en);
   return `<footer class="site">
-<span>${t("attribution")}</span>
-<span>${t("disclaimer")}</span>
-<span>${t("gift")} · ${t("editor_credit")}</span>
+<span>${triSpan("attribution")}</span>
+<span>${triSpan("disclaimer")}</span>
+<span>${triSpan("gift")} · ${triSpan("editor_credit")}</span>
 </footer>`;
 }
 
 export const LANG_JS = `
-function toggleLang(){
+const LANGS=['is','en','zh'];
+const HTMLLANG={is:'is',en:'en',zh:'zh-Hant-TW'};
+function setLang(l){
+  if(!LANGS.includes(l))l='is';
   const b=document.body;
-  const en=b.classList.contains('lang-en');
-  b.classList.toggle('lang-en',!en);b.classList.toggle('lang-is',en);
-  try{localStorage.setItem('samhljomur-lang',en?'is':'en')}catch(e){}
+  b.classList.remove('lang-is','lang-en','lang-zh');b.classList.add('lang-'+l);
+  document.documentElement.lang=HTMLLANG[l];
+  document.querySelectorAll('.langbtn').forEach(x=>x.classList.toggle('on',x.dataset.lang===l));
+  try{localStorage.setItem('samhljomur-lang',l)}catch(e){}
   document.dispatchEvent(new Event('langchange'));
 }
-try{const l=localStorage.getItem('samhljomur-lang');if(l==='en'){document.documentElement.classList.add('pre-en')}}catch(e){}
+try{const l=localStorage.getItem('samhljomur-lang');if(l&&l!=='is')document.documentElement.dataset.prelang=l}catch(e){}
 `;
 
 export function htmlShell(opts: {
@@ -170,7 +187,7 @@ export function htmlShell(opts: {
 ${opts.head ?? ""}
 </head>
 <body class="lang-is ${opts.bodyClass ?? ""}">
-<script>${LANG_JS}if(document.documentElement.classList.contains('pre-en')){document.addEventListener('DOMContentLoaded',()=>toggleLang())}</script>
+<script>${LANG_JS}if(document.documentElement.dataset.prelang){document.addEventListener('DOMContentLoaded',()=>setLang(document.documentElement.dataset.prelang))}</script>
 ${opts.body}
 </body>
 </html>`;

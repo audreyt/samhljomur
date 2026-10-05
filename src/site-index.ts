@@ -7,8 +7,10 @@ const esc = (s: string) =>
   String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]!);
 
 export function indexHtml(): string {
-  const biP = (k: string) =>
-    `<span class="bi-is">${esc(bi(k).is)}</span><span class="bi-en">${esc(bi(k).en)}</span>`;
+  const biP = (k: string) => {
+    const v = bi(k);
+    return `<span class="bi-is">${esc(v.is)}</span><span class="bi-en">${esc(v.en)}</span><span class="bi-zh">${esc(v.zh)}</span>`;
+  };
   const body = `
 ${chrome("is", "home")}
 <main class="landing">

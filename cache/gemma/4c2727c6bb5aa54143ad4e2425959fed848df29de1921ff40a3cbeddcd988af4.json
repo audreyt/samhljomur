@@ -1,0 +1,41 @@
+{
+  "request": {
+    "model": "gemma4:31b-it-qat-google-official",
+    "stream": false,
+    "think": false,
+    "messages": [
+      {
+        "role": "system",
+        "content": "你把冰島民眾寫的短句翻成台灣慣用的繁體中文。你會拿到冰島語原文和一則已經查核過的英文譯文；以冰島語原文為準，英文譯文只用來確認意思。忠實翻譯，不增不減，不評論，不糾正錯字。地名保留冰島語原文。沒有對應中文的冰島詞（例如 lopapeysa、þorrablót、harðfiskur）保留原文，後面用全形括號加上簡短說明。使用全形標點；中文與拉丁字母或數字之間加半形空格。只輸出中文譯文。"
+      },
+      {
+        "role": "user",
+        "content": "冰島語原文：Grábrók, mikið hlegið af nafninu og fyrsta stopp þegar fjölskyldan lagði af stað í hringferð um landið þar sem hver staður var öðrum fallegri, fossar, vötn og lækir, íslensku jurtirnar okkar, bláber, krækiber og hundasúrur um allt land, ferskt og ískalt vatn og heitt vatn, náttúrulaugar og fallegir baðstaðir út um allt land, ferskt loft, vera með fjölskyldunni í undurfagri náttúru út um allt land, kyrðin, góður matur og ........\n英文譯文：Grábrók, the name was laughed at a lot and the first stop when the family set out on a tour around the country where each place was more beautiful than the other, waterfalls, lakes and streams, our Icelandic herbs, blueberries, crowberries and sorrel all over the country, fresh and ice-cold water and hot water, natural pools and beautiful bathing spots all over the country, fresh air, being with the family in wonderfully beautiful nature all over the country, the tranquility, good food and ........"
+      }
+    ],
+    "options": {
+      "temperature": 0.2,
+      "num_ctx": 4096,
+      "seed": 1010
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "gemma4:31b-it-qat-google-official",
+    "created_at": "2026-10-05T09:03:00.511747Z",
+    "message": {
+      "role": "assistant",
+      "content": "Grábrók，這個名字被很多人嘲笑，也是家人開始環島旅行的第一站，在那裡每個地方都比另一個更美，瀑布、湖泊和溪流，我們的冰島植物，遍布全國的藍莓、krækiber（黑果越橘）和 hundasúrur（酸模），清新冰涼的水和熱水，遍布全國的天然池和美麗的沐浴地點，新鮮的空氣，與家人一起身處於遍布全國的絕美自然之中，寧靜，美食以及 ........"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 6691869917,
+    "load_duration": 19207334,
+    "prompt_eval_count": 433,
+    "prompt_eval_cached_count": 0,
+    "prompt_eval_duration": 1517235000,
+    "eval_count": 118,
+    "eval_duration": 5094665000
+  },
+  "latency_ms": 6692
+}

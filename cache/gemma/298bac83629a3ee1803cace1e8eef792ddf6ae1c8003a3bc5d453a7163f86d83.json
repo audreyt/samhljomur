@@ -1,0 +1,41 @@
+{
+  "request": {
+    "model": "gemma4:31b-it-qat-google-official",
+    "stream": false,
+    "think": false,
+    "messages": [
+      {
+        "role": "system",
+        "content": "你把冰島民眾寫的短句翻成台灣慣用的繁體中文。你會拿到冰島語原文和一則已經查核過的英文譯文；以冰島語原文為準，英文譯文只用來確認意思。忠實翻譯，不增不減，不評論，不糾正錯字。地名保留冰島語原文。沒有對應中文的冰島詞（例如 lopapeysa、þorrablót、harðfiskur）保留原文，後面用全形括號加上簡短說明。使用全形標點；中文與拉丁字母或數字之間加半形空格。只輸出中文譯文。"
+      },
+      {
+        "role": "user",
+        "content": "冰島語原文：Þetta er fallegasti staður sem ég veit um á Íslandi. Það er ekki mikið af fólki svo þú getur verið einn með hugsunum þínum en samt ertu ekki einmanna vegna þess að fuglarnir syngja svo fallega. Það eru blóm í öllum regnbogans litum, og svo má vera með hunda þarna og þú getur leikið þér með þeim í öllu veðri.\n英文譯文：This is the most beautiful place I know of in Iceland. There are not many people, so you can be alone with your thoughts, but you are still not lonely, because the birds sing so beautifully. There are flowers in all the colours of the rainbow, and dogs are allowed there, and you can play with them in any weather."
+      }
+    ],
+    "options": {
+      "temperature": 0.2,
+      "num_ctx": 4096,
+      "seed": 1010
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "gemma4:31b-it-qat-google-official",
+    "created_at": "2026-10-05T09:01:18.455098Z",
+    "message": {
+      "role": "assistant",
+      "content": "這是我在 Íslandi 知道最美麗的地方。那裡沒有很多人，所以你可以獨自沉浸在思緒中，但你依然不會感到孤單，因為鳥兒們唱得如此悅耳。那裡有彩虹所有顏色的花朵，而且那裡允許帶狗，你可以在任何天氣下與牠們一起玩耍。"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 3902361750,
+    "load_duration": 16749500,
+    "prompt_eval_count": 352,
+    "prompt_eval_cached_count": 0,
+    "prompt_eval_duration": 872999000,
+    "eval_count": 76,
+    "eval_duration": 3010897000
+  },
+  "latency_ms": 3903
+}

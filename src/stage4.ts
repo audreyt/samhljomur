@@ -68,6 +68,8 @@ interface LyricPart {
   tone: string | null;
   gloss_en: string;
   gloss_faithful: number;
+  gloss_zh?: string;
+  gloss_zh_edited?: boolean;
   clef?: ClefAnswers;
 }
 
@@ -88,7 +90,13 @@ interface LyricLine {
   seconds?: number | null;
   composite?: number | null;
   clef?: ClefAnswers;
-  gloss?: { en: string; faithful: number; edited?: boolean };
+  gloss?: {
+    en: string;
+    faithful: number;
+    edited?: boolean;
+    zh?: string;
+    zh_edited?: boolean;
+  };
   parts?: LyricPart[];
   label?: string;
   editorial?: { kind: string; reason_is: string; reason_en: string };
@@ -308,6 +316,8 @@ export function stage4(j: Judgments, g: Glosses): Stage4Out {
     en: e?.en ?? "",
     faithful: e?.faithful ?? 0,
     edited: e?.edited,
+    zh: e?.zh ?? "",
+    zh_edited: e?.zh_edited,
   });
   const overrides: OverrideEntry[] = [];
   const ovr = (e: OverrideEntry) => overrides.push(e);
@@ -502,7 +512,8 @@ export function stage4(j: Judgments, g: Glosses): Stage4Out {
       tone: l.tone ?? null,
       gloss_en: l.gloss!.en,
       gloss_faithful: l.gloss!.faithful,
-
+      gloss_zh: l.gloss!.zh ?? "",
+      gloss_zh_edited: l.gloss!.zh_edited,
       clef: l.clef,
     });
     const refrainLines: LyricLine[] = [];
@@ -521,7 +532,7 @@ export function stage4(j: Judgments, g: Glosses): Stage4Out {
         gloss: {
           en: b ? `${a.gloss!.en}; ${b.gloss!.en}` : a.gloss!.en,
           faithful: Math.min(a.gloss!.faithful, b?.gloss!.faithful ?? 1),
-
+          zh: b ? `${a.gloss!.zh ?? ""}; ${b.gloss!.zh ?? ""}` : (a.gloss!.zh ?? ""),
         },
         parts: b ? [partOf(a), partOf(b)] : [partOf(a)],
       });
@@ -612,7 +623,8 @@ export function stage4(j: Judgments, g: Glosses): Stage4Out {
           tone: null,
           gloss_en: ge?.en ?? "",
           gloss_faithful: ge?.faithful ?? 0,
-
+          gloss_zh: ge?.zh ?? "",
+          gloss_zh_edited: ge?.zh_edited,
           clef: t.clef,
         } as LyricPart;
       });
@@ -628,7 +640,7 @@ export function stage4(j: Judgments, g: Glosses): Stage4Out {
         gloss: {
           en: parts.map((p) => p.gloss_en).join("; "),
           faithful: Math.min(...parts.map((p) => p.gloss_faithful)),
-
+          zh: parts.map((p) => p.gloss_zh ?? "").join("; "),
         },
         parts,
       });

@@ -10,8 +10,10 @@ const enClean = (s: string) => s.replace(/\s*[—–]\s*/g, ", ");
 const escE = (s: string) => esc(enClean(s));
 
 export function songbookHtml(lyrics: Stage4Out): string {
-  const biP = (k: string) =>
-    `<span class="bi-is">${esc(bi(k).is)}</span><span class="bi-en">${esc(bi(k).en)}</span>`;
+  const biP = (k: string) => {
+    const v = bi(k);
+    return `<span class="bi-is">${esc(v.is)}</span><span class="bi-en">${esc(v.en)}</span><span class="bi-zh">${esc(v.zh)}</span>`;
+  };
 
   const movHtml = lyrics.movements
     .map((m) => {
@@ -34,7 +36,7 @@ export function songbookHtml(lyrics: Stage4Out): string {
               ? ""
               : `<div class="src">${esc(l.source)}${l.url ? ` · <a href="${l.url}">talasaman.is</a>` : ""}</div>`;
           const gl = l.gloss?.en
-            ? `<div class="gl">${escE(l.gloss.en)} <span class="glbl">${l.gloss.edited ? esc(bi("gloss_edited").is) : esc(bi("gloss_label").is)}</span></div>`
+            ? `<div class="gl"><span class="bi-en">${escE(l.gloss.en)} <span class="glbl">${l.gloss.edited ? esc(bi("gloss_edited").en) : esc(bi("gloss_label").en)}</span></span><span class="bi-zh">${esc(l.gloss.zh ?? "")} <span class="glbl">${l.gloss.zh_edited ? esc(bi("gloss_edited").zh) : esc(bi("gloss_label").zh)}</span></span></div>`
             : "";
           return `<div class="line ${l.kind}">
   <div class="ln"><span class="no">${l.n}.</span><span class="txt">${esc(l.text)}${cnt}</span></div>
@@ -73,20 +75,33 @@ h2 .no{color:#999;font-size:10pt;margin-right:2mm}
 footer{margin-top:10mm;border-top:1px solid #ddd;padding-top:3mm;font-size:7.5pt;color:#888}
 @media print{body{max-width:none;width:130mm;padding:0}}
 @page{size:A5 portrait;margin:12mm}
-.bi-en{display:none}
-body.en .bi-en{display:inline}
-body.en .bi-is{display:none}
-#langbtn{position:fixed;top:8px;right:10px;border:1px solid #ccc;background:#fff;border-radius:6px;padding:4px 10px;font:inherit;font-size:8pt;cursor:pointer}
-@media print{#langbtn{display:none}}
-</style></head><body>
-<button id="langbtn" onclick="document.body.classList.toggle('en')">${esc(bi("lang_switch").is)}</button>
+.bi-en,.bi-zh{display:none}
+body.lang-en .bi-en{display:inline}
+body.lang-zh .bi-zh{display:inline}
+body:not(.lang-is) .bi-is{display:none}
+body.lang-zh{font-family:Inter,Iansui,sans-serif}
+.langbtn{position:static;border:1px solid #ccc;background:#fff;border-radius:6px;padding:4px 10px;font:inherit;font-size:8pt;cursor:pointer}
+.langbtn.on{border-color:#888}
+#langbar{position:fixed;top:8px;right:10px;display:flex;gap:6px}
+@media print{#langbar{display:none}.bi-is,.bi-en{display:inline!important}.bi-zh{display:none!important}}
+</style></head><body class="lang-is">
+<div id="langbar"><button class="langbtn on" data-lang="is" onclick="sbLang('is')">Íslenska</button><button class="langbtn" data-lang="en" onclick="sbLang('en')">English</button><button class="langbtn" data-lang="zh" onclick="sbLang('zh')">華文</button></div>
+<script>
+function sbLang(l){
+  const b=document.body;b.classList.remove('lang-is','lang-en','lang-zh');b.classList.add('lang-'+l);
+  document.documentElement.lang=l==='zh'?'zh-Hant-TW':l;
+  document.querySelectorAll('.langbtn').forEach(x=>x.classList.toggle('on',x.dataset.lang===l));
+  try{localStorage.setItem('samhljomur-lang',l)}catch(e){}
+}
+try{const l0=localStorage.getItem('samhljomur-lang');if(l0)sbLang(l0)}catch(e){}
+</script>
 <h1>${esc(bi("songbook_title").is)}</h1>
-<p class="intro"><span class="bi-is">${esc(bi("songbook_intro").is)}</span><span class="bi-en">${esc(bi("songbook_intro").en)}</span></p>
+<p class="intro"><span class="bi-is">${esc(bi("songbook_intro").is)}</span><span class="bi-en">${esc(bi("songbook_intro").en)}</span><span class="bi-zh">${esc(bi("songbook_intro").zh)}</span></p>
 ${movHtml}
 <footer>
-<div>${esc(bi("attribution").is)}</div>
-<div>${esc(bi("disclaimer").is)} · ${esc(bi("disclaimer").en)}</div>
-<div>${esc(bi("gift").is)} · ${esc(bi("editor_credit").is)}</div>
+<div><span class="bi-is">${esc(bi("attribution").is)}</span><span class="bi-en">${esc(bi("attribution").en)}</span><span class="bi-zh">${esc(bi("attribution").zh)}</span></div>
+<div><span class="bi-is">${esc(bi("disclaimer").is)}</span><span class="bi-en">${esc(bi("disclaimer").en)}</span><span class="bi-zh">${esc(bi("disclaimer").zh)}</span></div>
+<div><span class="bi-is">${esc(bi("gift").is)}</span><span class="bi-en">${esc(bi("gift").en)}</span><span class="bi-zh">${esc(bi("gift").zh)}</span> · <span class="bi-is">${esc(bi("editor_credit").is)}</span><span class="bi-en">${esc(bi("editor_credit").en)}</span><span class="bi-zh">${esc(bi("editor_credit").zh)}</span></div>
 </footer>
 </body></html>`;
 }

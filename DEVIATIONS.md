@@ -245,3 +245,52 @@ changed.
 43. **Gemma digest** recorded in run manifests: `e0812a55773b` (Apache-2.0).
 44. **Apertus kept as a candidate** — its `openai-chat` config stays in
     `TRANSLATORS`; Apertus 70B lands on port 8004 with one table row.
+
+## Amendment D (華文 / zh-Hant-TW third language)
+
+45. **Toggle** — `setLang(is|en|zh)` replaces the two-state toggle on all
+    pages incl. video/standalone (`setVlang`); `html lang` follows
+    (is/en/zh-Hant-TW), persisted in localStorage. All helpers emit
+    `<span class="bi-zh">` — IS default, EN and zh swap per body class.
+46. **zh glosses (D3)** — `stage2` calls Gemma (openai ollama-chat cfg row)
+    with the verbatim prompt; no Clef scoring (C1). Stored as
+    `entry.zh`/`zh_edited`; `copy/gloss-edits-zh.json` (22 entries)
+    overrides. Review dump `out/zh-glosses.txt` (sung lines first).
+    zh shows only in zh mode — canvas, inspector, report gloss cells,
+    songbook gl line; mp4 and PDF stay IS+EN per D2.
+47. **zh_opencc gate** — full-string `s2twp` diffs are listed in
+    `qa/zh-opencc.txt` (25 diffs, all variant-preference like 台→臺 —
+    zero simplified-only chars). Per-char simplified-only detection
+    whitelists valid TW forms OpenCC formalizes (台吃群游里岩划干…).
+48. **zh_pangu gate** — 0 diffs; `zh_dash` 0; `zh_strings` 0 stray zh
+    nodes; `zh_font` — Iansui subset (assets/fonts/iansui-subset.woff2,
+    regenerated when the zh character set changes), fonts.check + tofu
+    probe pass.
+49. **em_dash** — machine gloss text (en + zh + candidates) is exempt like
+    participant text; Gemma writes "——" which is model output, not
+    authored copy.
+50. **mp4 keep-guard** — stage7 now verifies the existing medley.mp4's
+    ffprobe duration vs the timeline before skipping a re-render; a
+    truncated file from an interrupted render no longer survives.
+
+## Amendment D fix (language isolation)
+
+51. **Lang isolation bug** — `.bi-is` was never hidden outside is mode, and
+    chrome()/footer() baked a single language at build time. Now
+    `body:not(.lang-is) .bi-is{display:none}`, chrome/footer emit tri-spans,
+    songbook gets the same 3-button setLang pattern (its own `sbLang`).
+    New gate `lang_isolation` walks every page × mode in headless
+    Chromium: 0 wrong-lang `.bi-*` visible, 0 mixed CJK+IS text nodes
+    outside gloss/participant containers.
+52. **TW whitelist** extended (划,干) — 划船/干擾 are standard Taiwan usage;
+    opencc prefers 劃船/幹擾. No genuinely simplified chars exist.
+53. **Songbook `<h1>`** left IS-only (proper name "Samhljómur" + subtitle);
+    all other songbook text tri-spans.
+
+54. **songbook.pdf print mode** — the D three-way CSS hid .bi-en under
+    lang-is, stripping EN glosses from the PDF. @media print now forces
+    .bi-is + .bi-en visible regardless of screen toggle state (D2: PDF
+    stays IS + EN). New songbook_pdf gate: pdftotext covers every sung IS
+    line + EN/edited gloss (emoji glyphs excluded — Type-3 fonts have no
+    text layer), pdfinfo records page count (10), pdffonts requires
+    Fraunces + Inter embedded.

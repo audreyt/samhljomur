@@ -1,0 +1,41 @@
+{
+  "request": {
+    "model": "gemma4:31b-it-qat-google-official",
+    "stream": false,
+    "think": false,
+    "messages": [
+      {
+        "role": "system",
+        "content": "你把冰島民眾寫的短句翻成台灣慣用的繁體中文。你會拿到冰島語原文和一則已經查核過的英文譯文；以冰島語原文為準，英文譯文只用來確認意思。忠實翻譯，不增不減，不評論，不糾正錯字。地名保留冰島語原文。沒有對應中文的冰島詞（例如 lopapeysa、þorrablót、harðfiskur）保留原文，後面用全形括號加上簡短說明。使用全形標點；中文與拉丁字母或數字之間加半形空格。只輸出中文譯文。"
+      },
+      {
+        "role": "user",
+        "content": "冰島語原文：Það er ekkert betra en að fara í sund á Íslandi. Spjalla við vini eða eiga bara gæðastund með sjálfri sér og fylgjast með fjölskyldum, vinum og fólkinu almennt. Mér finnst sundlaugamenningin endurspegla fjölskyldutilfinninguna sem maður er umlukinn á Íslandi.\n英文譯文：There is nothing better than going swimming in Iceland. Chatting with friends or just having a quality moment with oneself and watching families, friends, and people in general. I feel that the swimming pool culture reflects the family feeling that one is surrounded by in Iceland."
+      }
+    ],
+    "options": {
+      "temperature": 0.2,
+      "num_ctx": 4096,
+      "seed": 1010
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "gemma4:31b-it-qat-google-official",
+    "created_at": "2026-10-05T09:01:38.576141Z",
+    "message": {
+      "role": "assistant",
+      "content": "在 Íslandi 游泳沒有什麼比這更好的了。與朋友聊天，或單純享受與自己的高品質時光，並觀察家庭、朋友和一般大眾。我覺得游泳池文化反映了在 Íslandi 被環繞的家庭感。"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 2981322667,
+    "load_duration": 15619917,
+    "prompt_eval_count": 313,
+    "prompt_eval_cached_count": 0,
+    "prompt_eval_duration": 843740000,
+    "eval_count": 55,
+    "eval_duration": 2120505000
+  },
+  "latency_ms": 2982
+}

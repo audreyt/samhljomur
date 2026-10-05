@@ -21,9 +21,47 @@ import { indexHtml } from "./site-index";
 import { renderMp4, withPage, frameAt } from "./render";
 import { chromium } from "playwright";
 
+// D5: subset Iansui to exactly the glyphs used by zh strings + zh glosses.
+// Regenerates only when the character set changes; never embeds jf fonts.
+function ensureZhFont() {
+  const src = `${process.env.HOME}/Library/Fonts/Iansui-Regular.ttf`;
+  const chars = new Set<string>();
+  const add = (t: string) => {
+    for (const c of t) if (c.charCodeAt(0) > 127) chars.add(c);
+    chars.add("　"); // ideographic space if ever needed
+  };
+  const strs = JSON.parse(readFileSync("copy/strings.json", "utf8"));
+  for (const v of Object.values(strs) as { zh?: string }[])
+    if (v.zh) add(v.zh);
+  const gl = JSON.parse(readFileSync("out/glosses.json", "utf8"));
+  for (const e of gl.entries) if (e.zh) add(e.zh);
+  const text = [...chars].sort().join("");
+  const hash = createHash("sha256").update(text).digest("hex").slice(0, 16);
+  const meta = "assets/fonts/iansui-chars.txt";
+  if (
+    existsSync("assets/fonts/iansui-subset.woff2") &&
+    existsSync(meta) &&
+    readFileSync(meta, "utf8").startsWith(hash)
+  )
+    return;
+  mkdirSync("assets/fonts", { recursive: true });
+  writeFileSync("/tmp/iansui-chars.txt", text);
+  execFileSync("pyftsubset", [
+    src,
+    `--text-file=/tmp/iansui-chars.txt`,
+    "--flavor=woff2",
+    "--output-file=assets/fonts/iansui-subset.woff2",
+    "--layout-features=*",
+    "--name-IDs=*",
+  ]);
+  writeFileSync(meta, hash + " " + chars.size + " chars\n");
+  console.log(`[stage7] iansui subset: ${chars.size} chars`);
+}
+
 export async function stage7(ctx: RunCtx) {
   mkdirSync("site", { recursive: true });
   mkdirSync("site/media", { recursive: true });
+  ensureZhFont();
   const lyrics = JSON.parse(readFileSync("out/lyrics.json", "utf8")) as unknown as Stage4Out;
   const j = JSON.parse(readFileSync("out/judgments.json", "utf8"));
   const g = JSON.parse(readFileSync("out/glosses.json", "utf8"));
@@ -82,8 +120,22 @@ export async function stage7(ctx: RunCtx) {
   });
   writeFileSync("site/index.html", indexHtml());
 
-  // medley.mp4 — deterministic from video.html; skip when nothing changed
-  if (haveAudio && (videoChanged || !existsSync("site/medley.mp4"))) {
+  // medley.mp4 — deterministic from video.html; skip when nothing changed.
+  // Guard against a truncated file left by an interrupted render.
+  let mp4Ok = existsSync("site/medley.mp4");
+  if (mp4Ok)
+    try {
+      const dur = parseFloat(
+        execFileSync("ffprobe", [
+          "-v","error","-show_entries","format=duration","-of","csv=p=0",
+          "site/medley.mp4",
+        ]).toString(),
+      );
+      mp4Ok = Math.abs(dur - tl.total_duration_s) < 1;
+    } catch {
+      mp4Ok = false;
+    }
+  if (haveAudio && (videoChanged || !mp4Ok)) {
     await renderMp4({
       htmlPath: "site/video.html",
       audioPath: "site/media/medley.mp3",
@@ -93,7 +145,8 @@ export async function stage7(ctx: RunCtx) {
         console.log(`[mp4] frame ${i}/${tot} (${((i / tot) * 100).toFixed(0)}%)`),
     });
   } else if (haveAudio) {
-    console.log("[stage7] video.html unchanged — medley.mp4 kept");
+    if (haveAudio && !videoChanged && mp4Ok)
+      console.log("[stage7] video.html unchanged — medley.mp4 kept");
   } else {
     console.warn("[stage7] no audio take — skipping medley.mp4");
   }

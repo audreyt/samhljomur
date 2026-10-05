@@ -1,0 +1,48 @@
+{
+  "run_id": "20261005100041-p94z",
+  "mode": "live",
+  "hostname": "Max.local",
+  "started_at": "2026-10-05T10:00:41.853Z",
+  "models": {
+    "clef": {
+      "name": "clef",
+      "digest_spec": "2bb11a61d1fb",
+      "digest_seen": "2bb11a61d1fb5d7a51f136ad9f569f970727377cf7b96037a06285d81fa25b73",
+      "digest_match": true,
+      "ollama_show": "  Model\n    architecture        qwen35    \n    parameters          27.0B     \n    context length      262144    \n    embedding length    5120      \n    quantization        Q4_K_M    \n    requires            0.35.1    \n\n  Capabilities\n    decision    \n\n  Projector\n    architecture        clip       \n    parameters          460.73M    \n    embedding length    1152       \n    dimensions          5120       \n\n  Parameters\n    num_ctx    16384    \n\n  License\n    Apache License               \n    Version 2.0, January 2004    \n    ...                          \n\n"
+    },
+    "granite": {
+      "name": "granite4.2:30b",
+      "digest_spec": "be22829aa92a",
+      "digest_seen": "be22829aa92aad40153c3b2cfd628269ac9281967e74c44d96750568a5af8ed4",
+      "digest_match": true,
+      "ollama_show": "  Model\n    architecture        granite    \n    parameters          29.3B      \n    context length      131072     \n    embedding length    4096       \n    quantization        Q4_K_M     \n\n  Capabilities\n    tools         \n    thinking      \n    completion    \n\n  Parameters\n    temperature    1       \n    top_p          0.95    \n\n  License\n    Apache License               \n    Version 2.0, January 2004    \n    ...                          \n\n"
+    },
+    "gemma": {
+      "name": "gemma4:31b-it-qat-google-official",
+      "digest_spec": "e0812a55773b",
+      "digest_seen": "e0812a55773bfeac846b2d605b4d93638b8dfa7119d9587f3d91475afc78185e",
+      "digest_match": true,
+      "ollama_show": "  Model\n    architecture        gemma4    \n    parameters          30.7B     \n    context length      262144    \n    embedding length    5376      \n    quantization        Q4_0      \n    requires            0.30.5    \n\n  Capabilities\n    completion    \n    vision        \n    tools         \n    thinking      \n\n  Projector\n    architecture        clip       \n    parameters          575.74M    \n    embedding length    1152       \n    dimensions          5376       \n\n  Parameters\n    temperature    1       \n    top_k          64      \n    top_p          0.95    \n\n  License\n    Apache License               \n    Version 2.0, January 2004    \n    ...                          \n\n"
+    },
+    "apertus": {
+      "name": "/Users/au/Models/Apertus-v1.5-8B-text-MLX-8bit",
+      "api": "openai-chat",
+      "url": "http://127.0.0.1:8003/v1/chat/completions",
+      "probe": "mlx_lm.server"
+    }
+  },
+  "snapshot_dir": "data/snapshot-20261004",
+  "snapshot_sha256": {
+    "circles.json": "1d675cdafbf6dec782c33c9e27b4b7d90e6f7a4e5ed46f0b1b825ceb67980550",
+    "islenskast.json": "b6e899fa73be6cd379650338e752217d1f491d714226a0fec22ef30285d80ae9",
+    "openapi.json": "a62c0360d25a07a195e025ee39082396c9d3dac5559d5204d7e0cf69db9cdee5",
+    "places.json": "78d59c66061920abe3d62f8e44a8c94eb2a62d9e848aeea29082e1128d41c3c0",
+    "stats.json": "10f6ce201f8e2fda028593ec87526c50bb1615c9170a54c44bc5c72d84635839",
+    "topics.json": "afda2b0df83e5937c30b9b16692ec020208399362dd68614cc31d055f34788c9"
+  },
+  "command": "site",
+  "finished_at": "2026-10-05T10:00:42.893Z",
+  "calls": {},
+  "failures": []
+}

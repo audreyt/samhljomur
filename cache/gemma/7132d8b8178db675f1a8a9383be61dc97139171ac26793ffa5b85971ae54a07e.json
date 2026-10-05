@@ -1,0 +1,41 @@
+{
+  "request": {
+    "model": "gemma4:31b-it-qat-google-official",
+    "stream": false,
+    "think": false,
+    "messages": [
+      {
+        "role": "system",
+        "content": "你把冰島民眾寫的短句翻成台灣慣用的繁體中文。你會拿到冰島語原文和一則已經查核過的英文譯文；以冰島語原文為準，英文譯文只用來確認意思。忠實翻譯，不增不減，不評論，不糾正錯字。地名保留冰島語原文。沒有對應中文的冰島詞（例如 lopapeysa、þorrablót、harðfiskur）保留原文，後面用全形括號加上簡短說明。使用全形標點；中文與拉丁字母或數字之間加半形空格。只輸出中文譯文。"
+      },
+      {
+        "role": "user",
+        "content": "冰島語原文：(Brimnesá) Fjallið er einstaklega fallegt á haustin því þá skartar það öllum fegurstu haustlitunum þar sem fjallið er þakið berjalyngi.\n英文譯文：(Brimnesá) The mountain is exceptionally beautiful in the autumn because then it displays all the most beautiful autumn colors as the mountain is covered in berry heath."
+      }
+    ],
+    "options": {
+      "temperature": 0.2,
+      "num_ctx": 4096,
+      "seed": 1010
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "gemma4:31b-it-qat-google-official",
+    "created_at": "2026-10-05T09:01:56.729516Z",
+    "message": {
+      "role": "assistant",
+      "content": "(Brimnesá) 這座山在秋天格外美麗，因為當時山上覆蓋著 berries heath（漿果石楠），展現出所有最美的秋色。"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 2408608291,
+    "load_duration": 16635416,
+    "prompt_eval_count": 255,
+    "prompt_eval_cached_count": 0,
+    "prompt_eval_duration": 794508000,
+    "eval_count": 40,
+    "eval_duration": 1553742000
+  },
+  "latency_ms": 2409
+}

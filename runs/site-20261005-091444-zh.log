@@ -1,0 +1,5 @@
+warn: This project does not use vite-plus. Learn how to migrate: https://viteplus.dev/guide/migrate
+$ bun run src/cli.ts site ⊘ cache disabled
+[stage7] video.html unchanged — medley.mp4 kept
+[stage7] site/ written
+

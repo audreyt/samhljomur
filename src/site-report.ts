@@ -31,11 +31,11 @@ const THEME_COLORS: Record<string, string> = {
 const lbl = (prefix: string, id: string) => {
   const k = `${prefix}_${id}`;
   const e = S[k as keyof typeof S];
-  return e ? { is: e.is, en: e.en } : { is: id, en: id };
+  return e ? { is: e.is, en: e.en, zh: e.zh } : { is: id, en: id, zh: id };
 };
 const lblP = (prefix: string, id: string) => {
   const e = lbl(prefix, id);
-  return `<span class="bi-is">${esc(e.is)}</span><span class="bi-en">${esc(e.en)}</span>`;
+  return `<span class="bi-is">${esc(e.is)}</span><span class="bi-en">${esc(e.en)}</span><span class="bi-zh">${esc(e.zh)}</span>`;
 };
 
 export function reportHtml(
@@ -56,8 +56,10 @@ export function reportHtml(
   const dis = d("is");
   const den = d("en");
 
-  const biPair = (k: string) =>
-    `<span class="bi-is">${esc(bi(k).is)}</span><span class="bi-en">${esc(bi(k).en)}</span>`;
+  const biPair = (k: string) => {
+    const v = bi(k);
+    return `<span class="bi-is">${esc(v.is)}</span><span class="bi-en">${esc(v.en)}</span><span class="bi-zh">${esc(v.zh)}</span>`;
+  };
 
   // ---- key numbers ----
   const stats = JSON.parse(
@@ -115,7 +117,7 @@ export function reportHtml(
       )
       .map((e: any) => e.text),
   );
-  const hiddenSpan = `<em class="small"><span class="bi-is">${esc(bi("hidden_label").is)}</span><span class="bi-en">${esc(bi("hidden_label").en)}</span></em>`;
+  const hiddenSpan = `<em class="small"><span class="bi-is">${esc(bi("hidden_label").is)}</span><span class="bi-en">${esc(bi("hidden_label").en)}</span><span class="bi-zh">${esc(bi("hidden_label").zh)}</span></em>`;
 
   // places list (verbatim reason + gloss + theme) — hides privacy/digit/
   // outside-Iceland places entirely; too_long places stay visible
@@ -129,12 +131,12 @@ export function reportHtml(
       const ge = gOf("reason", p.reason);
       const th = (p.clef.theme as any)?.choice ?? "unclear";
       const glossBadge = ge?.edited
-        ? `<span class="badge edit">${esc(bi("gloss_edited").is)} / ${esc(bi("gloss_edited").en)}</span>`
-        : `<span class="badge">${esc(bi("gloss_label").is)}</span>`;
+        ? `<span class="badge edit"><span class="bi-is">${esc(bi("gloss_edited").is)}</span><span class="bi-en">${esc(bi("gloss_edited").en)}</span><span class="bi-zh">${esc(bi("gloss_edited").zh)}</span></span>`
+        : `<span class="badge"><span class="bi-is">${esc(bi("gloss_label").is)}</span><span class="bi-en">${esc(bi("gloss_label").en)}</span><span class="bi-zh">${esc(bi("gloss_label").zh)}</span></span>`;
       return `<div class="place" data-theme="${th}">
 <div class="pname">${esc(p.hasDigit ? p.placeDisplay : p.place)} <a class="src" href="https://talasaman.is/stadir?stadur=${p.id}" target="_blank" rel="noopener">↗</a></div>
 <div class="reason">${esc(p.reason)}</div>
-<div class="gloss">${escE(ge?.en ?? "")} ${glossBadge}</div>
+<div class="gloss"><span class="bi-en">${escE(ge?.en ?? "")}</span><span class="bi-zh">${esc(ge?.zh ?? "")}</span> ${glossBadge}</div>
 <div class="meta"><span class="dotlg" style="background:${THEME_COLORS[th] ?? "#666"}"></span>${lblP("theme", th)}</div>
 </div>`;
     })
@@ -163,7 +165,7 @@ export function reportHtml(
       const ge = gOf("answer", m.answer);
       const cell = hiddenIs.has(m.answer)
         ? hiddenSpan
-        : `${esc(m.answer)}<br><span class="small">${escE(ge?.en ?? "")}</span>`;
+        : `${esc(m.answer)}<br><span class="small"><span class="bi-en">${escE(ge?.en ?? "")}</span><span class="bi-zh">${esc(ge?.zh ?? "")}</span></span>`;
       return `<tr><td>${cell}</td><td>${m.truth.map((t: string) => lblP("cat", t)).join(" + ")}</td><td>${lblP("cat", m.pred)}</td><td class="mono">${m.confidence.toFixed(2)}</td></tr>`;
     })
     .join("\n");
@@ -183,7 +185,7 @@ export function reportHtml(
         .map((l) => {
           const cnt = (l.count ?? 0) >= 2 ? ` ×${l.count}` : "";
           const ed = l.editorial ? ` <span class="badge edit">${esc(bi("insp_editorial").is)}</span>` : "";
-          return `<tr><td>${m.n}</td><td>${esc(l.text)}${cnt}${ed}<br><span class="small">${escE(l.gloss?.en ?? "")}</span></td><td class="small">${esc(l.source)}</td></tr>`;
+          return `<tr><td>${m.n}</td><td>${esc(l.text)}${cnt}${ed}<br><span class="small"><span class="bi-en">${escE(l.gloss?.en ?? "")}</span><span class="bi-zh">${esc(l.gloss?.zh ?? "")}</span></span></td><td class="small">${esc(l.source)}</td></tr>`;
         })
         .join("\n"),
     )

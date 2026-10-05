@@ -9,6 +9,10 @@ import { chat, clef, RunCtx } from "./model";
 import {
   faithfulQuestion,
   faithfulState,
+  ZH_EDITS_PATH,
+  ZH_GLOSS_OPTIONS,
+  ZH_GLOSS_SYSTEM,
+  zhGlossUser,
   FAITHFUL_THRESHOLD,
   GLOSS_EDITS_PATH,
   GLOSS_SYSTEM,
@@ -44,6 +48,8 @@ export interface GlossEntry {
   model: string; // translator id, or "edited"
   edited?: boolean;
   cands: Record<string, ModelGloss>; // keyed by translator id
+  zh?: string; // D3: Gemma zh gloss of the chosen/edited EN
+  zh_edited?: boolean;
 }
 
 export interface Glosses {
@@ -92,10 +98,28 @@ async function modelGloss(
   return { en: best.en, faithful: best.faithful, attempts };
 }
 
-function loadGlossEdits(): Record<string, string> {
-  if (!existsSync(GLOSS_EDITS_PATH)) return {};
+async function zhGloss(
+  ctx: RunCtx,
+  kind: GlossEntry["kind"],
+  is: string,
+  en: string,
+): Promise<string> {
+  const cfg = TRANSLATORS.find((t) => t.id === "gemma")!;
+  const g = await chat(
+    ctx,
+    cfg,
+    ZH_GLOSS_SYSTEM,
+    zhGlossUser(is, en),
+    ZH_GLOSS_OPTIONS,
+    `zhgloss:${kind}`,
+  );
+  return g.text;
+}
+
+function loadGlossEdits(path = GLOSS_EDITS_PATH): Record<string, string> {
+  if (!existsSync(path)) return {};
   try {
-    return JSON.parse(readFileSync(GLOSS_EDITS_PATH, "utf8"));
+    return JSON.parse(readFileSync(path, "utf8"));
   } catch {
     return {};
   }
@@ -125,6 +149,13 @@ async function glossOne(
     entry.en = edits[is];
     entry.edited = true;
     entry.model = "edited";
+  }
+  // D3: zh gloss from the final EN (chosen or edited); zh edits override
+  entry.zh = await zhGloss(ctx, kind, is, entry.en);
+  const zhEdits = loadGlossEdits(ZH_EDITS_PATH);
+  if (is in zhEdits) {
+    entry.zh = zhEdits[is];
+    entry.zh_edited = true;
   }
   return entry;
 }

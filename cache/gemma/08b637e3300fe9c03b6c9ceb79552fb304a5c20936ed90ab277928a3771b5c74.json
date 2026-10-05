@@ -1,0 +1,41 @@
+{
+  "request": {
+    "model": "gemma4:31b-it-qat-google-official",
+    "stream": false,
+    "think": false,
+    "messages": [
+      {
+        "role": "system",
+        "content": "你把冰島民眾寫的短句翻成台灣慣用的繁體中文。你會拿到冰島語原文和一則已經查核過的英文譯文；以冰島語原文為準，英文譯文只用來確認意思。忠實翻譯，不增不減，不評論，不糾正錯字。地名保留冰島語原文。沒有對應中文的冰島詞（例如 lopapeysa、þorrablót、harðfiskur）保留原文，後面用全形括號加上簡短說明。使用全形標點；中文與拉丁字母或數字之間加半形空格。只輸出中文譯文。"
+      },
+      {
+        "role": "user",
+        "content": "冰島語原文：blóðberg\n英文譯文：Wild thyme"
+      }
+    ],
+    "options": {
+      "temperature": 0.2,
+      "num_ctx": 4096,
+      "seed": 1010
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "gemma4:31b-it-qat-google-official",
+    "created_at": "2026-10-05T09:00:06.668388Z",
+    "message": {
+      "role": "assistant",
+      "content": "blóðberg（野百里香）"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 949988209,
+    "load_duration": 20749334,
+    "prompt_eval_count": 175,
+    "prompt_eval_cached_count": 0,
+    "prompt_eval_duration": 535273000,
+    "eval_count": 11,
+    "eval_duration": 392841000
+  },
+  "latency_ms": 950
+}

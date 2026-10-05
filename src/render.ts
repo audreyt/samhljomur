@@ -95,7 +95,7 @@ export async function renderMp4(opts: {
 export async function screenshotAll(opts: {
   pages: string[]; // file paths
   widths: number[];
-  langs: ("is" | "en")[];
+  langs: ("is" | "en" | "zh")[];
   outDir: string;
 }) {
   mkdirSync(opts.outDir, { recursive: true });
@@ -112,11 +112,11 @@ export async function screenshotAll(opts: {
           page.on("console", (m) => m.type() === "error" && errors.push(m.text()));
           page.on("pageerror", (e) => errors.push(String(e)));
           await page.goto("file://" + path.resolve(p));
-          if (lang === "en")
-            await page.evaluate(() => {
-              (globalThis as any).toggleLang?.();
-              document.body.classList.add("en");
-            });
+          if (lang !== "is")
+            await page.evaluate((l) => {
+              const fn = (globalThis as any).setVlang ?? (globalThis as any).setLang;
+              fn?.(l);
+            }, lang);
           await page.evaluate(() => document.fonts.ready);
           await page.waitForTimeout(350);
           const name = `${path.basename(p, ".html")}-${w}-${lang}.png`;
