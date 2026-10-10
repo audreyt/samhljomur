@@ -1,4 +1,20 @@
-# Samhljómur
+# Samhljómur → Orðrétt
+
+**[audreyt.github.io/samhljomur](https://audreyt.github.io/samhljomur/)** now
+opens on **Orðrétt**: every table summary from Samtal on 10 October 2026,
+unchanged, with the recordings the tables chose to share, streamed from
+talasaman.is. No model wrote, translated, shortened or voiced anything
+from the tables; the rules that select and order it are printed on the page.
+Source, build and gates: [`ordrett/`](ordrett/README.md).
+
+This repository first held Samhljómur, a medley made from Samtal's open data
+on 5 October 2026 and sung by AI. Young people said a song made by AI did not
+belong in Samtal, and on 10 October the tables drew that line in their own
+words. The record, in Audrey Tang's words, is `site/saga.html`, linked from
+the foot of Orðrétt. The medley keeps every address it had; only its front
+page moved, from `index.html` to `samhljomur.html`.
+
+## The medley, kept as a record
 
 *Íslandsmedley úr opnum gögnum Samtals. Orð þátttakenda, orðrétt. Clef valdi línurnar og raðaði þeim. Þetta er hvorki afstaða né niðurstaða Samtals.*
 
@@ -14,10 +30,9 @@ there but do not choose, because Clef proved a poor judge of translation.
 ElevenLabs Music v2.5 made the singing and Scribe v2 aligned every line to
 the audio.
 
-**[Watch / read the artifacts](https://audreyt.github.io/samhljomur/)**:
-`site/` contains the video player (`video.html`, `medley.mp4`), the
-report (`report.html`), the printable songbook (`songbook.html` /
-`songbook.pdf`) and a poster frame.
+`site/` holds the medley's front page (`samhljomur.html`), the video player
+(`video.html`, `medley.mp4`), the report (`report.html`), the printable
+songbook (`songbook.html` / `songbook.pdf`) and a poster frame.
 
 ## Layout
 
@@ -26,9 +41,10 @@ report (`report.html`), the printable songbook (`songbook.html` /
 - `out/`: judgments, glosses, calibration, lyrics, overrides, timeline
 - `runs/<run-id>/` (every model request/response with request sha256)
 - `cache/<model>/<sha>.json` (replay cache; ElevenLabs bodies live in `media/takes/`)
-- `site/` (the deliverable)
+- `site/` (the published site: `index.html` is Orðrétt, built by `ordrett/`; the rest is the medley)
 - `qa/` (verification evidence: gates, screenshots, frames)
 - `SPEC.md`: the fixed spec; `DEVIATIONS.md` (every judgment call)
+- `ordrett/`: Orðrétt, every 10 October table summary verbatim with the recordings the tables shared; no model in the loop (`ordrett/README.md`)
 
 ## Replay
 

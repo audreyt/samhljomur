@@ -294,3 +294,16 @@ changed.
     line + EN/edited gloss (emoji glyphs excluded — Type-3 fonts have no
     text layer), pdfinfo records page count (10), pdffonts requires
     Fraunces + Inter embedded.
+
+## 2026-10-11: Orðrétt takes the front page
+
+55. **Front page** — young people said a song made by AI did not belong in
+    Samtal, and on 10 October the tables drew that line themselves
+    ("hjálpari ekki skapari"). `site/index.html` is now
+    Orðrétt, built by `ordrett/build.ts` with no model anywhere: the
+    tables' summaries verbatim, the shared recordings streamed from
+    talasaman.is. Stage 7 writes the medley landing to
+    `site/samhljomur.html` instead (moved byte for byte, sha1 a1b8538);
+    the `index` gate follows it there. Every other medley address is
+    unchanged and is linked only from `site/saga.html`, the record of
+    what happened, in Audrey Tang's words.

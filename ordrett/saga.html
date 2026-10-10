@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Saga síðunnar</title>
+<meta name="description" content="The record of this page: the AI medley first made here, what young people and the Samtal tables said about it, and what replaced it.">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0d0e0c">
+<style>
+@font-face {
+  font-family: "Atkinson Hyperlegible Next";
+  src: url(data:font/woff2;base64,/*FONT_WORDS*/) format("woff2");
+  font-weight: 200 800; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Schibsted Grotesk";
+  src: url(data:font/woff2;base64,/*FONT_FRAME*/) format("woff2");
+  font-weight: 400 900; font-style: normal; font-display: swap;
+}
+/* The same night as the front page; one column, read top to bottom. */
+:root {
+  --night: #0d0e0c;
+  --chalk: #ecebe3;
+  --dim: #979c93;
+  --hair: #2a2d28;
+  --font-words: "Atkinson Hyperlegible Next", "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-frame: "Schibsted Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { background: var(--night); -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--night); color: var(--chalk); font-family: var(--font-words);
+  font-size: 1.1875rem; line-height: 1.6;
+  padding-inline: max(1rem, env(safe-area-inset-left, 0px)) max(1rem, env(safe-area-inset-right, 0px));
+  padding-block: clamp(2.25rem, 7vw, 4.5rem) 5rem;
+}
+main { max-width: 40rem; margin-inline: auto; display: grid; gap: 1.25rem; }
+a { color: inherit; text-underline-offset: .18em; text-decoration-thickness: 1px; }
+:focus-visible { outline: 2px solid var(--chalk); outline-offset: 3px; }
+.back { font-family: var(--font-frame); font-weight: 600; font-size: .9375rem; color: var(--dim); text-decoration: none; }
+.back:hover { color: var(--chalk); }
+h1 { margin: .5rem 0 .25rem; font-family: var(--font-frame); font-weight: 850; font-size: clamp(2.75rem, 11vw, 5rem); line-height: .9; letter-spacing: -.04em; }
+p { margin: 0; }
+q { quotes: "“" "”"; }
+q[lang="is"] { font-weight: 600; }
+.record { margin: 1rem 0 0; padding: 1.25rem 0 0; border-top: 1px solid var(--hair); display: grid; gap: .6rem; list-style: none; font-family: var(--font-frame); font-size: 1rem; }
+.record li { display: flex; flex-wrap: wrap; gap: .2rem .6rem; }
+.record .what { color: var(--dim); }
+.sign { margin-top: 1rem; font-family: var(--font-frame); font-size: 1rem; line-height: 1.5; }
+.sign span { display: block; color: var(--dim); }
+.fine { margin-top: .5rem; font-family: var(--font-frame); font-size: .875rem; color: var(--dim); }
+</style>
+</head>
+<body>
+<main>
+  <a class="back" href="./">← Orðrétt</a>
+  <h1 lang="is">Saga síðunnar</h1>
+  <p>In early October I made a medley called Samhljómur from Samtal’s open data. The words were participants’ own, unchanged. Everything else came from machines. A model chose the lines and set their order, and AI wrote the music and sang it.</p>
+  <p>Young people said a song made by AI did not belong in Samtal. On Oct. 10 the tables drew that line in their own words. Table 2 at Menntaskólinn á Akureyri wrote that AI <q lang="is">á að vera hjálpari ekki skapari</q>, a helper and not a creator. Table 4 at Kvennaskólinn í Reykjavík wrote <q lang="is">neytendur afneita gervigreindarlist</q>, and the whole table agreed.</p>
+  <p>They were right. The medley made AI the creator, and keeping the lyrics verbatim did not change that.</p>
+  <p>This address now opens on Orðrétt. It holds everything the tables wrote, unchanged, and the voices they chose to share, uncut and played straight from talasaman.is. No AI wrote, translated, shortened or voiced any of it, and the rules that select and order it are printed on the page.</p>
+  <p>The medley ran seven and a half minutes. The recordings from the tables add up to just under eight. I should have waited for them.</p>
+  <p>The medley stays here as a record, at the addresses it always had.</p>
+  <ul class="record">
+    <li><a href="samhljomur.html" lang="is">Samhljómur</a><span class="what">the medley’s own front page</span></li>
+    <li><a href="video.html">The video</a><span class="what">sung by AI</span></li>
+    <li><a href="report.html">How it was made</a><span class="what">every model decision, with sources</span></li>
+    <li><a href="songbook.html">The songbook</a><span class="what">also as <a href="songbook.pdf">PDF</a></span></li>
+  </ul>
+  <p class="sign">Audrey Tang<span>Oct. 11, 2026</span><span>Drafted with an AI assistant; the account and the apology are mine.</span></p>
+  <p class="fine" lang="is">Gögn: <a href="https://talasaman.is/gogn">Samtal, félag til almannaheilla (talasaman.is)</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Þetta er hvorki afstaða né niðurstaða Samtals.</p>
+</main>
+</body>
+</html>

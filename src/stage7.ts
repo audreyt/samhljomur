@@ -118,7 +118,7 @@ export async function stage7(ctx: RunCtx) {
     const png2 = await frameAt(page, m5.length ? m5[0].start_s + 8 : 10);
     writeFileSync("site/poster-alt.png", png2);
   });
-  writeFileSync("site/index.html", indexHtml());
+  writeFileSync("site/samhljomur.html", indexHtml()); // the medley's front page; site/index.html is Orðrétt (ordrett/)
 
   // medley.mp4 — deterministic from video.html; skip when nothing changed.
   // Guard against a truncated file left by an interrupted render.

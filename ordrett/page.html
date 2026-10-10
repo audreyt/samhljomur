@@ -1,0 +1,1347 @@
+<!doctype html>
+<html lang="is">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Orðrétt</title>
+<meta name="description" content="Allar samantektirnar frá borðunum í Samtalinu 10. október 2026, óbreyttar, og upptökurnar heilar og óklipptar.">
+<meta property="og:title" content="Orðrétt">
+<meta property="og:description" content="Allar samantektirnar frá borðunum í Samtalinu 10. október 2026, óbreyttar, og upptökurnar heilar og óklipptar.">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0d0e0c">
+<style>
+@font-face {
+  font-family: "Atkinson Hyperlegible Next";
+  src: url(data:font/woff2;base64,/*FONT_WORDS*/) format("woff2");
+  font-weight: 200 800; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Schibsted Grotesk";
+  src: url(data:font/woff2;base64,/*FONT_FRAME*/) format("woff2");
+  font-weight: 400 900; font-style: normal; font-display: swap;
+}
+
+/* A night page with one paper sheet in it. The voices open the page as a
+   mountain of lines; every colour on the page is a postcode, and the
+   postcodes run round the island. The sheet is where the tables' words on
+   AI are read with highlighters, the way you would study a text at school. */
+:root {
+  --night: #0d0e0c;
+  --lift: #161814;
+  --chalk: #ecebe3;
+  --dim: #979c93;
+  --hair: #2a2d28;
+  --paper: #f4f3ed;
+  --ink: #151612;
+  --ink-dim: #5d6258;
+  --hl-1: #ffe55a;
+  --hl-2: #a6f29a;
+  --hl-3: #9fd6ff;
+  --hl-4: #ffa6d3;
+  --hl-5: #ffc67a;
+  --font-words: "Atkinson Hyperlegible Next", "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-frame: "Schibsted Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --read: 42rem;
+  --wide: 62rem;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; background: var(--night); }
+body {
+  margin: 0; background: var(--night); color: var(--chalk);
+  font-family: var(--font-words); font-size: 1.0625rem; line-height: 1.55;
+  padding-inline: max(1rem, env(safe-area-inset-left, 0px)) max(1rem, env(safe-area-inset-right, 0px));
+  padding-block: 0 7rem;
+}
+a { color: inherit; text-underline-offset: .18em; text-decoration-thickness: 1px; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--chalk); outline-offset: 3px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+svg { display: block; }
+.wrap { max-width: var(--wide); margin-inline: auto; }
+.label {
+  margin: 0; font-family: var(--font-frame); font-weight: 600; font-size: .8125rem;
+  letter-spacing: .08em; text-transform: uppercase; color: var(--dim);
+}
+.rule { margin: 0; font-family: var(--font-frame); font-size: .875rem; line-height: 1.5; color: var(--dim); max-width: 40rem; }
+section { padding-block: 3.5rem; border-top: 1px solid var(--hair); }
+
+/* ---------- the voices ---------- */
+.hero { padding-block: clamp(2.25rem, 7vw, 4.5rem) 3rem; display: grid; gap: 1.25rem; }
+h1 {
+  margin: 0; font-family: var(--font-frame); font-weight: 850;
+  font-size: clamp(4.25rem, 20vw, 10.5rem); line-height: .8; letter-spacing: -.05em; margin-left: -.04em;
+}
+.dek { margin: 0; font-size: 1.25rem; line-height: 1.45; max-width: 34rem; text-wrap: pretty; }
+.mtn-box { position: relative; margin-block: .75rem .25rem; }
+#mtn { display: block; width: 100%; height: 240px; cursor: pointer; touch-action: manipulation; }
+.tip {
+  position: absolute; left: 0; top: 0; pointer-events: none; transform: translate(-50%, -100%);
+  padding: .25rem .55rem; border-radius: .25rem; background: var(--chalk); color: var(--night);
+  font-family: var(--font-frame); font-weight: 600; font-size: .8125rem; white-space: nowrap;
+}
+.plays { display: flex; flex-wrap: wrap; gap: .75rem; }
+.play {
+  display: inline-flex; align-items: center; gap: .7rem; min-height: 3.25rem; padding: .45rem 1.25rem .45rem .45rem;
+  border: 1px solid var(--chalk); border-radius: 999px; background: transparent; cursor: pointer;
+  font-family: var(--font-frame); font-weight: 700; font-size: 1.0625rem;
+}
+.play .ico { width: 2.25rem; height: 2.25rem; border-radius: 50%; display: grid; place-items: center; background: var(--chalk); color: var(--night); flex: none; }
+.play .ico svg { width: 1rem; height: 1rem; }
+.play .len { font-weight: 500; color: var(--dim); }
+.play.on { background: var(--chalk); color: var(--night); }
+.play.on .ico { background: var(--night); color: var(--chalk); }
+.play.on .len { color: inherit; opacity: .7; }
+.play:disabled { opacity: .45; cursor: default; }
+.now { min-height: 7.5rem; display: grid; align-content: start; gap: .5rem; }
+.now .where { margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: .2rem .6rem; font-family: var(--font-frame); font-weight: 650; font-size: .9375rem; }
+.now .where .t { color: var(--dim); font-weight: 500; }
+.now .say { margin: 0; font-size: clamp(1.25rem, 2.6vw, 1.75rem); line-height: 1.35; white-space: pre-wrap; overflow-wrap: break-word; max-width: 46rem; }
+.now .big { margin: 0; font-family: var(--font-frame); font-weight: 850; font-size: clamp(2.5rem, 9vw, 4.5rem); line-height: 1; letter-spacing: -.03em; }
+.now .hint { margin: 0; color: var(--dim); }
+.swatch { width: .8rem; height: .8rem; border-radius: 50%; flex: none; }
+
+/* ---------- we want ---------- */
+.question {
+  margin: .5rem 0 0; font-family: var(--font-frame); font-weight: 800;
+  font-size: clamp(2rem, 6.4vw, 4.25rem); line-height: 1.02; letter-spacing: -.025em; max-width: 52rem; text-wrap: balance;
+}
+.question b { font-weight: 850; text-decoration: underline; text-decoration-thickness: .07em; text-underline-offset: .12em; }
+.kwic { display: grid; gap: 1.5rem; margin-top: 2.75rem; }
+.krow {
+  display: grid; grid-template-columns: minmax(0, 30%) minmax(0, 1fr); column-gap: .32em; align-items: start;
+  font-size: clamp(1.2rem, 3vw, 1.9rem); line-height: 1.24;
+}
+.krow .kl { text-align: right; color: var(--dim); overflow-wrap: break-word; }
+.krow.long .kl { grid-column: 1 / -1; text-align: left; }
+.krow.long .kr { grid-column: 2; }
+.krow .kr { overflow-wrap: break-word; white-space: pre-wrap; }
+.krow .key { font-family: var(--font-frame); font-weight: 800; }
+.krow .km { display: block; margin-top: .45rem; white-space: normal; font-family: var(--font-frame); font-size: .8125rem; line-height: 1.4; color: var(--dim); text-decoration: none; }
+.krow .km:hover { color: var(--chalk); text-decoration: underline; }
+
+/* ---------- the sheet: what the tables said about AI ---------- */
+.sheet-wrap { padding-block: 3.5rem; border-top: 1px solid var(--hair); }
+.sheet {
+  background: var(--paper); color: var(--ink); margin-inline: auto; max-width: 52rem;
+  padding: clamp(1.5rem, 5vw, 3.5rem) clamp(1.1rem, 5vw, 3.5rem); box-shadow: 0 1.5rem 4rem rgba(0,0,0,.45);
+}
+.sheet h2 { margin: 0; font-family: var(--font-frame); font-weight: 850; font-size: clamp(2.25rem, 7vw, 3.75rem); line-height: 1; letter-spacing: -.03em; }
+.sheet .stat { margin: .9rem 0 0; font-family: var(--font-frame); font-weight: 700; font-size: clamp(1.25rem, 3.4vw, 1.75rem); line-height: 1.25; text-wrap: balance; }
+.sheet .rule { color: var(--ink-dim); margin-top: .75rem; }
+.line { margin: 2.25rem 0 0; padding: 1.5rem 0 .25rem; border-top: 2px solid var(--ink); display: grid; gap: 1.6rem; }
+.line .lab { margin: 0; font-family: var(--font-frame); font-weight: 650; font-size: .8125rem; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-dim); }
+.line .s { margin: 0; font-size: clamp(1.3rem, 3.3vw, 1.85rem); line-height: 1.38; overflow-wrap: break-word; }
+.line .m { display: block; margin-top: .4rem; font-family: var(--font-frame); font-weight: 600; font-size: .8125rem; line-height: 1.4; color: var(--ink-dim); }
+.line .rule { margin-top: 0; }
+.line mark.f2 { background: linear-gradient(transparent 12%, var(--hl-2) 12%, var(--hl-2) 92%, transparent 92%); }
+.line mark.f4 { background: linear-gradient(transparent 12%, var(--hl-4) 12%, var(--hl-4) 92%, transparent 92%); }
+.sheet .all { margin: 2.75rem 0 0; padding-top: 1.5rem; border-top: 2px solid var(--ink); font-family: var(--font-frame); font-weight: 800; font-size: clamp(1.4rem, 3.6vw, 1.9rem); line-height: 1.1; }
+.pens { display: grid; grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr)); gap: .5rem; margin: 1.5rem 0 2rem; }
+.pen {
+  display: grid; align-content: start; gap: .25rem; text-align: left; padding: .55rem .7rem .6rem; min-height: 2.75rem; cursor: pointer;
+  border: 1.5px solid var(--ink); border-radius: .35rem; background: transparent; color: var(--ink);
+}
+.pen .nm { display: flex; justify-content: space-between; gap: .5rem; font-family: var(--font-frame); font-weight: 750; font-size: 1rem; }
+.pen .nm .n { font-weight: 500; }
+.pen .st { font-family: var(--font-frame); font-size: .75rem; line-height: 1.35; color: var(--ink-dim); }
+.pen[aria-pressed="true"] { background: var(--pen); border-color: var(--pen); }
+.pen[aria-pressed="false"] .nm span:first-child { text-decoration: line-through; text-decoration-thickness: 1.5px; }
+.notes { display: grid; gap: 1.35rem; }
+.note-row { display: grid; gap: .3rem; }
+.note-row .m { margin: 0; font-family: var(--font-frame); font-weight: 600; font-size: .8125rem; color: var(--ink-dim); }
+.note-row .t { margin: 0; font-size: 1.0625rem; line-height: 1.6; white-space: pre-wrap; overflow-wrap: break-word; }
+mark { background: none; color: inherit; padding: 0 .06em; margin: 0 -.06em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.notes.f1 mark.f1 { background: linear-gradient(transparent 12%, var(--hl-1) 12%, var(--hl-1) 92%, transparent 92%); }
+.notes.f2 mark.f2 { background: linear-gradient(transparent 12%, var(--hl-2) 12%, var(--hl-2) 92%, transparent 92%); }
+.notes.f3 mark.f3 { background: linear-gradient(transparent 12%, var(--hl-3) 12%, var(--hl-3) 92%, transparent 92%); }
+.notes.f4 mark.f4 { background: linear-gradient(transparent 12%, var(--hl-4) 12%, var(--hl-4) 92%, transparent 92%); }
+.notes.f5 mark.f5 { background: linear-gradient(transparent 12%, var(--hl-5) 12%, var(--hl-5) 92%, transparent 92%); }
+
+/* ---------- every table ---------- */
+.archive h2, .about h2 { margin: 0; font-family: var(--font-frame); font-weight: 850; font-size: clamp(2rem, 6vw, 3.25rem); line-height: 1; letter-spacing: -.03em; }
+.controls { display: grid; gap: 1rem; padding-block: 1.5rem 2.25rem; }
+.topics { display: flex; flex-wrap: wrap; gap: .5rem; }
+.chip {
+  display: inline-flex; align-items: baseline; gap: .4rem; min-height: 2.5rem; padding: .45rem .85rem;
+  border: 1px solid var(--hair); border-radius: 999px; background: transparent; cursor: pointer;
+  font-family: var(--font-frame); font-weight: 500; font-size: .9375rem;
+}
+.chip .n { color: var(--dim); }
+.chip[aria-pressed="true"] { background: var(--chalk); border-color: var(--chalk); color: var(--night); }
+.chip[aria-pressed="true"] .n { color: inherit; opacity: .65; }
+.chip:disabled { opacity: .35; cursor: default; }
+.field { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem .75rem; }
+.field label { font-family: var(--font-frame); font-weight: 600; font-size: .9375rem; }
+select {
+  font-family: var(--font-frame); font-size: 1rem; max-width: 100%; min-height: 2.5rem; padding: .45rem .6rem;
+  border: 1px solid var(--hair); border-radius: .375rem; background: var(--lift); color: var(--chalk);
+}
+.play.small { min-height: 2.75rem; font-size: .9375rem; padding: .35rem 1rem .35rem .35rem; justify-self: start; }
+.play.small .ico { width: 2rem; height: 2rem; }
+.place { border-top: 2px solid var(--chalk); padding-block: .875rem 2.25rem; }
+.pc { font-family: var(--font-frame); font-weight: 850; font-size: 2.25rem; line-height: 1; letter-spacing: -.02em; }
+.place h3 { margin: .4rem 0 1.25rem; font-family: var(--font-frame); font-weight: 700; font-size: 1.375rem; line-height: 1.2; text-wrap: balance; }
+.entry { display: grid; gap: .55rem; padding-block: 1.125rem; border-top: 1px solid var(--hair); max-width: var(--read); }
+.entries > .entry:first-child { border-top: 0; padding-top: 0; }
+.meta { margin: 0; display: flex; flex-wrap: wrap; gap: .15rem .5rem; font-family: var(--font-frame); font-weight: 600; font-size: .8125rem; letter-spacing: .02em; color: var(--dim); }
+.meta span + span::before { content: "·"; margin-right: .5rem; }
+.words { margin: 0; font-size: 1.1875rem; line-height: 1.5; white-space: pre-wrap; overflow-wrap: break-word; }
+.entry.on { background: var(--lift); box-shadow: 0 0 0 .75rem var(--lift); border-radius: .125rem; }
+.acts { display: flex; flex-wrap: wrap; gap: .5rem; }
+.listen, .tool {
+  display: inline-flex; align-items: center; gap: .55rem; min-height: 2.75rem; padding: .25rem .9rem .25rem .25rem;
+  border: 1px solid var(--hair); border-radius: 999px; background: transparent; cursor: pointer;
+  font-family: var(--font-frame); font-weight: 600; font-size: .875rem;
+}
+.tool { padding: .25rem 1rem; }
+.disc { width: 2.25rem; height: 2.25rem; border-radius: 50%; display: grid; place-items: center; color: var(--night); background: var(--chalk); }
+.disc svg { width: 1rem; height: 1rem; }
+.aside { margin: 0; font-family: var(--font-frame); font-size: .875rem; color: var(--dim); }
+.empty { padding-block: 2rem; color: var(--dim); }
+
+/* ---------- about ---------- */
+.about { display: grid; gap: .9rem; }
+.about p { margin: 0; max-width: 38rem; }
+.about .fine { font-family: var(--font-frame); font-size: .9375rem; color: var(--dim); }
+.to-screen { justify-self: start; margin-top: .5rem; min-height: 2.75rem; padding: .5rem 1rem; border: 1px solid var(--chalk); border-radius: 999px; background: transparent; font-family: var(--font-frame); font-weight: 600; cursor: pointer; }
+
+@media (min-width: 62rem) {
+  .place { display: grid; grid-template-columns: 7rem minmax(0, 1fr); align-items: start; }
+  .place .pc { grid-column: 1; grid-row: 1 / span 2; position: sticky; top: 1.25rem; font-size: 3rem; padding-top: .3rem; }
+  .place h3, .place .entries { grid-column: 2; }
+  .place h3 { margin-top: .55rem; }
+}
+
+/* ---------- player bar ---------- */
+.deck {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 10; display: flex; align-items: center; gap: .75rem;
+  padding: .75rem max(1rem, env(safe-area-inset-right, 0px)) calc(.75rem + env(safe-area-inset-bottom, 0px)) max(1rem, env(safe-area-inset-left, 0px));
+  background: var(--lift); border-top: 1px solid var(--hair); font-family: var(--font-frame);
+}
+.deck .round { flex: none; width: 2.75rem; height: 2.75rem; border-radius: 50%; border: 0; cursor: pointer; display: grid; place-items: center; background: var(--chalk); color: var(--night); }
+.deck .round svg { width: 1.1rem; height: 1.1rem; }
+.deck .round.line { background: transparent; color: var(--chalk); border: 1px solid var(--dim); }
+.deck .info { flex: 1; min-width: 0; display: grid; line-height: 1.3; }
+.deck .where { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.deck .time { font-size: .875rem; color: var(--dim); }
+
+/* ---------- poster preview ---------- */
+.shade { position: fixed; inset: 0; z-index: 40; background: rgba(5,6,5,.88); display: grid; place-items: center; padding: 1rem; }
+.shade .box { display: grid; gap: .9rem; justify-items: center; max-height: 100%; }
+.shade img { display: block; max-width: min(100%, 26rem); max-height: calc(100vh - 8rem); height: auto; border-radius: .25rem; box-shadow: 0 1rem 3rem rgba(0,0,0,.5); }
+.shade .row { display: flex; flex-wrap: wrap; justify-content: center; gap: .6rem; }
+.shade button { min-height: 2.75rem; padding: .5rem 1.1rem; border-radius: 999px; cursor: pointer; font-family: var(--font-frame); font-weight: 650; border: 1px solid var(--chalk); background: transparent; }
+.shade button.primary { background: var(--chalk); color: var(--night); }
+
+/* ---------- screen mode, for a hall ---------- */
+.screen { position: fixed; inset: 0; z-index: 30; display: grid; grid-template-rows: auto minmax(0, 1fr) auto; gap: 3vh; padding: 5vh 6vw 4vh; background: var(--night); color: var(--chalk); }
+.screen .top { display: flex; align-items: baseline; gap: 1.6vw; flex-wrap: wrap; font-family: var(--font-frame); font-weight: 700; font-size: clamp(1rem, 2.1vw, 2.6rem); }
+.screen .top .spc { font-weight: 850; letter-spacing: -.02em; }
+.screen .top .sub { color: var(--dim); font-weight: 600; }
+.screen .live { width: .8em; height: .8em; border-radius: 50%; align-self: center; }
+.screen .body { min-height: 0; display: flex; align-items: center; }
+.screen .say { margin: 0; font-family: var(--font-words); line-height: 1.3; white-space: pre-wrap; overflow-wrap: break-word; transition: opacity .45s ease; }
+.screen .foot { display: flex; justify-content: space-between; gap: 2vw; font-family: var(--font-frame); font-size: clamp(.8rem, 1.05vw, 1.25rem); color: var(--dim); }
+.screen .close { position: absolute; top: 1.5vh; right: 1.5vw; padding: .4rem .8rem; border-radius: 999px; cursor: pointer; border: 1px solid var(--dim); background: transparent; color: var(--dim); font-family: var(--font-frame); font-size: .875rem; }
+.screen .start { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 2.5rem; background: var(--night); text-align: center; padding: 6vw; }
+.screen .start .t { font-family: var(--font-frame); font-weight: 850; font-size: clamp(4rem, 13vw, 14rem); line-height: .85; letter-spacing: -.05em; }
+.screen .start button { min-height: 3.5rem; padding: .75rem 2.25rem; border: 0; border-radius: 999px; cursor: pointer; background: var(--chalk); color: var(--night); font-family: var(--font-frame); font-weight: 750; font-size: 1.375rem; }
+.screen .start p { margin: 0; color: var(--dim); font-family: var(--font-frame); font-size: 1rem; max-width: 34rem; }
+html.is-screen body { overflow: hidden; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .screen .live { animation: pulse 1.6s ease-in-out infinite; }
+  @keyframes pulse { 50% { opacity: .35; } }
+}
+@media (prefers-reduced-motion: reduce) { .screen .say { transition: none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero" id="raddir">
+    <p class="label">Samtalið · 10. október 2026</p>
+    <h1>Orðrétt</h1>
+    <p class="dek">Allar samantektirnar frá borðunum, eins og þær voru skráðar á talasaman.is. Upptökurnar eru heilar og óklipptar.</p>
+    <div class="mtn-box">
+      <canvas id="mtn" role="img"></canvas>
+      <div class="tip" id="tip" hidden></div>
+    </div>
+    <div class="plays">
+      <button class="play" id="playSeq" type="button"></button>
+      <button class="play" id="playSwell" type="button"></button>
+    </div>
+    <div class="now" id="now" aria-live="polite"></div>
+    <p class="rule" id="mtnRule"></p>
+  </header>
+
+  <section id="viljum">
+    <p class="label">Spurning Samtals</p>
+    <h2 class="question">Hvernig samfélag <b>viljum</b> við skapa saman?</h2>
+    <div class="kwic" id="kwic"></div>
+    <p class="rule" id="kwicRule" style="margin-top:2.5rem"></p>
+  </section>
+</div>
+
+<div class="sheet-wrap" id="gervigreind">
+  <article class="sheet">
+    <h2>Gervigreind</h2>
+    <p class="stat" id="aiStat"></p>
+    <div class="line" id="aiLine"></div>
+    <h3 class="all">Allar samantektirnar</h3>
+    <p class="rule" id="aiRule"></p>
+    <div class="pens" id="pens"></div>
+    <div class="notes" id="notes"></div>
+  </article>
+</div>
+
+<div class="wrap">
+  <section class="archive" id="bord">
+    <h2>Öll borðin</h2>
+    <div class="controls">
+      <nav class="topics" id="topics" aria-label="Umræðuefni"></nav>
+      <div class="field">
+        <label for="place">Staðsetning</label>
+        <select id="place"></select>
+      </div>
+      <button class="play small" id="playHere" type="button"></button>
+    </div>
+    <div id="list"></div>
+  </section>
+
+  <section class="about" id="um">
+    <h2>Um síðuna</h2>
+    <p>Allt sem kemur frá borðunum er óbreytt, líka stafsetningin. Engu var sleppt.</p>
+    <p>Raðað er eftir póstnúmeri, svo staðsetningu, svo borðnúmeri. Hver litur fylgir póstnúmeri. Póstnúmerin, og litirnir með þeim, fara hringinn í kringum landið.</p>
+    <p>Línurnar efst eru teiknaðar úr upptökunum sjálfum, úr styrk hljóðsins tuttugu sinnum á sekúndu. Hljóðstyrkur er jafnaður svo hver rödd heyrist jafnt.</p>
+    <p>Síðan sækir textann og upptökurnar beint af talasaman.is þegar hún opnast. Upptökurnar eru ekki afritaðar hingað.</p>
+    <p>Ekkert af því sem kemur frá borðunum er skrifað, þýtt, stytt eða lesið upp af gervigreind. Röðin og valið fylgja reglum sem standa á síðunni. Gervigreind hjálpaði til við að semja reglurnar, skrifa kóðann og þessa skýringartexta.</p>
+    <p>Þetta er hvorki afstaða né niðurstaða Samtals.</p>
+    <p class="fine">Gögn: <a href="https://talasaman.is/gogn">Samtal, félag til almannaheilla (talasaman.is)</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. <span id="fetched"></span></p>
+    <p class="fine">Audrey Tang setti síðuna saman. <a href="saga.html">Saga síðunnar</a></p>
+    <button class="to-screen" id="toScreen" type="button">Sýna á skjá</button>
+    <p class="fine">Ein samantekt í einu, í stóru letri, með upptökunum.</p>
+  </section>
+</div>
+
+<div class="deck" id="deck" hidden>
+  <button class="round" id="deckToggle" type="button"></button>
+  <div class="info">
+    <span class="where" id="deckWhere"></span>
+    <span class="time" id="deckTime"></span>
+  </div>
+  <button class="round line" id="deckNext" type="button" aria-label="Næsta"></button>
+  <button class="round line" id="deckStop" type="button" aria-label="Stöðva"></button>
+</div>
+
+<div class="shade" id="shade" hidden>
+  <div class="box">
+    <img id="posterImg" alt="">
+    <div class="row">
+      <button class="primary" id="posterShare" type="button" hidden>Deila</button>
+      <button id="posterSave" type="button">Sækja mynd</button>
+      <button id="posterClose" type="button">Loka</button>
+    </div>
+  </div>
+</div>
+
+<div class="screen" id="screen" hidden>
+  <div class="top" id="sTop"></div>
+  <div class="body" id="sBody"><p class="say" id="sSay"></p></div>
+  <div class="foot"><span>Orðrétt · Gögn: Samtal, félag til almannaheilla (talasaman.is), CC BY 4.0</span><span id="sPos"></span></div>
+  <button class="close" id="sClose" type="button">Loka</button>
+  <div class="start" id="sStart">
+    <div class="t">Orðrétt</div>
+    <button id="sGo" type="button">Byrja</button>
+    <p>Ein samantekt í einu. Örvalyklar fletta, bilslá gerir hlé, Esc lokar.</p>
+  </div>
+</div>
+
+<script>
+(() => {
+"use strict";
+
+const SNAP = /*SNAPSHOT*/;
+// id -> [seconds, silent (1/0), playback gain in dB, loudness envelope: 20 readings a second, 64 levels]
+const AUDIO = /*AUDIO*/;
+const API = "https://talasaman.is/api/v1/summaries";
+const SITE = "audreyt.github.io/samhljomur";
+const MONTHS = ["janúar", "febrúar", "mars", "apríl", "maí", "júní", "júlí", "ágúst", "september", "október", "nóvember", "desember"];
+const ALPH = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-_";
+const ICON = {
+  play: '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3.2v9.6l7.8-4.8z" fill="currentColor"/></svg>',
+  pause: '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.2 3.2h2.9v9.6H4.2zM8.9 3.2h2.9v9.6H8.9z" fill="currentColor"/></svg>',
+  next: '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.4 3.2v9.6l7-4.8zM11.2 3.2h1.9v9.6h-1.9z" fill="currentColor"/></svg>',
+  stop: '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 4h8v8H4z" fill="currentColor"/></svg>',
+};
+
+const $ = (id) => document.getElementById(id);
+const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+const coll = new Intl.Collator("is");
+const reduce = matchMedia("(prefers-reduced-motion: reduce)");
+const one = (n) => n % 10 === 1 && n % 100 !== 11; // Icelandic: 1, 21, 31 ... take the singular
+const count = (n, sg, pl) => n + " " + (one(n) ? sg : pl);
+const clock = (s) => { s = Math.max(0, Math.round(s)); return Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0"); };
+const when = (iso) => { // Iceland keeps UTC all year
+  const d = new Date(iso);
+  if (isNaN(d)) return "";
+  return d.getUTCDate() + ". " + MONTHS[d.getUTCMonth()] + " " + d.getUTCFullYear() + " kl. " +
+    String(d.getUTCHours()).padStart(2, "0") + ":" + String(d.getUTCMinutes()).padStart(2, "0");
+};
+
+/* ---------- colour: one hue per postcode, a lap of the colour wheel round the island ---------- */
+function oklch(L, C, h) {
+  const hex = (c) => {
+    const a = c * Math.cos(h * Math.PI / 180), b = c * Math.sin(h * Math.PI / 180);
+    const l = (L + 0.3963377774 * a + 0.2158037573 * b) ** 3;
+    const m = (L - 0.1055613458 * a - 0.0638541728 * b) ** 3;
+    const s = (L - 0.0894841775 * a - 1.2914855480 * b) ** 3;
+    const rgb = [4.0767416621 * l - 3.3077115913 * m + 0.2309699292 * s,
+      -1.2684380046 * l + 2.6097574011 * m - 0.3413193965 * s,
+      -0.0041960863 * l - 0.7034186147 * m + 1.7076147010 * s];
+    if (rgb.some((v) => v < -0.0005 || v > 1.0005)) return null;
+    return "#" + rgb.map((v) => {
+      v = Math.min(1, Math.max(0, v));
+      v = v <= 0.0031308 ? 12.92 * v : 1.055 * v ** (1 / 2.4) - 0.055;
+      return Math.round(v * 255).toString(16).padStart(2, "0");
+    }).join("");
+  };
+  for (let c = C; c > 0; c -= 0.005) { const x = hex(c); if (x) return x; }
+  return hex(0);
+}
+const hueOf = (pc) => { const n = parseInt(pc, 10); return n ? 50 + 300 * Math.min(1, Math.max(0, (n - 101) / 799)) : 0; };
+const toneCache = new Map();
+const tone = (pc, kind) => {
+  const k = kind + pc;
+  if (!toneCache.has(k)) toneCache.set(k, kind === "accent" ? oklch(0.8, 0.14, hueOf(pc)) : oklch(0.9, 0.075, hueOf(pc)));
+  return toneCache.get(k);
+};
+
+/* ---------- data ---------- */
+const order = (data) => data.map((r, i) => ({ r, i })).sort((a, b) =>
+  ((parseInt(a.r.locationPostCode, 10) || 99999) - (parseInt(b.r.locationPostCode, 10) || 99999)) ||
+  coll.compare(String(a.r.location), String(b.r.location)) ||
+  ((a.r.table ?? 0) - (b.r.table ?? 0)) || (a.i - b.i)).map((x) => x.r);
+
+let rows = order(SNAP.data);
+let meta = SNAP.meta;
+let source = "snapshot";
+let rank = new Map();
+const state = { topic: "", loc: "" };
+const failed = new Set();
+const byId = (id) => rows.find((r) => r.id === id);
+const facts = (id) => AUDIO[id] || null;
+const silent = (r) => !!(r.audio && facts(r.id) && facts(r.id)[1]);
+const audible = (r) => !!r.audio && !silent(r) && !failed.has(r.id);
+const envCache = new Map();
+function envOf(id) {
+  const f = facts(id);
+  if (!f || !f[3]) return null;
+  if (!envCache.has(id)) {
+    const s = f[3], a = new Float32Array(s.length);
+    for (let i = 0; i < s.length; i++) a[i] = ALPH.indexOf(s[i]) / 63;
+    envCache.set(id, a);
+  }
+  return envCache.get(id);
+}
+const tableLabel = (r) => r.locationPostCode + " " + r.location + " · borð " + r.table;
+
+/* ---------- the mountain: one line per recording, shortest on top, centred in time ---------- */
+const M = { cv: $("mtn"), lines: [], base: null, W: 0, H: 0, gap: 0, amp: 0, maxS: 0, hover: -1, dpr: 1 };
+
+function mountainLines() {
+  return rows.filter((r) => r.audio && !silent(r) && envOf(r.id))
+    .map((r) => ({ r, s: facts(r.id)[0], env: envOf(r.id), color: tone(r.locationPostCode, "accent") }))
+    .sort((a, b) => a.s - b.s || rank.get(a.r.id) - rank.get(b.r.id));
+}
+
+function layoutMountain() {
+  const cv = M.cv, W = cv.clientWidth;
+  M.lines = mountainLines();
+  const n = M.lines.length;
+  cv.setAttribute("aria-label", count(n, "lína", "línur") + ", ein fyrir hverja upptöku. Styst efst, lengst neðst.");
+  if (!W || !n) { cv.style.height = "0px"; M.base = null; return; }
+  const gap = Math.max(9, Math.min(18, W / 36)), amp = gap * 2.7, top = Math.ceil(amp + 4);
+  const H = Math.ceil(top + gap * (n - 1) + 6), dpr = Math.min(2, window.devicePixelRatio || 1);
+  Object.assign(M, { W, H, gap, amp, dpr, maxS: Math.max(...M.lines.map((l) => l.s)) });
+  cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr); cv.style.height = H + "px";
+  M.lines.forEach((L, i) => {
+    L.w = W * L.s / M.maxS; L.x0 = (W - L.w) / 2; L.y0 = top + i * gap;
+    const m = Math.max(2, Math.round(L.w)), e = L.env, pts = new Float32Array(m);
+    for (let j = 0; j < m; j++) { // the loudest reading under each pixel
+      const a = Math.floor(j * e.length / m), b = Math.max(a + 1, Math.floor((j + 1) * e.length / m));
+      let v = 0;
+      for (let k = a; k < b && k < e.length; k++) v = Math.max(v, e[k]);
+      pts[j] = v;
+    }
+    L.pts = pts;
+  });
+  M.base = document.createElement("canvas");
+  M.base.width = cv.width; M.base.height = cv.height;
+  const g = M.base.getContext("2d");
+  g.scale(dpr, dpr);
+  g.fillStyle = "#0d0e0c"; g.fillRect(0, 0, W, H);
+  for (const L of M.lines) { // back to front: each line hides what rises behind it
+    const m = L.pts.length, dx = L.w / (m - 1);
+    g.beginPath(); g.moveTo(L.x0, L.y0);
+    for (let j = 0; j < m; j++) g.lineTo(L.x0 + j * dx, L.y0 - L.pts[j] * amp);
+    g.lineTo(L.x0 + L.w, L.y0 + 1.5); g.lineTo(L.x0, L.y0 + 1.5); g.closePath();
+    g.fillStyle = "#0d0e0c"; g.fill();
+    g.beginPath(); g.moveTo(0, L.y0); g.lineTo(L.x0, L.y0);
+    for (let j = 0; j < m; j++) g.lineTo(L.x0 + j * dx, L.y0 - L.pts[j] * amp);
+    g.lineTo(L.x0 + L.w, L.y0); g.lineTo(W, L.y0);
+    g.strokeStyle = "#ecebe3"; g.lineWidth = 1.15; g.lineJoin = "round"; g.stroke();
+  }
+  drawMountain();
+}
+
+function strokeLine(g, L, upto, color, width) {
+  const m = L.pts.length, dx = L.w / (m - 1), last = Math.max(1, Math.round(upto * (m - 1)));
+  g.beginPath(); g.moveTo(L.x0, L.y0 - L.pts[0] * M.amp);
+  for (let j = 1; j <= last; j++) g.lineTo(L.x0 + j * dx, L.y0 - L.pts[j] * M.amp);
+  g.strokeStyle = color; g.lineWidth = width; g.lineJoin = "round"; g.stroke();
+  return [L.x0 + last * dx, L.y0 - L.pts[last] * M.amp];
+}
+
+function drawMountain() {
+  if (!M.base || !M.lines.length) return;
+  const g = M.cv.getContext("2d");
+  g.setTransform(1, 0, 0, 1, 0, 0);
+  g.drawImage(M.base, 0, 0);
+  g.setTransform(M.dpr, 0, 0, M.dpr, 0, 0);
+  const t = progress();
+  if (A.mode === "swell" && A.swell && !A.swell.loading) {
+    for (const L of M.lines) {
+      const st = A.swell.starts.get(L.r.id);
+      if (st == null || t <= st) continue;
+      strokeLine(g, L, Math.min(1, (t - st) / L.s), L.color, 1.7);
+    }
+    const x = M.W / 2 + (t - M.maxS / 2) * (M.W / M.maxS);
+    g.fillStyle = "rgba(236,235,227,.5)"; g.fillRect(Math.round(x), 0, 1, M.H);
+  } else if (A.id && (A.mode === "one" || A.mode === "seq")) {
+    const L = M.lines.find((l) => l.r.id === A.id);
+    if (L) {
+      strokeLine(g, L, 1, L.color + "66", 1.4);
+      const [px, py] = strokeLine(g, L, A.dur ? progress() / A.dur : 0, L.color, 2);
+      g.fillStyle = L.color; g.beginPath(); g.arc(px, py, 3.2, 0, Math.PI * 2); g.fill();
+    }
+  }
+  if (M.hover >= 0 && M.lines[M.hover] && A.mode !== "swell") {
+    const L = M.lines[M.hover];
+    if (L.r.id !== A.id) strokeLine(g, L, 1, L.color, 1.7);
+  }
+}
+
+function pick(px, py) {
+  let best = -1, bd = Infinity;
+  M.lines.forEach((L, i) => {
+    if (px < L.x0 - 6 || px > L.x0 + L.w + 6) return;
+    const d = py <= L.y0 + 2 ? L.y0 - py : (py - L.y0) * 4;
+    if (d < bd && d < M.gap * 3) { bd = d; best = i; }
+  });
+  return best;
+}
+
+function showTip(i, px) {
+  const tip = $("tip");
+  if (i < 0) { tip.hidden = true; return; }
+  const L = M.lines[i];
+  tip.textContent = L.r.location + " · borð " + L.r.table + " · " + clock(L.s);
+  tip.hidden = false;
+  tip.style.left = Math.min(M.W - tip.offsetWidth / 2, Math.max(tip.offsetWidth / 2, px)) + "px";
+  tip.style.top = Math.max(0, L.y0 - M.amp - 4) + "px";
+}
+
+M.cv.addEventListener("pointermove", (e) => {
+  if (e.pointerType !== "mouse") return;
+  const b = M.cv.getBoundingClientRect(), i = pick(e.clientX - b.left, e.clientY - b.top);
+  if (i !== M.hover) { M.hover = i; drawMountain(); }
+  showTip(i, e.clientX - b.left);
+});
+M.cv.addEventListener("pointerleave", () => { M.hover = -1; showTip(-1); drawMountain(); });
+M.cv.addEventListener("click", (e) => {
+  const b = M.cv.getBoundingClientRect(), i = pick(e.clientX - b.left, e.clientY - b.top);
+  if (i < 0) return;
+  const id = M.lines[i].r.id;
+  if (id === A.id && (A.mode === "one" || A.mode === "seq")) return togglePause();
+  startOne(id, "hero");
+});
+
+/* ---------- listening: Web Audio decodes these recordings on every phone ---------- */
+const A = { ctx: null, out: null, bufs: new Map(), srcs: [], mode: null, origin: null, id: null, queue: [], qi: -1, startAt: 0, dur: 0, paused: false, swell: null, token: 0, gapTimer: 0 };
+
+function actx() {
+  if (!A.ctx) {
+    const C = window.AudioContext || window.webkitAudioContext;
+    if (!C) return null;
+    try { if (navigator.audioSession) navigator.audioSession.type = "playback"; } catch (e) {}
+    try { A.ctx = new C({ sampleRate: 24000 }); } catch (e) { A.ctx = new C(); }
+    const comp = A.ctx.createDynamicsCompressor();
+    comp.threshold.value = -8; comp.knee.value = 6; comp.ratio.value = 12; comp.attack.value = 0.003; comp.release.value = 0.2;
+    A.out = A.ctx.createGain(); A.out.gain.value = 0.9;
+    A.out.connect(comp); comp.connect(A.ctx.destination);
+  }
+  return A.ctx;
+}
+const gainOf = (id) => { const f = facts(id); return f ? Math.pow(10, f[2] / 20) : 1; };
+
+function load(id) {
+  if (A.bufs.has(id)) return A.bufs.get(id);
+  const r = byId(id);
+  const p = (r && r.audio ? fetch(r.audio) : Promise.reject(new Error("no audio")))
+    .then((res) => { if (!res.ok) throw new Error(String(res.status)); return res.arrayBuffer(); })
+    .then((ab) => new Promise((ok, no) => { const c = actx(); if (!c) return no(new Error("no audio context")); c.decodeAudioData(ab, ok, no); }));
+  p.catch(() => A.bufs.delete(id));
+  A.bufs.set(id, p);
+  return p;
+}
+
+function stopSources() {
+  clearTimeout(A.gapTimer);
+  for (const s of A.srcs) { s._stopped = true; try { s.stop(); } catch (e) {} try { s.disconnect(); } catch (e) {} }
+  A.srcs = [];
+}
+
+function progress() {
+  if (!A.ctx || !A.startAt) return 0;
+  return Math.max(0, Math.min(A.dur || 0, A.ctx.currentTime - A.startAt));
+}
+
+async function wake() {
+  const c = actx();
+  if (c && c.state === "suspended") { try { await c.resume(); } catch (e) {} }
+  return c;
+}
+
+async function playClip(id) {
+  const tok = ++A.token;
+  stopSources();
+  A.id = id; A.startAt = 0; A.dur = (facts(id) || [0])[0]; A.paused = false;
+  paint();
+  const c = await wake();
+  if (!c) return clipFailed(id, tok);
+  let buf;
+  try { buf = await load(id); } catch (e) { return clipFailed(id, tok); }
+  if (tok !== A.token) return;
+  const s = c.createBufferSource(), g = c.createGain();
+  s.buffer = buf; g.gain.value = gainOf(id);
+  s.connect(g); g.connect(A.out);
+  s.onended = () => { if (!s._stopped && tok === A.token) clipEnded(id); };
+  A.dur = buf.duration; A.startAt = c.currentTime + 0.03;
+  s.start(A.startAt);
+  A.srcs = [s];
+  if (A.mode === "seq" && A.qi + 1 < A.queue.length) load(A.queue[A.qi + 1]).catch(() => {});
+  paint(); loop();
+  if (A.mode === "seq" && A.origin === "archive") {
+    const a = $("e-" + id);
+    if (a) a.scrollIntoView({ block: "center", behavior: reduce.matches ? "auto" : "smooth" });
+  }
+}
+
+function advance() {
+  if (A.qi + 1 < A.queue.length) { A.qi++; playClip(A.queue[A.qi]); } else stopAll();
+}
+
+function clipEnded(id) {
+  A.srcs = [];
+  if (A.mode === "screen") return screenAfterAudio();
+  if (A.mode === "seq" && A.qi + 1 < A.queue.length) {
+    A.startAt = 0; paint();
+    A.gapTimer = setTimeout(() => { if (A.mode === "seq" && A.id === id && !A.paused) advance(); }, 700);
+  } else stopAll();
+}
+
+function clipFailed(id, tok) {
+  if (tok !== A.token) return;
+  failed.add(id);
+  const a = $("e-" + id);
+  if (a) a.replaceWith(entry(byId(id)));
+  if (A.mode === "screen") return screenAfterAudio();
+  if (A.mode === "seq") return advance();
+  stopAll();
+}
+
+function startOne(id, origin) {
+  if (A.mode === "seq" && A.origin === origin && A.queue.includes(id)) { A.qi = A.queue.indexOf(id); return playClip(id); }
+  A.mode = "one"; A.origin = origin; A.queue = [id]; A.qi = 0;
+  playClip(id);
+}
+
+function startSeq(ids, origin) {
+  if (!ids.length) return;
+  A.mode = "seq"; A.origin = origin; A.queue = ids; A.qi = 0;
+  playClip(ids[0]);
+}
+
+// Every voice at once, each centred on the same moment: the longest starts alone,
+// the others join as the sweep reaches them, and the longest ends alone.
+async function startSwell() {
+  const tok = ++A.token;
+  stopSources();
+  const lines = M.lines.slice();
+  Object.assign(A, { mode: "swell", origin: "hero", id: null, queue: [], qi: -1, paused: false, startAt: 0 });
+  A.swell = { loading: true, done: 0, n: lines.length };
+  paint();
+  const c = await wake();
+  if (!c) return stopAll();
+  const bufs = await Promise.all(lines.map((L) => load(L.r.id).then((b) => { if (tok === A.token) { A.swell.done++; paintNow(); paintPlays(); } return b; }, () => null)));
+  if (tok !== A.token) return;
+  if (!bufs.some(Boolean)) return stopAll();
+  const T = M.maxS, t0 = c.currentTime + 0.25, starts = new Map();
+  let longest = null;
+  lines.forEach((L, i) => {
+    const b = bufs[i];
+    if (!b) return;
+    const st = (T - L.s) / 2;
+    const s = c.createBufferSource(), g = c.createGain();
+    s.buffer = b; g.gain.value = gainOf(L.r.id) * 0.7;
+    s.connect(g); g.connect(A.out); s.start(t0 + st);
+    A.srcs.push(s); starts.set(L.r.id, st);
+    if (!longest || L.s > longest.s) longest = { s: L.s, src: s };
+  });
+  longest.src.onended = () => { if (!longest.src._stopped && tok === A.token) stopAll(); };
+  A.swell = { loading: false, starts };
+  A.startAt = t0; A.dur = T;
+  paint(); loop();
+}
+
+function togglePause() {
+  if (!A.ctx || !A.mode || A.mode === "screen" || (A.swell && A.swell.loading)) return;
+  if (A.paused) {
+    A.paused = false; A.ctx.resume();
+    if (A.mode === "seq" && !A.srcs.length) advance(); // paused in the breath between two voices
+    loop();
+  } else { A.paused = true; A.ctx.suspend(); }
+  paint();
+}
+
+function stopAll() {
+  ++A.token;
+  stopSources();
+  Object.assign(A, { mode: null, origin: null, id: null, queue: [], qi: -1, startAt: 0, dur: 0, swell: null });
+  if (A.paused && A.ctx) A.ctx.resume();
+  A.paused = false;
+  paint();
+}
+
+let raf = 0;
+function loop() {
+  if (raf) return;
+  const tick = () => {
+    raf = 0;
+    drawMountain(); paintTime(); paintNow();
+    if (A.mode && !A.paused && A.mode !== "screen") raf = requestAnimationFrame(tick);
+  };
+  raf = requestAnimationFrame(tick);
+}
+
+/* ---------- painting the controls ---------- */
+const seqIds = () => rows.filter(audible).map((r) => r.id);
+const sumOf = (ids) => { let s = 0; for (const id of ids) { const f = facts(id); if (!f) return null; s += f[0]; } return s; };
+
+function playButton(b, { on, paused, label, len, disabled }) {
+  b.classList.toggle("on", !!on);
+  b.disabled = !!disabled;
+  const ico = el("span", "ico");
+  ico.innerHTML = on && !paused ? ICON.pause : ICON.play;
+  b.replaceChildren(ico, el("span", "", label));
+  if (len) b.append(el("span", "len", len));
+}
+
+function paintPlays() {
+  const ids = seqIds();
+  const seqOn = A.mode === "seq" && A.origin === "hero";
+  playButton($("playSeq"), seqOn
+    ? { on: true, paused: A.paused, label: A.paused ? "Halda áfram" : "Gera hlé", len: (A.qi + 1) + " af " + A.queue.length }
+    : { label: "Ein í einu", len: ids.length && sumOf(ids) ? clock(sumOf(ids)) : "", disabled: !ids.length });
+  let sw;
+  if (A.mode === "swell" && A.swell && A.swell.loading) sw = { on: true, paused: true, label: "Sæki raddirnar", len: A.swell.done + " af " + A.swell.n, disabled: true };
+  else if (A.mode === "swell") sw = { on: true, paused: A.paused, label: A.paused ? "Halda áfram" : "Gera hlé", len: clock(progress()) + " / " + clock(M.maxS) };
+  else sw = { label: "Allar í einu", len: M.lines.length ? clock(M.maxS) : "", disabled: !M.lines.length };
+  playButton($("playSwell"), sw);
+  const here = visible().filter(audible).map((r) => r.id);
+  const hereOn = A.mode === "seq" && A.origin === "archive";
+  playButton($("playHere"), hereOn
+    ? { on: true, paused: A.paused, label: A.paused ? "Halda áfram" : "Gera hlé", len: (A.qi + 1) + " af " + A.queue.length }
+    : { label: !here.length ? "Engin upptaka hér" : here.length === 1 ? "Hlusta á upptökuna hér" : "Hlusta á upptökurnar hér",
+        len: here.length && sumOf(here) ? clock(sumOf(here)) : "", disabled: !here.length });
+}
+
+function nowBlock(r) {
+  const where = el("p", "where"), sw = el("span", "swatch");
+  sw.style.background = tone(r.locationPostCode, "accent");
+  where.append(sw, el("span", "", r.locationPostCode + " " + r.location), el("span", "t", "borð " + r.table + " · " + r.topic));
+  return [where, el("p", "say", r.summary)];
+}
+
+let nowKey = "";
+function paintNow() {
+  let key, kids;
+  if (A.mode === "swell" && A.swell && A.swell.loading) {
+    key = "load" + A.swell.done; kids = [el("p", "hint", "Sæki raddirnar … " + A.swell.done + " af " + A.swell.n)];
+  } else if (A.mode === "swell" && A.swell) {
+    const t = progress();
+    const speaking = M.lines.filter((L) => { const st = A.swell.starts.get(L.r.id); return st != null && t >= st && t < st + L.s; });
+    const n = speaking.length;
+    key = "swell" + n + (n === 1 ? speaking[0].r.id : "");
+    kids = [el("p", "big", n ? count(n, "rödd talar", "raddir tala") : "")];
+    if (n === 1) kids.push(...nowBlock(speaking[0].r));
+  } else if (A.id && (A.mode === "one" || A.mode === "seq") && A.origin === "hero" && byId(A.id)) {
+    key = "one" + A.id; kids = nowBlock(byId(A.id));
+  } else { key = "idle"; kids = [el("p", "hint", "Ýttu á línu til að heyra röddina.")]; }
+  if (key !== nowKey) { nowKey = key; $("now").replaceChildren(...kids); }
+}
+
+function paintTime() {
+  if (!A.mode || A.mode === "screen") return;
+  const t = progress();
+  if (A.mode === "swell") {
+    $("deckTime").textContent = A.swell && A.swell.loading ? A.swell.done + " af " + A.swell.n : clock(t) + " / " + clock(M.maxS);
+    const len = $("playSwell").querySelector(".len");
+    if (len && A.swell && !A.swell.loading) len.textContent = clock(t) + " / " + clock(M.maxS);
+    return;
+  }
+  const r = A.id && byId(A.id);
+  if (!r) return;
+  let s = clock(t) + (A.dur ? " / " + clock(A.dur) : "");
+  if (A.mode === "seq") s += " · " + (A.qi + 1) + " af " + A.queue.length;
+  $("deckTime").textContent = s;
+  const len = document.querySelector('.listen[data-id="' + r.id + '"] .len');
+  if (len) len.textContent = clock(t) + " / " + clock(A.dur || 0);
+}
+
+function paintDeck() {
+  const deck = $("deck");
+  if (!A.mode || A.mode === "screen") { deck.hidden = true; return; }
+  deck.hidden = false;
+  const t = $("deckToggle");
+  t.innerHTML = A.paused ? ICON.play : ICON.pause;
+  t.setAttribute("aria-label", A.paused ? "Halda áfram" : "Gera hlé");
+  if (A.mode === "swell") $("deckWhere").textContent = "Allar raddirnar í einu";
+  else { const r = A.id && byId(A.id); $("deckWhere").textContent = r ? r.location + " · borð " + r.table + " · " + r.topic : ""; }
+  $("deckNext").hidden = !(A.mode === "seq" && A.qi + 1 < A.queue.length);
+  paintTime();
+}
+
+function paintList() {
+  for (const a of document.querySelectorAll(".entry.on")) a.classList.remove("on");
+  for (const b of document.querySelectorAll(".listen")) {
+    const mine = b.dataset.id === A.id && (A.mode === "one" || A.mode === "seq");
+    const r = byId(b.dataset.id);
+    b.querySelector(".disc").innerHTML = mine && !A.paused ? ICON.pause : ICON.play;
+    b.setAttribute("aria-label", (mine && !A.paused ? "Gera hlé: " : "Hlusta: ") + r.location + ", borð " + r.table);
+    if (mine) b.closest(".entry").classList.add("on");
+    else { const f = facts(r.id), len = b.querySelector(".len"); if (len) len.textContent = f ? clock(f[0]) : ""; }
+  }
+}
+
+function paint() { paintPlays(); paintNow(); paintDeck(); paintList(); drawMountain(); }
+
+$("playSeq").addEventListener("click", () => {
+  if (A.mode === "seq" && A.origin === "hero") return togglePause();
+  startSeq(seqIds(), "hero");
+});
+$("playSwell").addEventListener("click", () => { if (A.mode === "swell") return togglePause(); startSwell(); });
+$("playHere").addEventListener("click", () => {
+  if (A.mode === "seq" && A.origin === "archive") return togglePause();
+  startSeq(visible().filter(audible).map((r) => r.id), "archive");
+});
+$("deckNext").innerHTML = ICON.next;
+$("deckStop").innerHTML = ICON.stop;
+$("deckToggle").addEventListener("click", togglePause);
+$("deckNext").addEventListener("click", () => { if (A.mode === "seq") { clearTimeout(A.gapTimer); advance(); } });
+$("deckStop").addEventListener("click", stopAll);
+
+/* ---------- we want: every sentence with the word „viljum“, on one spine ---------- */
+function sentencesOf(text) {
+  const out = [];
+  for (let line of text.split("\n")) {
+    line = line.trim().replace(/^[-*•]\s*/, ""); // a list mark at the start of a line is layout, not words
+    if (!line) continue;
+    for (const s of line.replace(/([.!?])\s+(?=[A-ZÁÐÉÍÓÚÝÞÆÖ"“„])/g, "$1\u0000").split("\u0000")) if (s.trim()) out.push(s.trim());
+  }
+  return out;
+}
+const VILJUM = /(^|[^\p{L}])(viljum)(?![\p{L}])/iu;
+
+function renderKwic() {
+  const out = [];
+  for (const r of rows) {
+    for (const s of sentencesOf(r.summary)) {
+      const m = VILJUM.exec(s);
+      if (!m) continue;
+      const i = m.index + m[1].length, left = s.slice(0, i).replace(/\s+$/, "");
+      // a lead-in too long for the narrow column gets a full line of its own, at full size
+      const long = left.length > 18 || left.split(/\s+/).some((w) => w.length > 9);
+      const row = el("div", "krow" + (long ? " long" : ""));
+      row.dataset.id = r.id; row.dataset.sentence = s;
+      const kr = el("div", "kr"), key = el("span", "key", m[2]);
+      key.style.color = tone(r.locationPostCode, "accent");
+      const link = el("a", "km", tableLabel(r));
+      link.href = "#e-" + r.id;
+      kr.append(key, document.createTextNode(s.slice(i + m[2].length)), link);
+      row.append(el("div", "kl", left), kr);
+      out.push(row);
+    }
+  }
+  $("kwic").replaceChildren(...out);
+  $("kwicRule").textContent = "Allar setningar frá borðunum sem innihalda orðið „viljum“. " + count(out.length, "setning", "setningar") + ".";
+  alignKwic();
+}
+// Lower the words after „viljum“ so the spine sits on the last line of the words before it.
+function alignKwic() {
+  for (const row of document.querySelectorAll(".krow:not(.long)")) {
+    const kl = row.firstChild, kr = row.lastChild;
+    kr.style.paddingTop = "0px";
+    const lh = parseFloat(getComputedStyle(kr).lineHeight) || 0, h = kl.getBoundingClientRect().height;
+    if (h > lh * 1.2) kr.style.paddingTop = Math.max(0, h - lh) + "px";
+  }
+}
+$("kwic").addEventListener("click", (e) => {
+  const a = e.target.closest(".km");
+  if (!a) return;
+  const id = a.getAttribute("href").slice(3);
+  if (!$("e-" + id)) { state.topic = ""; state.loc = ""; renderTopics(); renderPlaces(); renderList(); paintPlays(); }
+});
+
+/* ---------- the sheet: the tables' words on AI, with five highlighters ---------- */
+const PENS = [
+  { k: "f1", label: "læra", color: "var(--hl-1)", starts: ["lær", "mennt", "fræð", "kenn", "nám"], show: "lær- · mennt- · fræð- · kenn- · nám-" },
+  { k: "f2", label: "hjálp", color: "var(--hl-2)", starts: ["hjálp", "stuðning", "aðstoð", "verkfær"], words: ["tól", "tólið", "tóli", "tóls", "tólum", "tólin", "tool", "tools"], show: "hjálp- · stuðning- · aðstoð- · verkfær- · tól · tool" },
+  { k: "f3", label: "reglur", color: "var(--hl-3)", starts: ["regl", "ramm", "vegrið", "takmark", "löggjöf", "regulation"], words: ["lög", "lögum", "lögin", "mörk", "mörkum", "mörkin"], show: "regl- · ramm- · vegrið- · takmark- · löggjöf- · lög · mörk · regulation-" },
+  { k: "f4", label: "fyrir okkur", color: "var(--hl-4)", phrases: ["í staðinn", "í stað", "fyrir okkur", "fyrir sig", "taka yfir", "tekur yfir", "hugsa fyrir"], starts: ["skapari", "allsráð"], show: "í stað · í staðinn · fyrir okkur · fyrir sig · taka yfir · tekur yfir · hugsa fyrir · skapari · allsráð-" },
+  { k: "f5", label: "mannlegt", color: "var(--hl-5)", starts: ["mannleg", "manneskj", "mannkyn", "mannheil", "mennsk", "human"], show: "mannleg- · manneskj- · mannkyn- · mannheil- · mennsk- · human-" },
+];
+const penOn = new Set(PENS.map((p) => p.k));
+const AI_RE = /gervigrein|gervidrein|(^|[^\p{L}])A\.?I([^\p{L}]|$)/iu;
+const aboutAI = (r) => (r.topicChosen && r.topic === "gervigreind") || AI_RE.test(r.summary);
+const isLetter = (ch) => !!ch && /\p{L}/u.test(ch);
+
+function marksIn(text) {
+  const low = text.toLowerCase(), spans = [];
+  for (const m of text.matchAll(/\p{L}+/gu)) {
+    const w = m[0].toLowerCase();
+    const p = PENS.find((p) => (p.starts || []).some((s) => w.startsWith(s)) || (p.words || []).includes(w));
+    if (p) spans.push([m.index, m.index + m[0].length, p.k]);
+  }
+  for (const p of PENS) for (const ph of p.phrases || []) {
+    for (let i = low.indexOf(ph); i >= 0; i = low.indexOf(ph, i + ph.length)) {
+      if (!isLetter(text[i - 1]) && !isLetter(text[i + ph.length])) spans.push([i, i + ph.length, p.k]);
+    }
+  }
+  spans.sort((a, b) => a[0] - b[0] || b[1] - a[1]);
+  const out = [];
+  for (const s of spans) {
+    const last = out[out.length - 1];
+    if (last && s[0] < last[1]) { if (s[2] === last[2]) last[1] = Math.max(last[1], s[1]); continue; } // overlapping phrases of one colour join
+    out.push(s.slice());
+  }
+  return out;
+}
+
+// Every sentence of an AI summary in which a "hjálp" word and a "fyrir okkur" phrase stand together.
+function renderLine(set) {
+  const hits = [];
+  for (const r of set) for (const s of sentencesOf(r.summary)) {
+    const ks = new Set(marksIn(s).map((m) => m[2]));
+    if (ks.has("f2") && ks.has("f4")) hits.push({ r, s });
+  }
+  const box = $("aiLine");
+  if (!hits.length) { box.hidden = true; return; }
+  box.hidden = false;
+  const tablesHit = new Set(hits.map((h) => h.r.location + "|" + h.r.table)).size;
+  const kids = [el("p", "lab", "Hjálp og „fyrir okkur“ í sömu setningu")];
+  for (const { r, s } of hits) {
+    const p = el("p", "s");
+    p.dataset.id = r.id; p.dataset.sentence = s;
+    let at = 0;
+    for (const [a, b, k] of marksIn(s)) {
+      if (k !== "f2" && k !== "f4") continue;
+      if (a > at) p.append(document.createTextNode(s.slice(at, a)));
+      p.append(el("mark", k, s.slice(a, b)));
+      at = b;
+    }
+    if (at < s.length) p.append(document.createTextNode(s.slice(at)));
+    p.append(el("span", "m", tableLabel(r)));
+    kids.push(p);
+  }
+  kids.push(el("p", "rule", "Allar setningar í samantektunum hér fyrir neðan þar sem grænt orð og bleikt orð standa saman. " +
+    count(hits.length, "setning", "setningar") + " frá " + tablesHit + " " + (one(tablesHit) ? "borði" : "borðum") + "."));
+  box.replaceChildren(...kids);
+}
+
+function renderSheet() {
+  const set = rows.filter(aboutAI);
+  renderLine(set);
+  const tables = new Set(rows.map((r) => r.location + "|" + r.table));
+  const aiTables = new Set(set.map((r) => r.location + "|" + r.table));
+  $("aiStat").textContent = aiTables.size + " af þeim " + tables.size + " borðum sem eru komin í opnu gögnin " + (one(aiTables.size) ? "talaði" : "töluðu") + " um gervigreind.";
+  $("aiRule").textContent = "Hér eru allar samantektirnar sem nefna hana. Hver litur merkir orð sem byrja á stofnum sem standa við hann. " +
+    "Hvaða orð fá lit er val síðunnar, gert með hjálp gervigreindar, ekki val borðanna. Ýttu á lit til að slökkva á honum; án litanna stendur textinn óbreyttur.";
+  const hits = new Map(PENS.map((p) => [p.k, 0]));
+  $("notes").replaceChildren(...set.map((r) => {
+    const box = el("div", "note-row"), t = el("p", "t"), seen = new Set();
+    box.id = "ai-" + r.id;
+    let at = 0;
+    for (const [a, b, k] of marksIn(r.summary)) {
+      if (a > at) t.append(document.createTextNode(r.summary.slice(at, a)));
+      t.append(el("mark", k, r.summary.slice(a, b)));
+      seen.add(k); at = b;
+    }
+    if (at < r.summary.length) t.append(document.createTextNode(r.summary.slice(at)));
+    for (const k of seen) hits.set(k, hits.get(k) + 1);
+    box.append(el("p", "m", tableLabel(r) + " · " + r.topic), t);
+    return box;
+  }));
+  $("pens").replaceChildren(...PENS.map((p) => {
+    const b = el("button", "pen"), nm = el("span", "nm");
+    b.type = "button"; b.dataset.k = p.k; b.style.setProperty("--pen", p.color);
+    nm.append(el("span", "", p.label), el("span", "n", String(hits.get(p.k))));
+    b.append(nm, el("span", "st", p.show));
+    return b;
+  }));
+  paintPens();
+}
+function paintPens() {
+  for (const p of PENS) $("notes").classList.toggle(p.k, penOn.has(p.k));
+  for (const b of document.querySelectorAll(".pen")) b.setAttribute("aria-pressed", String(penOn.has(b.dataset.k)));
+}
+$("pens").addEventListener("click", (e) => {
+  const b = e.target.closest(".pen");
+  if (!b) return;
+  if (penOn.has(b.dataset.k)) penOn.delete(b.dataset.k); else penOn.add(b.dataset.k);
+  paintPens();
+});
+
+/* ---------- every table ---------- */
+const matches = (r) =>
+  (!state.loc || r.location === state.loc) &&
+  (state.topic === "" || (state.topic === "*" ? !r.topicChosen : (r.topicChosen && r.topic === state.topic)));
+const visible = () => rows.filter(matches);
+
+function renderCounts() {
+  $("fetched").textContent = (source === "fallback" ? "Náði ekki sambandi við talasaman.is. " : "") +
+    (meta && meta.generatedAt ? "Gögnin eru frá " + when(meta.generatedAt) + "." : "");
+  const locs = new Set(rows.map((r) => r.location)).size;
+  const rec = rows.filter((r) => r.audio && !silent(r)).length;
+  $("mtnRule").textContent = count(rows.length, "samantekt", "samantektir") + " frá " + locs + " " + (one(locs) ? "staðsetningu" : "staðsetningum") + ". " +
+    count(rec, "upptaka", "upptökur") + ". Hver lína er ein upptaka: hæðin er styrkur raddarinnar og breiddin lengd upptökunnar. " +
+    "Styst efst, lengst neðst, allar miðjaðar. Þannig hljóma þær í „Allar í einu“.";
+}
+
+function renderTopics() {
+  const tally = (list) => { const m = new Map(); let other = 0; for (const r of list) { if (r.topicChosen) m.set(r.topic, (m.get(r.topic) || 0) + 1); else other++; } return { m, other }; };
+  const all = tally(rows), here = tally(state.loc ? rows.filter((r) => r.location === state.loc) : rows);
+  const keys = [...all.m].sort((a, b) => b[1] - a[1] || coll.compare(a[0], b[0])).map(([t]) => t);
+  if (state.topic && state.topic !== "*" && !all.m.has(state.topic)) state.topic = "";
+  if (state.topic === "*" && !all.other) state.topic = "";
+  const chip = (key, label, n) => {
+    const b = el("button", "chip");
+    b.type = "button"; b.dataset.topic = key;
+    b.setAttribute("aria-pressed", String(state.topic === key));
+    b.disabled = !n && state.topic !== key;
+    b.append(document.createTextNode(label), el("span", "n", String(n)));
+    return b;
+  };
+  const total = state.loc ? rows.filter((r) => r.location === state.loc).length : rows.length;
+  const chips = [chip("", "Allt", total), ...keys.map((t) => chip(t, t, here.m.get(t) || 0))];
+  if (all.other) chips.push(chip("*", "annað", here.other));
+  $("topics").replaceChildren(...chips);
+}
+
+function renderPlaces() {
+  const sel = $("place"), seen = new Map();
+  for (const r of rows) if (!seen.has(r.location)) seen.set(r.location, r.locationPostCode);
+  if (state.loc && !seen.has(state.loc)) state.loc = "";
+  const opts = [new Option("Allar staðsetningar", "")];
+  for (const [loc, pc] of seen) opts.push(new Option(pc + " " + loc, loc));
+  sel.replaceChildren(...opts);
+  sel.value = state.loc;
+}
+
+function renderList() {
+  const list = visible(), main = $("list");
+  if (!list.length) { main.replaceChildren(el("p", "empty", "Engin samantekt passar við valið.")); return; }
+  const out = [];
+  let entries = null, last = null, n = 0;
+  for (const r of list) {
+    if (r.location !== last) {
+      last = r.location;
+      const section = el("section", "place"), hid = "h" + (++n);
+      section.setAttribute("aria-labelledby", hid);
+      const pc = el("div", "pc", r.locationPostCode);
+      pc.setAttribute("aria-hidden", "true");
+      pc.style.color = tone(r.locationPostCode, "accent");
+      const h = el("h3");
+      h.id = hid;
+      h.append(el("span", "sr", r.locationPostCode + " "), document.createTextNode(r.location));
+      entries = el("div", "entries");
+      section.append(pc, h, entries);
+      out.push(section);
+    }
+    entries.append(entry(r));
+  }
+  main.replaceChildren(...out);
+  paintList();
+}
+
+function entry(r) {
+  const a = el("article", "entry");
+  a.id = "e-" + r.id;
+  const m = el("p", "meta");
+  m.append(el("span", "", "borð " + r.table), el("span", "", r.topic));
+  if (r.source === "participant") m.append(el("span", "", "samantekt eins þátttakanda"));
+  const w = el("p", "words");
+  w.textContent = r.summary; // verbatim: set as text, never as markup
+  a.append(m, w);
+  const acts = el("div", "acts");
+  if (r.audio && silent(r)) a.append(el("p", "aside", "Upptakan er hljóðlaus."));
+  else if (r.audio && failed.has(r.id)) a.append(el("p", "aside", "Ekki tókst að spila upptökuna."));
+  else if (r.audio) {
+    const b = el("button", "listen"), disc = el("span", "disc");
+    b.type = "button"; b.dataset.id = r.id;
+    disc.style.background = tone(r.locationPostCode, "accent");
+    b.append(disc, el("span", "len", facts(r.id) ? clock(facts(r.id)[0]) : ""));
+    acts.append(b);
+  }
+  const p = el("button", "tool", "Plakat");
+  p.type = "button"; p.dataset.poster = r.id;
+  acts.append(p);
+  a.append(acts);
+  return a;
+}
+
+$("list").addEventListener("click", (e) => {
+  const b = e.target.closest(".listen");
+  if (b && !b.disabled) {
+    const id = b.dataset.id;
+    if (id === A.id && (A.mode === "one" || A.mode === "seq")) return togglePause();
+    return startOne(id, "archive");
+  }
+  const p = e.target.closest("[data-poster]");
+  if (p) openPoster(p.dataset.poster);
+});
+$("topics").addEventListener("click", (e) => {
+  const b = e.target.closest(".chip");
+  if (!b || b.disabled) return;
+  state.topic = b.dataset.topic;
+  for (const c of document.querySelectorAll(".chip")) c.setAttribute("aria-pressed", String(c === b));
+  renderList(); paintPlays();
+});
+$("place").addEventListener("change", (e) => { state.loc = e.target.value; renderTopics(); renderList(); paintPlays(); });
+
+/* ---------- posters: one summary, story-sized, to share ---------- */
+const slug = (s) => s.toLowerCase().replace(/þ/g, "th").replace(/ð/g, "d").replace(/æ/g, "ae").replace(/ö/g, "o")
+  .normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
+function wrapLines(g, text, maxW) {
+  const out = [];
+  for (const para of text.split("\n")) {
+    if (!para.trim()) { out.push(""); continue; }
+    let line = "";
+    for (const word of para.split(/ +/)) {
+      if (!word) continue;
+      const next = line ? line + " " + word : word;
+      if (g.measureText(next).width <= maxW) { line = next; continue; }
+      if (line) out.push(line);
+      if (g.measureText(word).width <= maxW) { line = word; continue; }
+      let part = "";
+      for (const ch of word) { if (part && g.measureText(part + ch).width > maxW) { out.push(part); part = ch; } else part += ch; }
+      line = part;
+    }
+    out.push(line);
+  }
+  return out;
+}
+
+async function poster(r) {
+  try { await Promise.all(['850 100px "Schibsted Grotesk"', '650 40px "Schibsted Grotesk"', '400 40px "Atkinson Hyperlegible Next"'].map((f) => document.fonts.load(f))); } catch (e) {}
+  const W = 1080, H = 1920, X = 88, RW = W - 2 * X;
+  const cv = document.createElement("canvas");
+  cv.width = W; cv.height = H;
+  const g = cv.getContext("2d"), ink = "#121411", dim = "rgba(18,20,17,.64)";
+  g.fillStyle = tone(r.locationPostCode, "tint"); g.fillRect(0, 0, W, H);
+  g.fillStyle = dim; g.font = '650 34px "Schibsted Grotesk"';
+  g.fillText("SAMTALIÐ · 10. OKTÓBER 2026", X, 150);
+  g.fillStyle = ink; g.font = '850 260px "Schibsted Grotesk"';
+  g.fillText(r.locationPostCode, X - 12, 400);
+  g.font = '750 60px "Schibsted Grotesk"';
+  let y = 488;
+  for (const l of wrapLines(g, r.location, RW)) { g.fillText(l, X, y); y += 68; }
+  g.fillStyle = dim; g.font = '650 42px "Schibsted Grotesk"';
+  for (const l of wrapLines(g, "borð " + r.table + " · " + r.topic + (r.source === "participant" ? " · samantekt eins þátttakanda" : ""), RW)) { g.fillText(l, X, y); y += 52; }
+  const env = audible(r) ? envOf(r.id) : null;
+  const top = y + 60, boxH = (env ? 1590 : 1700) - top;
+  let size = 120, lines = [], lh = 0;
+  for (; size >= 16; size -= 2) {
+    g.font = "400 " + size + 'px "Atkinson Hyperlegible Next"';
+    lines = wrapLines(g, r.summary, RW); lh = size * 1.27;
+    if (lines.length * lh <= boxH) break;
+  }
+  g.fillStyle = ink;
+  let ty = top + Math.max(0, (boxH - lines.length * lh) / 2) + size;
+  for (const l of lines) { g.fillText(l, X, ty); ty += lh; }
+  if (env) {
+    const y0 = 1712, amp = 96, m = env.length;
+    g.beginPath(); g.moveTo(X, y0);
+    for (let j = 0; j < RW; j++) {
+      const a = Math.floor(j * m / RW), b = Math.max(a + 1, Math.floor((j + 1) * m / RW));
+      let v = 0;
+      for (let k = a; k < b && k < m; k++) v = Math.max(v, env[k]);
+      g.lineTo(X + j, y0 - v * amp);
+    }
+    g.strokeStyle = ink; g.lineWidth = 3; g.lineJoin = "round"; g.stroke();
+    g.fillStyle = dim; g.font = '650 30px "Schibsted Grotesk"'; g.textAlign = "right";
+    g.fillText(clock(facts(r.id)[0]), W - X, y0 + 46); g.textAlign = "left";
+  }
+  g.fillStyle = ink; g.font = '850 52px "Schibsted Grotesk"';
+  g.fillText("Orðrétt", X, 1822);
+  g.textAlign = "right"; g.font = '600 30px "Schibsted Grotesk"';
+  g.fillText(SITE, W - X, 1822); g.textAlign = "left";
+  g.fillStyle = dim; g.font = '500 25px "Schibsted Grotesk"';
+  g.fillText("Gögn: Samtal, félag til almannaheilla (talasaman.is), CC BY 4.0", X, 1866);
+  return cv;
+}
+
+let posterBlob = null, posterName = "";
+async function openPoster(id) {
+  const r = byId(id);
+  if (!r) return;
+  const cv = await poster(r);
+  posterBlob = await new Promise((ok) => cv.toBlob(ok, "image/png"));
+  posterName = "ordrett-" + r.locationPostCode + "-" + slug(r.location) + "-bord-" + r.table + ".png";
+  const img = $("posterImg");
+  if (img.src.startsWith("blob:")) URL.revokeObjectURL(img.src);
+  img.src = URL.createObjectURL(posterBlob);
+  img.alt = r.location + ", borð " + r.table + ": " + r.summary;
+  const file = new File([posterBlob], posterName, { type: "image/png" });
+  $("posterShare").hidden = !(navigator.canShare && navigator.canShare({ files: [file] }));
+  $("shade").hidden = false;
+  $("posterSave").focus();
+}
+$("posterShare").addEventListener("click", async () => {
+  try { await navigator.share({ files: [new File([posterBlob], posterName, { type: "image/png" })], title: "Orðrétt" }); } catch (e) {}
+});
+$("posterSave").addEventListener("click", () => {
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(posterBlob); a.download = posterName;
+  document.body.append(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+});
+const closePoster = () => { $("shade").hidden = true; };
+$("posterClose").addEventListener("click", closePoster);
+$("shade").addEventListener("click", (e) => { if (e.target === $("shade")) closePoster(); });
+
+/* ---------- screen mode, for a hall ---------- */
+let sList = [], sIdx = 0, sTimer = 0, sPaused = false, sStarted = false, wakeLock = null;
+function enterScreen() {
+  if (A.mode && A.mode !== "screen") stopAll();
+  document.documentElement.classList.add("is-screen");
+  $("screen").hidden = false; $("sStart").hidden = sStarted;
+  if (sStarted) sShow(sIdx);
+}
+function leaveScreen() {
+  clearTimeout(sTimer);
+  if (A.mode === "screen") stopAll();
+  sStarted = false; sPaused = false;
+  document.documentElement.classList.remove("is-screen");
+  $("screen").hidden = true;
+  if (wakeLock) { wakeLock.release().catch(() => {}); wakeLock = null; }
+  if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
+  if (location.hash === "#skjar") history.replaceState(null, "", location.pathname + location.search);
+}
+const readMs = (text) => Math.min(24, Math.max(6, 4 + text.trim().split(/\s+/).length * 0.32)) * 1000;
+function fit() {
+  const say = $("sSay"), box = $("sBody");
+  let px = Math.min(innerWidth * 0.058, innerHeight * 0.1);
+  say.style.fontSize = px + "px";
+  while (px > 14 && (say.scrollHeight > box.clientHeight || say.scrollWidth > box.clientWidth)) { px *= 0.94; say.style.fontSize = px + "px"; }
+}
+function sShow(i) {
+  clearTimeout(sTimer);
+  sList = visible();
+  if (!sList.length) return;
+  sIdx = ((i % sList.length) + sList.length) % sList.length;
+  const r = sList[sIdx], voiced = audible(r);
+  const parts = [el("span", "", r.topic)]; // on a hall screen, no place or table beside the words
+  if (voiced) { const d = el("span", "live"); d.style.background = "var(--chalk)"; d.setAttribute("aria-hidden", "true"); parts.push(d); }
+  $("sTop").replaceChildren(...parts);
+  const say = $("sSay");
+  say.style.opacity = "0";
+  setTimeout(() => { say.textContent = r.summary; fit(); say.style.opacity = "1"; }, reduce.matches ? 0 : 200);
+  $("sPos").textContent = (sIdx + 1) + " / " + sList.length;
+  if (voiced) {
+    A.mode = "screen"; A.queue = [r.id]; A.qi = 0;
+    if (!sPaused) playClip(r.id);
+  } else {
+    if (A.mode === "screen") { ++A.token; stopSources(); A.id = null; }
+    if (!sPaused) sTimer = setTimeout(() => sShow(sIdx + 1), readMs(r.summary));
+  }
+}
+function screenAfterAudio() { clearTimeout(sTimer); if (!sPaused) sTimer = setTimeout(() => sShow(sIdx + 1), 1500); }
+function sPause() {
+  sPaused = !sPaused;
+  if (sPaused) { clearTimeout(sTimer); if (A.ctx) A.ctx.suspend(); }
+  else if (A.mode === "screen" && A.srcs.length && A.ctx) A.ctx.resume();
+  else { if (A.ctx) A.ctx.resume(); sShow(sIdx + 1); }
+}
+$("toScreen").addEventListener("click", () => { location.hash = "skjar"; });
+$("sClose").addEventListener("click", leaveScreen);
+$("sGo").addEventListener("click", () => {
+  sStarted = true; $("sStart").hidden = true;
+  wake();
+  if (document.documentElement.requestFullscreen) document.documentElement.requestFullscreen().catch(() => {});
+  if (navigator.wakeLock) navigator.wakeLock.request("screen").then((w) => { wakeLock = w; }).catch(() => {});
+  sShow(0);
+});
+addEventListener("keydown", (e) => {
+  if (!$("shade").hidden && e.key === "Escape") return closePoster();
+  if ($("screen").hidden) return;
+  if (e.key === "Escape") return leaveScreen();
+  if (!sStarted) return;
+  const jump = (d) => { sPaused = false; if (A.ctx && A.ctx.state === "suspended") A.ctx.resume(); sShow(sIdx + d); };
+  if (e.key === "ArrowRight") jump(1);
+  else if (e.key === "ArrowLeft") jump(-1);
+  else if (e.key === " ") { e.preventDefault(); sPause(); }
+});
+const onHash = () => { if (location.hash === "#skjar") enterScreen(); else if (!$("screen").hidden) leaveScreen(); };
+addEventListener("hashchange", onHash);
+
+/* ---------- start: the snapshot first, then the live data ---------- */
+function render() {
+  rank = new Map(rows.map((r, i) => [r.id, i]));
+  renderCounts(); layoutMountain(); renderKwic(); renderSheet();
+  renderTopics(); renderPlaces(); renderList(); paint();
+}
+let lastW = 0, resizing = false;
+new ResizeObserver(() => { // redraw on the next frame, so a redraw never re-triggers the observer
+  if (resizing) return;
+  resizing = true;
+  requestAnimationFrame(() => {
+    resizing = false;
+    if (!$("screen").hidden) fit();
+    const w = M.cv.clientWidth;
+    if (w && w !== lastW) { lastW = w; layoutMountain(); alignKwic(); }
+  });
+}).observe(document.body);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(alignKwic);
+
+render();
+onHash();
+fetch(API, { cache: "no-store" })
+  .then((res) => (res.ok ? res.json() : Promise.reject(new Error(String(res.status)))))
+  .then((j) => {
+    if (!j || !Array.isArray(j.data)) throw new Error("unexpected answer");
+    rows = order(j.data); meta = j.meta || meta; source = "live";
+    if (A.id && !byId(A.id)) stopAll();
+    if (A.mode === "seq") { A.queue = A.queue.filter((id) => byId(id)); A.qi = A.queue.indexOf(A.id); }
+    render();
+  })
+  .catch(() => { source = "fallback"; renderCounts(); });
+})();
+</script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-// site/index.html — landing: poster frame, three doors, credits.
+// site/samhljomur.html — the medley's landing: poster frame, three doors, credits. (site/index.html is Orðrétt.)
 
 import { bi } from "./strings";
 import { chrome, footer, htmlShell } from "./site-common";

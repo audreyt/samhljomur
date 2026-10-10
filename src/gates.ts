@@ -50,7 +50,9 @@ export async function runGates(ctx: RunCtx): Promise<boolean> {
   const snap = ["islenskast", "places", "topics", "circles"]
     .map((f) => readFileSync(`data/snapshot-20261004/${f}.json`, "utf8"))
     .join("\n");
-  const siteFiles = readdirSync("site").filter((f) => f.endsWith(".html"));
+  // The medley's pages only: index.html (Orðrétt) and saga.html are checked by ordrett/verify.ts.
+  const ORDRETT = new Set(["index.html", "saga.html"]);
+  const siteFiles = readdirSync("site").filter((f) => f.endsWith(".html") && !ORDRETT.has(f));
   const siteText = siteFiles
     .map((f) => readFileSync(`site/${f}`, "utf8"))
     .join("\n");
@@ -690,7 +692,7 @@ export async function runGates(ctx: RunCtx): Promise<boolean> {
       const { chromium } = await import("playwright");
       const browser = await chromium.launch();
       const page = await browser.newPage();
-      await page.goto("file://" + path.resolve("site/index.html"));
+      await page.goto("file://" + path.resolve("site/samhljomur.html"));
       await page.evaluate(() => document.fonts.ready);
       const fontOk = await page.evaluate(() => {
         const samples = ["華文", "機器譯文", "已校訂", "冰島語", "韌性"];
