@@ -318,6 +318,35 @@ for (const changed of [false, true]) {
   await ctx.close();
 }
 
+// ---------- a live redraw while a poster is open: Esc still gives focus back ----------
+{
+  const data = snap.data.slice(1);
+  const id = ordered.find((r: any) => r.id !== snap.data[0].id).id;
+  const ctx = await browser.newContext({ viewport: { width: 390, height: 844 } });
+  const page = await ctx.newPage();
+  let release = () => {};
+  const held = new Promise<void>((ok) => { release = ok; });
+  await page.route("**/api/v1/summaries", async (route) => {
+    await held;
+    await route.fulfill({ contentType: "application/json", body: JSON.stringify({ data, meta: { ...snap.meta, generatedAt: "2026-10-11T09:00:00.000Z", count: data.length } }) });
+  });
+  await page.goto(BASE);
+  await page.focus(`[data-poster="${id}"]`);
+  await page.keyboard.press("Enter");
+  await page.waitForFunction(() => (document.getElementById("shade") as HTMLDialogElement).open);
+  release();
+  await page.waitForFunction(() => /11\. október/.test(document.getElementById("fetched")!.textContent ?? ""));
+  await page.keyboard.press("Escape");
+  const back = await page.evaluate((id) => ({
+    open: (document.getElementById("shade") as HTMLDialogElement).open,
+    focus: (document.activeElement as HTMLElement).dataset?.poster === id,
+    entries: document.querySelectorAll("#list .entry").length,
+  }), id);
+  gate("a live redraw while a poster is open: Esc gives focus to the redrawn button",
+    !back.open && back.focus && back.entries === data.length, JSON.stringify(back));
+  await ctx.close();
+}
+
 // ---------- a slow connection: the player says it is fetching, then counts ----------
 {
   const { ctx, page } = await open({ width: 390, height: 844, live: false });

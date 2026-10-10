@@ -1352,7 +1352,10 @@ async function openPoster(id) {
   $("posterSave").focus();
 }
 function posterClosed() {
-  if (posterFrom && posterFrom.isConnected) posterFrom.focus();
+  const id = posterFrom && posterFrom.dataset ? posterFrom.dataset.poster : null;
+  // a redraw while the poster was open replaced its button with an equal one
+  const b = posterFrom && (posterFrom.isConnected ? posterFrom : id && document.querySelector('[data-poster="' + id + '"]'));
+  if (b) b.focus();
   posterFrom = null;
 }
 $("posterShare").addEventListener("click", async () => {
