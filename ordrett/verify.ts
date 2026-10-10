@@ -82,6 +82,8 @@ async function open(opts: { width: number; height: number; live: boolean; path?:
   return { ctx, page, hosts, errors };
 }
 const shot = (page: Page, name: string, full = false) => page.screenshot({ path: join(QA, name), fullPage: full });
+// Wait (up to 20 s, for the network) until the player clock has moved past 0:00.
+const playing = (page: Page) => page.waitForFunction(() => /^0:0[1-9]|^0:[1-5]\d/.test(document.getElementById("deckTime")?.textContent ?? ""), null, { timeout: 20000 }).catch(() => {});
 const shotOf = async (page: Page, sel: string, name: string) => { await page.locator(sel).screenshot({ path: join(QA, name) }); };
 
 // ---------- content, on the snapshot, at phone width ----------
@@ -143,7 +145,7 @@ const shotOf = async (page: Page, sel: string, name: string) => { await page.loc
   // tap the bottom line of the mountain: the longest recording
   const box = (await page.locator("#mtn").boundingBox())!;
   await page.mouse.click(box.x + box.width / 2, box.y + box.height - 14);
-  await page.waitForTimeout(2600);
+  await playing(page);
   const one = await page.evaluate(() => ({ deck: !document.getElementById("deck")!.hidden, time: document.getElementById("deckTime")!.textContent, now: document.querySelector("#now .say")?.textContent?.slice(0, 40) }));
   gate("tapping a line plays that voice", one.deck && /^0:0[1-9]/.test(one.time ?? "") && !!one.now, JSON.stringify(one));
   const off = await page.evaluate(() => ["deckToggle", "deckStop"].map((id) => {
@@ -235,7 +237,7 @@ const shotOf = async (page: Page, sel: string, name: string) => { await page.loc
   await page.waitForTimeout(2500);
   const live = await page.textContent("#fetched");
   await page.click("#playSeq");
-  await page.waitForTimeout(2600);
+  await playing(page);
   const t = await page.textContent("#deckTime");
   gate("under talasaman.is CSP: live data and playback", !/Náði ekki/.test(live ?? "") && /^0:0[1-9]/.test(t ?? ""), `${live} | ${t}`);
   gate("under talasaman.is CSP: no violations or errors", errors.length === 0, errors.join(" | "));
