@@ -218,7 +218,7 @@ input[type="search"]::placeholder { color: var(--dim); opacity: 1; }
 .meta span + span::before { content: "·"; margin-right: .5rem; }
 .words { margin: 0; font-size: 1.1875rem; line-height: 1.5; white-space: pre-wrap; overflow-wrap: anywhere; }
 .entry { scroll-margin-block: 2rem 8rem; }
-.entry.on, .entry:target { background: var(--lift); box-shadow: 0 0 0 .75rem var(--lift); border-radius: .125rem; }
+.entry.on, .entry:target, .entry.linked { background: var(--lift); box-shadow: 0 0 0 .75rem var(--lift); border-radius: .125rem; }
 .acts { display: flex; flex-wrap: wrap; gap: .5rem; }
 .listen, .tool {
   display: inline-flex; align-items: center; gap: .55rem; min-height: 2.75rem; padding: .25rem .9rem .25rem .25rem;
@@ -327,7 +327,7 @@ html.is-screen body { overflow: hidden; }
   .place .pc { position: static; font-size: 22pt; }
   .place h3 { break-after: avoid; }
   .words { font-size: 11pt; }
-  .entry.on, .entry:target { background: none; box-shadow: none; }
+  .entry.on, .entry:target, .entry.linked { background: none; box-shadow: none; }
   a { text-decoration: none; }
 }
 </style>
@@ -1188,7 +1188,13 @@ function renderList() {
     entries.append(entry(r));
   }
   main.replaceChildren(...out);
-  paintList();
+  paintList(); markLinked();
+}
+// :target is lost when a redraw replaces the linked summary; this mark is not.
+function markLinked() {
+  for (const e of document.querySelectorAll(".entry.linked")) e.classList.remove("linked");
+  const e = location.hash.startsWith("#e-") && document.getElementById(location.hash.slice(1));
+  if (e) e.classList.add("linked");
 }
 
 // Verbatim: set as text, never as markup. A search marks its matches; the words stay as they are.
@@ -1477,7 +1483,7 @@ addEventListener("keydown", (e) => {
   else if (e.key === "ArrowLeft") sJump(-1);
   else if (e.key === " ") { e.preventDefault(); sPause(); }
 });
-const onHash = () => { if (location.hash === "#skjar") enterScreen(); else if (!$("screen").hidden) leaveScreen(); };
+const onHash = () => { markLinked(); if (location.hash === "#skjar") enterScreen(); else if (!$("screen").hidden) leaveScreen(); };
 addEventListener("hashchange", onHash);
 
 /* ---------- start: the snapshot first, then the live data ---------- */
@@ -1502,12 +1508,20 @@ new ResizeObserver(onWidth).observe(M.cv.parentElement);
 addEventListener("resize", () => { if (!$("screen").hidden) fit(); });
 if (document.fonts && document.fonts.ready) document.fonts.ready.then(alignKwic);
 
-// A redraw replaces the controls it draws; put focus back on the same one.
-function keepFocus(fn) {
+// A redraw replaces what it draws, so the browser cannot hold the reader's place.
+// The summary or note on screen (the linked one first) stays where it was, and
+// focus goes back to the same control.
+function keepPlace(fn) {
   const a = document.activeElement, d = a && a !== document.body ? a.dataset : null;
   const sel = !d ? null : d.poster ? '[data-poster="' + d.poster + '"]' : d.id ? '.listen[data-id="' + d.id + '"]' :
     d.topic != null ? '.chip[data-topic="' + CSS.escape(d.topic) + '"]' : d.k ? '.pen[data-k="' + d.k + '"]' : null;
+  const inView = (e) => { const r = e.getBoundingClientRect(); return r.bottom > 0 && r.top < innerHeight; };
+  const linked = location.hash.length > 1 && document.getElementById(location.hash.slice(1));
+  const seen = (linked && linked.matches(".entry, .note-row") && inView(linked)) ? linked : [...document.querySelectorAll(".note-row, #list .entry")].find(inView);
+  const top = seen ? seen.getBoundingClientRect().top : 0;
   fn();
+  const now = seen && document.getElementById(seen.id);
+  if (now) scrollBy(0, now.getBoundingClientRect().top - top);
   if (sel && !a.isConnected) { const b = document.querySelector(sel); if (b) b.focus({ preventScroll: true }); }
 }
 
@@ -1524,7 +1538,7 @@ fetch(API, { cache: "no-store" })
     rows = order(j.data);
     if (A.id && !byId(A.id)) stopAll();
     if (A.mode === "seq") { A.queue = A.queue.filter((id) => byId(id)); A.qi = A.queue.indexOf(A.id); }
-    keepFocus(render);
+    keepPlace(render);
   })
   .catch(() => { source = "fallback"; renderCounts(); });
 })();
