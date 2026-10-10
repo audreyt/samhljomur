@@ -339,6 +339,23 @@ for (const changed of [false, true]) {
   gate("screen mode fits the longest summary", fit.over <= 0 && fit.text === longest.summary.slice(0, 30), JSON.stringify(fit));
   const top = await page.textContent("#sTop");
   gate("screen mode shows no place or table beside the words", top === longest.topic, JSON.stringify(top));
+  await page.mouse.move(960, 500);
+  const at = () => page.textContent("#sPos");
+  const k = ordered.indexOf(longest) + 1, N = ordered.length;
+  const p0 = await at();
+  await page.click("#sNext");
+  const p1 = await at();
+  await page.click("#sPrev");
+  const p2 = await at();
+  await page.click("#sToggle");
+  const l1 = await page.getAttribute("#sToggle", "aria-label");
+  await page.click("#sToggle");
+  const l2 = await page.getAttribute("#sToggle", "aria-label");
+  await page.waitForTimeout(3500);
+  const sleep = await page.evaluate(() => [getComputedStyle(document.querySelector(".screen .ctl")!).opacity, getComputedStyle(document.getElementById("screen")!).cursor]);
+  gate("screen mode controls: previous, pause and next work, then sleep with the pointer",
+    p0 === `${k} / ${N}` && p1 === `${k + 1} / ${N}` && p2 === p0 && l1 === "Halda áfram" && l2 === "Gera hlé" && sleep.join() === "0,none",
+    JSON.stringify({ p0, p1, p2, l1, l2, sleep }));
   await page.keyboard.press("Escape");
   gate("Esc leaves screen mode", await page.evaluate(() => document.getElementById("screen")!.hidden));
   await page.click("#toScreen");
@@ -350,6 +367,30 @@ for (const changed of [false, true]) {
     modal.focus === "sGo" && modal.inert && started === "screen" && inScreen === "sGo" && after.focus === "toScreen" && !after.inert,
     JSON.stringify({ modal, started, inScreen, after }));
   gate("no errors in screen mode", errors.length === 0, errors.join(" | "));
+  await ctx.close();
+}
+
+// ---------- screen mode on a touch screen ----------
+{
+  const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true, deviceScaleFactor: 2 });
+  const page = await ctx.newPage();
+  await page.route("**/api/v1/summaries", (route) => route.abort());
+  await page.goto(BASE + "#skjar");
+  await page.waitForTimeout(500);
+  await page.tap("#sGo");
+  await page.waitForTimeout(3600);
+  const asleep = await page.evaluate(() => getComputedStyle(document.querySelector(".screen .ctl")!).opacity);
+  const b = (await page.locator("#sNext").boundingBox())!;
+  await page.touchscreen.tap(b.x + b.width / 2, b.y + b.height / 2);
+  await page.waitForTimeout(400);
+  const first = await page.textContent("#sPos");
+  await page.touchscreen.tap(b.x + b.width / 2, b.y + b.height / 2);
+  await page.waitForTimeout(400);
+  const second = await page.textContent("#sPos");
+  const N = ordered.length;
+  gate("screen mode on a touch screen: the first tap wakes the controls, the next one turns the page",
+    asleep === "0" && first === `1 / ${N}` && second === `2 / ${N}`, JSON.stringify({ asleep, first, second }));
+  await shot(page, "phone-screen.png");
   await ctx.close();
 }
 
