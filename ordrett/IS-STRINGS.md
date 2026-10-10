@@ -11,10 +11,12 @@ Numbers agree with Icelandic usage in code: 1, 21, 31 … take the singular
 | Icelandic | English |
 |---|---|
 | Samtalið · 10. október 2026 | The conversation · 10 October 2026 |
+| Á síðunni: Við viljum · Gervigreind · Öll borðin · Um síðuna | On this page: We want · Artificial intelligence · All the tables · About this page (the contents line; „Á síðunni“ is for screen readers) |
 | Orðrétt | Verbatim |
 | Allar samantektirnar frá borðunum, eins og þær voru skráðar á talasaman.is. Upptökurnar eru heilar og óklipptar. | All the summaries from the tables, as they were recorded on talasaman.is. The recordings are whole and uncut. |
 | Ein í einu · Allar í einu | One at a time · All at once |
 | Gera hlé · Halda áfram · Næsta · Stöðva | Pause · Resume · Next · Stop |
+| Sæki upptökuna … | Fetching the recording … (the player, on a slow connection) |
 | Sæki raddirnar … 12 af 21 | Fetching the voices … 12 of 21 |
 | Ýttu á línu til að heyra röddina. | Tap a line to hear the voice. |
 | 6 raddir tala · 1 rödd talar | 6 voices speaking · 1 voice speaking |
@@ -32,10 +34,12 @@ Numbers agree with Icelandic usage in code: 1, 21, 31 … take the singular
 | Öll borðin | All the tables |
 | Umræðuefni · Allt · annað | Topics · All · other |
 | Staðsetning · Allar staðsetningar | Location · All locations |
+| Leita · orð eða hluti úr orði | Search · a word or part of a word (the search field and its placeholder) |
+| 1 samantekt fannst. · 2 samantektir fundust. · Engin samantekt fannst. | 1 summary found. · 2 summaries found. · No summary found. |
 | borð 2 | table 2 |
 | samantekt eins þátttakanda | one participant's summary (Samtal's own wording) |
 | Hlusta á upptökurnar hér · Hlusta á upptökuna hér · Engin upptaka hér | Listen to the recordings here · Listen to the recording here · No recording here |
-| Hlusta: Kvennaskólinn í Reykjavík, borð 2 | Listen: Kvennaskólinn í Reykjavík, table 2 (screen readers) |
+| Hlusta: Kvennaskólinn í Reykjavík, borð 2, 0:49 · Gera hlé: Kvennaskólinn í Reykjavík, borð 2, 0:49 | Listen: Kvennaskólinn í Reykjavík, table 2, 0:49 · Pause: Kvennaskólinn í Reykjavík, table 2, 0:49 (screen readers; ends with the length shown on the button) |
 | Upptakan er hljóðlaus. | The recording is silent. |
 | Ekki tókst að spila upptökuna. | The recording could not be played. |
 | Engin samantekt passar við valið. | No summary matches the selection. |
@@ -51,6 +55,8 @@ Numbers agree with Icelandic usage in code: 1, 21, 31 … take the singular
 | Audrey Tang setti síðuna saman. · Saga síðunnar | Audrey Tang put the page together. · The page's history (link to saga.html) |
 | Sýna á skjá · Ein samantekt í einu, í stóru letri, með upptökunum. | Show on screen · One summary at a time, in large type, with the recordings. |
 | Byrja · Loka · Ein samantekt í einu. Örvalyklar fletta, bilslá gerir hlé, Esc lokar. | Start · Close · One summary at a time. Arrow keys move, the space bar pauses, Esc closes. (screen mode) |
+| Orðrétt á skjá · Fyrri | Orðrétt on screen (screen mode's name, for screen readers) · Previous (button) |
+| Orðrétt: ein lína fyrir hverja upptöku frá borðunum, styst efst og lengst neðst. | Orðrétt: one line for each recording from the tables, shortest at the top and longest at the bottom. (describes the link-preview image) |
 | SAMTALIÐ · 10. OKTÓBER 2026 · borð 2 · samfélagið · Orðrétt | Poster header, table line and footer |
 | Saga síðunnar · ← Orðrétt | The page's history · back to Orðrétt (saga.html) |
 

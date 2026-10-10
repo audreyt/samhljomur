@@ -8,7 +8,12 @@
 // sheet. Live gates then let the page reach talasaman.is: live data, playback
 // of one voice and of all voices at once, posters, screen mode, and the page
 // under talasaman.is's own Content-Security-Policy. Site gates: the medley's
-// old addresses all still answer, and the record page links resolve.
+// old addresses all still answer, and the record page links resolve. Reader
+// gates: no sideways scrolling at 320px or with text at 200%, focus in the
+// dialogs, button names, links to one summary, search, print, the live redraw
+// (against a held, controlled answer), a slow connection, screen mode by mouse
+// and by touch, long summaries in screen mode on a projector and on a phone,
+// and the share card and icons.
 // Screenshots go to ordrett/qa/.
 
 import { chromium, type Page } from "playwright";
@@ -292,6 +297,63 @@ for (const changed of [false, true]) {
   await ctx.close();
 }
 
+// ---------- a live redraw with new summaries above: a linked summary stays put ----------
+{
+  const target = ordered[Math.floor(ordered.length / 2)];
+  const data = [...[0, 1, 2].map((k) => ({ ...ordered[k], id: ordered[k].id.slice(0, -2) + "x" + k })), ...snap.data];
+  const ctx = await browser.newContext({ viewport: { width: 390, height: 844 } });
+  const page = await ctx.newPage();
+  let release = () => {};
+  const held = new Promise<void>((ok) => { release = ok; });
+  await page.route("**/api/v1/summaries", async (route) => {
+    await held;
+    await route.fulfill({ contentType: "application/json", body: JSON.stringify({ data, meta: { ...snap.meta, generatedAt: "2026-10-11T09:00:00.000Z", count: data.length } }) });
+  });
+  await page.goto(BASE + "#e-" + target.id);
+  await page.waitForTimeout(300);
+  const where = (id: string) => page.evaluate((id) => {
+    const e = document.getElementById("e-" + id)!;
+    return { top: Math.round(e.getBoundingClientRect().top), bg: getComputedStyle(e).backgroundColor, entries: document.querySelectorAll("#list .entry").length };
+  }, id);
+  const before = await where(target.id);
+  release();
+  await page.waitForFunction(() => /11\. október/.test(document.getElementById("fetched")!.textContent ?? ""));
+  await page.waitForTimeout(200);
+  const after = await where(target.id);
+  gate("a live redraw with new summaries above keeps a linked summary where it was, marked",
+    after.entries === data.length && Math.abs(after.top - before.top) <= 1 && after.bg === before.bg && after.bg !== "rgba(0, 0, 0, 0)", JSON.stringify({ before, after }));
+  await ctx.close();
+}
+
+// ---------- a live redraw while a poster is open: Esc still gives focus back ----------
+{
+  const data = snap.data.slice(1);
+  const id = ordered.find((r: any) => r.id !== snap.data[0].id).id;
+  const ctx = await browser.newContext({ viewport: { width: 390, height: 844 } });
+  const page = await ctx.newPage();
+  let release = () => {};
+  const held = new Promise<void>((ok) => { release = ok; });
+  await page.route("**/api/v1/summaries", async (route) => {
+    await held;
+    await route.fulfill({ contentType: "application/json", body: JSON.stringify({ data, meta: { ...snap.meta, generatedAt: "2026-10-11T09:00:00.000Z", count: data.length } }) });
+  });
+  await page.goto(BASE);
+  await page.focus(`[data-poster="${id}"]`);
+  await page.keyboard.press("Enter");
+  await page.waitForFunction(() => (document.getElementById("shade") as HTMLDialogElement).open);
+  release();
+  await page.waitForFunction(() => /11\. október/.test(document.getElementById("fetched")!.textContent ?? ""));
+  await page.keyboard.press("Escape");
+  const back = await page.evaluate((id) => ({
+    open: (document.getElementById("shade") as HTMLDialogElement).open,
+    focus: (document.activeElement as HTMLElement).dataset?.poster === id,
+    entries: document.querySelectorAll("#list .entry").length,
+  }), id);
+  gate("a live redraw while a poster is open: Esc gives focus to the redrawn button",
+    !back.open && back.focus && back.entries === data.length, JSON.stringify(back));
+  await ctx.close();
+}
+
 // ---------- a slow connection: the player says it is fetching, then counts ----------
 {
   const { ctx, page } = await open({ width: 390, height: 844, live: false });
@@ -370,6 +432,34 @@ for (const changed of [false, true]) {
     JSON.stringify({ modal, started, inScreen, after }));
   gate("no errors in screen mode", errors.length === 0, errors.join(" | "));
   await ctx.close();
+}
+
+// ---------- screen mode: a summary written as a long list ----------
+{
+  const lines = (r: any) => r.summary.split("\n").length;
+  const listy = ordered.reduce((a: any, b: any) => (lines(b) > lines(a) ? b : a));
+  for (const [width, height] of [[1920, 1080], [390, 844]]) {
+    const { ctx, page } = await open({ width, height, live: false, path: "#skjar" });
+    await page.click("#sGo");
+    for (let i = 0; i < ordered.indexOf(listy); i++) await page.keyboard.press("ArrowRight");
+    await page.waitForTimeout(900);
+    const m = await page.evaluate(() => {
+      const say = document.getElementById("sSay")!, box = document.getElementById("sBody")!;
+      return {
+        text: say.textContent, px: parseFloat(say.style.fontSize), cols: getComputedStyle(say).columnCount,
+        over: say.scrollHeight - box.clientHeight, room: box.clientHeight, scroll: getComputedStyle(box).overflowY,
+        gap: Math.round(say.getBoundingClientRect().top - box.getBoundingClientRect().top),
+      };
+    });
+    const shown = { px: Math.round(m.px * 10) / 10, cols: m.cols, over: m.over, gap: m.gap };
+    // one column holds at least one line per line break, so it can never be set larger than this
+    const oneColumn = m.room / (lines(listy) * 1.3);
+    if (width > 1000) gate("screen mode on a wide screen sets a summary written as a long list in columns, larger than one column could, whole",
+      m.text === listy.summary && m.cols !== "auto" && m.px > oneColumn * 1.2 && m.over <= 0, JSON.stringify({ ...shown, oneColumn: Math.round(oneColumn * 10) / 10 }));
+    else gate("screen mode on a phone: a summary too long for the screen starts at the top and scrolls, inside the frame",
+      m.text === listy.summary && m.cols === "auto" && m.over > 0 && m.gap === 0 && m.scroll === "auto", JSON.stringify({ ...shown, scroll: m.scroll }));
+    await ctx.close();
+  }
 }
 
 // ---------- screen mode on a touch screen ----------

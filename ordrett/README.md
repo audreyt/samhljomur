@@ -29,14 +29,29 @@ and the page says so. The parts:
 - **Öll borðin.** Every summary, by postcode, then location, then table.
   Each colour is a postcode; Iceland's postcodes, and so the colours, run
   round the island. Any summary becomes a 1080 × 1920 poster to share.
+  A search field finds a word, or part of one, in a summary, its place or
+  its topic, and marks it; the words themselves are untouched.
 - **Live, with the recordings streamed.** On load the page fetches
   `/api/v1/summaries` from talasaman.is and plays each recording from its
   talasaman.is URL; recordings are never copied here. The text is also
   embedded as a dated snapshot (and kept in `ordrett/data/`) so the page
   works when talasaman.is cannot be reached. A summary Samtal later removes
   therefore stays in this page's source until the next build, and in git
-  history.
+  history. If the live summaries are the snapshot's, only the date line
+  changes; if not, the page redraws and keeps the reader's place.
 - **Screen mode** for a hall: `#skjar`, or *Sýna á skjá* at the foot.
+  The arrow keys turn the page and Space pauses; buttons at the foot do the
+  same by mouse or touch, and they and the pointer sleep while the words
+  are read. A summary written as a long list is set in columns on a wide
+  screen when that makes its words larger and it then fits whole; on a
+  phone, a summary too long for the screen scrolls in its frame.
+- **On paper.** Printing gives black on white: the title, the „viljum“
+  spine, the AI sheet with its highlighter colours, and every summary,
+  with no players or controls.
+
+A contents line at the top links *Við viljum*, *Gervigreind*, *Öll borðin*
+and *Um síðuna*. A link to one summary (`#e-<id>`, as the spine uses)
+lands on it and marks it.
 
 ## Build and check
 
@@ -63,7 +78,12 @@ for character against the data; the stated order; that only talasaman.is is
 contacted; one voice and all voices playing; the poster size; screen mode;
 the page under talasaman.is's own Content-Security-Policy; that every old
 medley address still answers; and that the medley's front page is kept
-byte for byte.
+byte for byte. They also check what a reader meets: no sideways scrolling
+at 320px or with text at 200%; focus held by the poster and screen mode
+and given back; listen buttons named as they read; search; print; the
+live redraw; the player on a slow connection; screen mode's buttons by
+mouse and by touch; long summaries in screen mode on a projector and a
+phone; and the share card and icons.
 
 ## Licences
 
