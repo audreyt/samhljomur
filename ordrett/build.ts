@@ -85,6 +85,8 @@ async function fetchSnapshot(): Promise<string> {
   const stamp = body.meta.generatedAt.replace(/[-:]/g, "").replace(/\.\d+Z$/, "Z");
   const path = join(DATA, `summaries-${stamp}.json`);
   writeFileSync(path, JSON.stringify(body, null, 1) + "\n");
+  // keep one snapshot here; earlier ones live in git history
+  for (const f of readdirSync(DATA)) if (/^summaries-.*\.json$/.test(f) && join(DATA, f) !== path) rmSync(join(DATA, f));
 
   const tmp = mkdtempSync(join(tmpdir(), "ordrett-audio-"));
   const facts: Record<string, AudioFact> = {};

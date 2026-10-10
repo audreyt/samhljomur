@@ -13,13 +13,13 @@ PASS  tapping a line plays that voice  {"deck":true,"time":"0:01 / 0:49","now":"
 PASS  player icons sit centred in their buttons  [0,0]
 PASS  all at once: voices join as the sweep reaches them  {"now":"6 raddir tala","time":"0:21 / 1:13"}
 PASS  poster is a 1080 x 1920 image  1080x1920
-PASS  only talasaman.is contacted  localhost:50674, talasaman.is
+PASS  only talasaman.is contacted  localhost:51060, talasaman.is
 PASS  no errors live
 PASS  screen mode fits the longest summary  {"text":"Hvernig samtal viljum við skap","over":-30}
 PASS  screen mode shows no place or table beside the words  "gervigreind"
 PASS  Esc leaves screen mode
 PASS  no errors in screen mode
-PASS  under talasaman.is CSP: live data and playback  Gögnin eru frá 10. október 2026 kl. 21:49. | 0:01 / 0:13 · 1 af 21
+PASS  under talasaman.is CSP: live data and playback  Gögnin eru frá 10. október 2026 kl. 21:54. | 0:01 / 0:13 · 1 af 21
 PASS  under talasaman.is CSP: no violations or errors
 PASS  every medley address still answers  samhljomur.html 200, video.html 200, report.html 200, songbook.html 200, songbook.pdf 200, video-standalone.html 200, medley.mp4 200, poster.png 200, poster-alt.png 200, media/medley.mp3 200
 PASS  the medley's front page is kept byte for byte  a1b8538ab0336bcf20cf5ea794b66ce43db95d76
