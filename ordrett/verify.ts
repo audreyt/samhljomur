@@ -392,6 +392,29 @@ for (const changed of [false, true]) {
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth - innerWidth);
   gate("record page: no horizontal scroll at 390px", overflow <= 0, `${overflow}px`);
   await shot(page, "phone-saga.png", true);
+
+  const size = (f: string) => {
+    const p = join(SITE, f);
+    if (!existsSync(p)) return "missing";
+    const b = readFileSync(p);
+    return b.readUInt32BE(0) === 0x89504e47 ? `${b.readUInt32BE(16)}x${b.readUInt32BE(20)}` : "not a PNG";
+  };
+  const ROOT = "https://audreyt.github.io/samhljomur/";
+  const tags = (f: string) => Object.fromEntries([...readFileSync(join(SITE, f), "utf8").slice(0, 6000)
+    .matchAll(/<(?:meta (?:property|name)="([^"]+)" content|link rel="([^"]+)" href)="([^"]*)"/g)].map((m) => [m[1] ?? m[2], m[3]]));
+  const unshared = [["index.html", ""], ["saga.html", "saga.html"]].filter(([f, u]) => {
+    const t = tags(f);
+    return !(t["og:url"] === ROOT + u && t.canonical === ROOT + u && t["og:image"] === ROOT + "ordrett-card.png" && t["og:image:alt"] &&
+      t["twitter:card"] === "summary_large_image" && t["apple-touch-icon"] === "ordrett-icon.png" && t.icon?.startsWith("data:image/svg+xml,"));
+  }).map(([f]) => f);
+  const tab = await page.evaluate(async () => {
+    const i = new Image();
+    i.src = document.querySelector<HTMLLinkElement>('link[rel="icon"]')!.href;
+    return i.decode().then(() => "drawn", () => "broken");
+  });
+  const [card, home] = [size("ordrett-card.png"), size("ordrett-icon.png")];
+  gate("sharing: a 1200 x 630 card, a 180 x 180 home-screen icon, a tab icon, and both pages point at them",
+    card === "1200x630" && home === "180x180" && tab === "drawn" && unshared.length === 0, `card ${card}, icon ${home}, tab icon ${tab}${unshared.length ? ", missing tags: " + unshared.join(", ") : ""}`);
   await ctx.close();
 }
 
