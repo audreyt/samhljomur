@@ -290,6 +290,34 @@ for (const changed of [false, true]) {
   await ctx.close();
 }
 
+// ---------- a live redraw with new summaries above: a linked summary stays put ----------
+{
+  const target = ordered[Math.floor(ordered.length / 2)];
+  const data = [...[0, 1, 2].map((k) => ({ ...ordered[k], id: ordered[k].id.slice(0, -2) + "x" + k })), ...snap.data];
+  const ctx = await browser.newContext({ viewport: { width: 390, height: 844 } });
+  const page = await ctx.newPage();
+  let release = () => {};
+  const held = new Promise<void>((ok) => { release = ok; });
+  await page.route("**/api/v1/summaries", async (route) => {
+    await held;
+    await route.fulfill({ contentType: "application/json", body: JSON.stringify({ data, meta: { ...snap.meta, generatedAt: "2026-10-11T09:00:00.000Z", count: data.length } }) });
+  });
+  await page.goto(BASE + "#e-" + target.id);
+  await page.waitForTimeout(300);
+  const where = (id: string) => page.evaluate((id) => {
+    const e = document.getElementById("e-" + id)!;
+    return { top: Math.round(e.getBoundingClientRect().top), bg: getComputedStyle(e).backgroundColor, entries: document.querySelectorAll("#list .entry").length };
+  }, id);
+  const before = await where(target.id);
+  release();
+  await page.waitForFunction(() => /11\. október/.test(document.getElementById("fetched")!.textContent ?? ""));
+  await page.waitForTimeout(200);
+  const after = await where(target.id);
+  gate("a live redraw with new summaries above keeps a linked summary where it was, marked",
+    after.entries === data.length && Math.abs(after.top - before.top) <= 1 && after.bg === before.bg && after.bg !== "rgba(0, 0, 0, 0)", JSON.stringify({ before, after }));
+  await ctx.close();
+}
+
 // ---------- a slow connection: the player says it is fetching, then counts ----------
 {
   const { ctx, page } = await open({ width: 390, height: 844, live: false });
