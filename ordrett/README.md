@@ -42,7 +42,9 @@ and the page says so. The parts:
 - **Screen mode** for a hall: `#skjar`, or *Sýna á skjá* at the foot.
   The arrow keys turn the page and Space pauses; buttons at the foot do the
   same by mouse or touch, and they and the pointer sleep while the words
-  are read.
+  are read. A summary written as a long list is set in columns on a wide
+  screen when that makes its words larger and it then fits whole; on a
+  phone, a summary too long for the screen scrolls in its frame.
 - **On paper.** Printing gives black on white: the title, the „viljum“
   spine, the AI sheet with its highlighter colours, and every summary,
   with no players or controls.
@@ -80,7 +82,8 @@ byte for byte. They also check what a reader meets: no sideways scrolling
 at 320px or with text at 200%; focus held by the poster and screen mode
 and given back; listen buttons named as they read; search; print; the
 live redraw; the player on a slow connection; screen mode's buttons by
-mouse and by touch; and the share card and icons.
+mouse and by touch; long summaries in screen mode on a projector and a
+phone; and the share card and icons.
 
 ## Licences
 

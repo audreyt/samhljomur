@@ -12,7 +12,8 @@
 // gates: no sideways scrolling at 320px or with text at 200%, focus in the
 // dialogs, button names, links to one summary, search, print, the live redraw
 // (against a held, controlled answer), a slow connection, screen mode by mouse
-// and by touch, and the share card and icons.
+// and by touch, long summaries in screen mode on a projector and on a phone,
+// and the share card and icons.
 // Screenshots go to ordrett/qa/.
 
 import { chromium, type Page } from "playwright";
