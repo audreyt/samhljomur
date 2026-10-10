@@ -156,6 +156,38 @@ const shotOf = async (page: Page, sel: string, name: string) => { await page.loc
   await ctx.close();
 }
 
+// ---------- search: marks what it finds and leaves the words as they are ----------
+{
+  const { ctx, page, errors } = await open({ width: 390, height: 844, live: false });
+  const look = async (q: string) => {
+    await page.fill("#q", q);
+    await page.waitForTimeout(400);
+    return page.evaluate(() => ({
+      shown: [...document.querySelectorAll<HTMLElement>("#list .entry")].map((a) => [a.id.slice(2), a.querySelector(".words")!.textContent!]),
+      marks: [...document.querySelectorAll("#list .words mark.q")].map((m) => m.textContent!),
+      found: document.getElementById("found")!.textContent,
+      empty: document.querySelector("#list .empty")?.textContent ?? "",
+    }));
+  };
+  const q = "Símann";
+  const want = ordered.filter((r: any) => [r.summary, r.location, r.topic].some((s: string) => s.toLocaleLowerCase("is").includes(q.toLocaleLowerCase("is"))));
+  const one = (n: number) => n % 10 === 1 && n % 100 !== 11;
+  const hit = await look(q);
+  gate("search: finds every summary with the word, marks it, and leaves the words as they are",
+    want.length > 0 && JSON.stringify(hit.shown) === JSON.stringify(want.map((r: any) => [r.id, r.summary])) &&
+    hit.marks.length >= want.length && hit.marks.every((m) => m.toLocaleLowerCase("is") === q.toLocaleLowerCase("is")) &&
+    hit.found === `${want.length} ${one(want.length) ? "samantekt fannst" : "samantektir fundust"}.`,
+    `${hit.shown.length} shown, ${want.length} expected, ${hit.marks.length} marks, "${hit.found}"`);
+  const miss = await look("qqzzqq");
+  const cleared = await look("");
+  gate("search: says when nothing is found; clearing it brings every summary back unmarked",
+    miss.shown.length === 0 && miss.found === "Engin samantekt fannst." && miss.empty !== "" &&
+    cleared.shown.length === snap.data.length && cleared.marks.length === 0 && cleared.found === "",
+    `${miss.found} | ${cleared.shown.length} shown, ${cleared.marks.length} marks`);
+  gate("no errors while searching", errors.length === 0, errors.join(" | "));
+  await ctx.close();
+}
+
 // ---------- live: data, one voice, all voices, posters ----------
 {
   const { ctx, page, hosts, errors } = await open({ width: 390, height: 844, live: true });

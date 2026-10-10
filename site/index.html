@@ -188,10 +188,14 @@ mark { background: none; color: inherit; padding: 0 .06em; margin: 0 -.06em; -we
 .chip:disabled { opacity: .35; cursor: default; }
 .field { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem .75rem; }
 .field label { font-family: var(--font-frame); font-weight: 600; font-size: .9375rem; }
-select {
+select, input[type="search"] {
   font-family: var(--font-frame); font-size: 1rem; min-width: 0; max-width: 100%; min-height: 2.5rem; padding: .45rem .6rem;
   border: 1px solid var(--hair); border-radius: .375rem; background: var(--lift); color: var(--chalk);
 }
+input[type="search"] { flex: 0 1 20rem; }
+input[type="search"]::placeholder { color: var(--dim); opacity: 1; }
+.found { flex-basis: 100%; margin: 0; font-family: var(--font-frame); font-size: .875rem; color: var(--dim); }
+.words mark.q { background: var(--chalk); color: var(--night); border-radius: .125rem; }
 .play.small { min-height: 2.75rem; font-size: .9375rem; padding: .35rem 1rem .35rem .35rem; justify-self: start; }
 .play.small .ico { width: 2rem; height: 2rem; }
 .place { border-top: 2px solid var(--chalk); padding-block: .875rem 2.25rem; }
@@ -337,6 +341,11 @@ html.is-screen body { overflow: hidden; }
         <label for="place">Staðsetning</label>
         <select id="place"></select>
       </div>
+      <div class="field">
+        <label for="q">Leita</label>
+        <input id="q" type="search" autocomplete="off" spellcheck="false" enterkeyhint="search" placeholder="orð eða hluti úr orði">
+        <p class="found" id="found" role="status"></p>
+      </div>
       <button class="play small" id="playHere" type="button"></button>
     </div>
     <div id="list"></div>
@@ -460,7 +469,7 @@ let rows = order(SNAP.data);
 let meta = SNAP.meta;
 let source = "snapshot";
 let rank = new Map();
-const state = { topic: "", loc: "" };
+const state = { topic: "", loc: "", q: "" };
 const failed = new Set();
 const byId = (id) => rows.find((r) => r.id === id);
 const facts = (id) => AUDIO[id] || null;
@@ -937,7 +946,7 @@ $("kwic").addEventListener("click", (e) => {
   const a = e.target.closest(".km");
   if (!a) return;
   const id = a.getAttribute("href").slice(3);
-  if (!$("e-" + id)) { state.topic = ""; state.loc = ""; renderTopics(); renderPlaces(); renderList(); paintPlays(); }
+  if (!$("e-" + id)) { state.topic = ""; state.loc = ""; state.q = ""; $("q").value = ""; renderTopics(); renderPlaces(); renderList(); paintPlays(); }
 });
 
 /* ---------- the sheet: the tables' words on AI, with five highlighters ---------- */
@@ -1050,9 +1059,11 @@ $("pens").addEventListener("click", (e) => {
 });
 
 /* ---------- every table ---------- */
+const fold = (s) => String(s).toLocaleLowerCase("is");
+const found = (r) => !state.q || [r.summary, r.location, r.topic].some((s) => fold(s).includes(state.q));
+const atPlace = (r) => (!state.loc || r.location === state.loc) && found(r);
 const matches = (r) =>
-  (!state.loc || r.location === state.loc) &&
-  (state.topic === "" || (state.topic === "*" ? !r.topicChosen : (r.topicChosen && r.topic === state.topic)));
+  atPlace(r) && (state.topic === "" || (state.topic === "*" ? !r.topicChosen : (r.topicChosen && r.topic === state.topic)));
 const visible = () => rows.filter(matches);
 
 function renderCounts() {
@@ -1067,7 +1078,7 @@ function renderCounts() {
 
 function renderTopics() {
   const tally = (list) => { const m = new Map(); let other = 0; for (const r of list) { if (r.topicChosen) m.set(r.topic, (m.get(r.topic) || 0) + 1); else other++; } return { m, other }; };
-  const all = tally(rows), here = tally(state.loc ? rows.filter((r) => r.location === state.loc) : rows);
+  const all = tally(rows), here = tally(rows.filter(atPlace));
   const keys = [...all.m].sort((a, b) => b[1] - a[1] || coll.compare(a[0], b[0])).map(([t]) => t);
   if (state.topic && state.topic !== "*" && !all.m.has(state.topic)) state.topic = "";
   if (state.topic === "*" && !all.other) state.topic = "";
@@ -1079,7 +1090,7 @@ function renderTopics() {
     b.append(document.createTextNode(label), el("span", "n", String(n)));
     return b;
   };
-  const total = state.loc ? rows.filter((r) => r.location === state.loc).length : rows.length;
+  const total = rows.filter(atPlace).length;
   const chips = [chip("", "Allt", total), ...keys.map((t) => chip(t, t, here.m.get(t) || 0))];
   if (all.other) chips.push(chip("*", "annað", here.other));
   $("topics").replaceChildren(...chips);
@@ -1097,6 +1108,7 @@ function renderPlaces() {
 
 function renderList() {
   const list = visible(), main = $("list");
+  $("found").textContent = !state.q ? "" : list.length ? count(list.length, "samantekt fannst", "samantektir fundust") + "." : "Engin samantekt fannst.";
   if (!list.length) { main.replaceChildren(el("p", "empty", "Engin samantekt passar við valið.")); return; }
   const out = [];
   let entries = null, last = null, n = 0;
@@ -1121,15 +1133,27 @@ function renderList() {
   paintList();
 }
 
+// Verbatim: set as text, never as markup. A search marks its matches; the words stay as they are.
+function wordsOf(text) {
+  const p = el("p", "words"), low = fold(text), q = state.q;
+  if (!q || low.length !== text.length) { p.textContent = text; return p; }
+  let at = 0;
+  for (let i = low.indexOf(q); i >= 0; i = low.indexOf(q, at)) {
+    if (i > at) p.append(text.slice(at, i));
+    p.append(el("mark", "q", text.slice(i, i + q.length)));
+    at = i + q.length;
+  }
+  if (at < text.length) p.append(text.slice(at));
+  return p;
+}
+
 function entry(r) {
   const a = el("article", "entry");
   a.id = "e-" + r.id;
   const m = el("p", "meta");
   m.append(el("span", "", "borð " + r.table), el("span", "", r.topic));
   if (r.source === "participant") m.append(el("span", "", "samantekt eins þátttakanda"));
-  const w = el("p", "words");
-  w.textContent = r.summary; // verbatim: set as text, never as markup
-  a.append(m, w);
+  a.append(m, wordsOf(r.summary));
   const acts = el("div", "acts");
   if (r.audio && silent(r)) a.append(el("p", "aside", "Upptakan er hljóðlaus."));
   else if (r.audio && failed.has(r.id)) a.append(el("p", "aside", "Ekki tókst að spila upptökuna."));
@@ -1166,6 +1190,11 @@ $("topics").addEventListener("click", (e) => {
   renderList(); paintPlays();
 });
 $("place").addEventListener("change", (e) => { state.loc = e.target.value; renderTopics(); renderList(); paintPlays(); });
+let qTimer = 0;
+$("q").addEventListener("input", () => {
+  clearTimeout(qTimer);
+  qTimer = setTimeout(() => { state.q = fold($("q").value.trim()); renderTopics(); renderList(); paintPlays(); }, 150);
+});
 
 /* ---------- posters: one summary, story-sized, to share ---------- */
 const slug = (s) => s.toLowerCase().replace(/þ/g, "th").replace(/ð/g, "d").replace(/æ/g, "ae").replace(/ö/g, "o")
