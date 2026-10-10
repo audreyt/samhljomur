@@ -1313,23 +1313,27 @@ addEventListener("hashchange", onHash);
 /* ---------- start: the snapshot first, then the live data ---------- */
 function render() {
   rank = new Map(rows.map((r, i) => [r.id, i]));
-  renderCounts(); layoutMountain(); renderKwic(); renderSheet();
-  renderTopics(); renderPlaces(); renderList(); paint();
+  renderCounts(); renderKwic(); renderSheet(); renderTopics(); renderPlaces(); renderList();
+  layoutMountain(); alignKwic(); paint(); // after the page has its full height, and so its final width
 }
+// Redraw only when the column width changes (a window resize, or a scrollbar
+// coming or going), one frame later so a redraw never re-triggers the observer.
 let lastW = 0, resizing = false;
-new ResizeObserver(() => { // redraw on the next frame, so a redraw never re-triggers the observer
+const onWidth = () => {
   if (resizing) return;
   resizing = true;
   requestAnimationFrame(() => {
     resizing = false;
-    if (!$("screen").hidden) fit();
     const w = M.cv.clientWidth;
     if (w && w !== lastW) { lastW = w; layoutMountain(); alignKwic(); }
   });
-}).observe(document.body);
+};
+new ResizeObserver(onWidth).observe(M.cv.parentElement);
+addEventListener("resize", () => { if (!$("screen").hidden) fit(); });
 if (document.fonts && document.fonts.ready) document.fonts.ready.then(alignKwic);
 
 render();
+lastW = M.cv.clientWidth;
 onHash();
 fetch(API, { cache: "no-store" })
   .then((res) => (res.ok ? res.json() : Promise.reject(new Error(String(res.status)))))
