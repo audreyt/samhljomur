@@ -122,6 +122,14 @@ const shotOf = async (page: Page, sel: string, name: string) => { await page.loc
     return { h: c.clientHeight, lit, label: c.getAttribute("aria-label") };
   });
   gate("mountain drawn, one line per audible recording", mtn.h > 150 && mtn.lit > 2000 && (mtn.label ?? "").startsWith(`${voiced.length} `), JSON.stringify(mtn));
+  const listen = page.locator("#list .listen");
+  const spoken: string[] = [];
+  for (let i = 0; i < await listen.count(); i++) {
+    const [snapshot, len] = [await listen.nth(i).ariaSnapshot(), await listen.nth(i).locator(".len").textContent()];
+    const name = /button "(.*)"/.exec(snapshot)?.[1] ?? "";
+    if (!/^Hlusta: .+, borð \d+, /.test(name) || !name.endsWith(`, ${len}`)) spoken.push(snapshot);
+  }
+  gate("listen buttons: the spoken name names the table and ends with the visible length", (await listen.count()) === voiced.length && spoken.length === 0, spoken.join(" | "));
   const silentMarks = await page.$$eval(".aside", (els) => els.filter((e) => e.textContent === "Upptakan er hljóðlaus.").length);
   gate("silent recordings marked, not playable", silentMarks === Object.values(facts).filter((f: any) => f.silent).length, String(silentMarks));
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth - innerWidth);
@@ -163,14 +171,21 @@ const shotOf = async (page: Page, sel: string, name: string) => { await page.loc
   await page.evaluate(() => (document.getElementById("deckStop") as HTMLButtonElement).click());
 
   await page.click("#list .entry .tool");
-  await page.waitForFunction(() => !document.getElementById("shade")!.hidden && (document.getElementById("posterImg") as HTMLImageElement).naturalWidth > 0);
+  await page.waitForFunction(() => (document.getElementById("shade") as HTMLDialogElement).open && (document.getElementById("posterImg") as HTMLImageElement).naturalWidth > 0);
   const img = await page.evaluate(() => { const i = document.getElementById("posterImg") as HTMLImageElement; return [i.naturalWidth, i.naturalHeight, i.src]; });
   gate("poster is a 1080 x 1920 image", img[0] === 1080 && img[1] === 1920, `${img[0]}x${img[1]}`);
   await shot(page, "phone-poster-preview.png");
+  const inside = await page.evaluate(() => document.activeElement?.id);
+  await page.keyboard.press("Escape");
+  const back = await page.evaluate(() => ({
+    open: (document.getElementById("shade") as HTMLDialogElement).open,
+    focus: document.activeElement === document.querySelector("#list .entry .tool"),
+  }));
+  gate("poster preview is a modal dialog: focus goes in, and back to its button on Esc", inside === "posterSave" && !back.open && back.focus, JSON.stringify({ inside, ...back }));
   for (const [n, sel] of [["poster-text.png", '[data-poster]'], ["poster-voice.png", '.entry:has(.listen) [data-poster]']] as const) {
-    await page.evaluate(() => { document.getElementById("shade")!.hidden = true; });
+    await page.evaluate(() => (document.getElementById("shade") as HTMLDialogElement).close());
     await page.click(`#list ${sel} >> nth=0`);
-    await page.waitForFunction(() => !document.getElementById("shade")!.hidden && (document.getElementById("posterImg") as HTMLImageElement).complete);
+    await page.waitForFunction(() => (document.getElementById("shade") as HTMLDialogElement).open && (document.getElementById("posterImg") as HTMLImageElement).complete);
     const b64 = await page.evaluate(async () => {
       const i = document.getElementById("posterImg") as HTMLImageElement;
       const blob = await fetch(i.src).then((r) => r.blob());
@@ -202,8 +217,13 @@ const shotOf = async (page: Page, sel: string, name: string) => { await page.loc
 // ---------- screen mode on a projector ----------
 {
   const { ctx, page, errors } = await open({ width: 1920, height: 1080, live: false, path: "#skjar" });
+  const modal = await page.evaluate(() => ({
+    focus: document.activeElement?.id,
+    inert: [...document.body.children].filter((e) => e.id !== "screen").every((e) => (e as HTMLElement).inert),
+  }));
   await page.click("#sGo");
   await page.waitForTimeout(900);
+  const started = await page.evaluate(() => document.activeElement?.id);
   await shot(page, "screen-first.png");
   const longest = ordered.reduce((a: any, b: any) => (b.summary.length > a.summary.length ? b : a));
   for (let i = 0; i < ordered.indexOf(longest); i++) await page.keyboard.press("ArrowRight");
@@ -217,6 +237,14 @@ const shotOf = async (page: Page, sel: string, name: string) => { await page.loc
   gate("screen mode shows no place or table beside the words", top === longest.topic, JSON.stringify(top));
   await page.keyboard.press("Escape");
   gate("Esc leaves screen mode", await page.evaluate(() => document.getElementById("screen")!.hidden));
+  await page.click("#toScreen");
+  await page.waitForTimeout(300);
+  const inScreen = await page.evaluate(() => document.activeElement?.id);
+  await page.keyboard.press("Escape");
+  const after = await page.evaluate(() => ({ focus: document.activeElement?.id, inert: [...document.body.children].some((e) => (e as HTMLElement).inert) }));
+  gate("screen mode holds focus with the page behind inert, and Esc gives focus back",
+    modal.focus === "sGo" && modal.inert && started === "screen" && inScreen === "sGo" && after.focus === "toScreen" && !after.inert,
+    JSON.stringify({ modal, started, inScreen, after }));
   gate("no errors in screen mode", errors.length === 0, errors.join(" | "));
   await ctx.close();
 }
