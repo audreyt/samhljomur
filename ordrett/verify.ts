@@ -212,6 +212,33 @@ const shotOf = async (page: Page, sel: string, name: string) => { await page.loc
   await ctx.close();
 }
 
+// ---------- the live answer: unchanged data is not redrawn; a redraw keeps focus ----------
+for (const changed of [false, true]) {
+  const ctx = await browser.newContext({ viewport: { width: 390, height: 844 } });
+  const page = await ctx.newPage();
+  let release = () => {};
+  const held = new Promise<void>((ok) => { release = ok; });
+  const data = changed ? snap.data.slice(1) : snap.data;
+  await page.route("**/api/v1/summaries", async (route) => {
+    await held;
+    await route.fulfill({ contentType: "application/json", body: JSON.stringify({ data, meta: { ...snap.meta, generatedAt: "2026-10-11T09:00:00.000Z", count: data.length } }) });
+  });
+  await page.goto(BASE);
+  const keep = voiced.find((r: any) => r.id !== snap.data[0].id).id;
+  await page.focus(`.listen[data-id="${keep}"]`);
+  await page.evaluate(() => { (document.querySelector("#list .entry") as any).fromSnapshot = true; });
+  release();
+  await page.waitForFunction(() => /11\. október/.test(document.getElementById("fetched")!.textContent ?? ""));
+  const after = await page.evaluate((id) => ({
+    redrawn: !(document.querySelector("#list .entry") as any).fromSnapshot,
+    entries: document.querySelectorAll("#list .entry").length,
+    focus: (document.activeElement as HTMLElement).dataset.id === id,
+  }), keep);
+  if (!changed) gate("live answer unchanged from the snapshot: nothing is redrawn", !after.redrawn && after.entries === snap.data.length && after.focus, JSON.stringify(after));
+  else gate("live answer changed: the list is redrawn, focus stays on the same button", after.redrawn && after.entries === data.length && after.focus, JSON.stringify(after));
+  await ctx.close();
+}
+
 // ---------- a slow connection: the player says it is fetching, then counts ----------
 {
   const { ctx, page } = await open({ width: 390, height: 844, live: false });

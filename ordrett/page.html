@@ -9,6 +9,7 @@
 <meta property="og:description" content="Allar samantektirnar frá borðunum í Samtalinu 10. október 2026, óbreyttar, og upptökurnar heilar og óklipptar.">
 <meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#0d0e0c">
+<link rel="preconnect" href="https://talasaman.is" crossorigin>
 <style>
 @font-face {
   font-family: "Atkinson Hyperlegible Next";
@@ -923,13 +924,14 @@ function renderKwic() {
   alignKwic();
 }
 // Lower the words after „viljum“ so the spine sits on the last line of the words before it.
+// All rows are measured first and moved after, so the page lays out once.
 function alignKwic() {
-  for (const row of document.querySelectorAll(".krow:not(.long)")) {
-    const kl = row.firstChild, kr = row.lastChild;
-    kr.style.paddingTop = "0px";
-    const lh = parseFloat(getComputedStyle(kr).lineHeight) || 0, h = kl.getBoundingClientRect().height;
-    if (h > lh * 1.2) kr.style.paddingTop = Math.max(0, h - lh) + "px";
-  }
+  const krows = [...document.querySelectorAll(".krow:not(.long)")];
+  const pads = krows.map((row) => {
+    const lh = parseFloat(getComputedStyle(row.lastChild).lineHeight) || 0, h = row.firstChild.getBoundingClientRect().height;
+    return h > lh * 1.2 ? Math.max(0, h - lh) : 0;
+  });
+  krows.forEach((row, i) => { row.lastChild.style.paddingTop = pads[i] + "px"; });
 }
 $("kwic").addEventListener("click", (e) => {
   const a = e.target.closest(".km");
@@ -1383,6 +1385,15 @@ new ResizeObserver(onWidth).observe(M.cv.parentElement);
 addEventListener("resize", () => { if (!$("screen").hidden) fit(); });
 if (document.fonts && document.fonts.ready) document.fonts.ready.then(alignKwic);
 
+// A redraw replaces the controls it draws; put focus back on the same one.
+function keepFocus(fn) {
+  const a = document.activeElement, d = a && a !== document.body ? a.dataset : null;
+  const sel = !d ? null : d.poster ? '[data-poster="' + d.poster + '"]' : d.id ? '.listen[data-id="' + d.id + '"]' :
+    d.topic != null ? '.chip[data-topic="' + CSS.escape(d.topic) + '"]' : d.k ? '.pen[data-k="' + d.k + '"]' : null;
+  fn();
+  if (sel && !a.isConnected) { const b = document.querySelector(sel); if (b) b.focus({ preventScroll: true }); }
+}
+
 render();
 lastW = M.cv.clientWidth;
 onHash();
@@ -1390,10 +1401,13 @@ fetch(API, { cache: "no-store" })
   .then((res) => (res.ok ? res.json() : Promise.reject(new Error(String(res.status)))))
   .then((j) => {
     if (!j || !Array.isArray(j.data)) throw new Error("unexpected answer");
-    rows = order(j.data); meta = j.meta || meta; source = "live";
+    meta = j.meta || meta; source = "live";
+    // Unchanged since the snapshot: only the date line is new.
+    if (JSON.stringify(j.data) === JSON.stringify(SNAP.data)) return renderCounts();
+    rows = order(j.data);
     if (A.id && !byId(A.id)) stopAll();
     if (A.mode === "seq") { A.queue = A.queue.filter((id) => byId(id)); A.qi = A.queue.indexOf(A.id); }
-    render();
+    keepFocus(render);
   })
   .catch(() => { source = "fallback"; renderCounts(); });
 })();
