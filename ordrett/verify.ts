@@ -433,6 +433,34 @@ for (const changed of [false, true]) {
   await ctx.close();
 }
 
+// ---------- screen mode: a summary written as a long list ----------
+{
+  const lines = (r: any) => r.summary.split("\n").length;
+  const listy = ordered.reduce((a: any, b: any) => (lines(b) > lines(a) ? b : a));
+  for (const [width, height] of [[1920, 1080], [390, 844]]) {
+    const { ctx, page } = await open({ width, height, live: false, path: "#skjar" });
+    await page.click("#sGo");
+    for (let i = 0; i < ordered.indexOf(listy); i++) await page.keyboard.press("ArrowRight");
+    await page.waitForTimeout(900);
+    const m = await page.evaluate(() => {
+      const say = document.getElementById("sSay")!, box = document.getElementById("sBody")!;
+      return {
+        text: say.textContent, px: parseFloat(say.style.fontSize), cols: getComputedStyle(say).columnCount,
+        over: say.scrollHeight - box.clientHeight, room: box.clientHeight, scroll: getComputedStyle(box).overflowY,
+        gap: Math.round(say.getBoundingClientRect().top - box.getBoundingClientRect().top),
+      };
+    });
+    const shown = { px: Math.round(m.px * 10) / 10, cols: m.cols, over: m.over, gap: m.gap };
+    // one column holds at least one line per line break, so it can never be set larger than this
+    const oneColumn = m.room / (lines(listy) * 1.3);
+    if (width > 1000) gate("screen mode on a wide screen sets a summary written as a long list in columns, larger than one column could, whole",
+      m.text === listy.summary && m.cols !== "auto" && m.px > oneColumn * 1.2 && m.over <= 0, JSON.stringify({ ...shown, oneColumn: Math.round(oneColumn * 10) / 10 }));
+    else gate("screen mode on a phone: a summary too long for the screen starts at the top and scrolls, inside the frame",
+      m.text === listy.summary && m.cols === "auto" && m.over > 0 && m.gap === 0 && m.scroll === "auto", JSON.stringify({ ...shown, scroll: m.scroll }));
+    await ctx.close();
+  }
+}
+
 // ---------- screen mode on a touch screen ----------
 {
   const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true, deviceScaleFactor: 2 });
