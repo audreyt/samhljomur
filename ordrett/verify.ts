@@ -263,6 +263,21 @@ const shotOf = async (page: Page, sel: string, name: string) => { await page.loc
   await ctx.close();
 }
 
+// ---------- the narrowest phones, and readers who set large text ----------
+for (const [path, name] of [["", "front page"], ["saga.html", "record page"]] as const) {
+  const ctx = await browser.newContext({ viewport: { width: 320, height: 720 } });
+  const page = await ctx.newPage();
+  await page.route("**/api/v1/summaries", (route) => route.abort());
+  await page.goto(BASE + path);
+  await page.waitForTimeout(500);
+  const narrow = await page.evaluate(() => document.documentElement.scrollWidth - innerWidth);
+  await page.addStyleTag({ content: "html { font-size: 200% !important; }" });
+  await page.waitForTimeout(300);
+  const large = await page.evaluate(() => document.documentElement.scrollWidth - innerWidth);
+  gate(`${name}: no horizontal scroll at 320px, nor with text at 200%`, narrow <= 0 && large <= 0, `${narrow}px, ${large}px`);
+  await ctx.close();
+}
+
 await browser.close();
 server.stop();
 const report = results.join("\n") + `\n\n${failures ? failures + " FAILED" : "all gates pass"}  (snapshot ${snap.meta.generatedAt})\n`;
