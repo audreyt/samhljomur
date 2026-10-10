@@ -146,6 +146,11 @@ const shotOf = async (page: Page, sel: string, name: string) => { await page.loc
   await page.waitForTimeout(2600);
   const one = await page.evaluate(() => ({ deck: !document.getElementById("deck")!.hidden, time: document.getElementById("deckTime")!.textContent, now: document.querySelector("#now .say")?.textContent?.slice(0, 40) }));
   gate("tapping a line plays that voice", one.deck && /^0:0[1-9]/.test(one.time ?? "") && !!one.now, JSON.stringify(one));
+  const off = await page.evaluate(() => ["deckToggle", "deckStop"].map((id) => {
+    const b = document.getElementById(id)!.getBoundingClientRect(), s = document.querySelector("#" + id + " svg")!.getBoundingClientRect();
+    return Math.round(Math.max(Math.abs(s.x + s.width / 2 - b.x - b.width / 2), Math.abs(s.y + s.height / 2 - b.y - b.height / 2)));
+  }));
+  gate("player icons sit centred in their buttons", off.every((d) => d <= 1), JSON.stringify(off));
   await shot(page, "phone-playing-one.png");
   await page.evaluate(() => (document.getElementById("deckStop") as HTMLButtonElement).click());
 

@@ -131,13 +131,13 @@ h1 {
 .sheet h2 { margin: 0; font-family: var(--font-frame); font-weight: 850; font-size: clamp(2.25rem, 7vw, 3.75rem); line-height: 1; letter-spacing: -.03em; }
 .sheet .stat { margin: .9rem 0 0; font-family: var(--font-frame); font-weight: 700; font-size: clamp(1.25rem, 3.4vw, 1.75rem); line-height: 1.25; text-wrap: balance; }
 .sheet .rule { color: var(--ink-dim); margin-top: .75rem; }
-.line { margin: 2.25rem 0 0; padding: 1.5rem 0 .25rem; border-top: 2px solid var(--ink); display: grid; gap: 1.6rem; }
-.line .lab { margin: 0; font-family: var(--font-frame); font-weight: 650; font-size: .8125rem; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-dim); }
-.line .s { margin: 0; font-size: clamp(1.3rem, 3.3vw, 1.85rem); line-height: 1.38; overflow-wrap: break-word; }
-.line .m { display: block; margin-top: .4rem; font-family: var(--font-frame); font-weight: 600; font-size: .8125rem; line-height: 1.4; color: var(--ink-dim); }
-.line .rule { margin-top: 0; }
-.line mark.f2 { background: linear-gradient(transparent 12%, var(--hl-2) 12%, var(--hl-2) 92%, transparent 92%); }
-.line mark.f4 { background: linear-gradient(transparent 12%, var(--hl-4) 12%, var(--hl-4) 92%, transparent 92%); }
+.ai-line { margin: 2.25rem 0 0; padding: 1.5rem 0 .25rem; border-top: 2px solid var(--ink); display: grid; gap: 1.6rem; }
+.ai-line .lab { margin: 0; font-family: var(--font-frame); font-weight: 650; font-size: .8125rem; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-dim); }
+.ai-line .s { margin: 0; font-size: clamp(1.3rem, 3.3vw, 1.85rem); line-height: 1.38; overflow-wrap: break-word; }
+.ai-line .m { display: block; margin-top: .4rem; font-family: var(--font-frame); font-weight: 600; font-size: .8125rem; line-height: 1.4; color: var(--ink-dim); }
+.ai-line .rule { margin-top: 0; }
+.ai-line mark.f2 { background: linear-gradient(transparent 12%, var(--hl-2) 12%, var(--hl-2) 92%, transparent 92%); }
+.ai-line mark.f4 { background: linear-gradient(transparent 12%, var(--hl-4) 12%, var(--hl-4) 92%, transparent 92%); }
 .sheet .all { margin: 2.75rem 0 0; padding-top: 1.5rem; border-top: 2px solid var(--ink); font-family: var(--font-frame); font-weight: 800; font-size: clamp(1.4rem, 3.6vw, 1.9rem); line-height: 1.1; }
 .pens { display: grid; grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr)); gap: .5rem; margin: 1.5rem 0 2rem; }
 .pen {
@@ -290,7 +290,7 @@ html.is-screen body { overflow: hidden; }
   <article class="sheet">
     <h2>Gervigreind</h2>
     <p class="stat" id="aiStat"></p>
-    <div class="line" id="aiLine"></div>
+    <div class="ai-line" id="aiLine"></div>
     <h3 class="all">Allar samantektirnar</h3>
     <p class="rule" id="aiRule"></p>
     <div class="pens" id="pens"></div>
