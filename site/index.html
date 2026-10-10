@@ -7,8 +7,20 @@
 <meta name="description" content="Allar samantektirnar frá borðunum í Samtalinu 10. október 2026, óbreyttar, og upptökurnar heilar og óklipptar.">
 <meta property="og:title" content="Orðrétt">
 <meta property="og:description" content="Allar samantektirnar frá borðunum í Samtalinu 10. október 2026, óbreyttar, og upptökurnar heilar og óklipptar.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://audreyt.github.io/samhljomur/">
+<meta property="og:locale" content="is_IS">
+<meta property="og:image" content="https://audreyt.github.io/samhljomur/ordrett-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Orðrétt: ein lína fyrir hverja upptöku frá borðunum, styst efst og lengst neðst.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://audreyt.github.io/samhljomur/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2032%2032'%3E%3Crect%20width%3D'32'%20height%3D'32'%20rx%3D'7'%20fill%3D'%230d0e0c'%2F%3E%3Cpath%20d%3D'M15.97%2026.5Q13.8%2026.5%2012.16%2025.62Q10.51%2024.74%209.58%2023.17Q8.64%2021.61%208.64%2019.57Q8.64%2017.52%209.55%2015.96Q10.46%2014.4%2011.97%2013.52Q13.49%2012.64%2015.3%2012.64Q16.49%2012.64%2017.22%2012.99Q17.95%2013.35%2018.38%2013.9Q18.82%2014.44%2019.12%2014.99L18.92%2015.48Q18.34%2013.7%2017.29%2012.38Q16.24%2011.06%2015%2010.14Q13.76%209.22%2012.6%208.64Q11.43%208.05%2010.62%207.75L11.55%205.5Q13.1%206.05%2014.75%206.82Q16.39%207.59%2017.93%208.64Q19.47%209.7%2020.69%2011.1Q21.91%2012.5%2022.64%2014.31Q23.36%2016.12%2023.36%2018.4Q23.36%2020.92%2022.44%2022.73Q21.53%2024.54%2019.87%2025.52Q18.21%2026.5%2015.97%2026.5ZM16.01%2023Q17.04%2023%2017.64%2022.08Q18.24%2021.15%2018.24%2019.57Q18.24%2017.98%2017.64%2017.06Q17.04%2016.13%2016.01%2016.13Q14.97%2016.13%2014.37%2017.06Q13.76%2017.98%2013.76%2019.57Q13.76%2021.16%2014.37%2022.08Q14.97%2023%2016.01%2023ZM11.87%2012.87%2010.66%2010.73%2019.72%205.58%2020.94%207.72Z'%20fill%3D'%23ecebe3'%2F%3E%3C%2Fsvg%3E">
+<link rel="apple-touch-icon" href="ordrett-icon.png">
 <meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#0d0e0c">
+<link rel="preconnect" href="https://talasaman.is" crossorigin>
 <style>
 @font-face {
   font-family: "Atkinson Hyperlegible Next";
@@ -69,11 +81,17 @@ svg { display: block; }
 section { padding-block: 3.5rem; border-top: 1px solid var(--hair); }
 
 /* ---------- the voices ---------- */
-.hero { padding-block: clamp(2.25rem, 7vw, 4.5rem) 3rem; display: grid; gap: 1.25rem; }
+.hero { padding-block: clamp(2.25rem, 7vw, 4.5rem) 3rem; display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.25rem; container-type: inline-size; }
 h1 {
   margin: 0; font-family: var(--font-frame); font-weight: 850;
   font-size: clamp(4.25rem, 20vw, 10.5rem); line-height: .8; letter-spacing: -.05em; margin-left: -.04em;
 }
+.hero .top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: .5rem 2rem; }
+.toc { display: flex; flex-wrap: wrap; column-gap: 1.1rem; font-family: var(--font-frame); font-weight: 600; font-size: .875rem; }
+.toc a { padding-block: .3rem; color: var(--dim); text-decoration: none; }
+.toc a:hover { color: var(--chalk); text-decoration: underline; }
+/* With large text settings the title still fits its column; one word cannot wrap. */
+h1 { font-size: min(clamp(4.25rem, 20vw, 10.5rem), 28cqi); }
 .dek { margin: 0; font-size: 1.25rem; line-height: 1.45; max-width: 34rem; text-wrap: pretty; }
 .mtn-box { position: relative; margin-block: .75rem .25rem; }
 #mtn { display: block; width: 100%; height: 240px; cursor: pointer; touch-action: manipulation; }
@@ -84,21 +102,22 @@ h1 {
 }
 .plays { display: flex; flex-wrap: wrap; gap: .75rem; }
 .play {
-  display: inline-flex; align-items: center; gap: .7rem; min-height: 3.25rem; padding: .45rem 1.25rem .45rem .45rem;
+  display: inline-flex; align-items: center; gap: .7rem; max-width: 100%; text-align: left; min-height: 3.25rem; padding: .45rem 1.25rem .45rem .45rem;
   border: 1px solid var(--chalk); border-radius: 999px; background: transparent; cursor: pointer;
   font-family: var(--font-frame); font-weight: 700; font-size: 1.0625rem;
 }
 .play .ico { width: 2.25rem; height: 2.25rem; border-radius: 50%; display: grid; place-items: center; background: var(--chalk); color: var(--night); flex: none; }
 .play .ico svg { width: 1rem; height: 1rem; }
+.play .txt { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: .7rem; min-width: 0; overflow-wrap: anywhere; }
 .play .len { font-weight: 500; color: var(--dim); }
 .play.on { background: var(--chalk); color: var(--night); }
 .play.on .ico { background: var(--night); color: var(--chalk); }
 .play.on .len { color: inherit; opacity: .7; }
 .play:disabled { opacity: .45; cursor: default; }
-.now { min-height: 7.5rem; display: grid; align-content: start; gap: .5rem; }
-.now .where { margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: .2rem .6rem; font-family: var(--font-frame); font-weight: 650; font-size: .9375rem; }
+.now { min-height: 7.5rem; display: grid; grid-template-columns: minmax(0, 1fr); align-content: start; gap: .5rem; }
+.now .where { margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: .2rem .6rem; font-family: var(--font-frame); font-weight: 650; font-size: .9375rem; overflow-wrap: anywhere; }
 .now .where .t { color: var(--dim); font-weight: 500; }
-.now .say { margin: 0; font-size: clamp(1.25rem, 2.6vw, 1.75rem); line-height: 1.35; white-space: pre-wrap; overflow-wrap: break-word; max-width: 46rem; }
+.now .say { margin: 0; font-size: clamp(1.25rem, 2.6vw, 1.75rem); line-height: 1.35; white-space: pre-wrap; overflow-wrap: anywhere; max-width: 46rem; }
 .now .big { margin: 0; font-family: var(--font-frame); font-weight: 850; font-size: clamp(2.5rem, 9vw, 4.5rem); line-height: 1; letter-spacing: -.03em; }
 .now .hint { margin: 0; color: var(--dim); }
 .swatch { width: .8rem; height: .8rem; border-radius: 50%; flex: none; }
@@ -109,15 +128,15 @@ h1 {
   font-size: clamp(2rem, 6.4vw, 4.25rem); line-height: 1.02; letter-spacing: -.025em; max-width: 52rem; text-wrap: balance;
 }
 .question b { font-weight: 850; text-decoration: underline; text-decoration-thickness: .07em; text-underline-offset: .12em; }
-.kwic { display: grid; gap: 1.5rem; margin-top: 2.75rem; }
+.kwic { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.5rem; margin-top: 2.75rem; }
 .krow {
   display: grid; grid-template-columns: minmax(0, 30%) minmax(0, 1fr); column-gap: .32em; align-items: start;
   font-size: clamp(1.2rem, 3vw, 1.9rem); line-height: 1.24;
 }
-.krow .kl { text-align: right; color: var(--dim); overflow-wrap: break-word; }
+.krow .kl { text-align: right; color: var(--dim); overflow-wrap: anywhere; }
 .krow.long .kl { grid-column: 1 / -1; text-align: left; }
 .krow.long .kr { grid-column: 2; }
-.krow .kr { overflow-wrap: break-word; white-space: pre-wrap; }
+.krow .kr { overflow-wrap: anywhere; white-space: pre-wrap; }
 .krow .key { font-family: var(--font-frame); font-weight: 800; }
 .krow .km { display: block; margin-top: .45rem; white-space: normal; font-family: var(--font-frame); font-size: .8125rem; line-height: 1.4; color: var(--dim); text-decoration: none; }
 .krow .km:hover { color: var(--chalk); text-decoration: underline; }
@@ -127,19 +146,22 @@ h1 {
 .sheet {
   background: var(--paper); color: var(--ink); margin-inline: auto; max-width: 52rem;
   padding: clamp(1.5rem, 5vw, 3.5rem) clamp(1.1rem, 5vw, 3.5rem); box-shadow: 0 1.5rem 4rem rgba(0,0,0,.45);
+  container-type: inline-size;
 }
 .sheet h2 { margin: 0; font-family: var(--font-frame); font-weight: 850; font-size: clamp(2.25rem, 7vw, 3.75rem); line-height: 1; letter-spacing: -.03em; }
+.sheet h2 { font-size: min(clamp(2.25rem, 7vw, 3.75rem), 17cqi); }
 .sheet .stat { margin: .9rem 0 0; font-family: var(--font-frame); font-weight: 700; font-size: clamp(1.25rem, 3.4vw, 1.75rem); line-height: 1.25; text-wrap: balance; }
 .sheet .rule { color: var(--ink-dim); margin-top: .75rem; }
-.ai-line { margin: 2.25rem 0 0; padding: 1.5rem 0 .25rem; border-top: 2px solid var(--ink); display: grid; gap: 1.6rem; }
+.ai-line { margin: 2.25rem 0 0; padding: 1.5rem 0 .25rem; border-top: 2px solid var(--ink); display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.6rem; }
 .ai-line .lab { margin: 0; font-family: var(--font-frame); font-weight: 650; font-size: .8125rem; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-dim); }
-.ai-line .s { margin: 0; font-size: clamp(1.3rem, 3.3vw, 1.85rem); line-height: 1.38; overflow-wrap: break-word; }
+.ai-line .s { margin: 0; font-size: clamp(1.3rem, 3.3vw, 1.85rem); line-height: 1.38; overflow-wrap: anywhere; }
 .ai-line .m { display: block; margin-top: .4rem; font-family: var(--font-frame); font-weight: 600; font-size: .8125rem; line-height: 1.4; color: var(--ink-dim); }
 .ai-line .rule { margin-top: 0; }
 .ai-line mark.f2 { background: linear-gradient(transparent 12%, var(--hl-2) 12%, var(--hl-2) 92%, transparent 92%); }
 .ai-line mark.f4 { background: linear-gradient(transparent 12%, var(--hl-4) 12%, var(--hl-4) 92%, transparent 92%); }
 .sheet .all { margin: 2.75rem 0 0; padding-top: 1.5rem; border-top: 2px solid var(--ink); font-family: var(--font-frame); font-weight: 800; font-size: clamp(1.4rem, 3.6vw, 1.9rem); line-height: 1.1; }
-.pens { display: grid; grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr)); gap: .5rem; margin: 1.5rem 0 2rem; }
+.sheet .all { font-size: min(clamp(1.4rem, 3.6vw, 1.9rem), 12cqi); }
+.pens { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(10rem, 100%), 1fr)); gap: .5rem; margin: 1.5rem 0 2rem; }
 .pen {
   display: grid; align-content: start; gap: .25rem; text-align: left; padding: .55rem .7rem .6rem; min-height: 2.75rem; cursor: pointer;
   border: 1.5px solid var(--ink); border-radius: .35rem; background: transparent; color: var(--ink);
@@ -148,11 +170,13 @@ h1 {
 .pen .nm .n { font-weight: 500; }
 .pen .st { font-family: var(--font-frame); font-size: .75rem; line-height: 1.35; color: var(--ink-dim); }
 .pen[aria-pressed="true"] { background: var(--pen); border-color: var(--pen); }
+.pen[aria-pressed="true"] .st { color: #43473f; }
+.sheet :focus-visible { outline-color: var(--ink); }
 .pen[aria-pressed="false"] .nm span:first-child { text-decoration: line-through; text-decoration-thickness: 1.5px; }
-.notes { display: grid; gap: 1.35rem; }
-.note-row { display: grid; gap: .3rem; }
+.notes { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.35rem; }
+.note-row { display: grid; grid-template-columns: minmax(0, 1fr); gap: .3rem; }
 .note-row .m { margin: 0; font-family: var(--font-frame); font-weight: 600; font-size: .8125rem; color: var(--ink-dim); }
-.note-row .t { margin: 0; font-size: 1.0625rem; line-height: 1.6; white-space: pre-wrap; overflow-wrap: break-word; }
+.note-row .t { margin: 0; font-size: 1.0625rem; line-height: 1.6; white-space: pre-wrap; overflow-wrap: anywhere; }
 mark { background: none; color: inherit; padding: 0 .06em; margin: 0 -.06em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
 .notes.f1 mark.f1 { background: linear-gradient(transparent 12%, var(--hl-1) 12%, var(--hl-1) 92%, transparent 92%); }
 .notes.f2 mark.f2 { background: linear-gradient(transparent 12%, var(--hl-2) 12%, var(--hl-2) 92%, transparent 92%); }
@@ -162,10 +186,10 @@ mark { background: none; color: inherit; padding: 0 .06em; margin: 0 -.06em; -we
 
 /* ---------- every table ---------- */
 .archive h2, .about h2 { margin: 0; font-family: var(--font-frame); font-weight: 850; font-size: clamp(2rem, 6vw, 3.25rem); line-height: 1; letter-spacing: -.03em; }
-.controls { display: grid; gap: 1rem; padding-block: 1.5rem 2.25rem; }
+.controls { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; padding-block: 1.5rem 2.25rem; }
 .topics { display: flex; flex-wrap: wrap; gap: .5rem; }
 .chip {
-  display: inline-flex; align-items: baseline; gap: .4rem; min-height: 2.5rem; padding: .45rem .85rem;
+  display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: .4rem; max-width: 100%; text-align: left; overflow-wrap: anywhere; min-height: 2.5rem; padding: .45rem .85rem;
   border: 1px solid var(--hair); border-radius: 999px; background: transparent; cursor: pointer;
   font-family: var(--font-frame); font-weight: 500; font-size: .9375rem;
 }
@@ -175,21 +199,26 @@ mark { background: none; color: inherit; padding: 0 .06em; margin: 0 -.06em; -we
 .chip:disabled { opacity: .35; cursor: default; }
 .field { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem .75rem; }
 .field label { font-family: var(--font-frame); font-weight: 600; font-size: .9375rem; }
-select {
-  font-family: var(--font-frame); font-size: 1rem; max-width: 100%; min-height: 2.5rem; padding: .45rem .6rem;
+select, input[type="search"] {
+  font-family: var(--font-frame); font-size: 1rem; min-width: 0; max-width: 100%; min-height: 2.5rem; padding: .45rem .6rem;
   border: 1px solid var(--hair); border-radius: .375rem; background: var(--lift); color: var(--chalk);
 }
+input[type="search"] { flex: 0 1 20rem; }
+input[type="search"]::placeholder { color: var(--dim); opacity: 1; }
+.found { flex-basis: 100%; margin: 0; font-family: var(--font-frame); font-size: .875rem; color: var(--dim); }
+.words mark.q { background: var(--chalk); color: var(--night); border-radius: .125rem; }
 .play.small { min-height: 2.75rem; font-size: .9375rem; padding: .35rem 1rem .35rem .35rem; justify-self: start; }
 .play.small .ico { width: 2rem; height: 2rem; }
 .place { border-top: 2px solid var(--chalk); padding-block: .875rem 2.25rem; }
 .pc { font-family: var(--font-frame); font-weight: 850; font-size: 2.25rem; line-height: 1; letter-spacing: -.02em; }
-.place h3 { margin: .4rem 0 1.25rem; font-family: var(--font-frame); font-weight: 700; font-size: 1.375rem; line-height: 1.2; text-wrap: balance; }
-.entry { display: grid; gap: .55rem; padding-block: 1.125rem; border-top: 1px solid var(--hair); max-width: var(--read); }
+.place h3 { margin: .4rem 0 1.25rem; font-family: var(--font-frame); font-weight: 700; font-size: 1.375rem; line-height: 1.2; text-wrap: balance; overflow-wrap: anywhere; }
+.entry { display: grid; grid-template-columns: minmax(0, 1fr); gap: .55rem; padding-block: 1.125rem; border-top: 1px solid var(--hair); max-width: var(--read); }
 .entries > .entry:first-child { border-top: 0; padding-top: 0; }
-.meta { margin: 0; display: flex; flex-wrap: wrap; gap: .15rem .5rem; font-family: var(--font-frame); font-weight: 600; font-size: .8125rem; letter-spacing: .02em; color: var(--dim); }
+.meta { margin: 0; display: flex; flex-wrap: wrap; gap: .15rem .5rem; font-family: var(--font-frame); font-weight: 600; font-size: .8125rem; letter-spacing: .02em; color: var(--dim); overflow-wrap: anywhere; }
 .meta span + span::before { content: "·"; margin-right: .5rem; }
-.words { margin: 0; font-size: 1.1875rem; line-height: 1.5; white-space: pre-wrap; overflow-wrap: break-word; }
-.entry.on { background: var(--lift); box-shadow: 0 0 0 .75rem var(--lift); border-radius: .125rem; }
+.words { margin: 0; font-size: 1.1875rem; line-height: 1.5; white-space: pre-wrap; overflow-wrap: anywhere; }
+.entry { scroll-margin-block: 2rem 8rem; }
+.entry.on, .entry:target { background: var(--lift); box-shadow: 0 0 0 .75rem var(--lift); border-radius: .125rem; }
 .acts { display: flex; flex-wrap: wrap; gap: .5rem; }
 .listen, .tool {
   display: inline-flex; align-items: center; gap: .55rem; min-height: 2.75rem; padding: .25rem .9rem .25rem .25rem;
@@ -199,11 +228,13 @@ select {
 .tool { padding: .25rem 1rem; }
 .disc { width: 2.25rem; height: 2.25rem; border-radius: 50%; display: grid; place-items: center; color: var(--night); background: var(--chalk); }
 .disc svg { width: 1rem; height: 1rem; }
+/* running clocks keep their width while the digits change */
+.play.on .len, .entry.on .len, .deck .time, #sPos { font-variant-numeric: tabular-nums; }
 .aside { margin: 0; font-family: var(--font-frame); font-size: .875rem; color: var(--dim); }
 .empty { padding-block: 2rem; color: var(--dim); }
 
 /* ---------- about ---------- */
-.about { display: grid; gap: .9rem; }
+.about { display: grid; grid-template-columns: minmax(0, 1fr); gap: .9rem; }
 .about p { margin: 0; max-width: 38rem; }
 .about .fine { font-family: var(--font-frame); font-size: .9375rem; color: var(--dim); }
 .to-screen { justify-self: start; margin-top: .5rem; min-height: 2.75rem; padding: .5rem 1rem; border: 1px solid var(--chalk); border-radius: 999px; background: transparent; font-family: var(--font-frame); font-weight: 600; cursor: pointer; }
@@ -229,7 +260,12 @@ select {
 .deck .time { font-size: .875rem; color: var(--dim); }
 
 /* ---------- poster preview ---------- */
-.shade { position: fixed; inset: 0; z-index: 40; background: rgba(5,6,5,.88); display: grid; place-items: center; padding: 1rem; }
+.shade {
+  position: fixed; inset: 0; z-index: 40; width: 100%; height: 100%; max-width: none; max-height: none; margin: 0; border: 0;
+  background: rgba(5,6,5,.88); color: var(--chalk); place-items: center; padding: 1rem;
+}
+.shade[open] { display: grid; }
+.shade::backdrop { background: transparent; }
 .shade .box { display: grid; gap: .9rem; justify-items: center; max-height: 100%; }
 .shade img { display: block; max-width: min(100%, 26rem); max-height: calc(100vh - 8rem); height: auto; border-radius: .25rem; box-shadow: 0 1rem 3rem rgba(0,0,0,.5); }
 .shade .row { display: flex; flex-wrap: wrap; justify-content: center; gap: .6rem; }
@@ -237,17 +273,26 @@ select {
 .shade button.primary { background: var(--chalk); color: var(--night); }
 
 /* ---------- screen mode, for a hall ---------- */
-.screen { position: fixed; inset: 0; z-index: 30; display: grid; grid-template-rows: auto minmax(0, 1fr) auto; gap: 3vh; padding: 5vh 6vw 4vh; background: var(--night); color: var(--chalk); }
+.screen { position: fixed; inset: 0; z-index: 30; display: grid; grid-template-rows: auto minmax(0, 1fr) auto; grid-template-columns: minmax(0, 1fr); gap: 3vh; padding: 5vh 6vw 4vh; background: var(--night); color: var(--chalk); }
 .screen .top { display: flex; align-items: baseline; gap: 1.6vw; flex-wrap: wrap; font-family: var(--font-frame); font-weight: 700; font-size: clamp(1rem, 2.1vw, 2.6rem); }
 .screen .top .spc { font-weight: 850; letter-spacing: -.02em; }
 .screen .top .sub { color: var(--dim); font-weight: 600; }
 .screen .live { width: .8em; height: .8em; border-radius: 50%; align-self: center; }
 .screen .body { min-height: 0; display: flex; align-items: center; }
-.screen .say { margin: 0; font-family: var(--font-words); line-height: 1.3; white-space: pre-wrap; overflow-wrap: break-word; transition: opacity .45s ease; }
-.screen .foot { display: flex; justify-content: space-between; gap: 2vw; font-family: var(--font-frame); font-size: clamp(.8rem, 1.05vw, 1.25rem); color: var(--dim); }
+.screen .say { margin: 0; font-family: var(--font-words); line-height: 1.3; white-space: pre-wrap; overflow-wrap: anywhere; transition: opacity .45s ease; }
+.screen .foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1vh 2vw; font-family: var(--font-frame); font-size: clamp(.8rem, 1.05vw, 1.25rem); color: var(--dim); }
+.screen .foot .by { flex: 1 1 18rem; }
+.screen .nav { display: flex; align-items: center; gap: .9rem; margin-left: auto; }
+/* The controls and the pointer sleep while the words are read; a touch, the pointer or the keyboard wakes them. */
+.screen .ctl { display: flex; gap: .5rem; opacity: 0; pointer-events: none; transition: opacity .3s ease; }
+.screen.awake .ctl, .screen .ctl:has(:focus-visible) { opacity: 1; pointer-events: auto; }
+.screen:not(.awake), .screen:not(.awake) .close { cursor: none; }
+.screen .ctl button { width: 2.75rem; height: 2.75rem; border-radius: 50%; display: grid; place-items: center; cursor: pointer; border: 1px solid var(--dim); background: transparent; color: var(--chalk); }
+.screen .ctl svg { width: 1.1rem; height: 1.1rem; }
+.screen:focus { outline: none; }
 .screen .close { position: absolute; top: 1.5vh; right: 1.5vw; padding: .4rem .8rem; border-radius: 999px; cursor: pointer; border: 1px solid var(--dim); background: transparent; color: var(--dim); font-family: var(--font-frame); font-size: .875rem; }
 .screen .start { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 2.5rem; background: var(--night); text-align: center; padding: 6vw; }
-.screen .start .t { font-family: var(--font-frame); font-weight: 850; font-size: clamp(4rem, 13vw, 14rem); line-height: .85; letter-spacing: -.05em; }
+.screen .start .t { font-family: var(--font-frame); font-weight: 850; font-size: min(clamp(4rem, 13vw, 14rem), 25vw); line-height: .85; letter-spacing: -.05em; }
 .screen .start button { min-height: 3.5rem; padding: .75rem 2.25rem; border: 0; border-radius: 999px; cursor: pointer; background: var(--chalk); color: var(--night); font-family: var(--font-frame); font-weight: 750; font-size: 1.375rem; }
 .screen .start p { margin: 0; color: var(--dim); font-family: var(--font-frame); font-size: 1rem; max-width: 34rem; }
 html.is-screen body { overflow: hidden; }
@@ -256,14 +301,50 @@ html.is-screen body { overflow: hidden; }
   .screen .live { animation: pulse 1.6s ease-in-out infinite; }
   @keyframes pulse { 50% { opacity: .35; } }
 }
-@media (prefers-reduced-motion: reduce) { .screen .say { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .screen .say, .screen .ctl { transition: none; } }
+
+/* ---------- on paper: the words, the spine and the highlighted sheet; no players ---------- */
+@media print {
+  :root { --night: #fff; --lift: #fff; --chalk: #000; --dim: #4a4a4a; --hair: #c8c8c8; --paper: #fff; --ink: #000; --ink-dim: #4a4a4a; }
+  @page { margin: 16mm 15mm; }
+  html, body { background: #fff; color: #000; }
+  body { padding: 0; font-size: 10.5pt; }
+  .toc, .mtn-box, .plays, .now, #mtnRule, .controls, .acts, .aside, .to-screen, .to-screen + .fine, .deck, .shade, .screen, .tip { display: none !important; }
+  .hero { padding-block: 0 1.5rem; gap: .75rem; }
+  h1 { font-size: 54pt; }
+  .dek { font-size: 13pt; }
+  section, .sheet-wrap { padding-block: 1.5rem; border-top: 0; }
+  #gervigreind, #bord { break-before: page; }
+  .question { font-size: 22pt; }
+  .krow { font-size: 13pt; break-inside: avoid; }
+  .krow .key, .pc { color: #000 !important; }
+  .sheet { box-shadow: none; padding: 0; max-width: none; }
+  .sheet h2 { font-size: 30pt; }
+  .ai-line .s { font-size: 13pt; break-inside: avoid; }
+  .ai-line mark, .notes mark, .pen { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .note-row, .entry, .about { break-inside: avoid; }
+  .place { padding-block: .5rem 1rem; }
+  .place .pc { position: static; font-size: 22pt; }
+  .place h3 { break-after: avoid; }
+  .words { font-size: 11pt; }
+  .entry.on, .entry:target { background: none; box-shadow: none; }
+  a { text-decoration: none; }
+}
 </style>
 </head>
 <body>
 <div class="wrap">
 
   <header class="hero" id="raddir">
-    <p class="label">Samtalið · 10. október 2026</p>
+    <div class="top">
+      <p class="label">Samtalið · 10. október 2026</p>
+      <nav class="toc" aria-label="Á síðunni">
+        <a href="#viljum">Við viljum</a>
+        <a href="#gervigreind">Gervigreind</a>
+        <a href="#bord">Öll borðin</a>
+        <a href="#um">Um síðuna</a>
+      </nav>
+    </div>
     <h1>Orðrétt</h1>
     <p class="dek">Allar samantektirnar frá borðunum, eins og þær voru skráðar á talasaman.is. Upptökurnar eru heilar og óklipptar.</p>
     <div class="mtn-box">
@@ -307,6 +388,11 @@ html.is-screen body { overflow: hidden; }
         <label for="place">Staðsetning</label>
         <select id="place"></select>
       </div>
+      <div class="field">
+        <label for="q">Leita</label>
+        <input id="q" type="search" autocomplete="off" spellcheck="false" enterkeyhint="search" placeholder="orð eða hluti úr orði">
+        <p class="found" id="found" role="status"></p>
+      </div>
       <button class="play small" id="playHere" type="button"></button>
     </div>
     <div id="list"></div>
@@ -337,7 +423,7 @@ html.is-screen body { overflow: hidden; }
   <button class="round line" id="deckStop" type="button" aria-label="Stöðva"></button>
 </div>
 
-<div class="shade" id="shade" hidden>
+<dialog class="shade" id="shade" aria-label="Plakat">
   <div class="box">
     <img id="posterImg" alt="">
     <div class="row">
@@ -346,12 +432,22 @@ html.is-screen body { overflow: hidden; }
       <button id="posterClose" type="button">Loka</button>
     </div>
   </div>
-</div>
+</dialog>
 
-<div class="screen" id="screen" hidden>
+<div class="screen" id="screen" role="dialog" aria-modal="true" aria-label="Orðrétt á skjá" tabindex="-1" hidden>
   <div class="top" id="sTop"></div>
   <div class="body" id="sBody"><p class="say" id="sSay"></p></div>
-  <div class="foot"><span>Orðrétt · Gögn: Samtal, félag til almannaheilla (talasaman.is), CC BY 4.0</span><span id="sPos"></span></div>
+  <div class="foot">
+    <span class="by">Orðrétt · Gögn: Samtal, félag til almannaheilla (talasaman.is), CC BY 4.0</span>
+    <div class="nav">
+      <div class="ctl">
+        <button id="sPrev" type="button" aria-label="Fyrri"></button>
+        <button id="sToggle" type="button" aria-label="Gera hlé"></button>
+        <button id="sNext" type="button" aria-label="Næsta"></button>
+      </div>
+      <span id="sPos"></span>
+    </div>
+  </div>
   <button class="close" id="sClose" type="button">Loka</button>
   <div class="start" id="sStart">
     <div class="t">Orðrétt</div>
@@ -375,6 +471,7 @@ const ICON = {
   play: '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3.2v9.6l7.8-4.8z" fill="currentColor"/></svg>',
   pause: '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.2 3.2h2.9v9.6H4.2zM8.9 3.2h2.9v9.6H8.9z" fill="currentColor"/></svg>',
   next: '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.4 3.2v9.6l7-4.8zM11.2 3.2h1.9v9.6h-1.9z" fill="currentColor"/></svg>',
+  prev: '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M12.6 3.2v9.6l-7-4.8zM2.9 3.2h1.9v9.6H2.9z" fill="currentColor"/></svg>',
   stop: '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 4h8v8H4z" fill="currentColor"/></svg>',
 };
 
@@ -430,7 +527,7 @@ let rows = order(SNAP.data);
 let meta = SNAP.meta;
 let source = "snapshot";
 let rank = new Map();
-const state = { topic: "", loc: "" };
+const state = { topic: "", loc: "", q: "" };
 const failed = new Set();
 const byId = (id) => rows.find((r) => r.id === id);
 const facts = (id) => AUDIO[id] || null;
@@ -571,7 +668,7 @@ M.cv.addEventListener("click", (e) => {
 });
 
 /* ---------- listening: Web Audio decodes these recordings on every phone ---------- */
-const A = { ctx: null, out: null, bufs: new Map(), srcs: [], mode: null, origin: null, id: null, queue: [], qi: -1, startAt: 0, dur: 0, paused: false, swell: null, token: 0, gapTimer: 0 };
+const A = { ctx: null, out: null, bufs: new Map(), srcs: [], mode: null, origin: null, id: null, queue: [], qi: -1, startAt: 0, dur: 0, paused: false, loading: false, swell: null, token: 0, gapTimer: 0 };
 
 function actx() {
   if (!A.ctx) {
@@ -619,7 +716,7 @@ async function wake() {
 async function playClip(id) {
   const tok = ++A.token;
   stopSources();
-  A.id = id; A.startAt = 0; A.dur = (facts(id) || [0])[0]; A.paused = false;
+  A.id = id; A.startAt = 0; A.dur = (facts(id) || [0])[0]; A.paused = false; A.loading = true;
   paint();
   const c = await wake();
   if (!c) return clipFailed(id, tok);
@@ -630,7 +727,7 @@ async function playClip(id) {
   s.buffer = buf; g.gain.value = gainOf(id);
   s.connect(g); g.connect(A.out);
   s.onended = () => { if (!s._stopped && tok === A.token) clipEnded(id); };
-  A.dur = buf.duration; A.startAt = c.currentTime + 0.03;
+  A.dur = buf.duration; A.startAt = c.currentTime + 0.03; A.loading = false;
   s.start(A.startAt);
   A.srcs = [s];
   if (A.mode === "seq" && A.qi + 1 < A.queue.length) load(A.queue[A.qi + 1]).catch(() => {});
@@ -656,6 +753,7 @@ function clipEnded(id) {
 
 function clipFailed(id, tok) {
   if (tok !== A.token) return;
+  A.loading = false;
   failed.add(id);
   const a = $("e-" + id);
   if (a) a.replaceWith(entry(byId(id)));
@@ -721,7 +819,7 @@ function togglePause() {
 function stopAll() {
   ++A.token;
   stopSources();
-  Object.assign(A, { mode: null, origin: null, id: null, queue: [], qi: -1, startAt: 0, dur: 0, swell: null });
+  Object.assign(A, { mode: null, origin: null, id: null, queue: [], qi: -1, startAt: 0, dur: 0, swell: null, loading: false });
   if (A.paused && A.ctx) A.ctx.resume();
   A.paused = false;
   paint();
@@ -745,10 +843,11 @@ const sumOf = (ids) => { let s = 0; for (const id of ids) { const f = facts(id);
 function playButton(b, { on, paused, label, len, disabled }) {
   b.classList.toggle("on", !!on);
   b.disabled = !!disabled;
-  const ico = el("span", "ico");
+  const ico = el("span", "ico"), txt = el("span", "txt");
   ico.innerHTML = on && !paused ? ICON.pause : ICON.play;
-  b.replaceChildren(ico, el("span", "", label));
-  if (len) b.append(el("span", "len", len));
+  txt.append(el("span", "", label));
+  if (len) txt.append(el("span", "len", len));
+  b.replaceChildren(ico, txt);
 }
 
 function paintPlays() {
@@ -806,7 +905,7 @@ function paintTime() {
   }
   const r = A.id && byId(A.id);
   if (!r) return;
-  let s = clock(t) + (A.dur ? " / " + clock(A.dur) : "");
+  let s = A.loading ? "Sæki upptökuna …" : clock(t) + (A.dur ? " / " + clock(A.dur) : "");
   if (A.mode === "seq") s += " · " + (A.qi + 1) + " af " + A.queue.length;
   $("deckTime").textContent = s;
   const len = document.querySelector('.listen[data-id="' + r.id + '"] .len');
@@ -832,7 +931,7 @@ function paintList() {
     const mine = b.dataset.id === A.id && (A.mode === "one" || A.mode === "seq");
     const r = byId(b.dataset.id);
     b.querySelector(".disc").innerHTML = mine && !A.paused ? ICON.pause : ICON.play;
-    b.setAttribute("aria-label", (mine && !A.paused ? "Gera hlé: " : "Hlusta: ") + r.location + ", borð " + r.table);
+    b.querySelector(".sr").textContent = (mine && !A.paused ? "Gera hlé: " : "Hlusta: ") + r.location + ", borð " + r.table + ", ";
     if (mine) b.closest(".entry").classList.add("on");
     else { const f = facts(r.id), len = b.querySelector(".len"); if (len) len.textContent = f ? clock(f[0]) : ""; }
   }
@@ -892,19 +991,20 @@ function renderKwic() {
   alignKwic();
 }
 // Lower the words after „viljum“ so the spine sits on the last line of the words before it.
+// All rows are measured first and moved after, so the page lays out once.
 function alignKwic() {
-  for (const row of document.querySelectorAll(".krow:not(.long)")) {
-    const kl = row.firstChild, kr = row.lastChild;
-    kr.style.paddingTop = "0px";
-    const lh = parseFloat(getComputedStyle(kr).lineHeight) || 0, h = kl.getBoundingClientRect().height;
-    if (h > lh * 1.2) kr.style.paddingTop = Math.max(0, h - lh) + "px";
-  }
+  const krows = [...document.querySelectorAll(".krow:not(.long)")];
+  const pads = krows.map((row) => {
+    const lh = parseFloat(getComputedStyle(row.lastChild).lineHeight) || 0, h = row.firstChild.getBoundingClientRect().height;
+    return h > lh * 1.2 ? Math.max(0, h - lh) : 0;
+  });
+  krows.forEach((row, i) => { row.lastChild.style.paddingTop = pads[i] + "px"; });
 }
 $("kwic").addEventListener("click", (e) => {
   const a = e.target.closest(".km");
   if (!a) return;
   const id = a.getAttribute("href").slice(3);
-  if (!$("e-" + id)) { state.topic = ""; state.loc = ""; renderTopics(); renderPlaces(); renderList(); paintPlays(); }
+  if (!$("e-" + id)) { state.topic = ""; state.loc = ""; state.q = ""; $("q").value = ""; renderTopics(); renderPlaces(); renderList(); paintPlays(); }
 });
 
 /* ---------- the sheet: the tables' words on AI, with five highlighters ---------- */
@@ -1017,9 +1117,11 @@ $("pens").addEventListener("click", (e) => {
 });
 
 /* ---------- every table ---------- */
+const fold = (s) => String(s).toLocaleLowerCase("is");
+const found = (r) => !state.q || [r.summary, r.location, r.topic].some((s) => fold(s).includes(state.q));
+const atPlace = (r) => (!state.loc || r.location === state.loc) && found(r);
 const matches = (r) =>
-  (!state.loc || r.location === state.loc) &&
-  (state.topic === "" || (state.topic === "*" ? !r.topicChosen : (r.topicChosen && r.topic === state.topic)));
+  atPlace(r) && (state.topic === "" || (state.topic === "*" ? !r.topicChosen : (r.topicChosen && r.topic === state.topic)));
 const visible = () => rows.filter(matches);
 
 function renderCounts() {
@@ -1034,7 +1136,7 @@ function renderCounts() {
 
 function renderTopics() {
   const tally = (list) => { const m = new Map(); let other = 0; for (const r of list) { if (r.topicChosen) m.set(r.topic, (m.get(r.topic) || 0) + 1); else other++; } return { m, other }; };
-  const all = tally(rows), here = tally(state.loc ? rows.filter((r) => r.location === state.loc) : rows);
+  const all = tally(rows), here = tally(rows.filter(atPlace));
   const keys = [...all.m].sort((a, b) => b[1] - a[1] || coll.compare(a[0], b[0])).map(([t]) => t);
   if (state.topic && state.topic !== "*" && !all.m.has(state.topic)) state.topic = "";
   if (state.topic === "*" && !all.other) state.topic = "";
@@ -1046,7 +1148,7 @@ function renderTopics() {
     b.append(document.createTextNode(label), el("span", "n", String(n)));
     return b;
   };
-  const total = state.loc ? rows.filter((r) => r.location === state.loc).length : rows.length;
+  const total = rows.filter(atPlace).length;
   const chips = [chip("", "Allt", total), ...keys.map((t) => chip(t, t, here.m.get(t) || 0))];
   if (all.other) chips.push(chip("*", "annað", here.other));
   $("topics").replaceChildren(...chips);
@@ -1064,6 +1166,7 @@ function renderPlaces() {
 
 function renderList() {
   const list = visible(), main = $("list");
+  $("found").textContent = !state.q ? "" : list.length ? count(list.length, "samantekt fannst", "samantektir fundust") + "." : "Engin samantekt fannst.";
   if (!list.length) { main.replaceChildren(el("p", "empty", "Engin samantekt passar við valið.")); return; }
   const out = [];
   let entries = null, last = null, n = 0;
@@ -1088,15 +1191,27 @@ function renderList() {
   paintList();
 }
 
+// Verbatim: set as text, never as markup. A search marks its matches; the words stay as they are.
+function wordsOf(text) {
+  const p = el("p", "words"), low = fold(text), q = state.q;
+  if (!q || low.length !== text.length) { p.textContent = text; return p; }
+  let at = 0;
+  for (let i = low.indexOf(q); i >= 0; i = low.indexOf(q, at)) {
+    if (i > at) p.append(text.slice(at, i));
+    p.append(el("mark", "q", text.slice(i, i + q.length)));
+    at = i + q.length;
+  }
+  if (at < text.length) p.append(text.slice(at));
+  return p;
+}
+
 function entry(r) {
   const a = el("article", "entry");
   a.id = "e-" + r.id;
   const m = el("p", "meta");
   m.append(el("span", "", "borð " + r.table), el("span", "", r.topic));
   if (r.source === "participant") m.append(el("span", "", "samantekt eins þátttakanda"));
-  const w = el("p", "words");
-  w.textContent = r.summary; // verbatim: set as text, never as markup
-  a.append(m, w);
+  a.append(m, wordsOf(r.summary));
   const acts = el("div", "acts");
   if (r.audio && silent(r)) a.append(el("p", "aside", "Upptakan er hljóðlaus."));
   else if (r.audio && failed.has(r.id)) a.append(el("p", "aside", "Ekki tókst að spila upptökuna."));
@@ -1104,7 +1219,8 @@ function entry(r) {
     const b = el("button", "listen"), disc = el("span", "disc");
     b.type = "button"; b.dataset.id = r.id;
     disc.style.background = tone(r.locationPostCode, "accent");
-    b.append(disc, el("span", "len", facts(r.id) ? clock(facts(r.id)[0]) : ""));
+    // the spoken name ends with the visible length, so voice control can say what it sees
+    b.append(disc, el("span", "sr", "Hlusta: " + r.location + ", borð " + r.table + ", "), el("span", "len", facts(r.id) ? clock(facts(r.id)[0]) : ""));
     acts.append(b);
   }
   const p = el("button", "tool", "Plakat");
@@ -1132,6 +1248,11 @@ $("topics").addEventListener("click", (e) => {
   renderList(); paintPlays();
 });
 $("place").addEventListener("change", (e) => { state.loc = e.target.value; renderTopics(); renderList(); paintPlays(); });
+let qTimer = 0;
+$("q").addEventListener("input", () => {
+  clearTimeout(qTimer);
+  qTimer = setTimeout(() => { state.q = fold($("q").value.trim()); renderTopics(); renderList(); paintPlays(); }, 150);
+});
 
 /* ---------- posters: one summary, story-sized, to share ---------- */
 const slug = (s) => s.toLowerCase().replace(/þ/g, "th").replace(/ð/g, "d").replace(/æ/g, "ae").replace(/ö/g, "o")
@@ -1206,10 +1327,11 @@ async function poster(r) {
   return cv;
 }
 
-let posterBlob = null, posterName = "";
+let posterBlob = null, posterName = "", posterFrom = null;
 async function openPoster(id) {
   const r = byId(id);
   if (!r) return;
+  posterFrom = document.activeElement;
   const cv = await poster(r);
   posterBlob = await new Promise((ok) => cv.toBlob(ok, "image/png"));
   posterName = "ordrett-" + r.locationPostCode + "-" + slug(r.location) + "-bord-" + r.table + ".png";
@@ -1219,8 +1341,13 @@ async function openPoster(id) {
   img.alt = r.location + ", borð " + r.table + ": " + r.summary;
   const file = new File([posterBlob], posterName, { type: "image/png" });
   $("posterShare").hidden = !(navigator.canShare && navigator.canShare({ files: [file] }));
-  $("shade").hidden = false;
+  const dlg = $("shade");
+  if (!dlg.open) { if (dlg.showModal) dlg.showModal(); else dlg.setAttribute("open", ""); }
   $("posterSave").focus();
+}
+function posterClosed() {
+  if (posterFrom && posterFrom.isConnected) posterFrom.focus();
+  posterFrom = null;
 }
 $("posterShare").addEventListener("click", async () => {
   try { await navigator.share({ files: [new File([posterBlob], posterName, { type: "image/png" })], title: "Orðrétt" }); } catch (e) {}
@@ -1231,24 +1358,47 @@ $("posterSave").addEventListener("click", () => {
   document.body.append(a); a.click(); a.remove();
   setTimeout(() => URL.revokeObjectURL(a.href), 4000);
 });
-const closePoster = () => { $("shade").hidden = true; };
+const closePoster = () => {
+  const dlg = $("shade");
+  if (!dlg.open) return;
+  if (dlg.close) dlg.close(); else { dlg.removeAttribute("open"); posterClosed(); }
+};
 $("posterClose").addEventListener("click", closePoster);
 $("shade").addEventListener("click", (e) => { if (e.target === $("shade")) closePoster(); });
+$("shade").addEventListener("close", posterClosed);
 
 /* ---------- screen mode, for a hall ---------- */
-let sList = [], sIdx = 0, sTimer = 0, sPaused = false, sStarted = false, wakeLock = null;
+let sList = [], sIdx = 0, sTimer = 0, sPaused = false, sStarted = false, wakeLock = null, screenFrom = null, sIdle = 0;
+// While the screen is up, the page behind it takes no focus and no clicks.
+const behind = (on) => { for (const e of document.body.children) if (e.id !== "screen") e.inert = on; };
+// Shown until the show starts, then for three seconds after each touch or move of the pointer.
+function sWake() {
+  $("screen").classList.add("awake");
+  clearTimeout(sIdle);
+  sIdle = setTimeout(() => { if (sStarted) $("screen").classList.remove("awake"); }, 3000);
+}
+function paintScreenToggle() {
+  $("sToggle").innerHTML = sPaused ? ICON.play : ICON.pause;
+  $("sToggle").setAttribute("aria-label", sPaused ? "Halda áfram" : "Gera hlé");
+}
 function enterScreen() {
   if (A.mode && A.mode !== "screen") stopAll();
+  if ($("screen").hidden) screenFrom = document.activeElement;
   document.documentElement.classList.add("is-screen");
+  behind(true);
   $("screen").hidden = false; $("sStart").hidden = sStarted;
-  if (sStarted) sShow(sIdx);
+  sWake(); paintScreenToggle();
+  if (sStarted) { $("screen").focus(); sShow(sIdx); } else $("sGo").focus();
 }
 function leaveScreen() {
-  clearTimeout(sTimer);
+  clearTimeout(sTimer); clearTimeout(sIdle);
   if (A.mode === "screen") stopAll();
   sStarted = false; sPaused = false;
   document.documentElement.classList.remove("is-screen");
+  behind(false);
   $("screen").hidden = true;
+  if (screenFrom && screenFrom !== document.body && screenFrom.isConnected) screenFrom.focus({ preventScroll: true });
+  screenFrom = null;
   if (wakeLock) { wakeLock.release().catch(() => {}); wakeLock = null; }
   if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
   if (location.hash === "#skjar") history.replaceState(null, "", location.pathname + location.search);
@@ -1263,7 +1413,11 @@ function fit() {
 function sShow(i) {
   clearTimeout(sTimer);
   sList = visible();
-  if (!sList.length) return;
+  if (!sList.length) {
+    $("sTop").replaceChildren(); $("sPos").textContent = "";
+    $("sSay").textContent = "Engin samantekt passar við valið."; $("sSay").style.opacity = "1"; fit();
+    return;
+  }
   sIdx = ((i % sList.length) + sList.length) % sList.length;
   const r = sList[sIdx], voiced = audible(r);
   const parts = [el("span", "", r.topic)]; // on a hall screen, no place or table beside the words
@@ -1287,24 +1441,40 @@ function sPause() {
   if (sPaused) { clearTimeout(sTimer); if (A.ctx) A.ctx.suspend(); }
   else if (A.mode === "screen" && A.srcs.length && A.ctx) A.ctx.resume();
   else { if (A.ctx) A.ctx.resume(); sShow(sIdx + 1); }
+  paintScreenToggle();
 }
+function sJump(d) {
+  sPaused = false;
+  if (A.ctx && A.ctx.state === "suspended") A.ctx.resume();
+  sShow(sIdx + d); paintScreenToggle();
+}
+$("sPrev").innerHTML = ICON.prev;
+$("sNext").innerHTML = ICON.next;
+// A touch that wakes the sleeping controls only wakes them; it does not press the one under the finger.
+let sWaking = false;
+const sCtl = (fn) => (e) => { if (!(e.detail && sWaking)) fn(); };
+$("sPrev").addEventListener("click", sCtl(() => sJump(-1)));
+$("sNext").addEventListener("click", sCtl(() => sJump(1)));
+$("sToggle").addEventListener("click", sCtl(sPause));
+$("screen").addEventListener("pointermove", sWake);
+$("screen").addEventListener("pointerdown", () => { sWaking = !$("screen").classList.contains("awake"); sWake(); });
 $("toScreen").addEventListener("click", () => { location.hash = "skjar"; });
 $("sClose").addEventListener("click", leaveScreen);
 $("sGo").addEventListener("click", () => {
   sStarted = true; $("sStart").hidden = true;
+  $("screen").focus(); sWake();
   wake();
   if (document.documentElement.requestFullscreen) document.documentElement.requestFullscreen().catch(() => {});
   if (navigator.wakeLock) navigator.wakeLock.request("screen").then((w) => { wakeLock = w; }).catch(() => {});
   sShow(0);
 });
 addEventListener("keydown", (e) => {
-  if (!$("shade").hidden && e.key === "Escape") return closePoster();
+  if ($("shade").open) { if (e.key === "Escape") closePoster(); return; }
   if ($("screen").hidden) return;
   if (e.key === "Escape") return leaveScreen();
-  if (!sStarted) return;
-  const jump = (d) => { sPaused = false; if (A.ctx && A.ctx.state === "suspended") A.ctx.resume(); sShow(sIdx + d); };
-  if (e.key === "ArrowRight") jump(1);
-  else if (e.key === "ArrowLeft") jump(-1);
+  if (!sStarted || (e.key === " " && e.target.closest && e.target.closest("button"))) return; // a focused button takes its own Space
+  if (e.key === "ArrowRight") sJump(1);
+  else if (e.key === "ArrowLeft") sJump(-1);
   else if (e.key === " ") { e.preventDefault(); sPause(); }
 });
 const onHash = () => { if (location.hash === "#skjar") enterScreen(); else if (!$("screen").hidden) leaveScreen(); };
@@ -1332,6 +1502,15 @@ new ResizeObserver(onWidth).observe(M.cv.parentElement);
 addEventListener("resize", () => { if (!$("screen").hidden) fit(); });
 if (document.fonts && document.fonts.ready) document.fonts.ready.then(alignKwic);
 
+// A redraw replaces the controls it draws; put focus back on the same one.
+function keepFocus(fn) {
+  const a = document.activeElement, d = a && a !== document.body ? a.dataset : null;
+  const sel = !d ? null : d.poster ? '[data-poster="' + d.poster + '"]' : d.id ? '.listen[data-id="' + d.id + '"]' :
+    d.topic != null ? '.chip[data-topic="' + CSS.escape(d.topic) + '"]' : d.k ? '.pen[data-k="' + d.k + '"]' : null;
+  fn();
+  if (sel && !a.isConnected) { const b = document.querySelector(sel); if (b) b.focus({ preventScroll: true }); }
+}
+
 render();
 lastW = M.cv.clientWidth;
 onHash();
@@ -1339,10 +1518,13 @@ fetch(API, { cache: "no-store" })
   .then((res) => (res.ok ? res.json() : Promise.reject(new Error(String(res.status)))))
   .then((j) => {
     if (!j || !Array.isArray(j.data)) throw new Error("unexpected answer");
-    rows = order(j.data); meta = j.meta || meta; source = "live";
+    meta = j.meta || meta; source = "live";
+    // Unchanged since the snapshot: only the date line is new.
+    if (JSON.stringify(j.data) === JSON.stringify(SNAP.data)) return renderCounts();
+    rows = order(j.data);
     if (A.id && !byId(A.id)) stopAll();
     if (A.mode === "seq") { A.queue = A.queue.filter((id) => byId(id)); A.qi = A.queue.indexOf(A.id); }
-    render();
+    keepFocus(render);
   })
   .catch(() => { source = "fallback"; renderCounts(); });
 })();

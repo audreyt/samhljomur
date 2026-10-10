@@ -43,6 +43,7 @@ and the page says so. The parts:
 ```bash
 bun ordrett/build.ts --fetch   # new snapshot; measure every recording with ffmpeg
 bun ordrett/build.ts           # rebuild site/index.html and site/saga.html
+bun ordrett/build.ts --images  # also redraw the share card and the home-screen icon
 bun ordrett/verify.ts          # gates in headless Chromium -> ordrett/qa/gates.txt
 ```
 
@@ -50,6 +51,12 @@ bun ordrett/verify.ts          # gates in headless Chromium -> ordrett/qa/gates.
 them (length, loudness envelope, typical speaking level, silence below
 −60 dB), then deletes them. Three recordings from Tækniskólinn, table 1,
 are silent and are marked as such.
+
+The share card, `site/ordrett-card.png` (1200 × 630), is the page's
+mountain under its title, drawn from the same loudness data by the same
+rules. The tab and home-screen icon is the ð of the title. Both PNGs are
+drawn with Playwright, again with `--fetch` or `--images` or when missing,
+so a plain rebuild leaves them byte for byte.
 
 The gates check every summary, „viljum“ sentence and AI summary character
 for character against the data; the stated order; that only talasaman.is is

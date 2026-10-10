@@ -124,6 +124,14 @@ const shotOf = async (page: Page, sel: string, name: string) => { await page.loc
     return { h: c.clientHeight, lit, label: c.getAttribute("aria-label") };
   });
   gate("mountain drawn, one line per audible recording", mtn.h > 150 && mtn.lit > 2000 && (mtn.label ?? "").startsWith(`${voiced.length} `), JSON.stringify(mtn));
+  const listen = page.locator("#list .listen");
+  const spoken: string[] = [];
+  for (let i = 0; i < await listen.count(); i++) {
+    const [snapshot, len] = [await listen.nth(i).ariaSnapshot(), await listen.nth(i).locator(".len").textContent()];
+    const name = /button "(.*)"/.exec(snapshot)?.[1] ?? "";
+    if (!/^Hlusta: .+, borð \d+, /.test(name) || !name.endsWith(`, ${len}`)) spoken.push(snapshot);
+  }
+  gate("listen buttons: the spoken name names the table and ends with the visible length", (await listen.count()) === voiced.length && spoken.length === 0, spoken.join(" | "));
   const silentMarks = await page.$$eval(".aside", (els) => els.filter((e) => e.textContent === "Upptakan er hljóðlaus.").length);
   gate("silent recordings marked, not playable", silentMarks === Object.values(facts).filter((f: any) => f.silent).length, String(silentMarks));
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth - innerWidth);
@@ -133,6 +141,71 @@ const shotOf = async (page: Page, sel: string, name: string) => { await page.loc
   await page.locator("#viljum").scrollIntoViewIfNeeded();
   await shotOf(page, "#viljum", "phone-viljum.png");
   await shotOf(page, ".sheet", "phone-sheet.png");
+  await ctx.close();
+}
+
+// ---------- the contents line, and a link to one summary ----------
+{
+  const id = ordered[Math.floor(ordered.length / 2)].id;
+  const { ctx, page } = await open({ width: 390, height: 844, live: false, path: "#e-" + id });
+  const t = await page.evaluate(() => {
+    const e = document.querySelector<HTMLElement>(":target"), r = e?.getBoundingClientRect();
+    return { id: e?.id, top: r ? Math.round(r.top) : null, bg: e ? getComputedStyle(e).backgroundColor : "" };
+  });
+  gate("a link to one summary lands on it, marked", t.id === "e-" + id && t.top !== null && t.top >= 0 && t.top < 120 && t.bg !== "rgba(0, 0, 0, 0)", JSON.stringify(t));
+  const toc = await page.$$eval(".toc a", (as) => as.map((a) => [a.textContent, !!document.querySelector(a.getAttribute("href")!)]));
+  gate("contents line: every link has its section", toc.length === 4 && toc.every(([, ok]) => ok), JSON.stringify(toc));
+  await ctx.close();
+}
+
+// ---------- search: marks what it finds and leaves the words as they are ----------
+{
+  const { ctx, page, errors } = await open({ width: 390, height: 844, live: false });
+  const look = async (q: string) => {
+    await page.fill("#q", q);
+    await page.waitForTimeout(400);
+    return page.evaluate(() => ({
+      shown: [...document.querySelectorAll<HTMLElement>("#list .entry")].map((a) => [a.id.slice(2), a.querySelector(".words")!.textContent!]),
+      marks: [...document.querySelectorAll("#list .words mark.q")].map((m) => m.textContent!),
+      found: document.getElementById("found")!.textContent,
+      empty: document.querySelector("#list .empty")?.textContent ?? "",
+    }));
+  };
+  const q = "Símann";
+  const want = ordered.filter((r: any) => [r.summary, r.location, r.topic].some((s: string) => s.toLocaleLowerCase("is").includes(q.toLocaleLowerCase("is"))));
+  const one = (n: number) => n % 10 === 1 && n % 100 !== 11;
+  const hit = await look(q);
+  gate("search: finds every summary with the word, marks it, and leaves the words as they are",
+    want.length > 0 && JSON.stringify(hit.shown) === JSON.stringify(want.map((r: any) => [r.id, r.summary])) &&
+    hit.marks.length >= want.length && hit.marks.every((m) => m.toLocaleLowerCase("is") === q.toLocaleLowerCase("is")) &&
+    hit.found === `${want.length} ${one(want.length) ? "samantekt fannst" : "samantektir fundust"}.`,
+    `${hit.shown.length} shown, ${want.length} expected, ${hit.marks.length} marks, "${hit.found}"`);
+  const miss = await look("qqzzqq");
+  const cleared = await look("");
+  gate("search: says when nothing is found; clearing it brings every summary back unmarked",
+    miss.shown.length === 0 && miss.found === "Engin samantekt fannst." && miss.empty !== "" &&
+    cleared.shown.length === snap.data.length && cleared.marks.length === 0 && cleared.found === "",
+    `${miss.found} | ${cleared.shown.length} shown, ${cleared.marks.length} marks`);
+  gate("no errors while searching", errors.length === 0, errors.join(" | "));
+  await ctx.close();
+}
+
+// ---------- on paper ----------
+{
+  const { ctx, page } = await open({ width: 390, height: 844, live: false });
+  await page.emulateMedia({ media: "print" });
+  const p = await page.evaluate(() => {
+    const shown = (e: Element) => e.getClientRects().length > 0;
+    return {
+      players: ["#mtn", "#playSeq", "#q", "#toScreen", "#list .listen"].filter((s) => shown(document.querySelector(s)!)),
+      words: [...document.querySelectorAll("#list .words")].filter(shown).length,
+      notes: [...document.querySelectorAll(".note-row")].filter(shown).length,
+      colours: [getComputedStyle(document.body).backgroundColor, getComputedStyle(document.body).color],
+    };
+  });
+  gate("on paper: every summary and the AI sheet, no players or controls, black on white",
+    p.players.length === 0 && p.words === snap.data.length && p.notes === expectedAI.length && p.colours.join() === "rgb(255, 255, 255),rgb(0, 0, 0)", JSON.stringify(p));
+  await shotOf(page, ".sheet", "print-sheet.png");
   await ctx.close();
 }
 
@@ -165,14 +238,21 @@ const shotOf = async (page: Page, sel: string, name: string) => { await page.loc
   await page.evaluate(() => (document.getElementById("deckStop") as HTMLButtonElement).click());
 
   await page.click("#list .entry .tool");
-  await page.waitForFunction(() => !document.getElementById("shade")!.hidden && (document.getElementById("posterImg") as HTMLImageElement).naturalWidth > 0);
+  await page.waitForFunction(() => (document.getElementById("shade") as HTMLDialogElement).open && (document.getElementById("posterImg") as HTMLImageElement).naturalWidth > 0);
   const img = await page.evaluate(() => { const i = document.getElementById("posterImg") as HTMLImageElement; return [i.naturalWidth, i.naturalHeight, i.src]; });
   gate("poster is a 1080 x 1920 image", img[0] === 1080 && img[1] === 1920, `${img[0]}x${img[1]}`);
   await shot(page, "phone-poster-preview.png");
+  const inside = await page.evaluate(() => document.activeElement?.id);
+  await page.keyboard.press("Escape");
+  const back = await page.evaluate(() => ({
+    open: (document.getElementById("shade") as HTMLDialogElement).open,
+    focus: document.activeElement === document.querySelector("#list .entry .tool"),
+  }));
+  gate("poster preview is a modal dialog: focus goes in, and back to its button on Esc", inside === "posterSave" && !back.open && back.focus, JSON.stringify({ inside, ...back }));
   for (const [n, sel] of [["poster-text.png", '[data-poster]'], ["poster-voice.png", '.entry:has(.listen) [data-poster]']] as const) {
-    await page.evaluate(() => { document.getElementById("shade")!.hidden = true; });
+    await page.evaluate(() => (document.getElementById("shade") as HTMLDialogElement).close());
     await page.click(`#list ${sel} >> nth=0`);
-    await page.waitForFunction(() => !document.getElementById("shade")!.hidden && (document.getElementById("posterImg") as HTMLImageElement).complete);
+    await page.waitForFunction(() => (document.getElementById("shade") as HTMLDialogElement).open && (document.getElementById("posterImg") as HTMLImageElement).complete);
     const b64 = await page.evaluate(async () => {
       const i = document.getElementById("posterImg") as HTMLImageElement;
       const blob = await fetch(i.src).then((r) => r.blob());
@@ -182,6 +262,45 @@ const shotOf = async (page: Page, sel: string, name: string) => { await page.loc
   }
   gate("only talasaman.is contacted", [...hosts].every((h) => h === "talasaman.is" || h.startsWith("localhost")), [...hosts].join(", "));
   gate("no errors live", errors.length === 0, errors.join(" | "));
+  await ctx.close();
+}
+
+// ---------- the live answer: unchanged data is not redrawn; a redraw keeps focus ----------
+for (const changed of [false, true]) {
+  const ctx = await browser.newContext({ viewport: { width: 390, height: 844 } });
+  const page = await ctx.newPage();
+  let release = () => {};
+  const held = new Promise<void>((ok) => { release = ok; });
+  const data = changed ? snap.data.slice(1) : snap.data;
+  await page.route("**/api/v1/summaries", async (route) => {
+    await held;
+    await route.fulfill({ contentType: "application/json", body: JSON.stringify({ data, meta: { ...snap.meta, generatedAt: "2026-10-11T09:00:00.000Z", count: data.length } }) });
+  });
+  await page.goto(BASE);
+  const keep = voiced.find((r: any) => r.id !== snap.data[0].id).id;
+  await page.focus(`.listen[data-id="${keep}"]`);
+  await page.evaluate(() => { (document.querySelector("#list .entry") as any).fromSnapshot = true; });
+  release();
+  await page.waitForFunction(() => /11\. október/.test(document.getElementById("fetched")!.textContent ?? ""));
+  const after = await page.evaluate((id) => ({
+    redrawn: !(document.querySelector("#list .entry") as any).fromSnapshot,
+    entries: document.querySelectorAll("#list .entry").length,
+    focus: (document.activeElement as HTMLElement).dataset.id === id,
+  }), keep);
+  if (!changed) gate("live answer unchanged from the snapshot: nothing is redrawn", !after.redrawn && after.entries === snap.data.length && after.focus, JSON.stringify(after));
+  else gate("live answer changed: the list is redrawn, focus stays on the same button", after.redrawn && after.entries === data.length && after.focus, JSON.stringify(after));
+  await ctx.close();
+}
+
+// ---------- a slow connection: the player says it is fetching, then counts ----------
+{
+  const { ctx, page } = await open({ width: 390, height: 844, live: false });
+  await page.route("**/api/v1/summaries/*/audio", async (route) => { await new Promise((ok) => setTimeout(ok, 2000)); await route.continue(); });
+  await page.click("#list .listen >> nth=0");
+  await page.waitForTimeout(600);
+  const waiting = await page.textContent("#deckTime");
+  const counted = await page.waitForFunction(() => /^0:0\d \/ 0:\d\d$/.test(document.getElementById("deckTime")!.textContent ?? ""), null, { timeout: 15000 }).then(() => true, () => false);
+  gate("on a slow connection the player says it is fetching, then counts", waiting === "Sæki upptökuna …" && counted, `${waiting} | ${await page.textContent("#deckTime")}`);
   await ctx.close();
 }
 
@@ -204,8 +323,13 @@ const shotOf = async (page: Page, sel: string, name: string) => { await page.loc
 // ---------- screen mode on a projector ----------
 {
   const { ctx, page, errors } = await open({ width: 1920, height: 1080, live: false, path: "#skjar" });
+  const modal = await page.evaluate(() => ({
+    focus: document.activeElement?.id,
+    inert: [...document.body.children].filter((e) => e.id !== "screen").every((e) => (e as HTMLElement).inert),
+  }));
   await page.click("#sGo");
   await page.waitForTimeout(900);
+  const started = await page.evaluate(() => document.activeElement?.id);
   await shot(page, "screen-first.png");
   const longest = ordered.reduce((a: any, b: any) => (b.summary.length > a.summary.length ? b : a));
   for (let i = 0; i < ordered.indexOf(longest); i++) await page.keyboard.press("ArrowRight");
@@ -217,9 +341,58 @@ const shotOf = async (page: Page, sel: string, name: string) => { await page.loc
   gate("screen mode fits the longest summary", fit.over <= 0 && fit.text === longest.summary.slice(0, 30), JSON.stringify(fit));
   const top = await page.textContent("#sTop");
   gate("screen mode shows no place or table beside the words", top === longest.topic, JSON.stringify(top));
+  await page.mouse.move(960, 500);
+  const at = () => page.textContent("#sPos");
+  const k = ordered.indexOf(longest) + 1, N = ordered.length;
+  const p0 = await at();
+  await page.click("#sNext");
+  const p1 = await at();
+  await page.click("#sPrev");
+  const p2 = await at();
+  await page.click("#sToggle");
+  const l1 = await page.getAttribute("#sToggle", "aria-label");
+  await page.click("#sToggle");
+  const l2 = await page.getAttribute("#sToggle", "aria-label");
+  await page.waitForTimeout(3500);
+  const sleep = await page.evaluate(() => [getComputedStyle(document.querySelector(".screen .ctl")!).opacity, getComputedStyle(document.getElementById("screen")!).cursor]);
+  gate("screen mode controls: previous, pause and next work, then sleep with the pointer",
+    p0 === `${k} / ${N}` && p1 === `${k + 1} / ${N}` && p2 === p0 && l1 === "Halda áfram" && l2 === "Gera hlé" && sleep.join() === "0,none",
+    JSON.stringify({ p0, p1, p2, l1, l2, sleep }));
   await page.keyboard.press("Escape");
   gate("Esc leaves screen mode", await page.evaluate(() => document.getElementById("screen")!.hidden));
+  await page.click("#toScreen");
+  await page.waitForTimeout(300);
+  const inScreen = await page.evaluate(() => document.activeElement?.id);
+  await page.keyboard.press("Escape");
+  const after = await page.evaluate(() => ({ focus: document.activeElement?.id, inert: [...document.body.children].some((e) => (e as HTMLElement).inert) }));
+  gate("screen mode holds focus with the page behind inert, and Esc gives focus back",
+    modal.focus === "sGo" && modal.inert && started === "screen" && inScreen === "sGo" && after.focus === "toScreen" && !after.inert,
+    JSON.stringify({ modal, started, inScreen, after }));
   gate("no errors in screen mode", errors.length === 0, errors.join(" | "));
+  await ctx.close();
+}
+
+// ---------- screen mode on a touch screen ----------
+{
+  const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true, deviceScaleFactor: 2 });
+  const page = await ctx.newPage();
+  await page.route("**/api/v1/summaries", (route) => route.abort());
+  await page.goto(BASE + "#skjar");
+  await page.waitForTimeout(500);
+  await page.tap("#sGo");
+  await page.waitForTimeout(3600);
+  const asleep = await page.evaluate(() => getComputedStyle(document.querySelector(".screen .ctl")!).opacity);
+  const b = (await page.locator("#sNext").boundingBox())!;
+  await page.touchscreen.tap(b.x + b.width / 2, b.y + b.height / 2);
+  await page.waitForTimeout(400);
+  const first = await page.textContent("#sPos");
+  await page.touchscreen.tap(b.x + b.width / 2, b.y + b.height / 2);
+  await page.waitForTimeout(400);
+  const second = await page.textContent("#sPos");
+  const N = ordered.length;
+  gate("screen mode on a touch screen: the first tap wakes the controls, the next one turns the page",
+    asleep === "0" && first === `1 / ${N}` && second === `2 / ${N}`, JSON.stringify({ asleep, first, second }));
+  await shot(page, "phone-screen.png");
   await ctx.close();
 }
 
@@ -262,6 +435,44 @@ const shotOf = async (page: Page, sel: string, name: string) => { await page.loc
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth - innerWidth);
   gate("record page: no horizontal scroll at 390px", overflow <= 0, `${overflow}px`);
   await shot(page, "phone-saga.png", true);
+
+  const size = (f: string) => {
+    const p = join(SITE, f);
+    if (!existsSync(p)) return "missing";
+    const b = readFileSync(p);
+    return b.readUInt32BE(0) === 0x89504e47 ? `${b.readUInt32BE(16)}x${b.readUInt32BE(20)}` : "not a PNG";
+  };
+  const ROOT = "https://audreyt.github.io/samhljomur/";
+  const tags = (f: string) => Object.fromEntries([...readFileSync(join(SITE, f), "utf8").slice(0, 6000)
+    .matchAll(/<(?:meta (?:property|name)="([^"]+)" content|link rel="([^"]+)" href)="([^"]*)"/g)].map((m) => [m[1] ?? m[2], m[3]]));
+  const unshared = [["index.html", ""], ["saga.html", "saga.html"]].filter(([f, u]) => {
+    const t = tags(f);
+    return !(t["og:url"] === ROOT + u && t.canonical === ROOT + u && t["og:image"] === ROOT + "ordrett-card.png" && t["og:image:alt"] &&
+      t["twitter:card"] === "summary_large_image" && t["apple-touch-icon"] === "ordrett-icon.png" && t.icon?.startsWith("data:image/svg+xml,"));
+  }).map(([f]) => f);
+  const tab = await page.evaluate(async () => {
+    const i = new Image();
+    i.src = document.querySelector<HTMLLinkElement>('link[rel="icon"]')!.href;
+    return i.decode().then(() => "drawn", () => "broken");
+  });
+  const [card, home] = [size("ordrett-card.png"), size("ordrett-icon.png")];
+  gate("sharing: a 1200 x 630 card, a 180 x 180 home-screen icon, a tab icon, and both pages point at them",
+    card === "1200x630" && home === "180x180" && tab === "drawn" && unshared.length === 0, `card ${card}, icon ${home}, tab icon ${tab}${unshared.length ? ", missing tags: " + unshared.join(", ") : ""}`);
+  await ctx.close();
+}
+
+// ---------- the narrowest phones, and readers who set large text ----------
+for (const [path, name] of [["", "front page"], ["saga.html", "record page"]] as const) {
+  const ctx = await browser.newContext({ viewport: { width: 320, height: 720 } });
+  const page = await ctx.newPage();
+  await page.route("**/api/v1/summaries", (route) => route.abort());
+  await page.goto(BASE + path);
+  await page.waitForTimeout(500);
+  const narrow = await page.evaluate(() => document.documentElement.scrollWidth - innerWidth);
+  await page.addStyleTag({ content: "html { font-size: 200% !important; }" });
+  await page.waitForTimeout(300);
+  const large = await page.evaluate(() => document.documentElement.scrollWidth - innerWidth);
+  gate(`${name}: no horizontal scroll at 320px, nor with text at 200%`, narrow <= 0 && large <= 0, `${narrow}px, ${large}px`);
   await ctx.close();
 }
 
