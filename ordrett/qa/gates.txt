@@ -5,26 +5,47 @@ PASS  AI sheet: every AI summary verbatim, highlights add no text  50 shown, 50 
 PASS  AI sheet: table count, of the tables in the open data  38 af þeim 50 borðum sem eru komin í opnu gögnin töluðu um gervigreind.
 PASS  AI sheet: the line sentences are whole, from their own summaries, each with both colours  6 sentences
 PASS  mountain drawn, one line per audible recording  {"h":236,"lit":56233,"label":"21 lína, ein fyrir hverja upptöku. Styst efst, lengst neðst."}
+PASS  listen buttons: the spoken name names the table and ends with the visible length
 PASS  silent recordings marked, not playable  3
 PASS  no horizontal scroll at 390px  0px
 PASS  no errors on the snapshot
-PASS  live data reached  Gögnin eru frá 10. október 2026 kl. 21:49.
+PASS  a link to one summary lands on it, marked  {"id":"e-9d056a6a-0a14-4413-b28d-7fa7f034af6e","top":32,"bg":"rgb(22, 24, 20)"}
+PASS  contents line: every link has its section  [["Við viljum",true],["Gervigreind",true],["Öll borðin",true],["Um síðuna",true]]
+PASS  search: finds every summary with the word, marks it, and leaves the words as they are  2 shown, 2 expected, 2 marks, "2 samantektir fundust."
+PASS  search: says when nothing is found; clearing it brings every summary back unmarked  Engin samantekt fannst. | 187 shown, 0 marks
+PASS  no errors while searching
+PASS  on paper: every summary and the AI sheet, no players or controls, black on white  {"players":[],"words":187,"notes":50,"colours":["rgb(255, 255, 255)","rgb(0, 0, 0)"]}
+PASS  live data reached  Gögnin eru frá 10. október 2026 kl. 22:43.
 PASS  tapping a line plays that voice  {"deck":true,"time":"0:01 / 0:49","now":"Við töluðum um gervigreind og punktar ok"}
 PASS  player icons sit centred in their buttons  [0,0]
 PASS  all at once: voices join as the sweep reaches them  {"now":"6 raddir tala","time":"0:21 / 1:13"}
 PASS  poster is a 1080 x 1920 image  1080x1920
-PASS  only talasaman.is contacted  localhost:51060, talasaman.is
+PASS  poster preview is a modal dialog: focus goes in, and back to its button on Esc  {"inside":"posterSave","open":false,"focus":true}
+PASS  only talasaman.is contacted  localhost:40461, talasaman.is
 PASS  no errors live
-PASS  screen mode fits the longest summary  {"text":"Hvernig samtal viljum við skap","over":-30}
+PASS  live answer unchanged from the snapshot: nothing is redrawn  {"redrawn":false,"entries":187,"focus":true}
+PASS  live answer changed: the list is redrawn, focus stays on the same button  {"redrawn":true,"entries":186,"focus":true}
+PASS  a live redraw with new summaries above keeps a linked summary where it was, marked  {"before":{"top":32,"bg":"rgb(22, 24, 20)","entries":187},"after":{"top":32,"bg":"rgb(22, 24, 20)","entries":190}}
+PASS  a live redraw while a poster is open: Esc gives focus to the redrawn button  {"open":false,"focus":true,"entries":186}
+PASS  on a slow connection the player says it is fetching, then counts  Sæki upptökuna … | 0:00 / 0:13
+PASS  screen mode fits the longest summary  {"text":"Hvernig samtal viljum við skap","over":-11}
 PASS  screen mode shows no place or table beside the words  "gervigreind"
+PASS  screen mode controls: previous, pause and next work, then sleep with the pointer  {"p0":"73 / 187","p1":"74 / 187","p2":"73 / 187","l1":"Halda áfram","l2":"Gera hlé","sleep":["0","none"]}
 PASS  Esc leaves screen mode
+PASS  screen mode holds focus with the page behind inert, and Esc gives focus back  {"modal":{"focus":"sGo","inert":true},"started":"screen","inScreen":"sGo","after":{"focus":"toScreen","inert":false}}
 PASS  no errors in screen mode
-PASS  under talasaman.is CSP: live data and playback  Gögnin eru frá 10. október 2026 kl. 21:54. | 0:01 / 0:13 · 1 af 21
+PASS  screen mode on a wide screen sets a summary written as a long list in columns, larger than one column could, whole  {"px":24.5,"cols":"2","over":-30,"gap":15,"oneColumn":15.9}
+PASS  screen mode on a phone: a summary too long for the screen starts at the top and scrolls, inside the frame  {"px":13.8,"cols":"auto","over":386,"gap":0,"scroll":"auto"}
+PASS  screen mode on a touch screen: the first tap wakes the controls, the next one turns the page  {"asleep":"0","first":"1 / 187","second":"2 / 187"}
+PASS  under talasaman.is CSP: live data and playback  Gögnin eru frá 10. október 2026 kl. 22:48. | 0:01 / 0:13 · 1 af 21
 PASS  under talasaman.is CSP: no violations or errors
 PASS  every medley address still answers  samhljomur.html 200, video.html 200, report.html 200, songbook.html 200, songbook.pdf 200, video-standalone.html 200, medley.mp4 200, poster.png 200, poster-alt.png 200, media/medley.mp3 200
 PASS  the medley's front page is kept byte for byte  a1b8538ab0336bcf20cf5ea794b66ce43db95d76
 PASS  the front page does not link to the medley
 PASS  record page: every link resolves  ./ 200, samhljomur.html 200, video.html 200, report.html 200, songbook.html 200, songbook.pdf 200, https://talasaman.is/gogn 200, https://creativecommons.org/licenses/by/4.0/ 200
 PASS  record page: no horizontal scroll at 390px  0px
+PASS  sharing: a 1200 x 630 card, a 180 x 180 home-screen icon, a tab icon, and both pages point at them  card 1200x630, icon 180x180, tab icon drawn
+PASS  front page: no horizontal scroll at 320px, nor with text at 200%  0px, 0px
+PASS  record page: no horizontal scroll at 320px, nor with text at 200%  0px, 0px
 
 all gates pass  (snapshot 2026-10-10T21:49:10.418Z)
