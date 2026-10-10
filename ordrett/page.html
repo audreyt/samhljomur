@@ -212,6 +212,8 @@ select {
 .tool { padding: .25rem 1rem; }
 .disc { width: 2.25rem; height: 2.25rem; border-radius: 50%; display: grid; place-items: center; color: var(--night); background: var(--chalk); }
 .disc svg { width: 1rem; height: 1rem; }
+/* running clocks keep their width while the digits change */
+.play.on .len, .entry.on .len, .deck .time, #sPos { font-variant-numeric: tabular-nums; }
 .aside { margin: 0; font-family: var(--font-frame); font-size: .875rem; color: var(--dim); }
 .empty { padding-block: 2rem; color: var(--dim); }
 
@@ -598,7 +600,7 @@ M.cv.addEventListener("click", (e) => {
 });
 
 /* ---------- listening: Web Audio decodes these recordings on every phone ---------- */
-const A = { ctx: null, out: null, bufs: new Map(), srcs: [], mode: null, origin: null, id: null, queue: [], qi: -1, startAt: 0, dur: 0, paused: false, swell: null, token: 0, gapTimer: 0 };
+const A = { ctx: null, out: null, bufs: new Map(), srcs: [], mode: null, origin: null, id: null, queue: [], qi: -1, startAt: 0, dur: 0, paused: false, loading: false, swell: null, token: 0, gapTimer: 0 };
 
 function actx() {
   if (!A.ctx) {
@@ -646,7 +648,7 @@ async function wake() {
 async function playClip(id) {
   const tok = ++A.token;
   stopSources();
-  A.id = id; A.startAt = 0; A.dur = (facts(id) || [0])[0]; A.paused = false;
+  A.id = id; A.startAt = 0; A.dur = (facts(id) || [0])[0]; A.paused = false; A.loading = true;
   paint();
   const c = await wake();
   if (!c) return clipFailed(id, tok);
@@ -657,7 +659,7 @@ async function playClip(id) {
   s.buffer = buf; g.gain.value = gainOf(id);
   s.connect(g); g.connect(A.out);
   s.onended = () => { if (!s._stopped && tok === A.token) clipEnded(id); };
-  A.dur = buf.duration; A.startAt = c.currentTime + 0.03;
+  A.dur = buf.duration; A.startAt = c.currentTime + 0.03; A.loading = false;
   s.start(A.startAt);
   A.srcs = [s];
   if (A.mode === "seq" && A.qi + 1 < A.queue.length) load(A.queue[A.qi + 1]).catch(() => {});
@@ -683,6 +685,7 @@ function clipEnded(id) {
 
 function clipFailed(id, tok) {
   if (tok !== A.token) return;
+  A.loading = false;
   failed.add(id);
   const a = $("e-" + id);
   if (a) a.replaceWith(entry(byId(id)));
@@ -748,7 +751,7 @@ function togglePause() {
 function stopAll() {
   ++A.token;
   stopSources();
-  Object.assign(A, { mode: null, origin: null, id: null, queue: [], qi: -1, startAt: 0, dur: 0, swell: null });
+  Object.assign(A, { mode: null, origin: null, id: null, queue: [], qi: -1, startAt: 0, dur: 0, swell: null, loading: false });
   if (A.paused && A.ctx) A.ctx.resume();
   A.paused = false;
   paint();
@@ -834,7 +837,7 @@ function paintTime() {
   }
   const r = A.id && byId(A.id);
   if (!r) return;
-  let s = clock(t) + (A.dur ? " / " + clock(A.dur) : "");
+  let s = A.loading ? "Sæki upptökuna …" : clock(t) + (A.dur ? " / " + clock(A.dur) : "");
   if (A.mode === "seq") s += " · " + (A.qi + 1) + " af " + A.queue.length;
   $("deckTime").textContent = s;
   const len = document.querySelector('.listen[data-id="' + r.id + '"] .len');

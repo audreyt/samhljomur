@@ -212,6 +212,18 @@ const shotOf = async (page: Page, sel: string, name: string) => { await page.loc
   await ctx.close();
 }
 
+// ---------- a slow connection: the player says it is fetching, then counts ----------
+{
+  const { ctx, page } = await open({ width: 390, height: 844, live: false });
+  await page.route("**/api/v1/summaries/*/audio", async (route) => { await new Promise((ok) => setTimeout(ok, 2000)); await route.continue(); });
+  await page.click("#list .listen >> nth=0");
+  await page.waitForTimeout(600);
+  const waiting = await page.textContent("#deckTime");
+  const counted = await page.waitForFunction(() => /^0:0\d \/ 0:\d\d$/.test(document.getElementById("deckTime")!.textContent ?? ""), null, { timeout: 15000 }).then(() => true, () => false);
+  gate("on a slow connection the player says it is fetching, then counts", waiting === "Sæki upptökuna …" && counted, `${waiting} | ${await page.textContent("#deckTime")}`);
+  await ctx.close();
+}
+
 // ---------- desktop views ----------
 {
   const { ctx, page } = await open({ width: 1440, height: 900, live: false });
