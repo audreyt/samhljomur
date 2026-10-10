@@ -74,6 +74,10 @@ h1 {
   margin: 0; font-family: var(--font-frame); font-weight: 850;
   font-size: clamp(4.25rem, 20vw, 10.5rem); line-height: .8; letter-spacing: -.05em; margin-left: -.04em;
 }
+.hero .top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: .5rem 2rem; }
+.toc { display: flex; flex-wrap: wrap; column-gap: 1.1rem; font-family: var(--font-frame); font-weight: 600; font-size: .875rem; }
+.toc a { padding-block: .3rem; color: var(--dim); text-decoration: none; }
+.toc a:hover { color: var(--chalk); text-decoration: underline; }
 /* With large text settings the title still fits its column; one word cannot wrap. */
 h1 { font-size: min(clamp(4.25rem, 20vw, 10.5rem), 28cqi); }
 .dek { margin: 0; font-size: 1.25rem; line-height: 1.45; max-width: 34rem; text-wrap: pretty; }
@@ -197,7 +201,8 @@ select {
 .meta { margin: 0; display: flex; flex-wrap: wrap; gap: .15rem .5rem; font-family: var(--font-frame); font-weight: 600; font-size: .8125rem; letter-spacing: .02em; color: var(--dim); overflow-wrap: anywhere; }
 .meta span + span::before { content: "·"; margin-right: .5rem; }
 .words { margin: 0; font-size: 1.1875rem; line-height: 1.5; white-space: pre-wrap; overflow-wrap: anywhere; }
-.entry.on { background: var(--lift); box-shadow: 0 0 0 .75rem var(--lift); border-radius: .125rem; }
+.entry { scroll-margin-block: 2rem 8rem; }
+.entry.on, .entry:target { background: var(--lift); box-shadow: 0 0 0 .75rem var(--lift); border-radius: .125rem; }
 .acts { display: flex; flex-wrap: wrap; gap: .5rem; }
 .listen, .tool {
   display: inline-flex; align-items: center; gap: .55rem; min-height: 2.75rem; padding: .25rem .9rem .25rem .25rem;
@@ -277,7 +282,15 @@ html.is-screen body { overflow: hidden; }
 <div class="wrap">
 
   <header class="hero" id="raddir">
-    <p class="label">Samtalið · 10. október 2026</p>
+    <div class="top">
+      <p class="label">Samtalið · 10. október 2026</p>
+      <nav class="toc" aria-label="Á síðunni">
+        <a href="#viljum">Við viljum</a>
+        <a href="#gervigreind">Gervigreind</a>
+        <a href="#bord">Öll borðin</a>
+        <a href="#um">Um síðuna</a>
+      </nav>
+    </div>
     <h1>Orðrétt</h1>
     <p class="dek">Allar samantektirnar frá borðunum, eins og þær voru skráðar á talasaman.is. Upptökurnar eru heilar og óklipptar.</p>
     <div class="mtn-box">

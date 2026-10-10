@@ -142,6 +142,20 @@ const shotOf = async (page: Page, sel: string, name: string) => { await page.loc
   await ctx.close();
 }
 
+// ---------- the contents line, and a link to one summary ----------
+{
+  const id = ordered[Math.floor(ordered.length / 2)].id;
+  const { ctx, page } = await open({ width: 390, height: 844, live: false, path: "#e-" + id });
+  const t = await page.evaluate(() => {
+    const e = document.querySelector<HTMLElement>(":target"), r = e?.getBoundingClientRect();
+    return { id: e?.id, top: r ? Math.round(r.top) : null, bg: e ? getComputedStyle(e).backgroundColor : "" };
+  });
+  gate("a link to one summary lands on it, marked", t.id === "e-" + id && t.top !== null && t.top >= 0 && t.top < 120 && t.bg !== "rgba(0, 0, 0, 0)", JSON.stringify(t));
+  const toc = await page.$$eval(".toc a", (as) => as.map((a) => [a.textContent, !!document.querySelector(a.getAttribute("href")!)]));
+  gate("contents line: every link has its section", toc.length === 4 && toc.every(([, ok]) => ok), JSON.stringify(toc));
+  await ctx.close();
+}
+
 // ---------- live: data, one voice, all voices, posters ----------
 {
   const { ctx, page, hosts, errors } = await open({ width: 390, height: 844, live: true });
