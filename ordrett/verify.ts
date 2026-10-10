@@ -8,7 +8,11 @@
 // sheet. Live gates then let the page reach talasaman.is: live data, playback
 // of one voice and of all voices at once, posters, screen mode, and the page
 // under talasaman.is's own Content-Security-Policy. Site gates: the medley's
-// old addresses all still answer, and the record page links resolve.
+// old addresses all still answer, and the record page links resolve. Reader
+// gates: no sideways scrolling at 320px or with text at 200%, focus in the
+// dialogs, button names, links to one summary, search, print, the live redraw
+// (against a held, controlled answer), a slow connection, screen mode by mouse
+// and by touch, and the share card and icons.
 // Screenshots go to ordrett/qa/.
 
 import { chromium, type Page } from "playwright";
