@@ -188,6 +188,25 @@ const shotOf = async (page: Page, sel: string, name: string) => { await page.loc
   await ctx.close();
 }
 
+// ---------- on paper ----------
+{
+  const { ctx, page } = await open({ width: 390, height: 844, live: false });
+  await page.emulateMedia({ media: "print" });
+  const p = await page.evaluate(() => {
+    const shown = (e: Element) => e.getClientRects().length > 0;
+    return {
+      players: ["#mtn", "#playSeq", "#q", "#toScreen", "#list .listen"].filter((s) => shown(document.querySelector(s)!)),
+      words: [...document.querySelectorAll("#list .words")].filter(shown).length,
+      notes: [...document.querySelectorAll(".note-row")].filter(shown).length,
+      colours: [getComputedStyle(document.body).backgroundColor, getComputedStyle(document.body).color],
+    };
+  });
+  gate("on paper: every summary and the AI sheet, no players or controls, black on white",
+    p.players.length === 0 && p.words === snap.data.length && p.notes === expectedAI.length && p.colours.join() === "rgb(255, 255, 255),rgb(0, 0, 0)", JSON.stringify(p));
+  await shotOf(page, ".sheet", "print-sheet.png");
+  await ctx.close();
+}
+
 // ---------- live: data, one voice, all voices, posters ----------
 {
   const { ctx, page, hosts, errors } = await open({ width: 390, height: 844, live: true });

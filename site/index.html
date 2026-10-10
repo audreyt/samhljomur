@@ -283,6 +283,34 @@ html.is-screen body { overflow: hidden; }
   @keyframes pulse { 50% { opacity: .35; } }
 }
 @media (prefers-reduced-motion: reduce) { .screen .say { transition: none; } }
+
+/* ---------- on paper: the words, the spine and the highlighted sheet; no players ---------- */
+@media print {
+  :root { --night: #fff; --lift: #fff; --chalk: #000; --dim: #4a4a4a; --hair: #c8c8c8; --paper: #fff; --ink: #000; --ink-dim: #4a4a4a; }
+  @page { margin: 16mm 15mm; }
+  html, body { background: #fff; color: #000; }
+  body { padding: 0; font-size: 10.5pt; }
+  .toc, .mtn-box, .plays, .now, #mtnRule, .controls, .acts, .aside, .to-screen, .to-screen + .fine, .deck, .shade, .screen, .tip { display: none !important; }
+  .hero { padding-block: 0 1.5rem; gap: .75rem; }
+  h1 { font-size: 54pt; }
+  .dek { font-size: 13pt; }
+  section, .sheet-wrap { padding-block: 1.5rem; border-top: 0; }
+  #gervigreind, #bord { break-before: page; }
+  .question { font-size: 22pt; }
+  .krow { font-size: 13pt; break-inside: avoid; }
+  .krow .key, .pc { color: #000 !important; }
+  .sheet { box-shadow: none; padding: 0; max-width: none; }
+  .sheet h2 { font-size: 30pt; }
+  .ai-line .s { font-size: 13pt; break-inside: avoid; }
+  .ai-line mark, .notes mark, .pen { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .note-row, .entry, .about { break-inside: avoid; }
+  .place { padding-block: .5rem 1rem; }
+  .place .pc { position: static; font-size: 22pt; }
+  .place h3 { break-after: avoid; }
+  .words { font-size: 11pt; }
+  .entry.on, .entry:target { background: none; box-shadow: none; }
+  a { text-decoration: none; }
+}
 </style>
 </head>
 <body>
