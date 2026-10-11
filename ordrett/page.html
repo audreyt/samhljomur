@@ -266,8 +266,12 @@ input[type="search"]::placeholder { color: var(--dim); opacity: 1; }
 }
 .shade[open] { display: grid; }
 .shade::backdrop { background: transparent; }
-.shade .box { display: grid; gap: .9rem; justify-items: center; max-height: 100%; }
-.shade img { display: block; max-width: min(100%, 26rem); max-height: calc(100vh - 8rem); height: auto; border-radius: .25rem; box-shadow: 0 1rem 3rem rgba(0,0,0,.5); }
+.shade .box { display: grid; gap: .9rem; justify-items: center; max-height: 100%; max-width: 100%; min-width: 0; }
+/* A long summary is a story of several frames, side by side; a narrow screen swipes through them,
+   with the next frame showing at the edge. */
+.shade .frames { display: flex; gap: .75rem; max-width: 100%; overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; }
+.shade img { display: block; flex: none; width: min(26rem, calc(100vw - 2rem), calc((100vh - 8rem) * .5625)); height: auto; scroll-snap-align: center; border-radius: .25rem; box-shadow: 0 1rem 3rem rgba(0,0,0,.5); }
+.shade .frames img:not(:only-child) { width: min(26rem, calc(100vw - 5rem), calc((100vh - 8rem) * .5625)); }
 .shade .row { display: flex; flex-wrap: wrap; justify-content: center; gap: .6rem; }
 .shade button { min-height: 2.75rem; padding: .5rem 1.1rem; border-radius: 999px; cursor: pointer; font-family: var(--font-frame); font-weight: 650; border: 1px solid var(--chalk); background: transparent; }
 .shade button.primary { background: var(--chalk); color: var(--night); }
@@ -455,7 +459,7 @@ html.is-hall body { overflow: hidden; }
 
 <dialog class="shade" id="shade" aria-label="Plakat">
   <div class="box">
-    <img id="posterImg" alt="">
+    <div class="frames" id="posterFrames"><img id="posterImg" alt=""></div>
     <div class="row">
       <button class="primary" id="posterShare" type="button" hidden>Deila</button>
       <button id="posterSave" type="button">Sækja mynd</button>
@@ -511,6 +515,7 @@ html.is-hall body { overflow: hidden; }
   </div>
 </div>
 
+<script>/*PRETEXT*/</script>
 <script>
 (() => {
 "use strict";
@@ -1421,69 +1426,251 @@ function wrapLines(g, text, maxW) {
   return out;
 }
 
-async function poster(r) {
-  try { await Promise.all(['850 100px "Schibsted Grotesk"', '650 40px "Schibsted Grotesk"', '400 40px "Atkinson Hyperlegible Next"'].map((f) => document.fonts.load(f))); } catch (e) {}
-  const W = 1080, H = 1920, X = 88, RW = W - 2 * X;
-  const cv = document.createElement("canvas");
-  cv.width = W; cv.height = H;
-  const g = cv.getContext("2d"), ink = "#121411", dim = "rgba(18,20,17,.64)";
-  g.fillStyle = tone(r.locationPostCode, "tint"); g.fillRect(0, 0, W, H);
-  g.fillStyle = dim; g.font = '650 34px "Schibsted Grotesk"';
-  g.fillText("SAMTALIÐ · 10. OKTÓBER 2026", X, 150);
-  g.fillStyle = ink; g.font = '850 260px "Schibsted Grotesk"';
-  g.fillText(r.locationPostCode, X - 12, 400);
-  g.font = '750 60px "Schibsted Grotesk"';
-  let y = 488;
-  for (const l of wrapLines(g, r.location, RW)) { g.fillText(l, X, y); y += 68; }
-  g.fillStyle = dim; g.font = '650 42px "Schibsted Grotesk"';
-  for (const l of wrapLines(g, "borð " + r.table + " · " + r.topic + (r.source === "participant" ? " · samantekt eins þátttakanda" : ""), RW)) { g.fillText(l, X, y); y += 52; }
-  const env = audible(r) ? envOf(r.id) : null;
-  const top = y + 60, boxH = (env ? 1590 : 1700) - top;
-  let size = 120, lines = [], lh = 0;
-  for (; size >= 16; size -= 2) {
-    g.font = "400 " + size + 'px "Atkinson Hyperlegible Next"';
-    lines = wrapLines(g, r.summary, RW); lh = size * 1.27;
-    if (lines.length * lh <= boxH) break;
-  }
-  g.fillStyle = ink;
-  let ty = top + Math.max(0, (boxH - lines.length * lh) / 2) + size;
-  for (const l of lines) { g.fillText(l, X, ty); ty += lh; }
-  if (env) {
-    const y0 = 1712, amp = 96, m = env.length;
-    g.beginPath(); g.moveTo(X, y0);
-    for (let j = 0; j < RW; j++) {
-      const a = Math.floor(j * m / RW), b = Math.max(a + 1, Math.floor((j + 1) * m / RW));
-      let v = 0;
-      for (let k = a; k < b && k < m; k++) v = Math.max(v, env[k]);
-      g.lineTo(X + j, y0 - v * amp);
-    }
-    g.strokeStyle = ink; g.lineWidth = 3; g.lineJoin = "round"; g.stroke();
-    g.fillStyle = dim; g.font = '650 30px "Schibsted Grotesk"'; g.textAlign = "right";
-    g.fillText(clock(facts(r.id)[0]), W - X, y0 + 46); g.textAlign = "left";
-  }
-  g.fillStyle = ink; g.font = '850 52px "Schibsted Grotesk"';
-  g.fillText("Orðrétt", X, 1822);
-  g.textAlign = "right"; g.font = '600 30px "Schibsted Grotesk"';
-  g.fillText(SITE, W - X, 1822); g.textAlign = "left";
-  g.fillStyle = dim; g.font = '500 25px "Schibsted Grotesk"';
-  g.fillText("Gögn: Samtal, félag til almannaheilla (talasaman.is), CC BY 4.0", X, 1866);
-  return cv;
+// Lines laid out before they are drawn. Pretext (inlined, MIT) breaks lines the way the browser does,
+// by arithmetic over widths the browser's own canvas measures. Each text is measured once, at REF px:
+// a line breaks at size s and width w just where it breaks at REF px and width w * REF / s, so trying
+// a size costs no measuring. Without Intl.Segmenter Pretext cannot run, and the page measures as it did.
+const PT = window.Pretext && typeof Intl.Segmenter === "function" ? window.Pretext : null;
+const REF = 100;
+const measured = new Map();
+function prepared(text, family) {
+  const key = family + "\n" + text;
+  if (!measured.has(key)) measured.set(key, PT.prepareWithSegments(text, "400 " + REF + "px " + family, { whiteSpace: "pre-wrap" }));
+  return measured.get(key);
+}
+// A font that arrives late changes every width, so everything is measured again.
+if (PT && document.fonts) document.fonts.addEventListener("loadingdone", () => { measured.clear(); PT.clearCache(); });
+// Each line with the stretch of the text it holds, [from, to), so what is drawn can be checked
+// against the summary. A line that ends between two letters cuts a word; a poster never does.
+const endsInWord = (text, line, end) => text[end] !== "\n" && isLetter(line.slice(-1)) && isLetter(text[end]);
+function linesAt(text, family, s, w) {
+  let at = 0, cut = false;
+  const lines = PT.layoutWithLines(prepared(text, family), w * REF / s, 1).lines.map((l) => {
+    const from = at;
+    at += l.text.length;
+    if (endsInWord(text, l.text, at)) cut = true;
+    if (text[at] === "\n") at++;
+    return { text: l.text, from, to: at };
+  });
+  return { lines, cut, whole: at === text.length };
+}
+// The largest whole px from lo to hi that passes, or 0.
+function largest(ok, lo, hi) {
+  if (!ok(lo)) return 0;
+  while (lo < hi) { const mid = Math.ceil((lo + hi) / 2); if (ok(mid)) lo = mid; else hi = mid - 1; }
+  return lo;
 }
 
-let posterBlob = null, posterName = "", posterFrom = null;
+const PW = 1080, PH = 1920, PX = 88, PRW = PW - 2 * PX, INK = "#121411", DIM = "rgba(18,20,17,.64)";
+const POSTER_WORDS = '"Atkinson Hyperlegible Next"';
+const POSTER_MIN = 36; // no poster sets the words smaller: a longer summary goes on more frames
+// The rule under a poster set in the shape of its voice, with the recording's start and end.
+const voiceRule = (r) => "Breidd línanna er styrkur raddarinnar, frá upphafi upptökunnar efst (0:00) til enda hennar neðst (" + clock(facts(r.id)[0]) + ").";
+
+// The largest size at which the summary fits whole with no word cut, at the narrowest measure that
+// keeps as many lines, so a last line is not left alone. A summary that cannot fit at POSTER_MIN goes
+// on as few frames as keep it at POSTER_MIN or larger, split between lines, at a paragraph's end when
+// one is near. The words and their order do not change.
+function wordsPlan(r, boxH) {
+  const text = r.summary, at = (s, w = PRW) => linesAt(text, POSTER_WORDS, s, w);
+  const fits = (s, w) => { const L = at(s, w); return L.whole && !L.cut && L.lines.length * s * 1.27 <= boxH ? L : null; };
+  const one = largest((s) => !!fits(s), POSTER_MIN, 120);
+  if (one) {
+    const n = fits(one).lines.length;
+    let lo = PRW * 0.6, hi = PRW;
+    for (let i = 0; i < 12; i++) { const mid = (lo + hi) / 2, L = fits(one, mid); if (L && L.lines.length === n) hi = mid; else lo = mid; }
+    return { size: one, frames: [fits(one, hi).lines] };
+  }
+  for (let n = 2; n <= 12; n++) {
+    for (let s = largest((s) => at(s).lines.length * s * 1.27 <= n * boxH, POSTER_MIN, 120); s >= POSTER_MIN; s--) {
+      const L = at(s);
+      if (!L.whole || L.cut) continue;
+      const per = Math.floor(boxH / (s * 1.27)), frames = [];
+      for (let i = 0; i < L.lines.length;) {
+        let end = Math.min(L.lines.length, i + per);
+        if (end < L.lines.length) for (let k = end; k > i + per * 0.6; k--) if (text[L.lines[k - 1].to - 1] === "\n") { end = k; break; }
+        frames.push(L.lines.slice(i, end));
+        i = end;
+      }
+      if (frames.length <= n) return { size: s, frames };
+    }
+  }
+  return null;
+}
+
+// A summary with a recording is set in the shape of that recording: top to bottom is start to end,
+// and each line is as wide as the voice is loud in its stretch (the mean reading there, scaled from
+// the quietest stretch to the loudest: 40% of the measure to all of it). A line is widened rather than
+// cut a word. The size is the largest at which the whole summary fits the shape.
+const VLH = 1.2;
+function voicePlan(r, env, boxH) {
+  const text = r.summary, p = prepared(text, POSTER_WORDS);
+  const widths = (n) => {
+    const v = [];
+    for (let i = 0; i < n; i++) {
+      const a = Math.floor(i * env.length / n), b = Math.max(a + 1, Math.floor((i + 1) * env.length / n));
+      let sum = 0;
+      for (let k = a; k < b; k++) sum += env[Math.min(k, env.length - 1)];
+      v.push(sum / (b - a));
+    }
+    const lo = Math.min(...v), span = Math.max(...v) - lo || 1;
+    return v.map((x) => PRW * (0.4 + 0.6 * (x - lo) / span));
+  };
+  const flow = (s) => {
+    const n = Math.floor(boxH / (s * VLH));
+    if (n < 2) return null;
+    const rows = widths(n), lines = [];
+    let cur = { segmentIndex: 0, graphemeIndex: 0 }, at = 0;
+    for (let i = 0; i < n && at < text.length; i++) {
+      let w = rows[i], line;
+      for (;;) {
+        line = PT.layoutNextLine(p, cur, w * REF / s);
+        if (!line || !endsInWord(text, line.text, at + line.text.length) || w >= PRW) break;
+        w = Math.min(PRW, w * 1.1);
+      }
+      if (!line) break;
+      if (endsInWord(text, line.text, at + line.text.length)) return null;
+      const from = at;
+      at += line.text.length;
+      if (text[at] === "\n") at++;
+      lines.push({ text: line.text, from, to: at });
+      cur = line.end;
+    }
+    return at === text.length ? { size: s, rows, lines } : null;
+  };
+  const s = largest((s) => !!flow(s), POSTER_MIN, 120);
+  return s ? flow(s) : null;
+}
+
+function sheet(r) {
+  const cv = document.createElement("canvas");
+  cv.width = PW; cv.height = PH;
+  const g = cv.getContext("2d");
+  g.fillStyle = tone(r.locationPostCode, "tint"); g.fillRect(0, 0, PW, PH);
+  return [cv, g];
+}
+// The date (and which frame), the postcode, the place and the table; returns where the words may start.
+function head(g, r, part) {
+  g.fillStyle = DIM; g.font = '650 34px "Schibsted Grotesk"';
+  g.fillText("SAMTALIÐ · 10. OKTÓBER 2026" + (part ? " · " + part : ""), PX, 150);
+  g.fillStyle = INK; g.font = '850 260px "Schibsted Grotesk"';
+  g.fillText(r.locationPostCode, PX - 12, 400);
+  g.font = '750 60px "Schibsted Grotesk"';
+  let y = 488;
+  for (const l of wrapLines(g, r.location, PRW)) { g.fillText(l, PX, y); y += 68; }
+  g.fillStyle = DIM; g.font = '650 42px "Schibsted Grotesk"';
+  for (const l of wrapLines(g, "borð " + r.table + " · " + r.topic + (r.source === "participant" ? " · samantekt eins þátttakanda" : ""), PRW)) { g.fillText(l, PX, y); y += 52; }
+  return y;
+}
+function foot(g) {
+  g.fillStyle = INK; g.font = '850 52px "Schibsted Grotesk"';
+  g.fillText("Orðrétt", PX, 1822);
+  g.textAlign = "right"; g.font = '600 30px "Schibsted Grotesk"';
+  g.fillText(SITE, PW - PX, 1822); g.textAlign = "left";
+  g.fillStyle = DIM; g.font = '500 25px "Schibsted Grotesk"';
+  g.fillText("Gögn: Samtal, félag til almannaheilla (talasaman.is), CC BY 4.0", PX, 1866);
+}
+// The recording's loudness under the words, as a line, with its length.
+function underline(g, r, env) {
+  const y0 = 1712, amp = 96, m = env.length;
+  g.beginPath(); g.moveTo(PX, y0);
+  for (let j = 0; j < PRW; j++) {
+    const a = Math.floor(j * m / PRW), b = Math.max(a + 1, Math.floor((j + 1) * m / PRW));
+    let v = 0;
+    for (let k = a; k < b && k < m; k++) v = Math.max(v, env[k]);
+    g.lineTo(PX + j, y0 - v * amp);
+  }
+  g.strokeStyle = INK; g.lineWidth = 3; g.lineJoin = "round"; g.stroke();
+  g.fillStyle = DIM; g.font = '650 30px "Schibsted Grotesk"'; g.textAlign = "right";
+  g.fillText(clock(facts(r.id)[0]), PW - PX, y0 + 46); g.textAlign = "left";
+}
+function drawVoice(g, r, plan, top) {
+  const { size, rows, lines } = plan, lh = size * VLH, cx = PW / 2, bottom = top + rows.length * lh;
+  // the voice itself, faint: a smooth outline through each line's width, about the centre
+  const half = rows.map((w, i) => [w / 2 + 22, top + (i + 0.5) * lh]);
+  const ring = [[cx - half[0][0], top - 6], ...half.map(([h, y]) => [cx - h, y]), [cx - half[half.length - 1][0], bottom + 6],
+    [cx + half[half.length - 1][0], bottom + 6], ...half.slice().reverse().map(([h, y]) => [cx + h, y]), [cx + half[0][0], top - 6]];
+  const mid = (i) => { const [x0, y0] = ring[i], [x1, y1] = ring[(i + 1) % ring.length]; return [(x0 + x1) / 2, (y0 + y1) / 2]; };
+  g.beginPath(); g.moveTo(...mid(ring.length - 1));
+  ring.forEach(([x, y], i) => g.quadraticCurveTo(x, y, ...mid(i)));
+  g.closePath(); g.fillStyle = "rgba(18,20,17,.07)"; g.fill();
+  g.textAlign = "center";
+  g.fillStyle = INK; g.font = "400 " + size + "px " + POSTER_WORDS;
+  lines.forEach((l, i) => g.fillText(l.text.trim(), cx, top + i * lh + size * 0.92));
+  g.textAlign = "left";
+}
+function ruleLines(g, r) { g.font = '600 26px "Schibsted Grotesk"'; return wrapLines(g, voiceRule(r), PRW); }
+
+// One poster, or a story of several frames: [{ cv, text it holds, px, shape }].
+async function poster(r) {
+  try { await Promise.all(['850 100px "Schibsted Grotesk"', '650 40px "Schibsted Grotesk"', '400 40px "Atkinson Hyperlegible Next"'].map((f) => document.fonts.load(f))); } catch (e) {}
+  const env = audible(r) ? envOf(r.id) : null;
+  const [cv, g] = sheet(r);
+  const y = head(g, r, "");
+  if (PT && env) {
+    const rule = ruleLines(g, r), ruleTop = 1748 - (rule.length - 1) * 34 - 26, top = y + 64;
+    const plan = voicePlan(r, env, ruleTop - 56 - top);
+    if (plan) {
+      drawVoice(g, r, plan, top);
+      g.fillStyle = DIM; g.font = '600 26px "Schibsted Grotesk"'; g.textAlign = "center";
+      rule.forEach((l, i) => g.fillText(l, PW / 2, ruleTop + 26 + i * 34));
+      g.textAlign = "left";
+      foot(g);
+      return [{ cv, text: r.summary, px: plan.size, shape: "voice" }];
+    }
+  }
+  const top = y + 60, boxH = (env ? 1590 : 1700) - top;
+  const plan = PT && wordsPlan(r, boxH);
+  if (!plan) { // as before Pretext: one frame, the largest size whose lines fit
+    let size = 120, lines = [], lh = 0;
+    for (; size >= 16; size -= 2) {
+      g.font = "400 " + size + "px " + POSTER_WORDS;
+      lines = wrapLines(g, r.summary, PRW); lh = size * 1.27;
+      if (lines.length * lh <= boxH) break;
+    }
+    g.fillStyle = INK;
+    let ty = top + Math.max(0, (boxH - lines.length * lh) / 2) + size;
+    for (const l of lines) { g.fillText(l, PX, ty); ty += lh; }
+    if (env) underline(g, r, env);
+    foot(g);
+    return [{ cv, text: r.summary, px: size, shape: "words" }];
+  }
+  const n = plan.frames.length, lh = plan.size * 1.27;
+  return plan.frames.map((lines, i) => {
+    const [c, h] = i || n > 1 ? sheet(r) : [cv, g];
+    if (n > 1) head(h, r, (i + 1) + "/" + n);
+    // a frame does not open on a blank line; one frame is centred in its box
+    const first = lines.findIndex((l) => l.text.trim()), shown = n > 1 && first > 0 ? lines.slice(first) : lines;
+    let ty = top + (n > 1 ? 0 : Math.max(0, (boxH - shown.length * lh) / 2)) + plan.size;
+    h.fillStyle = INK; h.font = "400 " + plan.size + "px " + POSTER_WORDS;
+    for (const l of shown) { h.fillText(l.text, PX, ty); ty += lh; }
+    if (env) underline(h, r, env);
+    foot(h);
+    return { cv: c, text: r.summary.slice(lines[0].from, lines[lines.length - 1].to), px: plan.size, shape: "words" };
+  });
+}
+
+let posterFiles = [], posterFrom = null;
 async function openPoster(id) {
   const r = byId(id);
   if (!r) return;
   posterFrom = document.activeElement;
-  const cv = await poster(r);
-  posterBlob = await new Promise((ok) => cv.toBlob(ok, "image/png"));
-  posterName = "ordrett-" + r.locationPostCode + "-" + slug(r.location) + "-bord-" + r.table + ".png";
-  const img = $("posterImg");
-  if (img.src.startsWith("blob:")) URL.revokeObjectURL(img.src);
-  img.src = URL.createObjectURL(posterBlob);
-  img.alt = r.location + ", borð " + r.table + ": " + r.summary;
-  const file = new File([posterBlob], posterName, { type: "image/png" });
-  $("posterShare").hidden = !(navigator.canShare && navigator.canShare({ files: [file] }));
+  const frames = await poster(r);
+  const name = "ordrett-" + r.locationPostCode + "-" + slug(r.location) + "-bord-" + r.table;
+  const blobs = await Promise.all(frames.map((f) => new Promise((ok) => f.cv.toBlob(ok, "image/png"))));
+  posterFiles = blobs.map((b, i) => new File([b], name + (frames.length > 1 ? "-" + (i + 1) : "") + ".png", { type: "image/png" }));
+  const box = $("posterFrames");
+  for (const img of box.querySelectorAll("img")) if (img.src.startsWith("blob:")) URL.revokeObjectURL(img.src);
+  box.replaceChildren(...frames.map((f, i) => {
+    const img = i ? el("img") : $("posterImg");
+    img.src = URL.createObjectURL(posterFiles[i]);
+    img.alt = r.location + ", borð " + r.table + (frames.length > 1 ? ", " + (i + 1) + " af " + frames.length : "") + ": " + f.text;
+    img.dataset.px = String(f.px); img.dataset.shape = f.shape;
+    return img;
+  }));
+  box.scrollLeft = 0;
+  $("posterSave").textContent = frames.length > 1 ? "Sækja myndir" : "Sækja mynd";
+  $("posterShare").hidden = !(navigator.canShare && navigator.canShare({ files: posterFiles }));
   const dlg = $("shade");
   if (!dlg.open) { if (dlg.showModal) dlg.showModal(); else dlg.setAttribute("open", ""); }
   $("posterSave").focus();
@@ -1496,13 +1683,15 @@ function posterClosed() {
   posterFrom = null;
 }
 $("posterShare").addEventListener("click", async () => {
-  try { await navigator.share({ files: [new File([posterBlob], posterName, { type: "image/png" })], title: "Orðrétt" }); } catch (e) {}
+  try { await navigator.share({ files: posterFiles, title: "Orðrétt" }); } catch (e) {}
 });
 $("posterSave").addEventListener("click", () => {
-  const a = document.createElement("a");
-  a.href = URL.createObjectURL(posterBlob); a.download = posterName;
-  document.body.append(a); a.click(); a.remove();
-  setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+  posterFiles.forEach((f, i) => setTimeout(() => {
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(f); a.download = f.name;
+    document.body.append(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+  }, i * 400));
 });
 const closePoster = () => {
   const dlg = $("shade");
@@ -1550,9 +1739,40 @@ function leaveScreen() {
   if (location.hash === "#skjar") history.replaceState(null, "", location.pathname + location.search);
 }
 const readMs = (text) => Math.min(24, Math.max(6, 4 + text.trim().split(/\s+/).length * 0.32)) * 1000;
+// The rule below, worked out from the lines before anything is set: the largest size at which the
+// summary fits whole in one column, or in two or three when that sets it a fifth larger. The page is
+// then measured once, and only if its lines came out longer than Pretext's does the size step down.
+function fitByLines(say, box, start) {
+  const text = say.textContent, W = box.clientWidth, H = box.clientHeight - 2;
+  if (!text || W <= 0 || H <= 0) return false;
+  const p = prepared(text, getComputedStyle(say).fontFamily);
+  const tall = (cols, s) => {
+    const colW = (W - (cols - 1) * 1.6 * s) / cols;
+    const n = PT.measureLineStats(p, colW * REF / s).lineCount;
+    return (Math.ceil(n / cols) + (cols > 1 ? 1 : 0)) * s * 1.3; // a balanced column may hold one line more
+  };
+  const most = (cols) => { // the largest size from 14px to start that fits, to a tenth of a px; 0 if none
+    if (tall(cols, 14) > H) return 0;
+    if (tall(cols, start) <= H) return start;
+    let lo = 14, hi = start;
+    while (hi - lo > 0.1) { const mid = (lo + hi) / 2; if (tall(cols, mid) <= H) lo = mid; else hi = mid; }
+    return lo;
+  };
+  let cols = 1, px = most(1), whole = px > 0;
+  if (!whole) px = 14;
+  for (let c = 2; c <= 3 && px < start * 0.4; c++) {
+    const p2 = most(c);
+    if (p2 && (!whole || p2 > px * 1.2)) { cols = c; px = p2; whole = true; }
+  }
+  say.style.columnCount = cols > 1 ? String(cols) : "";
+  say.style.fontSize = px + "px";
+  while (whole && px > 14 && say.scrollHeight > box.clientHeight) { px *= 0.98; say.style.fontSize = px + "px"; }
+  return true;
+}
 function fit() {
   const say = $("sSay"), box = $("sBody"), start = Math.min(innerWidth * 0.058, innerHeight * 0.1);
   box.scrollTop = 0;
+  if (PT && start > 14 && fitByLines(say, box, start)) return;
   const size = (cols) => {
     say.style.columnCount = cols > 1 ? String(cols) : "";
     let px = start;

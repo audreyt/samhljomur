@@ -14,7 +14,11 @@
 // (against a held, controlled answer), a slow connection, screen mode by mouse
 // and by touch, long summaries in screen mode on a projector and on a phone,
 // the mountain full screen with the words following the voice, a recording
-// measured from its own file, and the share card and icons.
+// measured from its own file, and the share card and icons. Layout gates:
+// Pretext counts the lines of every summary as the page sets them; every
+// poster holds its summary whole at 36px or larger, a voiced one in the shape
+// of its voice; screen mode sets every summary whole on a projector; and
+// without Intl.Segmenter the page measures as it did before.
 // Screenshots go to ordrett/qa/.
 
 import { chromium, type Page } from "playwright";
@@ -147,6 +151,58 @@ const shotOf = async (page: Page, sel: string, name: string) => { await page.loc
   await page.locator("#viljum").scrollIntoViewIfNeeded();
   await shotOf(page, "#viljum", "phone-viljum.png");
   await shotOf(page, ".sheet", "phone-sheet.png");
+  await ctx.close();
+}
+
+// ---------- lines laid out before they are drawn: Pretext, and every poster ----------
+{
+  const { ctx, page, errors } = await open({ width: 390, height: 844, live: false });
+  const agree = await page.evaluate(() => {
+    const P = (window as any).Pretext;
+    if (!P) return null;
+    let same = 0, more = 0, fewer = 0;
+    for (const e of document.querySelectorAll<HTMLElement>("#list .words")) {
+      const cs = getComputedStyle(e), lh = parseFloat(cs.lineHeight);
+      const dom = Math.round(e.getBoundingClientRect().height / lh);
+      const n = P.layoutWithLines(P.prepareWithSegments(e.textContent!, `${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`, { whiteSpace: "pre-wrap" }), e.clientWidth, lh).lines.length;
+      if (n === dom) same++; else if (n > dom) more++; else fewer++;
+    }
+    return { same, more, fewer };
+  });
+  gate("Pretext is inlined, and counts the lines of every summary as the page sets them, or one more, never fewer",
+    !!agree && agree.fewer === 0 && agree.same + agree.more === snap.data.length && agree.same >= snap.data.length * 0.95, JSON.stringify(agree));
+
+  // Every poster: its frames hold the summary whole and in order, at 36px or larger; a summary
+  // with a recording is set in the shape of its voice, on one frame.
+  const voicedIds = new Set(voiced.map((r: any) => r.id));
+  const wrong: string[] = [];
+  let smallest = Infinity, shaped = 0;
+  const split: string[] = [];
+  for (const r of ordered) {
+    await page.click(`[data-poster="${r.id}"]`);
+    await page.waitForFunction(() => (document.getElementById("shade") as HTMLDialogElement).open &&
+      [...document.querySelectorAll<HTMLImageElement>("#posterFrames img")].every((i) => i.complete && i.naturalWidth > 0));
+    const frames = await page.$$eval("#posterFrames img", (is) => is.map((i) => {
+      const im = i as HTMLImageElement;
+      return { size: im.naturalWidth + "x" + im.naturalHeight, alt: im.alt, px: Number(im.dataset.px), shape: im.dataset.shape };
+    }));
+    await page.keyboard.press("Escape");
+    const n = frames.length;
+    const words = frames.map((f, i) => {
+      const lead = `${r.location}, borð ${r.table}${n > 1 ? `, ${i + 1} af ${n}` : ""}: `;
+      return f.alt.startsWith(lead) ? f.alt.slice(lead.length) : "\u0000";
+    }).join("");
+    const voice = voicedIds.has(r.id);
+    if (voice && frames.every((f) => f.shape === "voice")) shaped++;
+    if (n > 1) split.push(`${r.id.slice(0, 8)}: ${n} at ${frames[0].px}px`);
+    for (const f of frames) smallest = Math.min(smallest, f.px);
+    if (words !== r.summary || frames.some((f) => f.size !== "1080x1920" || !(f.px >= 36)) ||
+      (voice ? n !== 1 || frames[0].shape !== "voice" : frames.some((f) => f.shape !== "words"))) wrong.push(r.id.slice(0, 8));
+  }
+  gate("posters: every summary whole and in order across its frames, 1080 x 1920, at 36px or larger",
+    wrong.length === 0 && smallest >= 36, `smallest ${smallest}px; on more than one frame: ${split.join(", ") || "none"}${wrong.length ? "; wrong: " + wrong.join(", ") : ""}`);
+  gate("posters: a summary with a recording is set in the shape of its voice", shaped === voiced.length, `${shaped} of ${voiced.length}`);
+  gate("no errors drawing every poster", errors.length === 0, errors.join(" | "));
   await ctx.close();
 }
 
@@ -569,6 +625,58 @@ for (const changed of [false, true]) {
       m.text === listy.summary && m.cols === "auto" && m.over > 0 && m.gap === 0 && m.scroll === "auto", JSON.stringify({ ...shown, scroll: m.scroll }));
     await ctx.close();
   }
+}
+
+// ---------- screen mode on a projector: every summary, set whole ----------
+{
+  const ctx = await browser.newContext({ viewport: { width: 1920, height: 1080 }, reducedMotion: "reduce" });
+  const page = await ctx.newPage();
+  const errors: string[] = [];
+  page.on("pageerror", (e) => errors.push(String(e)));
+  await page.route("**/api/v1/summaries**", (route) => route.abort());
+  await page.goto(BASE + "#skjar");
+  await page.waitForTimeout(500);
+  await page.click("#sGo");
+  const seen: { px: number; cols: string; over: number }[] = [];
+  for (let i = 0; i < ordered.length; i++) {
+    await page.waitForTimeout(40);
+    seen.push(await page.evaluate(() => {
+      const say = document.getElementById("sSay")!, box = document.getElementById("sBody")!;
+      return { px: Math.round(parseFloat(say.style.fontSize) * 10) / 10, cols: say.style.columnCount || "1", over: say.scrollHeight - box.clientHeight };
+    }));
+    await page.keyboard.press("ArrowRight");
+  }
+  const over = seen.filter((x) => x.over > 0).length, px = seen.map((x) => x.px).sort((a, b) => a - b);
+  gate("screen mode on a projector sets every summary whole, without scrolling",
+    seen.length === ordered.length && over === 0 && errors.length === 0,
+    `${seen.length} summaries, ${over} scroll; smallest ${px[0]}px, median ${px[px.length >> 1]}px; ${seen.filter((x) => x.cols !== "1").length} in columns`);
+  await ctx.close();
+}
+
+// ---------- without Intl.Segmenter Pretext cannot run: the page measures as it did before ----------
+{
+  const ctx = await browser.newContext({ viewport: { width: 1920, height: 1080 }, reducedMotion: "reduce" });
+  await ctx.addInitScript(() => { delete (Intl as any).Segmenter; });
+  const page = await ctx.newPage();
+  const errors: string[] = [];
+  page.on("pageerror", (e) => errors.push(String(e)));
+  await page.route("**/api/v1/summaries**", (route) => route.abort());
+  await page.goto(BASE);
+  await page.waitForTimeout(500);
+  const longest = ordered.reduce((a: any, b: any) => (b.summary.length > a.summary.length ? b : a));
+  await page.click(`[data-poster="${longest.id}"]`);
+  await page.waitForFunction(() => (document.getElementById("posterImg") as HTMLImageElement).naturalWidth > 0);
+  const p = await page.$$eval("#posterFrames img", (is) => is.map((i) => [(i as HTMLImageElement).naturalWidth, (i as HTMLImageElement).naturalHeight, (i as HTMLImageElement).alt]));
+  await page.keyboard.press("Escape");
+  await page.evaluate(() => { location.hash = "skjar"; });
+  await page.click("#sGo");
+  for (let i = 0; i < ordered.indexOf(longest); i++) await page.keyboard.press("ArrowRight");
+  await page.waitForTimeout(300);
+  const fit = await page.evaluate(() => { const say = document.getElementById("sSay")!, box = document.getElementById("sBody")!; return { text: say.textContent!.slice(0, 30), over: say.scrollHeight - box.clientHeight }; });
+  gate("without Intl.Segmenter: a poster and screen mode as before, without errors",
+    p.length === 1 && p[0][0] === 1080 && p[0][1] === 1920 && p[0][2] === `${longest.location}, borð ${longest.table}: ${longest.summary}` &&
+    fit.text === longest.summary.slice(0, 30) && fit.over <= 0 && errors.length === 0, JSON.stringify({ poster: p.map((x) => x[0] + "x" + x[1]), fit, errors }));
+  await ctx.close();
 }
 
 // ---------- screen mode on a touch screen ----------
