@@ -8,7 +8,8 @@
 //
 // No model runs anywhere in this build. Recordings are downloaded only to a
 // temporary directory to measure length and loudness, then deleted; the page
-// streams them from talasaman.is.
+// streams them from talasaman.is. Pretext (MIT) is bundled from node_modules
+// (`bun install`) and inlined, so the page still loads nothing else.
 
 import { existsSync, mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
@@ -148,7 +149,15 @@ const fill = (file: string, more: Record<string, string> = {}) => {
   if (left) throw new Error(`${file}: unfilled placeholders: ${left.join(", ")}`);
   return html;
 };
-const page = fill("page.html", { SNAPSHOT: json(snap), AUDIO: json(facts) });
+// Pretext, bundled from node_modules and inlined like the fonts. Its licence travels with it.
+const bundled = await Bun.build({ entrypoints: [join(HERE, "pretext.ts")], format: "iife", minify: true, target: "browser" });
+if (!bundled.success) throw new Error("pretext bundle: " + bundled.logs.join("\n"));
+const pretextJs = (await bundled.outputs[0].text()).trim();
+if (/<\/script|<!--/i.test(pretextJs)) throw new Error("pretext bundle would close the inline <script>");
+const pretextPkg = JSON.parse(readFileSync(join(HERE, "..", "node_modules", "@chenglou", "pretext", "package.json"), "utf8"));
+const PRETEXT = `/*! Pretext ${pretextPkg.version} · https://github.com/chenglou/pretext · MIT License · Copyright (c) 2026 Pretext contributors */\n${pretextJs}`;
+
+const page = fill("page.html", { PRETEXT, SNAPSHOT: json(snap), AUDIO: json(facts) });
 // Orðrétt is the site's front page; the record of how it came to be sits beside it.
 const SITE = join(HERE, "..", "site");
 writeFileSync(join(SITE, "index.html"), page);

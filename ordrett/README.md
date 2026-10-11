@@ -30,6 +30,15 @@ and the page says so. The parts:
 - **Öll borðin.** Every summary, by postcode, then location, then table.
   Each colour is a postcode; Iceland's postcodes, and so the colours, run
   round the island. Any summary becomes a 1080 × 1920 poster to share.
+  The words are set at the largest size that fits with no word cut in
+  two. A summary that would fall below 36px goes on as few frames as keep
+  it at 36px or larger, split between lines, at the end of a paragraph
+  when one is near; the frames are shared and saved together. A summary
+  with a recording is set in the shape of that recording when that keeps
+  its words at 36px or larger: top to bottom is start to end, and each
+  line is as wide as the voice is loud in its stretch (the mean reading
+  there, scaled from the recording's quietest stretch to its loudest, 40%
+  of the measure to all of it). The rule is printed on the poster.
   A search field finds a word, or part of one, in a summary, its place or
   its topic, and marks it; the words themselves are untouched.
 - **Live, with the recordings streamed.** On load the page fetches
@@ -45,7 +54,9 @@ and the page says so. The parts:
   same by mouse or touch, and they and the pointer sleep while the words
   are read. A summary written as a long list is set in columns on a wide
   screen when that makes its words larger and it then fits whole; on a
-  phone, a summary too long for the screen scrolls in its frame.
+  phone, a summary too long for the screen scrolls in its frame. The size
+  is worked out from the lines before the words are set, and the page is
+  measured once to confirm it.
 - **The mountain on a hall screen:** `#fjall`, or *Sýna fjallið*. The
   mountain fills the screen and plays every voice at once, then each
   voice in turn. While a voice is heard, its summary is shown and the
@@ -57,6 +68,15 @@ and the page says so. The parts:
   spine, the AI sheet with its highlighter colours, and every summary,
   with no players or controls.
 
+Posters and screen mode lay out their lines with
+[Pretext](https://github.com/chenglou/pretext), which breaks lines the way
+the browser does by arithmetic over widths the browser's own canvas
+measures. Each text is measured once; trying another size costs no
+measuring and no reflow. It is bundled from `node_modules` and inlined by
+the build, so the page still loads nothing but talasaman.is. A browser
+without `Intl.Segmenter` cannot run it, and there the page measures as it
+did before.
+
 A contents line at the top links *Við viljum*, *Gervigreind*, *Öll borðin*
 and *Um síðuna*. A link to one summary (`#e-<id>`, as the spine uses)
 lands on it and marks it.
@@ -64,6 +84,7 @@ lands on it and marks it.
 ## Build and check
 
 ```bash
+bun install                    # Pretext, Playwright
 bun ordrett/build.ts --fetch   # new snapshot; measure every recording with ffmpeg
 bun ordrett/build.ts           # rebuild site/index.html and site/saga.html
 bun ordrett/build.ts --images  # also redraw the share card and the home-screen icon
@@ -92,7 +113,12 @@ and given back; listen buttons named as they read; search; print; the
 live redraw; the player on a slow connection; screen mode's buttons by
 mouse and by touch; long summaries in screen mode on a projector and a
 phone; the mountain full screen, with the words following the voice; a
-recording measured from its own file; and the share card and icons.
+recording measured from its own file; and the share card and icons. And
+they check the layout: Pretext counts the lines of every summary as the
+page sets them, or one more, never fewer; every poster holds its summary
+whole and in order at 36px or larger, a voiced one in the shape of its
+voice; screen mode sets every summary whole on a projector; and without
+`Intl.Segmenter` the poster and screen mode work as before.
 
 ## Licences
 
@@ -101,3 +127,4 @@ recording measured from its own file; and the share card and icons.
   Recordings are not redistributed; the page plays them from talasaman.is.
 - Fonts: Atkinson Hyperlegible Next and Schibsted Grotesk, SIL Open Font
   License 1.1
+- Pretext 0.0.9, inlined in the page: MIT, © 2026 Pretext contributors

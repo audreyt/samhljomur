@@ -5,6 +5,7 @@
     "": {
       "name": "samhljomur",
       "devDependencies": {
+        "@chenglou/pretext": "0.0.9",
         "@types/node": "^22.0.0",
         "@types/topojson-client": "^3.1.5",
         "playwright": "^1.63.0",
@@ -15,6 +16,8 @@
     },
   },
   "packages": {
+    "@chenglou/pretext": ["@chenglou/pretext@0.0.9", "", {}, "sha512-vInlpC//3vjRfWTs78k2BBIq/0bUdpjIp8TIn9fXe0NvnChhTQZfjioVzERQQbkQvCVpPpw7PDOrTWMHpq27VA=="],
+
     "@types/geojson": ["@types/geojson@7946.0.16", "", {}, "sha512-6C8nqWur3j98U6+lXDfTUWIfgvZU+EumvpHKcYjujKH7woYyLj2sUmff0tRhrqM7BohUw7Pz3ZB1jj2gW9Fvmg=="],
 
     "@types/node": ["@types/node@22.20.5", "", { "dependencies": { "undici-types": "~6.21.0" } }, "sha512-U2+DNr+wSjpsTS/wZGYHq7GcwfuSmKiKvoPvK22zwTlRhU91yOniN4qRR5KhIjvif7ysw/dz/hKmfDH0Ris4aA=="],

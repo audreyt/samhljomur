@@ -60,7 +60,14 @@ Numbers agree with Icelandic usage in code: 1, 21, 31 … take the singular
 | Fyrst allar raddirnar í einu, svo hver rödd. Orðin fylgja styrk hljóðsins. Esc lokar. | First all the voices at once, then each voice. The words follow the loudness of the sound. Esc closes. (the mountain on a hall screen) |
 | Orðrétt: ein lína fyrir hverja upptöku frá borðunum, styst efst og lengst neðst. | Orðrétt: one line for each recording from the tables, shortest at the top and longest at the bottom. (describes the link-preview image) |
 | SAMTALIÐ · 10. OKTÓBER 2026 · borð 2 · samfélagið · Orðrétt | Poster header, table line and footer |
+| SAMTALIÐ · 10. OKTÓBER 2026 · 1/3 | Poster header on the first of three frames |
+| Sækja myndir | Download the images (a poster of several frames) |
+| Kvennaskólinn í Reykjavík, borð 4, 1 af 3: … | Kvennaskólinn í Reykjavík, table 4, 1 of 3: … (a frame's description for screen readers, followed by its words) |
+| Breidd línanna er styrkur raddarinnar, frá upphafi upptökunnar efst (0:00) til enda hennar neðst (1:13). | The width of the lines is the voice's loudness, from the start of the recording at the top (0:00) to its end at the bottom (1:13). (under a poster set in the shape of its voice) |
 | Saga síðunnar · ← Orðrétt | The page's history · back to Orðrétt (saga.html) |
+
+The four rows on frames and the voice's shape came after the first review and
+have not been read by a native speaker yet.
 
 Changed after the first review: „stofnum“ (not „stofnunum“, which also reads as
 "institutions"); „komin í opnu gögnin“ (the count is of tables in the open data
