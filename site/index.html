@@ -1505,7 +1505,8 @@ function wordsPlan(r, boxH) {
 // A summary with a recording is set in the shape of that recording: top to bottom is start to end,
 // and each line is as wide as the voice is loud in its stretch (the mean reading there, scaled from
 // the quietest stretch to the loudest: 40% of the measure to all of it). A line is widened rather than
-// cut a word. The size is the largest at which the whole summary fits the shape.
+// cut a word. The recording is spread over just as many lines as its words fill, so the words end
+// where the voice ends; the size is the largest at which that fits the box.
 const VLH = 1.2;
 function voicePlan(r, env, boxH) {
   const text = r.summary, p = prepared(text, POSTER_WORDS);
@@ -1520,9 +1521,7 @@ function voicePlan(r, env, boxH) {
     const lo = Math.min(...v), span = Math.max(...v) - lo || 1;
     return v.map((x) => PRW * (0.4 + 0.6 * (x - lo) / span));
   };
-  const flow = (s) => {
-    const n = Math.floor(boxH / (s * VLH));
-    if (n < 2) return null;
+  const flow = (s, n) => {
     const rows = widths(n), lines = [];
     let cur = { segmentIndex: 0, graphemeIndex: 0 }, at = 0;
     for (let i = 0; i < n && at < text.length; i++) {
@@ -1542,8 +1541,18 @@ function voicePlan(r, env, boxH) {
     }
     return at === text.length ? { size: s, rows, lines } : null;
   };
-  const s = largest((s) => !!flow(s), POSTER_MIN, 120);
-  return s ? flow(s) : null;
+  // the fewest lines whose shape holds the summary, every line used; failing that, the fewest that hold it
+  const fill = (s) => {
+    let some = null;
+    for (let n = 2; n <= Math.floor(boxH / (s * VLH)); n++) {
+      const f = flow(s, n);
+      if (f && f.lines.length === n) return f;
+      if (f && !some) some = f;
+    }
+    return some;
+  };
+  const s = largest((s) => !!fill(s), POSTER_MIN, 120);
+  return s ? fill(s) : null;
 }
 
 function sheet(r) {
@@ -1612,10 +1621,10 @@ async function poster(r) {
   const [cv, g] = sheet(r);
   const y = head(g, r, "");
   if (PT && env) {
-    const rule = ruleLines(g, r), ruleTop = 1748 - (rule.length - 1) * 34 - 26, top = y + 64;
-    const plan = voicePlan(r, env, ruleTop - 56 - top);
+    const rule = ruleLines(g, r), ruleTop = 1748 - (rule.length - 1) * 34 - 26, top = y + 64, boxH = ruleTop - 56 - top;
+    const plan = voicePlan(r, env, boxH);
     if (plan) {
-      drawVoice(g, r, plan, top);
+      drawVoice(g, r, plan, top + (boxH - plan.rows.length * plan.size * VLH) / 2);
       g.fillStyle = DIM; g.font = '600 26px "Schibsted Grotesk"'; g.textAlign = "center";
       rule.forEach((l, i) => g.fillText(l, PW / 2, ruleTop + 26 + i * 34));
       g.textAlign = "left";
