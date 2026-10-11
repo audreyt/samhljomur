@@ -51,8 +51,9 @@
   --hl-3: #9fd6ff;
   --hl-4: #ffa6d3;
   --hl-5: #ffc67a;
-  --font-words: "Atkinson Hyperlegible Next", "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-frame: "Schibsted Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  /* Chinese is set in the reader's own Traditional Chinese sans, never a Simplified one */
+  --font-words: "Atkinson Hyperlegible Next", "Atkinson Hyperlegible", "PingFang TC", "Noto Sans TC", "Noto Sans CJK TC", "Microsoft JhengHei", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-frame: "Schibsted Grotesk", "PingFang TC", "Noto Sans TC", "Noto Sans CJK TC", "Microsoft JhengHei", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --read: 42rem;
   --wide: 62rem;
   color-scheme: dark;
@@ -90,6 +91,12 @@ h1 {
 .toc { display: flex; flex-wrap: wrap; column-gap: 1.1rem; font-family: var(--font-frame); font-weight: 600; font-size: .875rem; }
 .toc a { padding-block: .3rem; color: var(--dim); text-decoration: none; }
 .toc a:hover { color: var(--chalk); text-decoration: underline; }
+.navs { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 1.6rem; }
+/* each language named in itself */
+.langs { display: flex; flex-wrap: wrap; column-gap: .9rem; font-family: var(--font-frame); font-weight: 600; font-size: .875rem; }
+.langs a { padding-block: .3rem; color: var(--dim); text-decoration: none; }
+.langs a:hover, .langs a[aria-current] { color: var(--chalk); }
+.langs a[aria-current] { text-decoration: underline; text-decoration-thickness: 1.5px; }
 /* With large text settings the title still fits its column; one word cannot wrap. */
 h1 { font-size: min(clamp(4.25rem, 20vw, 10.5rem), 28cqi); }
 .dek { margin: 0; font-size: 1.25rem; line-height: 1.45; max-width: 34rem; text-wrap: pretty; }
@@ -128,6 +135,9 @@ h1 { font-size: min(clamp(4.25rem, 20vw, 10.5rem), 28cqi); }
   font-size: clamp(2rem, 6.4vw, 4.25rem); line-height: 1.02; letter-spacing: -.025em; max-width: 52rem; text-wrap: balance;
 }
 .question b { font-weight: 850; text-decoration: underline; text-decoration-thickness: .07em; text-underline-offset: .12em; }
+/* In English and Chinese, Samtal's question stays as asked, with its meaning beneath. */
+.gloss { margin: .9rem 0 0; font-family: var(--font-frame); font-weight: 600; font-size: clamp(1.1rem, 2.6vw, 1.6rem); line-height: 1.3; color: var(--dim); max-width: 46rem; text-wrap: balance; }
+.gloss:empty { display: none; }
 .kwic { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.5rem; margin-top: 2.75rem; }
 .krow {
   display: grid; grid-template-columns: minmax(0, 30%) minmax(0, 1fr); column-gap: .32em; align-items: start;
@@ -340,7 +350,7 @@ html.is-hall body { overflow: hidden; }
   @page { margin: 16mm 15mm; }
   html, body { background: #fff; color: #000; }
   body { padding: 0; font-size: 10.5pt; }
-  .toc, .mtn-box, .plays, .now, #mtnRule, .controls, .acts, .aside, .to-screen, .to-screen + .fine, .deck, .shade, .screen, .hall, .tip { display: none !important; }
+  .toc, .langs, .mtn-box, .plays, .now, #mtnRule, .controls, .acts, .aside, .to-screen, .to-screen + .fine, .deck, .shade, .screen, .hall, .tip { display: none !important; }
   .hero { padding-block: 0 1.5rem; gap: .75rem; }
   h1 { font-size: 54pt; }
   .dek { font-size: 13pt; }
@@ -368,16 +378,23 @@ html.is-hall body { overflow: hidden; }
 
   <header class="hero" id="raddir">
     <div class="top">
-      <p class="label">Samtalið · 10. október 2026</p>
-      <nav class="toc" aria-label="Á síðunni">
-        <a href="#viljum">Við viljum</a>
-        <a href="#gervigreind">Gervigreind</a>
-        <a href="#bord">Öll borðin</a>
-        <a href="#um">Um síðuna</a>
-      </nav>
+      <p class="label" data-t="date">Samtalið · 10. október 2026</p>
+      <div class="navs">
+        <nav class="toc" aria-label="Á síðunni" data-t-aria="toc">
+          <a href="#viljum" data-t="toc.viljum">Við viljum</a>
+          <a href="#gervigreind" data-t="toc.ai">Gervigreind</a>
+          <a href="#bord" data-t="toc.bord">Öll borðin</a>
+          <a href="#um" data-t="toc.um">Um síðuna</a>
+        </nav>
+        <nav class="langs" aria-label="Tungumál" data-t-aria="langs">
+          <a href="#is" hreflang="is" lang="is">Íslenska</a>
+          <a href="#en-gb" hreflang="en-GB" lang="en-GB">English</a>
+          <a href="#zh-tw" hreflang="zh-Hant-TW" lang="zh-Hant-TW">中文</a>
+        </nav>
+      </div>
     </div>
-    <h1>Orðrétt</h1>
-    <p class="dek">Allar samantektirnar frá borðunum, eins og þær voru skráðar á talasaman.is. Upptökurnar eru heilar og óklipptar.</p>
+    <h1 lang="is">Orðrétt</h1>
+    <p class="dek" data-t="dek">Allar samantektirnar frá borðunum, eins og þær voru skráðar á talasaman.is. Upptökurnar eru heilar og óklipptar.</p>
     <div class="mtn-box">
       <canvas id="mtn" role="img"></canvas>
       <div class="tip" id="tip" hidden></div>
@@ -391,8 +408,9 @@ html.is-hall body { overflow: hidden; }
   </header>
 
   <section id="viljum">
-    <p class="label">Spurning Samtals</p>
-    <h2 class="question">Hvernig samfélag <b>viljum</b> við skapa saman?</h2>
+    <p class="label" data-t="qlabel">Spurning Samtals</p>
+    <h2 class="question" lang="is">Hvernig samfélag <b>viljum</b> við skapa saman?</h2>
+    <p class="gloss" data-t="qgloss"></p>
     <div class="kwic" id="kwic"></div>
     <p class="rule" id="kwicRule" style="margin-top:2.5rem"></p>
   </section>
@@ -400,10 +418,10 @@ html.is-hall body { overflow: hidden; }
 
 <div class="sheet-wrap" id="gervigreind">
   <article class="sheet">
-    <h2>Gervigreind</h2>
+    <h2 data-t="ai.h">Gervigreind</h2>
     <p class="stat" id="aiStat"></p>
     <div class="ai-line" id="aiLine"></div>
-    <h3 class="all">Allar samantektirnar</h3>
+    <h3 class="all" data-t="ai.all">Allar samantektirnar</h3>
     <p class="rule" id="aiRule"></p>
     <div class="pens" id="pens"></div>
     <div class="notes" id="notes"></div>
@@ -412,16 +430,16 @@ html.is-hall body { overflow: hidden; }
 
 <div class="wrap">
   <section class="archive" id="bord">
-    <h2>Öll borðin</h2>
+    <h2 data-t="bord.h">Öll borðin</h2>
     <div class="controls">
-      <nav class="topics" id="topics" aria-label="Umræðuefni"></nav>
+      <nav class="topics" id="topics" aria-label="Umræðuefni" data-t-aria="topics"></nav>
       <div class="field">
-        <label for="place">Staðsetning</label>
+        <label for="place" data-t="place">Staðsetning</label>
         <select id="place"></select>
       </div>
       <div class="field">
-        <label for="q">Leita</label>
-        <input id="q" type="search" autocomplete="off" spellcheck="false" enterkeyhint="search" placeholder="orð eða hluti úr orði">
+        <label for="q" data-t="search">Leita</label>
+        <input id="q" type="search" autocomplete="off" spellcheck="false" enterkeyhint="search" placeholder="orð eða hluti úr orði" data-t-ph="searchHint">
         <p class="found" id="found" role="status"></p>
       </div>
       <button class="play small" id="playHere" type="button"></button>
@@ -430,20 +448,20 @@ html.is-hall body { overflow: hidden; }
   </section>
 
   <section class="about" id="um">
-    <h2>Um síðuna</h2>
-    <p>Allt sem kemur frá borðunum er óbreytt, líka stafsetningin. Engu var sleppt.</p>
-    <p>Raðað er eftir póstnúmeri, svo staðsetningu, svo borðnúmeri. Hver litur fylgir póstnúmeri. Póstnúmerin, og litirnir með þeim, fara hringinn í kringum landið.</p>
-    <p>Línurnar efst eru teiknaðar úr upptökunum sjálfum, úr styrk hljóðsins tuttugu sinnum á sekúndu. Hljóðstyrkur er jafnaður svo hver rödd heyrist jafnt.</p>
-    <p>Síðan sækir textann og upptökurnar beint af talasaman.is þegar hún opnast. Upptökurnar eru ekki afritaðar hingað. Upptaka sem bætist við eftir að síðan var byggð er mæld úr hljóðinu sjálfu þegar hún berst, og lína hennar bætist við fjallið.</p>
-    <p>Ekkert af því sem kemur frá borðunum er skrifað, þýtt, stytt eða lesið upp af gervigreind. Röðin og valið fylgja reglum sem standa á síðunni. Gervigreind hjálpaði til við að semja reglurnar, skrifa kóðann og þessa skýringartexta.</p>
-    <p>Þetta er hvorki afstaða né niðurstaða Samtals.</p>
-    <p class="fine">Gögn: <a href="https://talasaman.is/gogn">Samtal, félag til almannaheilla (talasaman.is)</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. <span id="fetched"></span></p>
-    <p class="fine">Audrey Tang setti síðuna saman. <a href="saga.html">Saga síðunnar</a></p>
+    <h2 data-t="um.h">Um síðuna</h2>
+    <p data-t="um1">Allt sem kemur frá borðunum er óbreytt, líka stafsetningin. Engu var sleppt.</p>
+    <p data-t="um2">Raðað er eftir póstnúmeri, svo staðsetningu, svo borðnúmeri. Hver litur fylgir póstnúmeri. Póstnúmerin, og litirnir með þeim, fara hringinn í kringum landið.</p>
+    <p data-t="um3">Línurnar efst eru teiknaðar úr upptökunum sjálfum, úr styrk hljóðsins tuttugu sinnum á sekúndu. Hljóðstyrkur er jafnaður svo hver rödd heyrist jafnt.</p>
+    <p data-t="um4">Síðan sækir textann og upptökurnar beint af talasaman.is þegar hún opnast. Upptökurnar eru ekki afritaðar hingað. Upptaka sem bætist við eftir að síðan var byggð er mæld úr hljóðinu sjálfu þegar hún berst, og lína hennar bætist við fjallið.</p>
+    <p data-t="um5">Ekkert af því sem kemur frá borðunum er skrifað, þýtt, stytt eða lesið upp af gervigreind. Röðin og valið fylgja reglum sem standa á síðunni. Gervigreind hjálpaði til við að semja reglurnar, skrifa kóðann og þessa skýringartexta.</p>
+    <p data-t="um6">Þetta er hvorki afstaða né niðurstaða Samtals.</p>
+    <p class="fine"><span lang="is">Gögn: <a href="https://talasaman.is/gogn">Samtal, félag til almannaheilla (talasaman.is)</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span> <span id="fetched"></span></p>
+    <p class="fine"><span data-t="by">Audrey Tang setti síðuna saman.</span> <a href="saga.html" hreflang="en" data-t="saga">Saga síðunnar</a></p>
     <div class="acts">
-      <button class="to-screen" id="toScreen" type="button">Sýna á skjá</button>
-      <button class="to-screen" id="toHall" type="button">Sýna fjallið</button>
+      <button class="to-screen" id="toScreen" type="button" data-t="toScreen">Sýna á skjá</button>
+      <button class="to-screen" id="toHall" type="button" data-t="toHall">Sýna fjallið</button>
     </div>
-    <p class="fine">Ein samantekt í einu, í stóru letri, með upptökunum. Eða fjallið í fullum skjá: allar raddirnar í einu, svo hver rödd. Orðin fylgja styrk hljóðsins.</p>
+    <p class="fine" data-t="screenFine">Ein samantekt í einu, í stóru letri, með upptökunum. Eða fjallið í fullum skjá: allar raddirnar í einu, svo hver rödd. Orðin fylgja styrk hljóðsins.</p>
   </section>
 </div>
 
@@ -453,65 +471,65 @@ html.is-hall body { overflow: hidden; }
     <span class="where" id="deckWhere"></span>
     <span class="time" id="deckTime"></span>
   </div>
-  <button class="round line" id="deckNext" type="button" aria-label="Næsta"></button>
-  <button class="round line" id="deckStop" type="button" aria-label="Stöðva"></button>
+  <button class="round line" id="deckNext" type="button" aria-label="Næsta" data-t-aria="next"></button>
+  <button class="round line" id="deckStop" type="button" aria-label="Stöðva" data-t-aria="stop"></button>
 </div>
 
-<dialog class="shade" id="shade" aria-label="Plakat">
+<dialog class="shade" id="shade" aria-label="Plakat" data-t-aria="poster">
   <div class="box">
     <div class="frames" id="posterFrames"><img id="posterImg" alt=""></div>
     <div class="row">
-      <button class="primary" id="posterShare" type="button" hidden>Deila</button>
+      <button class="primary" id="posterShare" type="button" hidden data-t="share">Deila</button>
       <button id="posterSave" type="button">Sækja mynd</button>
-      <button id="posterClose" type="button">Loka</button>
+      <button id="posterClose" type="button" data-t="close">Loka</button>
     </div>
   </div>
 </dialog>
 
-<div class="hall" id="hall" role="dialog" aria-modal="true" aria-label="Fjallið á skjá" tabindex="-1" hidden>
+<div class="hall" id="hall" role="dialog" aria-modal="true" aria-label="Fjallið á skjá" data-t-aria="hall" tabindex="-1" hidden>
   <div class="stage" id="hStage"><canvas id="hMtn"></canvas></div>
   <div class="cap" id="hCap">
     <p class="who" id="hWho"></p>
-    <p class="say" id="hSay"></p>
+    <p class="say" id="hSay" lang="is"></p>
   </div>
   <div class="foot">
-    <span class="by">Orðrétt · Gögn: Samtal, félag til almannaheilla (talasaman.is), CC BY 4.0</span>
+    <span class="by" lang="is">Orðrétt · Gögn: Samtal, félag til almannaheilla (talasaman.is), CC BY 4.0</span>
     <div class="nav">
       <div class="ctl">
-        <button id="hPrev" type="button" aria-label="Fyrri"></button>
-        <button id="hToggle" type="button" aria-label="Gera hlé"></button>
-        <button id="hNext" type="button" aria-label="Næsta"></button>
+        <button id="hPrev" type="button" aria-label="Fyrri" data-t-aria="prev"></button>
+        <button id="hToggle" type="button" aria-label="Gera hlé" data-t-aria="pause"></button>
+        <button id="hNext" type="button" aria-label="Næsta" data-t-aria="next"></button>
       </div>
       <span id="hPos"></span>
     </div>
   </div>
-  <button class="close" id="hClose" type="button">Loka</button>
+  <button class="close" id="hClose" type="button" data-t="close">Loka</button>
   <div class="start" id="hStart">
-    <div class="t">Orðrétt</div>
-    <button id="hGo" type="button">Byrja</button>
-    <p>Fyrst allar raddirnar í einu, svo hver rödd. Orðin fylgja styrk hljóðsins. Esc lokar.</p>
+    <div class="t" lang="is">Orðrétt</div>
+    <button id="hGo" type="button" data-t="start">Byrja</button>
+    <p data-t="hallStart">Fyrst allar raddirnar í einu, svo hver rödd. Orðin fylgja styrk hljóðsins. Esc lokar.</p>
   </div>
 </div>
 
-<div class="screen" id="screen" role="dialog" aria-modal="true" aria-label="Orðrétt á skjá" tabindex="-1" hidden>
+<div class="screen" id="screen" role="dialog" aria-modal="true" aria-label="Orðrétt á skjá" data-t-aria="screen" tabindex="-1" hidden>
   <div class="top" id="sTop"></div>
-  <div class="body" id="sBody"><p class="say" id="sSay"></p></div>
+  <div class="body" id="sBody"><p class="say" id="sSay" lang="is"></p></div>
   <div class="foot">
-    <span class="by">Orðrétt · Gögn: Samtal, félag til almannaheilla (talasaman.is), CC BY 4.0</span>
+    <span class="by" lang="is">Orðrétt · Gögn: Samtal, félag til almannaheilla (talasaman.is), CC BY 4.0</span>
     <div class="nav">
       <div class="ctl">
-        <button id="sPrev" type="button" aria-label="Fyrri"></button>
-        <button id="sToggle" type="button" aria-label="Gera hlé"></button>
-        <button id="sNext" type="button" aria-label="Næsta"></button>
+        <button id="sPrev" type="button" aria-label="Fyrri" data-t-aria="prev"></button>
+        <button id="sToggle" type="button" aria-label="Gera hlé" data-t-aria="pause"></button>
+        <button id="sNext" type="button" aria-label="Næsta" data-t-aria="next"></button>
       </div>
       <span id="sPos"></span>
     </div>
   </div>
-  <button class="close" id="sClose" type="button">Loka</button>
+  <button class="close" id="sClose" type="button" data-t="close">Loka</button>
   <div class="start" id="sStart">
-    <div class="t">Orðrétt</div>
-    <button id="sGo" type="button">Byrja</button>
-    <p>Ein samantekt í einu. Örvalyklar fletta, bilslá gerir hlé, Esc lokar.</p>
+    <div class="t" lang="is">Orðrétt</div>
+    <button id="sGo" type="button" data-t="start">Byrja</button>
+    <p data-t="screenStart">Ein samantekt í einu. Örvalyklar fletta, bilslá gerir hlé, Esc lokar.</p>
   </div>
 </div>
 
@@ -546,11 +564,176 @@ const reduce = matchMedia("(prefers-reduced-motion: reduce)");
 const one = (n) => n % 10 === 1 && n % 100 !== 11; // Icelandic: 1, 21, 31 ... take the singular
 const count = (n, sg, pl) => n + " " + (one(n) ? sg : pl);
 const clock = (s) => { s = Math.max(0, Math.round(s)); return Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0"); };
+
+/* ---------- languages: the page's own words in Icelandic, British English or Taiwanese Mandarin ---------- */
+// What the tables wrote, their places and topics, Samtal's question and its attribution line are never
+// translated, by people or by machines: they stay as written, marked as Icelandic so that a screen reader
+// says them as Icelandic. Only the page's own words change. The language is the one the address names
+// (#is, #en-gb, #zh-tw), and is then remembered; else the one chosen before; else the browser's:
+// Icelandic if it lists Icelandic at all, otherwise the first of English or Chinese it lists, otherwise English.
+const HTML_LANG = { is: "is", "en-gb": "en-GB", "zh-tw": "zh-Hant-TW" };
+const LANG_KEY = "ordrett-lang";
+let lang = "is";
+const ice = (text) => { const s = el("span", "", text); s.lang = "is"; return s; };
+// A dictionary value is a string, or a list of parts: strings, nodes, and Icelandic words as { is: "…" }.
+const nodes = (v) => (Array.isArray(v) ? v : [v]).map((x) => (x && typeof x === "object" && "is" in x ? ice(x.is) : x));
+const put = (e, v) => e.replaceChildren(...nodes(v));
+const plural = (n, sg, pl) => n + " " + (n === 1 ? sg : pl);
+const MONTHS_EN = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+// The Icelandic for the page's fixed markup is read from the markup itself when the page starts.
+const T = {
+  is: {
+    when: (d, m, y, hm) => d + ". " + MONTHS[m] + " " + y + " kl. " + hm,
+    fetched: (w) => "Gögnin eru frá " + w + ".",
+    unreachable: "Náði ekki sambandi við talasaman.is. ",
+    table: (n) => "borð " + n,
+    of: (a, b) => a + " af " + b,
+    participant: "samantekt eins þátttakanda",
+    pause: "Gera hlé", resume: "Halda áfram", next: "Næsta", prev: "Fyrri", stop: "Stöðva",
+    oneAtATime: "Ein í einu", allAtOnce: "Allar í einu", allVoices: "Allar raddirnar í einu",
+    fetchingVoices: "Sæki raddirnar", fetchingOne: "Sæki upptökuna …",
+    fetchingVoicesOf: (a, b) => "Sæki raddirnar … " + a + " af " + b,
+    tapLine: "Ýttu á línu til að heyra röddina.",
+    voices: (n) => count(n, "rödd talar", "raddir tala"),
+    listenHere: (n) => !n ? "Engin upptaka hér" : n === 1 ? "Hlusta á upptökuna hér" : "Hlusta á upptökurnar hér",
+    listenAs: (playing) => playing ? "Gera hlé: " : "Hlusta: ", sep: ", ",
+    mtnLabel: (n) => count(n, "lína", "línur") + ", ein fyrir hverja upptöku. Styst efst, lengst neðst.",
+    mtnRule: (s, l, r) => count(s, "samantekt", "samantektir") + " frá " + l + " " + (one(l) ? "staðsetningu" : "staðsetningum") + ". " +
+      count(r, "upptaka", "upptökur") + ". Hver lína er ein upptaka: hæðin er styrkur raddarinnar og breiddin lengd upptökunnar. " +
+      "Styst efst, lengst neðst, allar miðjaðar. Þannig hljóma þær í „Allar í einu“.",
+    kwicRule: (n) => "Allar setningar frá borðunum sem innihalda orðið „viljum“. " + count(n, "setning", "setningar") + ".",
+    aiLineLab: "Hjálp og „fyrir okkur“ í sömu setningu",
+    aiLineRule: (n, b) => "Allar setningar í samantektunum hér fyrir neðan þar sem grænt orð og bleikt orð standa saman. " +
+      count(n, "setning", "setningar") + " frá " + b + " " + (one(b) ? "borði" : "borðum") + ".",
+    aiStat: (a, b) => a + " af þeim " + b + " borðum sem eru komin í opnu gögnin " + (one(a) ? "talaði" : "töluðu") + " um gervigreind.",
+    aiRule: "Hér eru allar samantektirnar sem nefna hana. Hver litur merkir orð sem byrja á stofnum sem standa við hann. " +
+      "Hvaða orð fá lit er val síðunnar, gert með hjálp gervigreindar, ekki val borðanna. Ýttu á lit til að slökkva á honum; án litanna stendur textinn óbreyttur.",
+    pens: { f1: "læra", f2: "hjálp", f3: "reglur", f4: "fyrir okkur", f5: "mannlegt" },
+    all: "Allt", other: "annað", allLocations: "Allar staðsetningar",
+    found: (n) => count(n, "samantekt fannst", "samantektir fundust") + ".", notFound: "Engin samantekt fannst.", noMatch: "Engin samantekt passar við valið.",
+    silent: "Upptakan er hljóðlaus.", failed: "Ekki tókst að spila upptökuna.",
+    poster: "Plakat", save: (n) => n > 1 ? "Sækja myndir" : "Sækja mynd",
+    posterDate: "SAMTALIÐ · 10. OKTÓBER 2026",
+    posterAlt: (where, table, i, n) => where + ", " + table + (n > 1 ? ", " + i + " af " + n : "") + ": ",
+    voiceRule: (end) => "Breidd línanna er styrkur raddarinnar, frá upphafi upptökunnar efst (0:00) til enda hennar neðst (" + end + ").",
+  },
+  "en-gb": {
+    when: (d, m, y, hm) => d + " " + MONTHS_EN[m] + " " + y + " at " + hm,
+    fetched: (w) => "The data is from " + w + ".",
+    unreachable: "Could not reach talasaman.is. ",
+    table: (n) => "table " + n,
+    of: (a, b) => a + " of " + b,
+    participant: "one participant’s summary",
+    pause: "Pause", resume: "Resume", next: "Next", prev: "Previous", stop: "Stop",
+    oneAtATime: "One at a time", allAtOnce: "All at once", allVoices: "All the voices at once",
+    fetchingVoices: "Fetching the voices", fetchingOne: "Fetching the recording …",
+    fetchingVoicesOf: (a, b) => "Fetching the voices … " + a + " of " + b,
+    tapLine: "Tap a line to hear its voice.",
+    voices: (n) => plural(n, "voice speaking", "voices speaking"),
+    listenHere: (n) => !n ? "No recording here" : n === 1 ? "Listen to the recording here" : "Listen to the recordings here",
+    listenAs: (playing) => playing ? "Pause: " : "Listen: ", sep: ", ",
+    mtnLabel: (n) => plural(n, "line", "lines") + ", one for each recording. Shortest at the top, longest at the bottom.",
+    mtnRule: (s, l, r) => plural(s, "summary", "summaries") + " from " + plural(l, "location", "locations") + ". " + plural(r, "recording", "recordings") +
+      ". Each line is one recording: its height is the voice’s loudness, its width the recording’s length. " +
+      "Shortest at the top, longest at the bottom, all centred. That is how they sound in ‘All at once’.",
+    kwicRule: (n) => ["Every sentence from the tables with the word ‘", { is: "viljum" }, "’ (we want). " + plural(n, "sentence", "sentences") + "."],
+    aiLineLab: "A ‘help’ word and a ‘for us’ phrase in the same sentence",
+    aiLineRule: (n, b) => "Every sentence in the summaries below in which a green word and a pink word stand together. " +
+      plural(n, "sentence", "sentences") + " from " + plural(b, "table", "tables") + ".",
+    aiStat: (a, b) => a + " of the " + b + " tables in the open data so far talked about AI.",
+    aiRule: "Here is every summary that mentions it. Each colour marks words that begin with the Icelandic stems printed beside it. " +
+      "Which words get a colour is this page’s choice, made with the help of AI, not the tables’. Tap a colour to switch it off; without the colours the text stands unchanged.",
+    pens: { f1: "learning", f2: "help", f3: "rules", f4: "for us", f5: "human" },
+    all: "All", other: "other", allLocations: "All locations",
+    found: (n) => plural(n, "summary", "summaries") + " found.", notFound: "No summary found.", noMatch: "No summary matches your choice.",
+    silent: "The recording is silent.", failed: "The recording could not be played.",
+    poster: "Poster", save: (n) => n > 1 ? "Save the images" : "Save the image",
+    posterDate: "SAMTALIÐ · 10 OCTOBER 2026",
+    posterAlt: (where, table, i, n) => where + ", " + table + (n > 1 ? ", " + i + " of " + n : "") + ": ",
+    voiceRule: (end) => "The width of the lines is the voice’s loudness, from the start of the recording at the top (0:00) to its end at the bottom (" + end + ").",
+    date: '<span lang="is">Samtalið</span> · 10 October 2026',
+    langs: "Language", toc: "On this page", "toc.viljum": "We want", "toc.ai": "AI", "toc.bord": "All the tables", "toc.um": "About this page",
+    dek: 'Every summary from the tables, word for word (<span lang="is">orðrétt</span>), as it was recorded on talasaman.is. ' +
+      "The summaries stay in the Icelandic they were written in: nothing from the tables is translated. The recordings are whole and uncut.",
+    qlabel: "Samtal’s question",
+    qgloss: 'What kind of society do we want (<span lang="is">viljum</span>) to create together?',
+    "ai.h": "Artificial intelligence", "ai.all": "All the summaries",
+    "bord.h": "All the tables", topics: "Topics", place: "Location", search: "Search", searchHint: "an Icelandic word, or part of one",
+    "um.h": "About this page",
+    um1: "Everything from the tables is unchanged, spelling included. Nothing was left out.",
+    um2: "Ordered by postcode, then location, then table number. Each colour follows a postcode. The postcodes, and the colours with them, go round the country.",
+    um3: "The lines at the top are drawn from the recordings themselves, from their loudness twenty times a second. Volume is levelled so that every voice is heard equally.",
+    um4: "The page fetches the text and the recordings straight from talasaman.is when it opens. The recordings are not copied here. " +
+      "A recording that arrives after the page was built is measured from the sound itself as it comes in, and its line joins the mountain.",
+    um5: "Nothing from the tables is written, translated, shortened or read aloud by AI. The order and the selection follow rules stated on the page. " +
+      "AI helped draft the rules, write the code and these explanatory texts, this English version of them included.",
+    um6: "This is neither Samtal’s position nor its conclusion.",
+    by: "Put together by Audrey Tang.", saga: "The page’s history",
+    toScreen: "Show on a screen", toHall: "Show the mountain",
+    screenFine: "One summary at a time, in large type, with the recordings. Or the mountain full screen: all the voices at once, then each voice. The words follow the loudness of the sound.",
+    share: "Share", close: "Close", start: "Start",
+    hall: "The mountain on screen", hallStart: "First all the voices at once, then each voice. The words follow the loudness of the sound. Esc closes.",
+    screen: "Orðrétt on screen", screenStart: "One summary at a time. The arrow keys turn the page, the space bar pauses, Esc closes.",
+  },
+  "zh-tw": {
+    when: (d, m, y, hm) => y + " 年 " + (m + 1) + " 月 " + d + " 日 " + hm,
+    fetched: (w) => "資料時間：" + w + "。",
+    unreachable: "無法連上 talasaman.is。",
+    table: (n) => "第 " + n + " 桌",
+    of: (a, b) => a + "／" + b,
+    participant: "一位參與者的摘要",
+    pause: "暫停", resume: "繼續", next: "下一則", prev: "上一則", stop: "停止",
+    oneAtATime: "逐一播放", allAtOnce: "同時播放", allVoices: "所有聲音同時播放",
+    fetchingVoices: "正在載入聲音", fetchingOne: "正在載入錄音……",
+    fetchingVoicesOf: (a, b) => "正在載入聲音……" + a + "／" + b,
+    tapLine: "點選任一條線，就能聽見那個聲音。",
+    voices: (n) => n === 1 ? "1 個聲音在說話" : n + " 個聲音同時在說話",
+    listenHere: (n) => !n ? "這裡沒有錄音" : "聆聽這裡的錄音",
+    listenAs: (playing) => playing ? "暫停：" : "聆聽：", sep: "，",
+    mtnLabel: (n) => n + " 條線，每段錄音一條。最短的在上，最長的在下。",
+    mtnRule: (s, l, r) => "來自 " + l + " 個地點的 " + s + " 則摘要，" + r + " 段錄音。每條線是一段錄音：高度是聲音的強弱，寬度是錄音的長短。" +
+      "最短的在上，最長的在下，全部置中。「同時播放」就是照這樣播放。",
+    kwicRule: (n) => ["各桌摘要中含有「", { is: "viljum" }, "」（我們想要）一詞的每個句子，共 " + n + " 句。"],
+    aiLineLab: "「幫助」與「替我們」出現在同一句",
+    aiLineRule: (n, b) => "下方摘要中，綠色詞與粉紅色詞同時出現的每一個句子。共 " + n + " 句，來自 " + b + " 桌。",
+    aiStat: (a, b) => "目前開放資料中的 " + b + " 桌，有 " + a + " 桌談到人工智慧。",
+    aiRule: "以下是所有提到人工智慧的摘要。每種顏色標出以旁邊所列冰島文字根開頭的詞。" +
+      "哪些詞上色，是本頁在人工智慧協助下所做的選擇，而不是各桌的選擇。點一下顏色即可關閉；關閉顏色後，文字維持原樣。",
+    pens: { f1: "學習", f2: "幫助", f3: "規範", f4: "替我們", f5: "人性" },
+    all: "全部", other: "其他", allLocations: "所有地點",
+    found: (n) => "找到 " + n + " 則摘要。", notFound: "找不到摘要。", noMatch: "沒有符合所選條件的摘要。",
+    silent: "這段錄音沒有聲音。", failed: "這段錄音無法播放。",
+    poster: "海報", save: (n) => n > 1 ? "下載所有圖片" : "下載圖片",
+    posterDate: "SAMTALIÐ · 2026 年 10 月 10 日",
+    posterAlt: (where, table, i, n) => where + "，" + table + (n > 1 ? "，第 " + i + " 張，共 " + n + " 張" : "") + "：",
+    voiceRule: (end) => "線條的寬度就是聲音的強弱：上方是錄音開頭 0:00，下方是結尾 " + end + "。",
+    date: '<span lang="is">Samtalið</span> · 2026 年 10 月 10 日',
+    langs: "語言", toc: "本頁內容", "toc.viljum": "我們想要", "toc.ai": "人工智慧", "toc.bord": "所有討論桌", "toc.um": "關於本頁",
+    dek: '各桌的每一則摘要，一字不改（<span lang="is">orðrétt</span>），如實呈現 talasaman.is 上的紀錄。摘要保留原本的冰島文，各桌的話一概不翻譯。錄音完整，未經剪輯。',
+    qlabel: "Samtal 的提問",
+    qgloss: '我們想要（<span lang="is">viljum</span>）一起創造什麼樣的社會？',
+    "ai.h": "人工智慧", "ai.all": "全部摘要",
+    "bord.h": "所有討論桌", topics: "討論主題", place: "地點", search: "搜尋", searchHint: "冰島文的詞，或詞的一部分",
+    "um.h": "關於本頁",
+    um1: "來自各桌的一切都未經更動，連拼寫也一樣。沒有任何遺漏。",
+    um2: "依郵遞區號排序，其次是地點，再其次是桌號。每種顏色對應一個郵遞區號；郵遞區號和顏色一起，繞著冰島一圈。",
+    um3: "頁首的線條取自錄音本身，每秒量測二十次聲音的強弱。音量經過拉平，讓每個聲音都一樣清楚。",
+    um4: "本頁開啟時，直接從 talasaman.is 取得文字與錄音；錄音不會複製到這裡。本頁建置之後才新增的錄音，會在載入時直接從聲音本身量測，它的線條也會加入山形。",
+    um5: "來自各桌的內容，沒有任何部分由人工智慧撰寫、翻譯、刪節或朗讀。排序與選取都依照本頁載明的規則。人工智慧協助草擬了這些規則、撰寫程式碼與這些說明文字，也包括這份中文版本。",
+    um6: "本頁並非 Samtal 的立場或結論。",
+    by: "唐鳳製作。", saga: "本頁的來由（英文）",
+    toScreen: "投影播放", toHall: "投影山形",
+    screenFine: "一次一則摘要，大字顯示，並播放錄音。或以全螢幕顯示山形：先讓所有聲音同時播放，再逐一播放每個聲音。文字隨聲音的強弱前進。",
+    share: "分享", close: "關閉", start: "開始",
+    hall: "山形投影", hallStart: "先讓所有聲音同時播放，再逐一播放每個聲音。文字隨聲音的強弱前進。按 Esc 關閉。",
+    screen: "Orðrétt 投影模式", screenStart: "一次一則摘要。方向鍵換頁，空白鍵暫停，按 Esc 關閉。",
+  },
+};
+const t = (k, ...a) => { const v = k in T[lang] ? T[lang][k] : T.is[k]; return typeof v === "function" ? v(...a) : v; };
 const when = (iso) => { // Iceland keeps UTC all year
   const d = new Date(iso);
   if (isNaN(d)) return "";
-  return d.getUTCDate() + ". " + MONTHS[d.getUTCMonth()] + " " + d.getUTCFullYear() + " kl. " +
-    String(d.getUTCHours()).padStart(2, "0") + ":" + String(d.getUTCMinutes()).padStart(2, "0");
+  return t("when", d.getUTCDate(), d.getUTCMonth(), d.getUTCFullYear(), String(d.getUTCHours()).padStart(2, "0") + ":" + String(d.getUTCMinutes()).padStart(2, "0"));
 };
 
 /* ---------- colour: one hue per postcode, a lap of the colour wheel round the island ---------- */
@@ -610,7 +793,9 @@ function envOf(id) {
   }
   return envCache.get(id);
 }
-const tableLabel = (r) => r.locationPostCode + " " + r.location + " · borð " + r.table;
+const tableLabel = (r) => [{ is: r.locationPostCode + " " + r.location }, " · " + t("table", r.table)];
+// A label of the page's own inside Icelandic words takes the page's language back.
+const own = (e) => { e.lang = HTML_LANG[lang]; return e; };
 
 /* ---------- the mountain: one line per recording, shortest on top, centred in time ---------- */
 const M = { cv: $("mtn"), lines: [], base: null, W: 0, H: 0, gap: 0, amp: 0, maxS: 0, hover: -1, dpr: 1 };
@@ -627,7 +812,7 @@ function placeLines(S, W, gap) {
   const cv = S.cv;
   S.lines = mountainLines();
   const n = S.lines.length;
-  cv.setAttribute("aria-label", count(n, "lína", "línur") + ", ein fyrir hverja upptöku. Styst efst, lengst neðst.");
+  cv.setAttribute("aria-label", t("mtnLabel", n));
   if (!W || !n) { cv.style.height = "0px"; S.base = null; S.maxS = 0; return; }
   if (!gap) gap = Math.max(9, Math.min(18, W / 36));
   const amp = gap * 2.7, top = Math.ceil(amp + 4);
@@ -726,7 +911,7 @@ function showTip(i, px) {
   const tip = $("tip");
   if (i < 0) { tip.hidden = true; return; }
   const L = M.lines[i];
-  tip.textContent = L.r.location + " · borð " + L.r.table + " · " + clock(L.s);
+  put(tip, [{ is: L.r.location }, " · " + t("table", L.r.table) + " · " + clock(L.s)]);
   tip.hidden = false;
   tip.style.left = Math.min(M.W - tip.offsetWidth / 2, Math.max(tip.offsetWidth / 2, px)) + "px";
   tip.style.top = Math.max(0, L.y0 - M.amp - 4) + "px";
@@ -1000,84 +1185,89 @@ function paintPlays() {
   const ids = seqIds();
   const seqOn = A.mode === "seq" && A.origin === "hero";
   playButton($("playSeq"), seqOn
-    ? { on: true, paused: A.paused, label: A.paused ? "Halda áfram" : "Gera hlé", len: (A.qi + 1) + " af " + A.queue.length }
-    : { label: "Ein í einu", len: ids.length && sumOf(ids) ? clock(sumOf(ids)) : "", disabled: !ids.length });
+    ? { on: true, paused: A.paused, label: t(A.paused ? "resume" : "pause"), len: t("of", A.qi + 1, A.queue.length) }
+    : { label: t("oneAtATime"), len: ids.length && sumOf(ids) ? clock(sumOf(ids)) : "", disabled: !ids.length });
   let sw;
-  if (A.mode === "swell" && A.swell && A.swell.loading) sw = { on: true, paused: true, label: "Sæki raddirnar", len: A.swell.done + " af " + A.swell.n, disabled: true };
-  else if (A.mode === "swell") sw = { on: true, paused: A.paused, label: A.paused ? "Halda áfram" : "Gera hlé", len: clock(progress()) + " / " + clock(M.maxS) };
-  else sw = { label: "Allar í einu", len: M.lines.length ? clock(M.maxS) : "", disabled: !M.lines.length };
+  if (A.mode === "swell" && A.swell && A.swell.loading) sw = { on: true, paused: true, label: t("fetchingVoices"), len: t("of", A.swell.done, A.swell.n), disabled: true };
+  else if (A.mode === "swell") sw = { on: true, paused: A.paused, label: t(A.paused ? "resume" : "pause"), len: clock(progress()) + " / " + clock(M.maxS) };
+  else sw = { label: t("allAtOnce"), len: M.lines.length ? clock(M.maxS) : "", disabled: !M.lines.length };
   playButton($("playSwell"), sw);
   const here = visible().filter(audible).map((r) => r.id);
   const hereOn = A.mode === "seq" && A.origin === "archive";
   playButton($("playHere"), hereOn
-    ? { on: true, paused: A.paused, label: A.paused ? "Halda áfram" : "Gera hlé", len: (A.qi + 1) + " af " + A.queue.length }
-    : { label: !here.length ? "Engin upptaka hér" : here.length === 1 ? "Hlusta á upptökuna hér" : "Hlusta á upptökurnar hér",
+    ? { on: true, paused: A.paused, label: t(A.paused ? "resume" : "pause"), len: t("of", A.qi + 1, A.queue.length) }
+    : { label: t("listenHere", here.length),
         len: here.length && sumOf(here) ? clock(sumOf(here)) : "", disabled: !here.length });
 }
 
 function nowBlock(r) {
   const where = el("p", "where"), sw = el("span", "swatch");
   sw.style.background = tone(r.locationPostCode, "accent");
-  where.append(sw, el("span", "", r.locationPostCode + " " + r.location), el("span", "t", "borð " + r.table + " · " + r.topic));
-  return [where, el("p", "say", r.summary)];
+  const tl = el("span", "t"), say = el("p", "say", r.summary);
+  put(tl, [t("table", r.table) + " · ", { is: r.topic }]);
+  say.lang = "is";
+  where.append(sw, ice(r.locationPostCode + " " + r.location), tl);
+  return [where, say];
 }
 
 let nowKey = "";
 function paintNow() {
   let key, kids;
   if (A.mode === "swell" && A.swell && A.swell.loading) {
-    key = "load" + A.swell.done; kids = [el("p", "hint", "Sæki raddirnar … " + A.swell.done + " af " + A.swell.n)];
+    key = "load" + A.swell.done; kids = [el("p", "hint", t("fetchingVoicesOf", A.swell.done, A.swell.n))];
   } else if (A.mode === "swell" && A.swell) {
-    const t = progress();
-    const speaking = M.lines.filter((L) => { const st = A.swell.starts.get(L.r.id); return st != null && t >= st && t < st + L.s; });
+    const at = progress();
+    const speaking = M.lines.filter((L) => { const st = A.swell.starts.get(L.r.id); return st != null && at >= st && at < st + L.s; });
     const n = speaking.length;
     key = "swell" + n + (n === 1 ? speaking[0].r.id : "");
-    kids = [el("p", "big", n ? count(n, "rödd talar", "raddir tala") : "")];
+    kids = [el("p", "big", n ? t("voices", n) : "")];
     if (n === 1) kids.push(...nowBlock(speaking[0].r));
   } else if (A.id && (A.mode === "one" || A.mode === "seq") && A.origin === "hero" && byId(A.id)) {
     key = "one" + A.id; kids = nowBlock(byId(A.id));
-  } else { key = "idle"; kids = [el("p", "hint", "Ýttu á línu til að heyra röddina.")]; }
+  } else { key = "idle"; kids = [el("p", "hint", t("tapLine"))]; }
   if (key !== nowKey) { nowKey = key; $("now").replaceChildren(...kids); }
 }
 
 function paintTime() {
   if (!A.mode || A.mode === "screen") return;
-  const t = progress();
+  const now = progress();
   if (A.mode === "swell") {
-    $("deckTime").textContent = A.swell && A.swell.loading ? A.swell.done + " af " + A.swell.n : clock(t) + " / " + clock(M.maxS);
+    $("deckTime").textContent = A.swell && A.swell.loading ? t("of", A.swell.done, A.swell.n) : clock(now) + " / " + clock(M.maxS);
     const len = $("playSwell").querySelector(".len");
-    if (len && A.swell && !A.swell.loading) len.textContent = clock(t) + " / " + clock(M.maxS);
+    if (len && A.swell && !A.swell.loading) len.textContent = clock(now) + " / " + clock(M.maxS);
     return;
   }
   const r = A.id && byId(A.id);
   if (!r) return;
-  let s = A.loading ? "Sæki upptökuna …" : clock(t) + (A.dur ? " / " + clock(A.dur) : "");
-  if (A.mode === "seq") s += " · " + (A.qi + 1) + " af " + A.queue.length;
+  let s = A.loading ? t("fetchingOne") : clock(now) + (A.dur ? " / " + clock(A.dur) : "");
+  if (A.mode === "seq") s += " · " + t("of", A.qi + 1, A.queue.length);
   $("deckTime").textContent = s;
   const len = document.querySelector('.listen[data-id="' + r.id + '"] .len');
-  if (len) len.textContent = clock(t) + " / " + clock(A.dur || 0);
+  if (len) len.textContent = clock(now) + " / " + clock(A.dur || 0);
 }
 
 function paintDeck() {
   const deck = $("deck");
   if (!A.mode || A.mode === "screen") { deck.hidden = true; return; }
   deck.hidden = false;
-  const t = $("deckToggle");
-  t.innerHTML = A.paused ? ICON.play : ICON.pause;
-  t.setAttribute("aria-label", A.paused ? "Halda áfram" : "Gera hlé");
-  if (A.mode === "swell") $("deckWhere").textContent = "Allar raddirnar í einu";
-  else { const r = A.id && byId(A.id); $("deckWhere").textContent = r ? r.location + " · borð " + r.table + " · " + r.topic : ""; }
+  const tg = $("deckToggle");
+  tg.innerHTML = A.paused ? ICON.play : ICON.pause;
+  tg.setAttribute("aria-label", t(A.paused ? "resume" : "pause"));
+  if (A.mode === "swell") $("deckWhere").textContent = t("allVoices");
+  else { const r = A.id && byId(A.id); put($("deckWhere"), r ? [{ is: r.location }, " · " + t("table", r.table) + " · ", { is: r.topic }] : ""); }
   $("deckNext").hidden = !(A.mode === "seq" && A.qi + 1 < A.queue.length);
   paintTime();
 }
 
+// The spoken name of a listen button: what it does, the place, the table, and then the visible length.
+const srName = (r, playing) => [t("listenAs", playing), { is: r.location }, t("sep") + t("table", r.table) + t("sep")];
 function paintList() {
   for (const a of document.querySelectorAll(".entry.on")) a.classList.remove("on");
   for (const b of document.querySelectorAll(".listen")) {
     const mine = b.dataset.id === A.id && (A.mode === "one" || A.mode === "seq");
     const r = byId(b.dataset.id);
     b.querySelector(".disc").innerHTML = mine && !A.paused ? ICON.pause : ICON.play;
-    b.querySelector(".sr").textContent = (mine && !A.paused ? "Gera hlé: " : "Hlusta: ") + r.location + ", borð " + r.table + ", ";
+    put(b.querySelector(".sr"), srName(r, mine && !A.paused));
     if (mine) b.closest(".entry").classList.add("on");
     else { const f = facts(r.id), len = b.querySelector(".len"); if (len) len.textContent = f ? clock(f[0]) : ""; }
   }
@@ -1125,15 +1315,17 @@ function renderKwic() {
       row.dataset.id = r.id; row.dataset.sentence = s;
       const kr = el("div", "kr"), key = el("span", "key", m[2]);
       key.style.color = tone(r.locationPostCode, "accent");
-      const link = el("a", "km", tableLabel(r));
+      const link = own(el("a", "km")), kl = el("div", "kl", left);
+      put(link, tableLabel(r));
       link.href = "#e-" + r.id;
       kr.append(key, document.createTextNode(s.slice(i + m[2].length)), link);
-      row.append(el("div", "kl", left), kr);
+      kl.lang = kr.lang = "is";
+      row.append(kl, kr);
       out.push(row);
     }
   }
   $("kwic").replaceChildren(...out);
-  $("kwicRule").textContent = "Allar setningar frá borðunum sem innihalda orðið „viljum“. " + count(out.length, "setning", "setningar") + ".";
+  put($("kwicRule"), t("kwicRule", out.length));
   alignKwic();
 }
 // Lower the words after „viljum“ so the spine sits on the last line of the words before it.
@@ -1199,10 +1391,10 @@ function renderLine(set) {
   if (!hits.length) { box.hidden = true; return; }
   box.hidden = false;
   const tablesHit = new Set(hits.map((h) => h.r.location + "|" + h.r.table)).size;
-  const kids = [el("p", "lab", "Hjálp og „fyrir okkur“ í sömu setningu")];
+  const kids = [el("p", "lab", t("aiLineLab"))];
   for (const { r, s } of hits) {
     const p = el("p", "s");
-    p.dataset.id = r.id; p.dataset.sentence = s;
+    p.dataset.id = r.id; p.dataset.sentence = s; p.lang = "is";
     let at = 0;
     for (const [a, b, k] of marksIn(s)) {
       if (k !== "f2" && k !== "f4") continue;
@@ -1211,11 +1403,12 @@ function renderLine(set) {
       at = b;
     }
     if (at < s.length) p.append(document.createTextNode(s.slice(at)));
-    p.append(el("span", "m", tableLabel(r)));
+    const where = own(el("span", "m"));
+    put(where, tableLabel(r));
+    p.append(where);
     kids.push(p);
   }
-  kids.push(el("p", "rule", "Allar setningar í samantektunum hér fyrir neðan þar sem grænt orð og bleikt orð standa saman. " +
-    count(hits.length, "setning", "setningar") + " frá " + tablesHit + " " + (one(tablesHit) ? "borði" : "borðum") + "."));
+  kids.push(el("p", "rule", t("aiLineRule", hits.length, tablesHit)));
   box.replaceChildren(...kids);
 }
 
@@ -1224,29 +1417,31 @@ function renderSheet() {
   renderLine(set);
   const tables = new Set(rows.map((r) => r.location + "|" + r.table));
   const aiTables = new Set(set.map((r) => r.location + "|" + r.table));
-  $("aiStat").textContent = aiTables.size + " af þeim " + tables.size + " borðum sem eru komin í opnu gögnin " + (one(aiTables.size) ? "talaði" : "töluðu") + " um gervigreind.";
-  $("aiRule").textContent = "Hér eru allar samantektirnar sem nefna hana. Hver litur merkir orð sem byrja á stofnum sem standa við hann. " +
-    "Hvaða orð fá lit er val síðunnar, gert með hjálp gervigreindar, ekki val borðanna. Ýttu á lit til að slökkva á honum; án litanna stendur textinn óbreyttur.";
+  $("aiStat").textContent = t("aiStat", aiTables.size, tables.size);
+  $("aiRule").textContent = t("aiRule");
   const hits = new Map(PENS.map((p) => [p.k, 0]));
   $("notes").replaceChildren(...set.map((r) => {
-    const box = el("div", "note-row"), t = el("p", "t"), seen = new Set();
-    box.id = "ai-" + r.id;
+    const box = el("div", "note-row"), tx = el("p", "t"), m = el("p", "m"), seen = new Set();
+    box.id = "ai-" + r.id; tx.lang = "is";
     let at = 0;
     for (const [a, b, k] of marksIn(r.summary)) {
-      if (a > at) t.append(document.createTextNode(r.summary.slice(at, a)));
-      t.append(el("mark", k, r.summary.slice(a, b)));
+      if (a > at) tx.append(document.createTextNode(r.summary.slice(at, a)));
+      tx.append(el("mark", k, r.summary.slice(a, b)));
       seen.add(k); at = b;
     }
-    if (at < r.summary.length) t.append(document.createTextNode(r.summary.slice(at)));
+    if (at < r.summary.length) tx.append(document.createTextNode(r.summary.slice(at)));
     for (const k of seen) hits.set(k, hits.get(k) + 1);
-    box.append(el("p", "m", tableLabel(r) + " · " + r.topic), t);
+    put(m, [...tableLabel(r), " · ", { is: r.topic }]);
+    box.append(m, tx);
     return box;
   }));
   $("pens").replaceChildren(...PENS.map((p) => {
     const b = el("button", "pen"), nm = el("span", "nm");
     b.type = "button"; b.dataset.k = p.k; b.style.setProperty("--pen", p.color);
-    nm.append(el("span", "", p.label), el("span", "n", String(hits.get(p.k))));
-    b.append(nm, el("span", "st", p.show));
+    const st = el("span", "st", p.show);
+    st.lang = "is"; // the stems are Icelandic: they mark Icelandic words
+    nm.append(el("span", "", t("pens")[p.k]), el("span", "n", String(hits.get(p.k))));
+    b.append(nm, st);
     return b;
   }));
   paintPens();
@@ -1271,19 +1466,16 @@ const matches = (r) =>
 const visible = () => rows.filter(matches);
 
 function renderCounts() {
-  $("fetched").textContent = (source === "fallback" ? "Náði ekki sambandi við talasaman.is. " : "") +
-    (meta && meta.generatedAt ? "Gögnin eru frá " + when(meta.generatedAt) + "." : "");
+  $("fetched").textContent = (source === "fallback" ? t("unreachable") : "") + (meta && meta.generatedAt ? t("fetched", when(meta.generatedAt)) : "");
   const locs = new Set(rows.map((r) => r.location)).size;
   const rec = rows.filter((r) => r.audio && !silent(r)).length;
-  $("mtnRule").textContent = count(rows.length, "samantekt", "samantektir") + " frá " + locs + " " + (one(locs) ? "staðsetningu" : "staðsetningum") + ". " +
-    count(rec, "upptaka", "upptökur") + ". Hver lína er ein upptaka: hæðin er styrkur raddarinnar og breiddin lengd upptökunnar. " +
-    "Styst efst, lengst neðst, allar miðjaðar. Þannig hljóma þær í „Allar í einu“.";
+  $("mtnRule").textContent = t("mtnRule", rows.length, locs, rec);
 }
 
 function renderTopics() {
   const tally = (list) => { const m = new Map(); let other = 0; for (const r of list) { if (r.topicChosen) m.set(r.topic, (m.get(r.topic) || 0) + 1); else other++; } return { m, other }; };
   const all = tally(rows), here = tally(rows.filter(atPlace));
-  const keys = [...all.m].sort((a, b) => b[1] - a[1] || coll.compare(a[0], b[0])).map(([t]) => t);
+  const keys = [...all.m].sort((a, b) => b[1] - a[1] || coll.compare(a[0], b[0])).map(([tp]) => tp);
   if (state.topic && state.topic !== "*" && !all.m.has(state.topic)) state.topic = "";
   if (state.topic === "*" && !all.other) state.topic = "";
   const chip = (key, label, n) => {
@@ -1291,12 +1483,13 @@ function renderTopics() {
     b.type = "button"; b.dataset.topic = key;
     b.setAttribute("aria-pressed", String(state.topic === key));
     b.disabled = !n && state.topic !== key;
-    b.append(document.createTextNode(label), el("span", "n", String(n)));
+    b.append(typeof label === "string" ? document.createTextNode(label) : label, el("span", "n", String(n)));
     return b;
   };
   const total = rows.filter(atPlace).length;
-  const chips = [chip("", "Allt", total), ...keys.map((t) => chip(t, t, here.m.get(t) || 0))];
-  if (all.other) chips.push(chip("*", "annað", here.other));
+  // a topic is the table's word, the page's own chips are not
+  const chips = [chip("", t("all"), total), ...keys.map((tp) => chip(tp, ice(tp), here.m.get(tp) || 0))];
+  if (all.other) chips.push(chip("*", t("other"), here.other));
   $("topics").replaceChildren(...chips);
 }
 
@@ -1304,16 +1497,16 @@ function renderPlaces() {
   const sel = $("place"), seen = new Map();
   for (const r of rows) if (!seen.has(r.location)) seen.set(r.location, r.locationPostCode);
   if (state.loc && !seen.has(state.loc)) state.loc = "";
-  const opts = [new Option("Allar staðsetningar", "")];
-  for (const [loc, pc] of seen) opts.push(new Option(pc + " " + loc, loc));
+  const opts = [new Option(t("allLocations"), "")];
+  for (const [loc, pc] of seen) { const o = new Option(pc + " " + loc, loc); o.lang = "is"; opts.push(o); }
   sel.replaceChildren(...opts);
   sel.value = state.loc;
 }
 
 function renderList() {
   const list = visible(), main = $("list");
-  $("found").textContent = !state.q ? "" : list.length ? count(list.length, "samantekt fannst", "samantektir fundust") + "." : "Engin samantekt fannst.";
-  if (!list.length) { main.replaceChildren(el("p", "empty", "Engin samantekt passar við valið.")); return; }
+  $("found").textContent = !state.q ? "" : list.length ? t("found", list.length) : t("notFound");
+  if (!list.length) { main.replaceChildren(el("p", "empty", t("noMatch"))); return; }
   const out = [];
   let entries = null, last = null, n = 0;
   for (const r of list) {
@@ -1325,7 +1518,7 @@ function renderList() {
       pc.setAttribute("aria-hidden", "true");
       pc.style.color = tone(r.locationPostCode, "accent");
       const h = el("h3");
-      h.id = hid;
+      h.id = hid; h.lang = "is";
       h.append(el("span", "sr", r.locationPostCode + " "), document.createTextNode(r.location));
       entries = el("div", "entries");
       section.append(pc, h, entries);
@@ -1346,6 +1539,7 @@ function markLinked() {
 // Verbatim: set as text, never as markup. A search marks its matches; the words stay as they are.
 function wordsOf(text) {
   const p = el("p", "words"), low = fold(text), q = state.q;
+  p.lang = "is";
   if (!q || low.length !== text.length) { p.textContent = text; return p; }
   let at = 0;
   for (let i = low.indexOf(q); i >= 0; i = low.indexOf(q, at)) {
@@ -1361,21 +1555,23 @@ function entry(r) {
   const a = el("article", "entry");
   a.id = "e-" + r.id;
   const m = el("p", "meta");
-  m.append(el("span", "", "borð " + r.table), el("span", "", r.topic));
-  if (r.source === "participant") m.append(el("span", "", "samantekt eins þátttakanda"));
+  m.append(el("span", "", t("table", r.table)), ice(r.topic));
+  if (r.source === "participant") m.append(el("span", "", t("participant")));
   a.append(m, wordsOf(r.summary));
   const acts = el("div", "acts");
-  if (r.audio && silent(r)) a.append(el("p", "aside", "Upptakan er hljóðlaus."));
-  else if (r.audio && failed.has(r.id)) a.append(el("p", "aside", "Ekki tókst að spila upptökuna."));
+  if (r.audio && silent(r)) a.append(el("p", "aside", t("silent")));
+  else if (r.audio && failed.has(r.id)) a.append(el("p", "aside", t("failed")));
   else if (r.audio) {
     const b = el("button", "listen"), disc = el("span", "disc");
     b.type = "button"; b.dataset.id = r.id;
     disc.style.background = tone(r.locationPostCode, "accent");
     // the spoken name ends with the visible length, so voice control can say what it sees
-    b.append(disc, el("span", "sr", "Hlusta: " + r.location + ", borð " + r.table + ", "), el("span", "len", facts(r.id) ? clock(facts(r.id)[0]) : ""));
+    const sr = el("span", "sr");
+    put(sr, srName(r, false));
+    b.append(disc, sr, el("span", "len", facts(r.id) ? clock(facts(r.id)[0]) : ""));
     acts.append(b);
   }
-  const p = el("button", "tool", "Plakat");
+  const p = el("button", "tool", t("poster"));
   p.type = "button"; p.dataset.poster = r.id;
   acts.append(p);
   a.append(acts);
@@ -1437,9 +1633,9 @@ function wrapLines(g, text, maxW) {
 const PT = window.Pretext && typeof Intl.Segmenter === "function" ? window.Pretext : null;
 const REF = 100;
 const measured = new Map();
-function prepared(text, family) {
-  const key = family + "\n" + text;
-  if (!measured.has(key)) measured.set(key, PT.prepareWithSegments(text, "400 " + REF + "px " + family, { whiteSpace: "pre-wrap" }));
+function prepared(text, family, weight = 400) {
+  const key = weight + " " + family + "\n" + text;
+  if (!measured.has(key)) measured.set(key, PT.prepareWithSegments(text, weight + " " + REF + "px " + family, { whiteSpace: "pre-wrap" }));
   return measured.get(key);
 }
 // A font that arrives late changes every width, so everything is measured again.
@@ -1447,9 +1643,9 @@ if (PT && document.fonts) document.fonts.addEventListener("loadingdone", () => {
 // Each line with the stretch of the text it holds, [from, to), so what is drawn can be checked
 // against the summary. A line that ends between two letters cuts a word; a poster never does.
 const endsInWord = (text, line, end) => text[end] !== "\n" && isLetter(line.slice(-1)) && isLetter(text[end]);
-function linesAt(text, family, s, w) {
+function linesAt(text, family, s, w, weight = 400) {
   let at = 0, cut = false;
-  const lines = PT.layoutWithLines(prepared(text, family), w * REF / s, 1).lines.map((l) => {
+  const lines = PT.layoutWithLines(prepared(text, family, weight), w * REF / s, 1).lines.map((l) => {
     const from = at;
     at += l.text.length;
     if (endsInWord(text, l.text, at)) cut = true;
@@ -1467,9 +1663,9 @@ function largest(ok, lo, hi) {
 
 const PW = 1080, PH = 1920, PX = 88, PRW = PW - 2 * PX, INK = "#121411", DIM = "rgba(18,20,17,.64)";
 const POSTER_WORDS = '"Atkinson Hyperlegible Next"';
+// the frame's own words may be Chinese: a Traditional Chinese sans follows Schibsted Grotesk
+const FRAME = '"Schibsted Grotesk", "PingFang TC", "Noto Sans TC", "Noto Sans CJK TC", "Microsoft JhengHei", sans-serif';
 const POSTER_MIN = 36; // no poster sets the words smaller: a longer summary goes on more frames
-// The rule under a poster set in the shape of its voice, with the recording's start and end.
-const voiceRule = (r) => "Breidd línanna er styrkur raddarinnar, frá upphafi upptökunnar efst (0:00) til enda hennar neðst (" + clock(facts(r.id)[0]) + ").";
 
 // The largest size at which the summary fits whole with no word cut, at the narrowest measure that
 // keeps as many lines, so a last line is not left alone. A summary that cannot fit at POSTER_MIN goes
@@ -1505,7 +1701,8 @@ function wordsPlan(r, boxH) {
 // A summary with a recording is set in the shape of that recording: top to bottom is start to end,
 // and each line is as wide as the voice is loud in its stretch (the mean reading there, scaled from
 // the quietest stretch to the loudest: 40% of the measure to all of it). A line is widened rather than
-// cut a word. The size is the largest at which the whole summary fits the shape.
+// cut a word. The recording is spread over just as many lines as its words fill, so the words end
+// where the voice ends; the size is the largest at which that fits the box.
 const VLH = 1.2;
 function voicePlan(r, env, boxH) {
   const text = r.summary, p = prepared(text, POSTER_WORDS);
@@ -1520,9 +1717,7 @@ function voicePlan(r, env, boxH) {
     const lo = Math.min(...v), span = Math.max(...v) - lo || 1;
     return v.map((x) => PRW * (0.4 + 0.6 * (x - lo) / span));
   };
-  const flow = (s) => {
-    const n = Math.floor(boxH / (s * VLH));
-    if (n < 2) return null;
+  const flow = (s, n) => {
     const rows = widths(n), lines = [];
     let cur = { segmentIndex: 0, graphemeIndex: 0 }, at = 0;
     for (let i = 0; i < n && at < text.length; i++) {
@@ -1542,8 +1737,18 @@ function voicePlan(r, env, boxH) {
     }
     return at === text.length ? { size: s, rows, lines } : null;
   };
-  const s = largest((s) => !!flow(s), POSTER_MIN, 120);
-  return s ? flow(s) : null;
+  // the fewest lines whose shape holds the summary, every line used; failing that, the fewest that hold it
+  const fill = (s) => {
+    let some = null;
+    for (let n = 2; n <= Math.floor(boxH / (s * VLH)); n++) {
+      const f = flow(s, n);
+      if (f && f.lines.length === n) return f;
+      if (f && !some) some = f;
+    }
+    return some;
+  };
+  const s = largest((s) => !!fill(s), POSTER_MIN, 120);
+  return s ? fill(s) : null;
 }
 
 function sheet(r) {
@@ -1555,15 +1760,15 @@ function sheet(r) {
 }
 // The date (and which frame), the postcode, the place and the table; returns where the words may start.
 function head(g, r, part) {
-  g.fillStyle = DIM; g.font = '650 34px "Schibsted Grotesk"';
-  g.fillText("SAMTALIÐ · 10. OKTÓBER 2026" + (part ? " · " + part : ""), PX, 150);
+  g.fillStyle = DIM; g.font = "650 34px " + FRAME;
+  g.fillText(t("posterDate") + (part ? " · " + part : ""), PX, 150);
   g.fillStyle = INK; g.font = '850 260px "Schibsted Grotesk"';
   g.fillText(r.locationPostCode, PX - 12, 400);
   g.font = '750 60px "Schibsted Grotesk"';
   let y = 488;
   for (const l of wrapLines(g, r.location, PRW)) { g.fillText(l, PX, y); y += 68; }
-  g.fillStyle = DIM; g.font = '650 42px "Schibsted Grotesk"';
-  for (const l of wrapLines(g, "borð " + r.table + " · " + r.topic + (r.source === "participant" ? " · samantekt eins þátttakanda" : ""), PRW)) { g.fillText(l, PX, y); y += 52; }
+  g.fillStyle = DIM; g.font = "650 42px " + FRAME;
+  for (const l of wrapLines(g, t("table", r.table) + " · " + r.topic + (r.source === "participant" ? " · " + t("participant") : ""), PRW)) { g.fillText(l, PX, y); y += 52; }
   return y;
 }
 function foot(g) {
@@ -1603,7 +1808,12 @@ function drawVoice(g, r, plan, top) {
   lines.forEach((l, i) => g.fillText(l.text.trim(), cx, top + i * lh + size * 0.92));
   g.textAlign = "left";
 }
-function ruleLines(g, r) { g.font = '600 26px "Schibsted Grotesk"'; return wrapLines(g, voiceRule(r), PRW); }
+// The rule under a poster set in the shape of its voice, with the recording's start and end.
+function ruleLines(g, r) {
+  const rule = t("voiceRule", clock(facts(r.id)[0]));
+  g.font = "600 26px " + FRAME;
+  return PT ? linesAt(rule, FRAME, 26, PRW, 600).lines.map((l) => l.text.trim()) : wrapLines(g, rule, PRW);
+}
 
 // One poster, or a story of several frames: [{ cv, text it holds, px, shape }].
 async function poster(r) {
@@ -1612,11 +1822,11 @@ async function poster(r) {
   const [cv, g] = sheet(r);
   const y = head(g, r, "");
   if (PT && env) {
-    const rule = ruleLines(g, r), ruleTop = 1748 - (rule.length - 1) * 34 - 26, top = y + 64;
-    const plan = voicePlan(r, env, ruleTop - 56 - top);
+    const rule = ruleLines(g, r), ruleTop = 1748 - (rule.length - 1) * 34 - 26, top = y + 64, boxH = ruleTop - 56 - top;
+    const plan = voicePlan(r, env, boxH);
     if (plan) {
-      drawVoice(g, r, plan, top);
-      g.fillStyle = DIM; g.font = '600 26px "Schibsted Grotesk"'; g.textAlign = "center";
+      drawVoice(g, r, plan, top + (boxH - plan.rows.length * plan.size * VLH) / 2);
+      g.fillStyle = DIM; g.font = "600 26px " + FRAME; g.textAlign = "center";
       rule.forEach((l, i) => g.fillText(l, PW / 2, ruleTop + 26 + i * 34));
       g.textAlign = "left";
       foot(g);
@@ -1668,12 +1878,12 @@ async function openPoster(id) {
   box.replaceChildren(...frames.map((f, i) => {
     const img = i ? el("img") : $("posterImg");
     img.src = URL.createObjectURL(posterFiles[i]);
-    img.alt = r.location + ", borð " + r.table + (frames.length > 1 ? ", " + (i + 1) + " af " + frames.length : "") + ": " + f.text;
+    img.alt = t("posterAlt", r.location, t("table", r.table), i + 1, frames.length) + f.text;
     img.dataset.px = String(f.px); img.dataset.shape = f.shape;
     return img;
   }));
   box.scrollLeft = 0;
-  $("posterSave").textContent = frames.length > 1 ? "Sækja myndir" : "Sækja mynd";
+  $("posterSave").textContent = t("save", frames.length);
   $("posterShare").hidden = !(navigator.canShare && navigator.canShare({ files: posterFiles }));
   const dlg = $("shade");
   if (!dlg.open) { if (dlg.showModal) dlg.showModal(); else dlg.setAttribute("open", ""); }
@@ -1718,7 +1928,7 @@ function sWake() {
 }
 function paintScreenToggle() {
   $("sToggle").innerHTML = sPaused ? ICON.play : ICON.pause;
-  $("sToggle").setAttribute("aria-label", sPaused ? "Halda áfram" : "Gera hlé");
+  $("sToggle").setAttribute("aria-label", t(sPaused ? "resume" : "pause"));
 }
 function enterScreen() {
   if (A.mode && A.mode !== "screen") stopAll();
@@ -1800,17 +2010,17 @@ function sShow(i) {
   sList = visible();
   if (!sList.length) {
     $("sTop").replaceChildren(); $("sPos").textContent = "";
-    $("sSay").textContent = "Engin samantekt passar við valið."; $("sSay").style.opacity = "1"; fit();
+    $("sSay").textContent = t("noMatch"); $("sSay").lang = HTML_LANG[lang]; $("sSay").style.opacity = "1"; fit();
     return;
   }
   sIdx = ((i % sList.length) + sList.length) % sList.length;
   const r = sList[sIdx], voiced = audible(r);
-  const parts = [el("span", "", r.topic)]; // on a hall screen, no place or table beside the words
+  const parts = [ice(r.topic)]; // on a hall screen, no place or table beside the words
   if (voiced) { const d = el("span", "live"); d.style.background = "var(--chalk)"; d.setAttribute("aria-hidden", "true"); parts.push(d); }
   $("sTop").replaceChildren(...parts);
   const say = $("sSay");
   say.style.opacity = "0";
-  setTimeout(() => { say.textContent = r.summary; fit(); say.style.opacity = "1"; }, reduce.matches ? 0 : 200);
+  setTimeout(() => { say.textContent = r.summary; say.lang = "is"; fit(); say.style.opacity = "1"; }, reduce.matches ? 0 : 200);
   $("sPos").textContent = (sIdx + 1) + " / " + sList.length;
   if (voiced) {
     A.mode = "screen"; A.queue = [r.id]; A.qi = 0;
@@ -1875,7 +2085,7 @@ function hWake() {
 }
 function paintHallToggle() {
   const paused = !!A.paused;
-  const label = paused ? "Halda áfram" : "Gera hlé";
+  const label = t(paused ? "resume" : "pause");
   const btn = $("hToggle");
   if (btn.getAttribute("aria-label") === label && btn.firstChild) return;
   btn.innerHTML = paused ? ICON.play : ICON.pause;
@@ -1942,22 +2152,23 @@ function paintHall() {
   if ($("hall").hidden || !hStarted) return;
   const say = $("hSay"), who = $("hWho");
   if (A.mode === "swell" && A.swell && A.swell.loading) {
-    who.textContent = "Sæki raddirnar … " + A.swell.done + " af " + A.swell.n;
+    who.textContent = t("fetchingVoicesOf", A.swell.done, A.swell.n);
     fillWords(say, "", null); $("hPos").textContent = ""; paintHallToggle(); return;
   }
-  const t = progress();
+  const now = progress();
+  const placeOf = (Ln) => [{ is: Ln.r.location }, " · ", { is: Ln.r.topic }];
   let L = null, local = 0;
   if (A.mode === "swell" && A.swell && A.swell.starts) {
-    const speaking = Hall.lines.filter((Ln) => { const st = A.swell.starts.get(Ln.r.id); return st != null && t >= st && t < st + Ln.s; });
+    const speaking = Hall.lines.filter((Ln) => { const st = A.swell.starts.get(Ln.r.id); return st != null && now >= st && now < st + Ln.s; });
     // The words stay with the voice that runs the whole way. The others join it; the count says so.
-    for (const Ln of speaking) if (!L || Ln.s > L.s) { L = Ln; local = t - A.swell.starts.get(Ln.r.id); }
-    const place = L ? L.r.location + " · " + L.r.topic : "";
-    who.textContent = speaking.length > 1 ? count(speaking.length, "rödd talar", "raddir tala") + (place ? " · " + place : "") : place;
-    $("hPos").textContent = clock(t) + " / " + clock(A.dur || Hall.maxS || M.maxS);
+    for (const Ln of speaking) if (!L || Ln.s > L.s) { L = Ln; local = now - A.swell.starts.get(Ln.r.id); }
+    const place = L ? placeOf(L) : [];
+    put(who, speaking.length > 1 ? [t("voices", speaking.length), ...(place.length ? [" · ", ...place] : [])] : place);
+    $("hPos").textContent = clock(now) + " / " + clock(A.dur || Hall.maxS || M.maxS);
   } else if ((A.mode === "seq" || A.mode === "one") && A.id) {
     L = Hall.lines.find((Ln) => Ln.r.id === A.id) || M.lines.find((Ln) => Ln.r.id === A.id);
-    local = t;
-    if (L) who.textContent = L.r.location + " · " + L.r.topic;
+    local = now;
+    if (L) put(who, placeOf(L));
     if (A.mode === "seq") $("hPos").textContent = (A.qi + 1) + " / " + A.queue.length;
   }
   if (!L) { fillWords(say, say.textContent && A.mode ? say.textContent : "", null); paintHallToggle(); return; }
@@ -2042,7 +2253,41 @@ addEventListener("keydown", (e) => {
   else if (e.key === "ArrowLeft") hJump(-1);
   else if (e.key === " ") { e.preventDefault(); hPause(); }
 });
+function chosenLang() {
+  const named = location.hash.slice(1).toLowerCase();
+  if (HTML_LANG[named]) return named;
+  try { const kept = localStorage.getItem(LANG_KEY); if (HTML_LANG[kept]) return kept; } catch (e) {}
+  const prefs = (navigator.languages && navigator.languages.length ? [...navigator.languages] : [navigator.language || ""]).map((l) => String(l).toLowerCase());
+  if (prefs.some((l) => l === "is" || l.startsWith("is-"))) return "is";
+  for (const l of prefs) {
+    if (l === "en" || l.startsWith("en-")) return "en-gb";
+    if (l === "zh" || l.startsWith("zh-")) return "zh-tw";
+  }
+  return "en-gb";
+}
+function applyLang(code) {
+  lang = code;
+  document.documentElement.lang = HTML_LANG[code];
+  for (const e of document.querySelectorAll("[data-t]")) e.innerHTML = t(e.dataset.t);
+  for (const e of document.querySelectorAll("[data-t-aria]")) e.setAttribute("aria-label", t(e.dataset.tAria));
+  for (const e of document.querySelectorAll("[data-t-ph]")) e.placeholder = t(e.dataset.tPh);
+  for (const a of document.querySelectorAll(".langs a")) {
+    if (a.getAttribute("href") === "#" + code) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current");
+  }
+  $("posterSave").textContent = t("save", posterFiles.length);
+}
+// A language named in the address is kept for the next visit; the page redraws in it and keeps the reader's place.
+function setLang(code) {
+  try { localStorage.setItem(LANG_KEY, code); } catch (e) {}
+  if (code === lang) return;
+  applyLang(code);
+  nowKey = "";
+  keepPlace(render);
+  paintScreenToggle(); paintHallToggle();
+}
 const onHash = () => {
+  const named = location.hash.slice(1).toLowerCase();
+  if (HTML_LANG[named]) setLang(named);
   markLinked();
   if (location.hash === "#skjar") { if (!$("hall").hidden) leaveHall(); enterScreen(); }
   else if (location.hash === "#fjall") { if (!$("screen").hidden) leaveScreen(); enterHall(); }
@@ -2089,6 +2334,11 @@ function keepPlace(fn) {
   if (sel && !a.isConnected) { const b = document.querySelector(sel); if (b) b.focus({ preventScroll: true }); }
 }
 
+// The Icelandic of the fixed markup is the markup itself.
+for (const e of document.querySelectorAll("[data-t]")) if (!(e.dataset.t in T.is)) T.is[e.dataset.t] = e.innerHTML;
+for (const e of document.querySelectorAll("[data-t-aria]")) if (!(e.dataset.tAria in T.is)) T.is[e.dataset.tAria] = e.getAttribute("aria-label");
+for (const e of document.querySelectorAll("[data-t-ph]")) if (!(e.dataset.tPh in T.is)) T.is[e.dataset.tPh] = e.placeholder;
+applyLang(chosenLang());
 render();
 lastW = M.cv.clientWidth;
 onHash();

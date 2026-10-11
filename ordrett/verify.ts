@@ -17,8 +17,11 @@
 // measured from its own file, and the share card and icons. Layout gates:
 // Pretext counts the lines of every summary as the page sets them; every
 // poster holds its summary whole at 36px or larger, a voiced one in the shape
-// of its voice; screen mode sets every summary whole on a projector; and
-// without Intl.Segmenter the page measures as it did before.
+// of its voice when that keeps it there; screen mode sets every summary whole on a projector; and
+// without Intl.Segmenter the page measures as it did before. Language gates:
+// the browser's language chooses and #is, #en-gb, #zh-tw override and are
+// kept; in English and Chinese every summary stays verbatim and is marked
+// Icelandic, nothing Icelandic is left unmarked, and posters follow.
 // Screenshots go to ordrett/qa/.
 
 import { chromium, type Page } from "playwright";
@@ -76,9 +79,11 @@ const aiTables = new Set(expectedAI.map((r: any) => r.location + "|" + r.table))
 const voiced = snap.data.filter((r: any) => r.audio && facts[r.id] && !facts[r.id].silent);
 
 const browser = await chromium.launch({ args: ["--autoplay-policy=no-user-gesture-required"] });
+// The page takes its language from the browser; these gates read it in Icelandic unless they say otherwise.
+const context = (o: Parameters<typeof browser.newContext>[0] = {}) => browser.newContext({ locale: "is-IS", ...o });
 
 async function open(opts: { width: number; height: number; live: boolean; path?: string }) {
-  const ctx = await browser.newContext({ viewport: { width: opts.width, height: opts.height }, deviceScaleFactor: 2 });
+  const ctx = await context({ viewport: { width: opts.width, height: opts.height }, deviceScaleFactor: 2 });
   const page = await ctx.newPage();
   const hosts = new Set<string>();
   const errors: string[] = [];
@@ -172,10 +177,11 @@ const shotOf = async (page: Page, sel: string, name: string) => { await page.loc
   gate("Pretext is inlined, and counts the lines of every summary as the page sets them, or one more, never fewer",
     !!agree && agree.fewer === 0 && agree.same + agree.more === snap.data.length && agree.same >= snap.data.length * 0.95, JSON.stringify(agree));
 
-  // Every poster: its frames hold the summary whole and in order, at 36px or larger; a summary
-  // with a recording is set in the shape of its voice, on one frame.
+  // Every poster: its frames hold the summary whole and in order, at 36px or larger. Only a summary
+  // with a recording is set in the shape of its voice, on one frame; when the shape would set it
+  // below 36px it is set plainly instead, and the detail names it.
   const voicedIds = new Set(voiced.map((r: any) => r.id));
-  const wrong: string[] = [];
+  const wrong: string[] = [], plain: string[] = [];
   let smallest = Infinity, shaped = 0;
   const split: string[] = [];
   for (const r of ordered) {
@@ -192,18 +198,102 @@ const shotOf = async (page: Page, sel: string, name: string) => { await page.loc
       const lead = `${r.location}, borð ${r.table}${n > 1 ? `, ${i + 1} af ${n}` : ""}: `;
       return f.alt.startsWith(lead) ? f.alt.slice(lead.length) : "\u0000";
     }).join("");
-    const voice = voicedIds.has(r.id);
-    if (voice && frames.every((f) => f.shape === "voice")) shaped++;
+    const voice = voicedIds.has(r.id), inShape = frames.some((f) => f.shape === "voice");
+    if (inShape) shaped++;
+    else if (voice) plain.push(`${r.id.slice(0, 8)} at ${frames[0].px}px`);
     if (n > 1) split.push(`${r.id.slice(0, 8)}: ${n} at ${frames[0].px}px`);
     for (const f of frames) smallest = Math.min(smallest, f.px);
-    if (words !== r.summary || frames.some((f) => f.size !== "1080x1920" || !(f.px >= 36)) ||
-      (voice ? n !== 1 || frames[0].shape !== "voice" : frames.some((f) => f.shape !== "words"))) wrong.push(r.id.slice(0, 8));
+    if (words !== r.summary || frames.some((f) => f.size !== "1080x1920" || !(f.px >= 36) || !["voice", "words"].includes(f.shape!)) ||
+      (inShape && (!voice || n !== 1))) wrong.push(r.id.slice(0, 8));
   }
   gate("posters: every summary whole and in order across its frames, 1080 x 1920, at 36px or larger",
     wrong.length === 0 && smallest >= 36, `smallest ${smallest}px; on more than one frame: ${split.join(", ") || "none"}${wrong.length ? "; wrong: " + wrong.join(", ") : ""}`);
-  gate("posters: a summary with a recording is set in the shape of its voice", shaped === voiced.length, `${shaped} of ${voiced.length}`);
+  gate("posters: only a summary with a recording is set in the shape of its voice, on one frame, when that keeps it at 36px or larger",
+    shaped > 0 && shaped + plain.length === voiced.length && wrong.length === 0,
+    `${shaped} of ${voiced.length} in the shape of their voice${plain.length ? "; set plainly: " + plain.join(", ") : ""}`);
   gate("no errors drawing every poster", errors.length === 0, errors.join(" | "));
   await ctx.close();
+}
+
+// ---------- languages: the page's own words in Icelandic, British English or Taiwanese Mandarin ----------
+{
+  // Letters only Icelandic has, and the page's Icelandic words that have none of them.
+  const ICELANDIC = /[ÁáÐðÉéÍíÓóÚúÝýÞþÆæÖö]|\b(borð|Allt|annað|Leita|Loka|Deila|Plakat|Byrja|Hlusta|Fyrri|Næsta|Engin|samantekt\w*|upptak\w*|Gervigreind|Gögn|Staðsetning\w*)\b/;
+  const look = async (locale: string, path = "", languages?: string[]) => {
+    const ctx = await context({ viewport: { width: 1280, height: 800 }, locale });
+    if (languages) await ctx.addInitScript((l) => Object.defineProperty(navigator, "languages", { get: () => l }), languages);
+    const page = await ctx.newPage();
+    const errors: string[] = [];
+    page.on("pageerror", (e) => errors.push(String(e)));
+    await page.route("**/api/v1/summaries**", (route) => route.abort());
+    await page.goto(BASE + path);
+    await page.waitForTimeout(500);
+    return { ctx, page, errors, lang: await page.evaluate(() => document.documentElement.lang) };
+  };
+  const cases: [string, string, string[] | undefined, string][] = [
+    ["is-IS", "", undefined, "is"], ["en-GB", "", undefined, "en-GB"], ["en-US", "", undefined, "en-GB"], ["zh-TW", "", undefined, "zh-Hant-TW"],
+    ["zh-CN", "", undefined, "zh-Hant-TW"], ["de-DE", "", undefined, "en-GB"], ["en-US", "", ["en-US", "is"], "is"],
+    ["is-IS", "#en-gb", undefined, "en-GB"], ["en-GB", "#zh-tw", undefined, "zh-Hant-TW"], ["zh-TW", "#is", undefined, "is"],
+  ];
+  const wrong: string[] = [];
+  for (const [locale, path, languages, want] of cases) {
+    const { ctx, lang } = await look(locale, path, languages);
+    if (lang !== want) wrong.push(`${locale}${languages ? " " + languages.join("+") : ""}${path}: ${lang}`);
+    await ctx.close();
+  }
+  gate("languages: the browser's language chooses, Icelandic first if it lists Icelandic at all, then English or Chinese, else English; #is, #en-gb and #zh-tw choose",
+    wrong.length === 0, wrong.join(", ") || `${cases.length} cases`);
+
+  {
+    const { ctx, page } = await look("is-IS", "#zh-tw");
+    await page.goto(BASE);
+    await page.waitForTimeout(400);
+    const kept = await page.evaluate(() => document.documentElement.lang);
+    await page.click('.langs a[href="#en-gb"]');
+    await page.waitForTimeout(400);
+    const switched = await page.evaluate(() => ({ lang: document.documentElement.lang, current: document.querySelector(".langs a[aria-current='true']")?.getAttribute("href"), entries: document.querySelectorAll("#list .entry").length }));
+    gate("languages: a language chosen is kept for the next visit, and the switcher changes it in place",
+      kept === "zh-Hant-TW" && switched.lang === "en-GB" && switched.current === "#en-gb" && switched.entries === snap.data.length, JSON.stringify({ kept, ...switched }));
+    await ctx.close();
+  }
+
+  for (const [locale, name] of [["en-GB", "English"], ["zh-TW", "Chinese"]] as const) {
+    const { ctx, page, errors } = await look(locale);
+    const seen = await page.evaluate((src) => {
+      const ICE = new RegExp(src);
+      const html = document.documentElement.lang, unmarked: string[] = [];
+      const walk = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+      for (let n = walk.nextNode(); n; n = walk.nextNode()) {
+        const at = n.parentElement!;
+        if (at.closest("script, style")) continue;
+        const l = (at.closest("[lang]") as HTMLElement | null)?.lang ?? html;
+        if (!/^is\b/i.test(l) && ICE.test(n.textContent!)) unmarked.push(n.textContent!.trim().slice(0, 40));
+      }
+      const words = [...document.querySelectorAll<HTMLElement>("#list .entry")].map((a) => {
+        const w = a.querySelector<HTMLElement>(".words")!;
+        return [a.id.slice(2), w.textContent!, (w.closest("[lang]") as HTMLElement).lang];
+      });
+      return { unmarked, words };
+    }, ICELANDIC.source);
+    const byId = new Map(snap.data.map((r: any) => [r.id, r.summary]));
+    const verbatim = seen.words.length === snap.data.length && seen.words.every(([id, w, l]) => byId.get(id) === w && l === "is");
+    gate(`languages, ${name}: every summary verbatim and marked Icelandic, and no Icelandic left unmarked`,
+      verbatim && seen.unmarked.length === 0 && errors.length === 0, `${seen.words.length} summaries; unmarked: ${seen.unmarked.slice(0, 6).join(" | ") || "none"}${errors.length ? "; errors: " + errors.join(" | ") : ""}`);
+    // A poster speaks the page's language around the words, which stay as written.
+    const longest = ordered.reduce((a: any, b: any) => (b.summary.length > a.summary.length ? b : a));
+    await page.click(`[data-poster="${longest.id}"]`);
+    await page.waitForFunction(() => (document.getElementById("shade") as HTMLDialogElement).open &&
+      [...document.querySelectorAll<HTMLImageElement>("#posterFrames img")].every((i) => i.complete && i.naturalWidth > 0));
+    const alts = await page.$$eval("#posterFrames img", (is) => is.map((i) => (i as HTMLImageElement).alt));
+    const save = await page.textContent("#posterSave");
+    const table = locale === "en-GB" ? `table ${longest.table}` : `第 ${longest.table} 桌`;
+    const words = alts.map((a) => a.slice(a.indexOf(locale === "en-GB" ? ": " : "：") + (locale === "en-GB" ? 2 : 1))).join("");
+    gate(`languages, ${name}: a poster's frames are named in it and hold the summary verbatim`,
+      alts.every((a) => a.startsWith(longest.location) && a.includes(table)) && (alts.length === 1 || alts[0].includes(locale === "en-GB" ? "1 of " : "第 1 張")) &&
+      words === longest.summary && !ICELANDIC.test(save ?? "x"),
+      `${alts.length} frames, "${alts[0].slice(0, 48)}…", ${save}`);
+    await ctx.close();
+  }
 }
 
 // ---------- the contents line, and a link to one summary ----------
@@ -335,7 +425,7 @@ const shotOf = async (page: Page, sel: string, name: string) => { await page.loc
 
 // ---------- the live answer: unchanged data is not redrawn; a redraw keeps focus ----------
 for (const changed of [false, true]) {
-  const ctx = await browser.newContext({ viewport: { width: 390, height: 844 } });
+  const ctx = await context({ viewport: { width: 390, height: 844 } });
   const page = await ctx.newPage();
   let release = () => {};
   const held = new Promise<void>((ok) => { release = ok; });
@@ -364,7 +454,7 @@ for (const changed of [false, true]) {
 {
   const target = ordered[Math.floor(ordered.length / 2)];
   const data = [...[0, 1, 2].map((k) => ({ ...ordered[k], id: ordered[k].id.slice(0, -2) + "x" + k })), ...snap.data];
-  const ctx = await browser.newContext({ viewport: { width: 390, height: 844 } });
+  const ctx = await context({ viewport: { width: 390, height: 844 } });
   const page = await ctx.newPage();
   let release = () => {};
   const held = new Promise<void>((ok) => { release = ok; });
@@ -392,7 +482,7 @@ for (const changed of [false, true]) {
 {
   const data = snap.data.slice(1);
   const id = ordered.find((r: any) => r.id !== snap.data[0].id).id;
-  const ctx = await browser.newContext({ viewport: { width: 390, height: 844 } });
+  const ctx = await context({ viewport: { width: 390, height: 844 } });
   const page = await ctx.newPage();
   let release = () => {};
   const held = new Promise<void>((ok) => { release = ok; });
@@ -435,7 +525,7 @@ for (const changed of [false, true]) {
   const newId = "00000000-0000-4000-8000-000000000001";
   const linesNow = snap.data.filter((r: any) => r.audio && facts[r.id] && !facts[r.id].silent && facts[r.id].env).length;
   const data = [...snap.data, { ...donor, id: newId, audio: `https://talasaman.is/api/v1/summaries/${newId}/audio` }];
-  const ctx = await browser.newContext({ viewport: { width: 390, height: 844 } });
+  const ctx = await context({ viewport: { width: 390, height: 844 } });
   const page = await ctx.newPage();
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(String(e)));
@@ -460,7 +550,7 @@ for (const changed of [false, true]) {
   await ctx.close();
 
   // The mountain, full screen: one voice, so the words can be seen to follow it.
-  const ctx2 = await browser.newContext({ viewport: { width: 1280, height: 720 } });
+  const ctx2 = await context({ viewport: { width: 1280, height: 720 } });
   const page2 = await ctx2.newPage();
   const errors2: string[] = [];
   page2.on("pageerror", (e) => errors2.push(String(e)));
@@ -629,7 +719,7 @@ for (const changed of [false, true]) {
 
 // ---------- screen mode on a projector: every summary, set whole ----------
 {
-  const ctx = await browser.newContext({ viewport: { width: 1920, height: 1080 }, reducedMotion: "reduce" });
+  const ctx = await context({ viewport: { width: 1920, height: 1080 }, reducedMotion: "reduce" });
   const page = await ctx.newPage();
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(String(e)));
@@ -655,7 +745,7 @@ for (const changed of [false, true]) {
 
 // ---------- without Intl.Segmenter Pretext cannot run: the page measures as it did before ----------
 {
-  const ctx = await browser.newContext({ viewport: { width: 1920, height: 1080 }, reducedMotion: "reduce" });
+  const ctx = await context({ viewport: { width: 1920, height: 1080 }, reducedMotion: "reduce" });
   await ctx.addInitScript(() => { delete (Intl as any).Segmenter; });
   const page = await ctx.newPage();
   const errors: string[] = [];
@@ -681,7 +771,7 @@ for (const changed of [false, true]) {
 
 // ---------- screen mode on a touch screen ----------
 {
-  const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true, deviceScaleFactor: 2 });
+  const ctx = await context({ viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true, deviceScaleFactor: 2 });
   const page = await ctx.newPage();
   await page.route("**/api/v1/summaries", (route) => route.abort());
   await page.goto(BASE + "#skjar");
@@ -706,7 +796,7 @@ for (const changed of [false, true]) {
 // ---------- under talasaman.is's own Content-Security-Policy ----------
 {
   const CSP = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://use.typekit.net https://p.typekit.net; img-src 'self' data: blob: https://*.tile.opentopomap.org; font-src 'self' data: https://use.typekit.net; media-src 'self' blob: https://lysusymxg3l4eqcn.public.blob.vercel-storage.com; connect-src 'self' https://vercel.com https://*.blob.vercel-storage.com; frame-src https://www.youtube-nocookie.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://accounts.google.com; object-src 'none'";
-  const ctx = await browser.newContext({ viewport: { width: 390, height: 844 } });
+  const ctx = await context({ viewport: { width: 390, height: 844 } });
   const page = await ctx.newPage();
   const errors: string[] = [];
   page.on("console", (m) => { if (m.type() === "error") errors.push(m.text()); });
@@ -733,7 +823,7 @@ for (const changed of [false, true]) {
   gate("the medley's front page is kept byte for byte", landing === "a1b8538ab0336bcf20cf5ea794b66ce43db95d76", landing);
   const front = readFileSync(join(SITE, "index.html"), "utf8");
   gate("the front page does not link to the medley", !/href="(samhljomur|video|report|songbook)[^"]*"/.test(front));
-  const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2 });
+  const ctx = await context({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2 });
   const page = await ctx.newPage();
   await page.goto(BASE + "saga.html");
   const links = await page.$$eval("a[href]", (as) => as.map((a) => (a as HTMLAnchorElement).getAttribute("href")!));
@@ -770,7 +860,7 @@ for (const changed of [false, true]) {
 
 // ---------- the narrowest phones, and readers who set large text ----------
 for (const [path, name] of [["", "front page"], ["saga.html", "record page"]] as const) {
-  const ctx = await browser.newContext({ viewport: { width: 320, height: 720 } });
+  const ctx = await context({ viewport: { width: 320, height: 720 } });
   const page = await ctx.newPage();
   await page.route("**/api/v1/summaries", (route) => route.abort());
   await page.goto(BASE + path);

@@ -67,6 +67,17 @@ and the page says so. The parts:
 - **On paper.** Printing gives black on white: the title, the „viljum“
   spine, the AI sheet with its highlighter colours, and every summary,
   with no players or controls.
+- **In Icelandic, English or Chinese.** The page's own words come in
+  Icelandic, British English (`#en-gb`) and Taiwanese Mandarin
+  (`#zh-tw`). What the tables wrote, their places and topics, Samtal's
+  question and its attribution line are never translated: they stay as
+  written and are marked as Icelandic, so a screen reader says them as
+  Icelandic. Samtal's question keeps its own words, with its meaning
+  beneath. The language is the one the address names, which is then
+  remembered; else the one chosen before; else the browser's: Icelandic
+  if it lists Icelandic at all, otherwise the first of English or Chinese
+  it lists, otherwise English. Chinese is set in the reader's Traditional
+  Chinese sans. See [`L10N.md`](L10N.md).
 
 Posters and screen mode lay out their lines with
 [Pretext](https://github.com/chenglou/pretext), which breaks lines the way
@@ -117,8 +128,13 @@ recording measured from its own file; and the share card and icons. And
 they check the layout: Pretext counts the lines of every summary as the
 page sets them, or one more, never fewer; every poster holds its summary
 whole and in order at 36px or larger, a voiced one in the shape of its
-voice; screen mode sets every summary whole on a projector; and without
-`Intl.Segmenter` the poster and screen mode work as before.
+voice when that keeps it there; screen mode sets every summary whole on a
+projector; and without `Intl.Segmenter` the poster and screen mode work as
+before. And the languages: the browser's language chooses, and an address
+naming one chooses and is kept; in English and in Chinese every summary is
+still verbatim and marked Icelandic, nothing Icelandic is left unmarked,
+and a poster's frames are named in the reader's language around the
+tables' words. The other gates read the page in Icelandic.
 
 ## Licences
 
