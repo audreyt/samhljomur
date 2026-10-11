@@ -6,7 +6,8 @@
 //   bun ordrett/build.ts --images   also redraw the share card and the home-screen
 //                                   icon (done anyway with --fetch, or when missing)
 //
-// No model runs anywhere in this build. Recordings are downloaded only to a
+// No model runs anywhere in this build. (An AI assistant translated the tables' words for English and Chinese
+// beforehand; the result is data/translations.json, inlined as it is.) Recordings are downloaded only to a
 // temporary directory to measure length and loudness, then deleted; the page
 // streams them from talasaman.is. Pretext (MIT) is bundled from node_modules
 // (`bun install`) and inlined, so the page still loads nothing else.
@@ -157,7 +158,15 @@ if (/<\/script|<!--/i.test(pretextJs)) throw new Error("pretext bundle would clo
 const pretextPkg = JSON.parse(readFileSync(join(HERE, "..", "node_modules", "@chenglou", "pretext", "package.json"), "utf8"));
 const PRETEXT = `/*! Pretext ${pretextPkg.version} · https://github.com/chenglou/pretext · MIT License · Copyright (c) 2026 Pretext contributors */\n${pretextJs}`;
 
-const page = fill("page.html", { PRETEXT, SNAPSHOT: json(snap), AUDIO: json(facts) });
+// The tables' words in British English and Taiwanese Mandarin, written beforehand: Icelandic text -> [en-GB, zh-TW].
+// A summary the file has no entry for is shown in Icelandic, and the page says so; list them here.
+type Translation = { is: string; "en-GB": string; "zh-TW": string };
+const translations = JSON.parse(readFileSync(join(DATA, "translations.json"), "utf8")).texts as Translation[];
+const translated = new Map(translations.map((x) => [x.is, [x["en-GB"], x["zh-TW"]]]));
+if (translated.size !== translations.length) throw new Error("translations.json: the same Icelandic text twice");
+const untranslated = snap.data.filter((r) => !translated.has(r.summary));
+if (untranslated.length) console.log(`${untranslated.length} summaries have no translation yet (add them to ordrett/data/translations.json):\n` + untranslated.map((r) => `  ${r.id}  ${r.summary.slice(0, 70).replace(/\n/g, " ")}`).join("\n"));
+const page = fill("page.html", { PRETEXT, SNAPSHOT: json(snap), AUDIO: json(facts), TRANSLATIONS: json(Object.fromEntries(translated)) });
 // Orðrétt is the site's front page; the record of how it came to be sits beside it.
 const SITE = join(HERE, "..", "site");
 writeFileSync(join(SITE, "index.html"), page);

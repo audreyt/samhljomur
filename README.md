@@ -5,9 +5,9 @@ opens on **Orðrétt**: every table summary from Samtal on 10 October 2026,
 unchanged, with the recordings the tables chose to share, streamed from
 talasaman.is. No model wrote, shortened or voiced anything from the tables;
 the rules that select and order it are printed on the page. In Icelandic
-nothing is translated; in English and Chinese, Google Translate translates
-the tables' words as the page opens, labelled as such, with the Icelandic
-beside it.
+nothing is translated; in English and Chinese an AI assistant has translated
+the tables' words beforehand, labelled as such and unchecked by a person,
+with the Icelandic beside each translation.
 Source, build and gates: [`ordrett/`](ordrett/README.md).
 
 This repository first held Samhljómur, a medley made from Samtal's open data

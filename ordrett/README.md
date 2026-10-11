@@ -7,10 +7,10 @@ the record of why it replaced the medley is `site/saga.html`.
 
 Nothing from the tables is written, shortened or voiced by a model; what is
 shown, and in what order, follows rules the page states. In Icelandic nothing
-is translated either. In English and Chinese the page has Google Translate
-translate the tables' words as it opens, says so, and keeps the Icelandic
-beside every translation. An AI assistant helped draft the rules and the
-code, and the page says so. The parts:
+is translated either. In English and Chinese an AI assistant has translated
+the tables' words beforehand (`data/translations.json`), the page says so,
+and the Icelandic stays beside every translation. An AI assistant also
+helped draft the rules and the code, and the page says so. The parts:
 
 - **The voices.** One line per audible recording, drawn from its own sound:
   loudness every 50 ms, lightly smoothed, scaled to its own peak, width
@@ -75,22 +75,25 @@ code, and the page says so. The parts:
   question and its attribution line stay as written and are marked as
   Icelandic, so a screen reader says them as Icelandic. Samtal's question
   keeps its own words, with its meaning beneath.
-- **The tables' words, machine-translated, in English and Chinese.** As
-  the page opens in English or Chinese, it sends the tables' words, and
-  nothing else, to Google Translate (`translate.googleapis.com`, from
-  Icelandic, in batches) and shows what comes back, marked as English or
-  Chinese and labelled as an unchecked machine translation. Where a summary
-  is read (the list of all the tables, the line under the mountain, screen
-  mode) the translation stands in its place, and *Icelandic original*
-  under each opens the summary as written. On the „viljum“ spine and the
-  AI sheet, whose words are Icelandic, the Icelandic stays and the
-  translation stands beneath; on the mountain full screen the Icelandic
-  words follow the voice, with the translation beneath. Search reads both,
-  and a match only the Icelandic holds opens it. Printing gives both.
-  Posters keep the tables' words as written. Translations are kept in the
-  browser, so a second visit asks only for what is new. If Google Translate
-  does not answer, the words stay in Icelandic and the page says so. In
-  Icelandic, nothing is sent.
+- **The tables' words, translated, in English and Chinese.** An AI
+  assistant translated every summary, and every sentence the page sets on
+  its own, into British English and Taiwanese Mandarin beforehand. They
+  are `ordrett/data/translations.json`, inlined by the build, so the page
+  sends nothing anywhere to translate and works under talasaman.is's own
+  Content-Security-Policy. No person has checked them, and the page says so.
+  Where a summary is read (the list of all the tables, the line under the
+  mountain, screen mode) the translation stands in its place, marked as
+  English or Chinese, and *Icelandic original* under each opens the summary
+  as written. On the „viljum“ spine and the AI sheet, whose words are
+  Icelandic, the Icelandic stays and the translation stands beneath; on the
+  mountain full screen the Icelandic words follow the voice, with the
+  translation alongside. Search reads both, and a match only the Icelandic
+  holds opens it. Printing gives both. Posters keep the tables' words as
+  written. A summary the file has no translation for, such as one that
+  arrives after the build, stays in Icelandic and the page says so; the
+  build lists such summaries, and `translations.json` takes the new entries
+  (each is `is`, `en-GB`, `zh-TW`, with the Icelandic's lines and list
+  marks kept).
 - **Choosing the language.** The language is the one the address names, which is then
   remembered; else the one chosen before; else the browser's: Icelandic
   if it lists Icelandic at all, otherwise the first of English or Chinese
@@ -104,8 +107,7 @@ Posters and screen mode lay out their lines with
 the browser does by arithmetic over widths the browser's own canvas
 measures. Each text is measured once; trying another size costs no
 measuring and no reflow. It is bundled from `node_modules` and inlined by
-the build, so the page still loads nothing but talasaman.is (and, in
-English or Chinese, Google Translate). A browser
+the build, so the page still loads nothing but talasaman.is. A browser
 without `Intl.Segmenter` cannot run it, and there the page measures as it
 did before.
 
@@ -138,7 +140,7 @@ so a plain rebuild leaves them byte for byte.
 
 The gates check every summary, „viljum“ sentence and AI summary character
 for character against the data; the stated order; that only talasaman.is is
-contacted in Icelandic; one voice and all voices playing; the poster size; screen mode;
+contacted; one voice and all voices playing; the poster size; screen mode;
 the page under talasaman.is's own Content-Security-Policy; that every old
 medley address still answers; and that the medley's front page is kept
 byte for byte. They also check what a reader meets: no sideways scrolling
@@ -155,20 +157,18 @@ whole and in order at 36px or larger, a voiced one in the shape of its
 voice when that keeps it there; screen mode sets every summary whole on a
 projector; and without `Intl.Segmenter` the poster and screen mode work as
 before. And the languages: the browser's language chooses, and an address
-naming one chooses and is kept; in English and in Chinese every summary is
-read in its translation, marked as that language, with its Icelandic
-verbatim beside it and marked Icelandic; the spine and the AI sheet keep
-their Icelandic with the translation beneath; nothing Icelandic is left
-unmarked; only the tables' words go to Google Translate, each once; the
-Icelandic original opens and closes; search finds a word of either; a
-second visit asks Google for nothing it has; without an answer every
-summary stays in Icelandic and the page says so; live, Google Translate
-answers for every summary; a poster's frames are named in the reader's
-language around the tables' words, which stay as written; and the record
-page shows one language, chosen the same way and kept with the front
-page's choice. Apart from the live one, the translation gates stand a fixed
-stand-in for Google's translator, so they know each translation in
-advance. The other gates read the page in Icelandic.
+naming one chooses and is kept; every summary and spine sentence has both
+translations, in the Icelandic's lines and list marks; in English and in
+Chinese every summary is read in the translation the file holds, marked as
+that language, with its Icelandic verbatim beside it and marked Icelandic;
+the spine and the AI sheet keep their Icelandic with the translation
+beneath; nothing Icelandic is left unmarked; nothing is sent anywhere to
+translate; the Icelandic original opens and closes; search finds a word of
+either; a summary with no translation stays in Icelandic and the page says
+so; a poster's frames are named in the reader's language around the tables'
+words, which stay as written; and the record page shows one language,
+chosen the same way and kept with the front page's choice. The other gates
+read the page in Icelandic.
 
 ## Licences
 
