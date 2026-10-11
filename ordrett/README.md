@@ -92,7 +92,9 @@ did before.
 
 A contents line at the top links *Við viljum*, *Gervigreind*, *Öll borðin*
 and *Um síðuna*. A link to one summary (`#e-<id>`, as the spine uses)
-lands on it and marks it.
+lands on it and marks it. Every poster window offers that same link, and
+opening the poster puts it in the address. Closing the poster leaves the
+link there.
 
 ## Build and check
 
@@ -122,7 +124,8 @@ the page under talasaman.is's own Content-Security-Policy; that every old
 medley address still answers; and that the medley's front page is kept
 byte for byte. They also check what a reader meets: no sideways scrolling
 at 320px or with text at 200%; focus held by the poster and screen mode
-and given back; listen buttons named as they read; search; print; the
+and given back; a poster's link to its summary; listen buttons named as they
+read; search; print; the
 live redraw; the player on a slow connection; screen mode's buttons by
 mouse and by touch; long summaries in screen mode on a projector and a
 phone; the mountain full screen, with the words following the voice; a

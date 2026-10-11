@@ -283,7 +283,7 @@ input[type="search"]::placeholder { color: var(--dim); opacity: 1; }
 .shade img { display: block; flex: none; width: min(26rem, calc(100vw - 2rem), calc((100vh - 8rem) * .5625)); height: auto; scroll-snap-align: center; border-radius: .25rem; box-shadow: 0 1rem 3rem rgba(0,0,0,.5); }
 .shade .frames img:not(:only-child) { width: min(26rem, calc(100vw - 5rem), calc((100vh - 8rem) * .5625)); }
 .shade .row { display: flex; flex-wrap: wrap; justify-content: center; gap: .6rem; }
-.shade button { min-height: 2.75rem; padding: .5rem 1.1rem; border-radius: 999px; cursor: pointer; font-family: var(--font-frame); font-weight: 650; border: 1px solid var(--chalk); background: transparent; }
+.shade button, #posterLink { min-height: 2.75rem; padding: .5rem 1.1rem; border-radius: 999px; cursor: pointer; font-family: var(--font-frame); font-weight: 650; border: 1px solid var(--chalk); background: transparent; color: inherit; text-decoration: none; display: inline-flex; align-items: center; }
 .shade button.primary { background: var(--chalk); color: var(--night); }
 
 /* ---------- screen mode, for a hall ---------- */
@@ -479,6 +479,7 @@ html.is-hall body { overflow: hidden; }
   <div class="box">
     <div class="frames" id="posterFrames"><img id="posterImg" alt=""></div>
     <div class="row">
+      <a id="posterLink" href="#" data-t="link">Tengill</a>
       <button class="primary" id="posterShare" type="button" hidden data-t="share">Deila</button>
       <button id="posterSave" type="button">Sækja mynd</button>
       <button id="posterClose" type="button" data-t="close">Loka</button>
@@ -612,7 +613,7 @@ const T = {
     all: "Allt", other: "annað", allLocations: "Allar staðsetningar",
     found: (n) => count(n, "samantekt fannst", "samantektir fundust") + ".", notFound: "Engin samantekt fannst.", noMatch: "Engin samantekt passar við valið.",
     silent: "Upptakan er hljóðlaus.", failed: "Ekki tókst að spila upptökuna.",
-    poster: "Plakat", save: (n) => n > 1 ? "Sækja myndir" : "Sækja mynd",
+    poster: "Plakat", link: "Tengill", copied: "Afritað", save: (n) => n > 1 ? "Sækja myndir" : "Sækja mynd",
     posterDate: "SAMTALIÐ · 10. OKTÓBER 2026",
     posterAlt: (where, table, i, n) => where + ", " + table + (n > 1 ? ", " + i + " af " + n : "") + ": ",
     voiceRule: (end) => "Breidd línanna er styrkur raddarinnar, frá upphafi upptökunnar efst (0:00) til enda hennar neðst (" + end + ").",
@@ -647,7 +648,7 @@ const T = {
     all: "All", other: "other", allLocations: "All locations",
     found: (n) => plural(n, "summary", "summaries") + " found.", notFound: "No summary found.", noMatch: "No summary matches your choice.",
     silent: "The recording is silent.", failed: "The recording could not be played.",
-    poster: "Poster", save: (n) => n > 1 ? "Save the images" : "Save the image",
+    poster: "Poster", link: "Link", copied: "Copied", save: (n) => n > 1 ? "Save the images" : "Save the image",
     posterDate: "SAMTALIÐ · 10 OCTOBER 2026",
     posterAlt: (where, table, i, n) => where + ", " + table + (n > 1 ? ", " + i + " of " + n : "") + ": ",
     voiceRule: (end) => "The width of the lines is the voice’s loudness, from the start of the recording at the top (0:00) to its end at the bottom (" + end + ").",
@@ -703,7 +704,7 @@ const T = {
     all: "全部", other: "其他", allLocations: "所有地點",
     found: (n) => "找到 " + n + " 則摘要。", notFound: "找不到摘要。", noMatch: "沒有符合所選條件的摘要。",
     silent: "這段錄音沒有聲音。", failed: "這段錄音無法播放。",
-    poster: "海報", save: (n) => n > 1 ? "下載所有圖片" : "下載圖片",
+    poster: "海報", link: "連結", copied: "已複製", save: (n) => n > 1 ? "下載所有圖片" : "下載圖片",
     posterDate: "SAMTALIÐ · 2026 年 10 月 10 日",
     posterAlt: (where, table, i, n) => where + "，" + table + (n > 1 ? "，第 " + i + " 張，共 " + n + " 張" : "") + "：",
     voiceRule: (end) => "線條的寬度就是聲音的強弱：上方是錄音開頭 0:00，下方是結尾 " + end + "。",
@@ -1864,7 +1865,7 @@ async function poster(r) {
   });
 }
 
-let posterFiles = [], posterFrom = null;
+let posterFiles = [], posterFrom = null, copiedTimer = 0;
 async function openPoster(id) {
   const r = byId(id);
   if (!r) return;
@@ -1885,6 +1886,13 @@ async function openPoster(id) {
   box.scrollLeft = 0;
   $("posterSave").textContent = t("save", frames.length);
   $("posterShare").hidden = !(navigator.canShare && navigator.canShare({ files: posterFiles }));
+  // The same link the spine uses. Opening puts it in the address; closing leaves it,
+  // so the summary stays marked and the address can be copied.
+  clearTimeout(copiedTimer);
+  $("posterLink").href = "#e-" + r.id;
+  $("posterLink").textContent = t("link");
+  if (location.hash !== "#e-" + r.id) history.replaceState(null, "", location.pathname + location.search + "#e-" + r.id);
+  markLinked();
   const dlg = $("shade");
   if (!dlg.open) { if (dlg.showModal) dlg.showModal(); else dlg.setAttribute("open", ""); }
   $("posterSave").focus();
@@ -1896,6 +1904,14 @@ function posterClosed() {
   if (b) b.focus();
   posterFrom = null;
 }
+$("posterLink").addEventListener("click", async (e) => {
+  e.preventDefault();
+  const a = e.currentTarget;
+  try { await navigator.clipboard.writeText(a.href); } catch (err) { return; }
+  a.textContent = t("copied");
+  clearTimeout(copiedTimer);
+  copiedTimer = setTimeout(() => { $("posterLink").textContent = t("link"); }, 1600);
+});
 $("posterShare").addEventListener("click", async () => {
   try { await navigator.share({ files: posterFiles, title: "Orðrétt" }); } catch (e) {}
 });

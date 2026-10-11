@@ -47,7 +47,7 @@ Numbers agree with Icelandic usage in code: 1, 21, 31 … take the singular
 | Upptakan er hljóðlaus. | The recording is silent. |
 | Ekki tókst að spila upptökuna. | The recording could not be played. |
 | Engin samantekt passar við valið. | No summary matches the selection. |
-| Plakat · Deila · Sækja mynd · Loka | Poster · Share · Download image · Close |
+| Plakat · Tengill · Afritað · Deila · Sækja mynd · Loka | Poster · Link · Copied · Share · Download image · Close |
 | Um síðuna | About this page |
 | Allt sem kemur frá borðunum er óbreytt, líka stafsetningin. Engu var sleppt. | Everything from the tables is unchanged, spelling included. Nothing was left out. |
 | Raðað er eftir póstnúmeri, svo staðsetningu, svo borðnúmeri. Hver litur fylgir póstnúmeri. Póstnúmerin, og litirnir með þeim, fara hringinn í kringum landið. | Ordered by postcode, then location, then table number. Each colour follows a postcode. The postcodes, and the colours with them, go round the country. |

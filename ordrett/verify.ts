@@ -290,10 +290,17 @@ const shotOf = async (page: Page, sel: string, name: string) => { await page.loc
     const save = await page.textContent("#posterSave");
     const table = locale === "en-GB" ? `table ${longest.table}` : `第 ${longest.table} 桌`;
     const words = alts.map((a) => a.slice(a.indexOf(locale === "en-GB" ? ": " : "：") + (locale === "en-GB" ? 2 : 1))).join("");
+    const link = await page.evaluate(() => {
+      const a = document.getElementById("posterLink") as HTMLAnchorElement;
+      return { text: a.textContent, href: a.getAttribute("href") };
+    });
     gate(`languages, ${name}: a poster's frames are named in it and hold the summary verbatim`,
       alts.every((a) => a.startsWith(longest.location) && a.includes(table)) && (alts.length === 1 || alts[0].includes(locale === "en-GB" ? "1 of " : "第 1 張")) &&
       words === longest.summary && !ICELANDIC.test(save ?? "x"),
       `${alts.length} frames, "${alts[0].slice(0, 48)}…", ${save}`);
+    gate(`languages, ${name}: a poster's link is in that language and names its summary`,
+      link.text === (locale === "en-GB" ? "Link" : "連結") && link.href === "#e-" + longest.id && !ICELANDIC.test(link.text ?? "x"),
+      JSON.stringify(link));
     await ctx.close();
   }
 
@@ -348,12 +355,34 @@ const shotOf = async (page: Page, sel: string, name: string) => { await page.loc
   const id = ordered[Math.floor(ordered.length / 2)].id;
   const { ctx, page } = await open({ width: 390, height: 844, live: false, path: "#e-" + id });
   const t = await page.evaluate(() => {
-    const e = document.querySelector<HTMLElement>(":target"), r = e?.getBoundingClientRect();
-    return { id: e?.id, top: r ? Math.round(r.top) : null, bg: e ? getComputedStyle(e).backgroundColor : "" };
+    const e = document.querySelector<HTMLElement>(".entry.linked, :target"), r = e?.getBoundingClientRect();
+    return { id: e?.id, top: r ? Math.round(r.top) : null, bg: e ? getComputedStyle(e).backgroundColor : "", poster: (document.getElementById("shade") as HTMLDialogElement).open };
   });
-  gate("a link to one summary lands on it, marked", t.id === "e-" + id && t.top !== null && t.top >= 0 && t.top < 120 && t.bg !== "rgba(0, 0, 0, 0)", JSON.stringify(t));
+  gate("a link to one summary lands on it, marked, and does not open its poster",
+    t.id === "e-" + id && t.top !== null && t.top >= 0 && t.top < 120 && t.bg !== "rgba(0, 0, 0, 0)" && !t.poster, JSON.stringify(t));
   const toc = await page.$$eval(".toc a", (as) => as.map((a) => [a.textContent, !!document.querySelector(a.getAttribute("href")!)]));
   gate("contents line: every link has its section", toc.length === 4 && toc.every(([, ok]) => ok), JSON.stringify(toc));
+  const other = ordered[0].id === id ? ordered[1].id : ordered[0].id;
+  await page.context().grantPermissions(["clipboard-read", "clipboard-write"]);
+  await page.click(`[data-poster="${other}"]`);
+  await page.waitForFunction(() => (document.getElementById("shade") as HTMLDialogElement).open && (document.getElementById("posterLink") as HTMLAnchorElement).getAttribute("href")!.length > 2);
+  const perma = await page.evaluate(() => {
+    const a = document.getElementById("posterLink") as HTMLAnchorElement;
+    return { href: a.getAttribute("href"), hash: location.hash, text: a.textContent, abs: a.href };
+  });
+  gate("every poster offers its summary's permalink",
+    perma.href === "#e-" + other && perma.hash === "#e-" + other && perma.text === "Tengill", JSON.stringify(perma));
+  await page.click("#posterLink");
+  await page.waitForFunction(() => document.getElementById("posterLink")!.textContent === "Afritað");
+  const copied = await page.evaluate(async () => ({ text: document.getElementById("posterLink")!.textContent, clip: await navigator.clipboard.readText() }));
+  gate("the poster's link copies that permalink", copied.text === "Afritað" && copied.clip === perma.abs, JSON.stringify({ ...copied, abs: perma.abs }));
+  await page.keyboard.press("Escape");
+  const stayed = await page.evaluate((oid) => ({
+    open: (document.getElementById("shade") as HTMLDialogElement).open,
+    hash: location.hash,
+    marked: document.getElementById("e-" + oid)?.classList.contains("linked") === true,
+  }), other);
+  gate("closing a poster leaves its summary's permalink", !stayed.open && stayed.hash === "#e-" + other && stayed.marked, JSON.stringify(stayed));
   await ctx.close();
 }
 
