@@ -5,6 +5,10 @@ native speaker. The tables' own words are not here; they are shown exactly as
 Samtal published them. Corrections go in `ordrett/page.html` (and `saga.html`),
 then `bash ordrett/publish.sh`.
 
+The page's own words also come in British English and Taiwanese Mandarin; those
+are in `L10N.md`. The English column below is a gloss for reviewers, not the
+English page.
+
 Numbers agree with Icelandic usage in code: 1, 21, 31 … take the singular
 (`21 upptaka`, `21 lína`, `21 rödd talar`).
 
