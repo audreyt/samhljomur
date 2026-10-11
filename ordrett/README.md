@@ -77,7 +77,9 @@ and the page says so. The parts:
   remembered; else the one chosen before; else the browser's: Icelandic
   if it lists Icelandic at all, otherwise the first of English or Chinese
   it lists, otherwise English. Chinese is set in the reader's Traditional
-  Chinese sans. See [`L10N.md`](L10N.md).
+  Chinese sans. The record page, `saga.html`, comes in the same three
+  languages, chosen the same way and remembered with the front page's
+  choice. See [`L10N.md`](L10N.md).
 
 Posters and screen mode lay out their lines with
 [Pretext](https://github.com/chenglou/pretext), which breaks lines the way
@@ -134,7 +136,8 @@ before. And the languages: the browser's language chooses, and an address
 naming one chooses and is kept; in English and in Chinese every summary is
 still verbatim and marked Icelandic, nothing Icelandic is left unmarked,
 and a poster's frames are named in the reader's language around the
-tables' words. The other gates read the page in Icelandic.
+tables' words; the record page shows one language, chosen the same way
+and kept with the front page's choice. The other gates read the page in Icelandic.
 
 ## Licences
 

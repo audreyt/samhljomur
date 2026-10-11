@@ -21,7 +21,9 @@
 // without Intl.Segmenter the page measures as it did before. Language gates:
 // the browser's language chooses and #is, #en-gb, #zh-tw override and are
 // kept; in English and Chinese every summary stays verbatim and is marked
-// Icelandic, nothing Icelandic is left unmarked, and posters follow.
+// Icelandic, nothing Icelandic is left unmarked, and posters follow. The
+// record page speaks one of the same three languages, chosen the same way and
+// remembered with the front page's choice.
 // Screenshots go to ordrett/qa/.
 
 import { chromium, type Page } from "playwright";
@@ -292,6 +294,51 @@ const shotOf = async (page: Page, sel: string, name: string) => { await page.loc
       alts.every((a) => a.startsWith(longest.location) && a.includes(table)) && (alts.length === 1 || alts[0].includes(locale === "en-GB" ? "1 of " : "第 1 張")) &&
       words === longest.summary && !ICELANDIC.test(save ?? "x"),
       `${alts.length} frames, "${alts[0].slice(0, 48)}…", ${save}`);
+    await ctx.close();
+  }
+
+  // The record page: one language at a time, chosen as on the front page and remembered with it.
+  const sagaSeen = (page: Page) => page.evaluate((src) => {
+    const ICE = new RegExp(src), html = document.documentElement.lang, unmarked: string[] = [];
+    const walk = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    for (let n = walk.nextNode(); n; n = walk.nextNode()) {
+      const at = n.parentElement!;
+      if (at.closest("script, style")) continue;
+      const l = (at.closest("[lang]") as HTMLElement | null)?.lang ?? html;
+      if (!/^is\b/i.test(l) && ICE.test(n.textContent!)) unmarked.push(n.textContent!.trim().slice(0, 40));
+    }
+    const shown = [...document.querySelectorAll<HTMLElement>("article")].filter((a) => !a.hidden).map((a) => a.lang);
+    return { html, title: document.title, shown, current: document.querySelector(".langs a[aria-current='true']")?.getAttribute("href"), unmarked };
+  }, ICELANDIC.source);
+  {
+    const sagaCases = [
+      ["is-IS", "saga.html", "is", "Saga síðunnar", "#is"], ["en-GB", "saga.html", "en-GB", "The page’s history", "#en-gb"],
+      ["zh-TW", "saga.html", "zh-Hant-TW", "本頁的來由", "#zh-tw"], ["is-IS", "saga.html#en-gb", "en-GB", "The page’s history", "#en-gb"],
+    ] as const;
+    const wrong: string[] = [];
+    for (const [locale, path, want, title, href] of sagaCases) {
+      const { ctx, page, errors } = await look(locale, path);
+      const s = await sagaSeen(page);
+      if (s.html !== want || s.shown.join() !== want || s.title !== title || s.current !== href || s.unmarked.length || errors.length)
+        wrong.push(`${locale} ${path}: ${JSON.stringify({ ...s, errors })}`);
+      await ctx.close();
+    }
+    gate("languages, record page: the browser's language or the address chooses, one language is shown, and nothing Icelandic is left unmarked",
+      wrong.length === 0, wrong.join("; ") || `${sagaCases.length} cases`);
+  }
+  {
+    const { ctx, page } = await look("is-IS", "#zh-tw");
+    await page.goto(BASE + "saga.html");
+    const fromFront = (await sagaSeen(page)).html;
+    await page.click('.langs a[href="#en-gb"]');
+    await page.waitForFunction(() => document.documentElement.lang === "en-GB", null, { timeout: 5000 }).catch(() => {});
+    const switched = await sagaSeen(page);
+    await page.goto(BASE);
+    await page.waitForFunction(() => document.documentElement.lang === "en-GB", null, { timeout: 5000 }).catch(() => {});
+    const back = await page.evaluate(() => document.documentElement.lang);
+    gate("languages, record page: it keeps the front page's choice, its switcher changes it in place, and the front page keeps that",
+      fromFront === "zh-Hant-TW" && switched.html === "en-GB" && switched.shown.join() === "en-GB" && switched.current === "#en-gb" && back === "en-GB",
+      JSON.stringify({ fromFront, switched: switched.html, shown: switched.shown, back }));
     await ctx.close();
   }
 }

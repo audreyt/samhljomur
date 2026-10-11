@@ -1,18 +1,19 @@
 <!doctype html>
-<html lang="en">
+<html lang="is">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Saga síðunnar</title>
-<meta name="description" content="The record of this page: the AI medley first made here, what young people and the Samtal tables said about it, and what replaced it.">
+<meta name="description" content="Saga þessarar síðu: syrpan sem gervigreind bjó til hér fyrst, það sem ungt fólk og borðin í Samtalinu sögðu um hana, og það sem kom í staðinn.">
 <meta property="og:title" content="Saga síðunnar">
-<meta property="og:description" content="The record of this page: the AI medley first made here, what young people and the Samtal tables said about it, and what replaced it.">
+<meta property="og:description" content="Saga þessarar síðu: syrpan sem gervigreind bjó til hér fyrst, það sem ungt fólk og borðin í Samtalinu sögðu um hana, og það sem kom í staðinn.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://audreyt.github.io/samhljomur/saga.html">
+<meta property="og:locale" content="is_IS">
 <meta property="og:image" content="https://audreyt.github.io/samhljomur/ordrett-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Orðrétt: one line for each recording from the tables, shortest at the top, longest at the bottom.">
+<meta property="og:image:alt" content="Orðrétt: ein lína fyrir hverja upptöku frá borðunum, styst efst og lengst neðst.">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://audreyt.github.io/samhljomur/saga.html">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2032%2032'%3E%3Crect%20width%3D'32'%20height%3D'32'%20rx%3D'7'%20fill%3D'%230d0e0c'%2F%3E%3Cpath%20d%3D'M15.97%2026.5Q13.8%2026.5%2012.16%2025.62Q10.51%2024.74%209.58%2023.17Q8.64%2021.61%208.64%2019.57Q8.64%2017.52%209.55%2015.96Q10.46%2014.4%2011.97%2013.52Q13.49%2012.64%2015.3%2012.64Q16.49%2012.64%2017.22%2012.99Q17.95%2013.35%2018.38%2013.9Q18.82%2014.44%2019.12%2014.99L18.92%2015.48Q18.34%2013.7%2017.29%2012.38Q16.24%2011.06%2015%2010.14Q13.76%209.22%2012.6%208.64Q11.43%208.05%2010.62%207.75L11.55%205.5Q13.1%206.05%2014.75%206.82Q16.39%207.59%2017.93%208.64Q19.47%209.7%2020.69%2011.1Q21.91%2012.5%2022.64%2014.31Q23.36%2016.12%2023.36%2018.4Q23.36%2020.92%2022.44%2022.73Q21.53%2024.54%2019.87%2025.52Q18.21%2026.5%2015.97%2026.5ZM16.01%2023Q17.04%2023%2017.64%2022.08Q18.24%2021.15%2018.24%2019.57Q18.24%2017.98%2017.64%2017.06Q17.04%2016.13%2016.01%2016.13Q14.97%2016.13%2014.37%2017.06Q13.76%2017.98%2013.76%2019.57Q13.76%2021.16%2014.37%2022.08Q14.97%2023%2016.01%2023ZM11.87%2012.87%2010.66%2010.73%2019.72%205.58%2020.94%207.72Z'%20fill%3D'%23ecebe3'%2F%3E%3C%2Fsvg%3E">
@@ -36,8 +37,8 @@
   --chalk: #ecebe3;
   --dim: #979c93;
   --hair: #2a2d28;
-  --font-words: "Atkinson Hyperlegible Next", "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-frame: "Schibsted Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-words: "Atkinson Hyperlegible Next", "Atkinson Hyperlegible", "PingFang TC", "Noto Sans TC", "Noto Sans CJK TC", "Microsoft JhengHei", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-frame: "Schibsted Grotesk", "PingFang TC", "Noto Sans TC", "Noto Sans CJK TC", "Microsoft JhengHei", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
@@ -48,14 +49,25 @@ body {
   padding-inline: max(1rem, env(safe-area-inset-left, 0px)) max(1rem, env(safe-area-inset-right, 0px));
   padding-block: clamp(2.25rem, 7vw, 4.5rem) 5rem;
 }
-main { max-width: 40rem; margin-inline: auto; display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.25rem; }
+main, article { max-width: 40rem; margin-inline: auto; display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.25rem; }
+article { width: 100%; }
+article[hidden] { display: none; }
 a { color: inherit; text-underline-offset: .18em; text-decoration-thickness: 1px; }
 :focus-visible { outline: 2px solid var(--chalk); outline-offset: 3px; }
+.top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: .25rem 1rem; }
 .back { font-family: var(--font-frame); font-weight: 600; font-size: .9375rem; color: var(--dim); text-decoration: none; }
 .back:hover { color: var(--chalk); }
+/* each language named in itself */
+.langs { display: flex; flex-wrap: wrap; column-gap: .9rem; font-family: var(--font-frame); font-weight: 600; font-size: .875rem; }
+.langs a { padding-block: .3rem; color: var(--dim); text-decoration: none; }
+.langs a:hover, .langs a[aria-current] { color: var(--chalk); }
+.langs a[aria-current] { text-decoration: underline; text-decoration-thickness: 1.5px; }
 h1 { margin: .5rem 0 .25rem; font-family: var(--font-frame); font-weight: 850; font-size: clamp(2.75rem, 11vw, 5rem); line-height: .9; letter-spacing: -.04em; }
+[data-lang="zh-tw"] h1 { letter-spacing: 0; line-height: 1.1; }
 p { margin: 0; }
-q { quotes: "“" "”"; }
+[data-lang="is"] q { quotes: "„" "“"; }
+[data-lang="en-gb"] q { quotes: "‘" "’" "“" "”"; }
+[data-lang="zh-tw"] q { quotes: "「" "」" "『" "』"; }
 q[lang="is"] { font-weight: 600; }
 .record { margin: 1rem 0 0; padding: 1.25rem 0 0; border-top: 1px solid var(--hair); display: grid; gap: .6rem; list-style: none; font-family: var(--font-frame); font-size: 1rem; }
 .record li { display: flex; flex-wrap: wrap; gap: .2rem .6rem; }
@@ -63,26 +75,106 @@ q[lang="is"] { font-weight: 600; }
 .sign { margin-top: 1rem; font-family: var(--font-frame); font-size: 1rem; line-height: 1.5; }
 .sign span { display: block; color: var(--dim); }
 .fine { margin-top: .5rem; font-family: var(--font-frame); font-size: .875rem; color: var(--dim); }
+@media print { .langs { display: none; } }
 </style>
 </head>
 <body>
 <main>
-  <a class="back" href="./">← Orðrétt</a>
-  <h1 lang="is">Saga síðunnar</h1>
-  <p>In early October I made a medley called Samhljómur from Samtal’s open data. The words were participants’ own, unchanged. Everything else came from machines. A model chose the lines and set their order, and AI wrote the music and sang it.</p>
-  <p>Young people said a song made by AI did not belong in Samtal. On Oct. 10 the tables drew that line in their own words. Table 2 at Menntaskólinn á Akureyri wrote that AI <q lang="is">á að vera hjálpari ekki skapari</q>, a helper and not a creator. Table 4 at Kvennaskólinn í Reykjavík wrote <q lang="is">neytendur afneita gervigreindarlist</q>, and the whole table agreed.</p>
-  <p>They were right. The medley made AI the creator, and keeping the lyrics verbatim did not change that.</p>
-  <p>This address now opens on Orðrétt. It holds everything the tables wrote, unchanged, and the voices they chose to share, uncut and played straight from talasaman.is. No AI wrote, translated, shortened or voiced any of it, and the rules that select and order it are printed on the page.</p>
-  <p>The medley ran seven and a half minutes. The recordings from the tables add up to just under eight. I should have waited for them.</p>
-  <p>The medley stays here as a record, at the addresses it always had.</p>
-  <ul class="record">
-    <li><a href="samhljomur.html" lang="is">Samhljómur</a><span class="what">the medley’s own front page</span></li>
-    <li><a href="video.html">The video</a><span class="what">sung by AI</span></li>
-    <li><a href="report.html">How it was made</a><span class="what">every model decision, with sources</span></li>
-    <li><a href="songbook.html">The songbook</a><span class="what">also as <a href="songbook.pdf">PDF</a></span></li>
-  </ul>
-  <p class="sign">Audrey Tang<span>Oct. 11, 2026</span><span>Drafted with an AI assistant; the account and the apology are mine.</span></p>
-  <p class="fine" lang="is">Gögn: <a href="https://talasaman.is/gogn">Samtal, félag til almannaheilla (talasaman.is)</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Þetta er hvorki afstaða né niðurstaða Samtals.</p>
+  <div class="top">
+    <a class="back" href="./">← <span lang="is">Orðrétt</span></a>
+    <nav class="langs" aria-label="Tungumál">
+      <a href="#is" hreflang="is" lang="is">Íslenska</a>
+      <a href="#en-gb" hreflang="en-GB" lang="en-GB">English</a>
+      <a href="#zh-tw" hreflang="zh-Hant-TW" lang="zh-Hant-TW">華文</a>
+    </nav>
+  </div>
+
+  <article data-lang="is" lang="is">
+    <h1>Saga síðunnar</h1>
+    <p>Í byrjun október bjó ég til syrpu sem hét Samhljómur úr opnum gögnum Samtals. Orðin voru þátttakendanna sjálfra, óbreytt. Allt annað kom frá vélum. Mállíkan valdi línurnar og raðaði þeim, og gervigreind samdi tónlistina og söng hana.</p>
+    <p>Ungt fólk sagði að lag sem gervigreind hefði búið til ætti ekki heima í Samtalinu. Þann 10. október drógu borðin mörkin með sínum eigin orðum. Borð 2 í Menntaskólanum á Akureyri skrifaði að gervigreind <q>á að vera hjálpari ekki skapari</q>. Borð 4 í Kvennaskólanum í Reykjavík skrifaði <q>neytendur afneita gervigreindarlist</q>, og allt borðið var sammála.</p>
+    <p>Þau höfðu rétt fyrir sér. Syrpan gerði gervigreindina að skaparanum, og það breytti engu þótt textinn væri orðréttur.</p>
+    <p>Á þessari slóð opnast nú Orðrétt. Þar er allt sem borðin skrifuðu, óbreytt, og raddirnar sem þau kusu að deila, heilar og óklipptar, spilaðar beint af talasaman.is. Engin gervigreind skrifaði, þýddi, stytti eða las upp neitt af því, og reglurnar sem ráða vali og röð standa á síðunni.</p>
+    <p>Syrpan var sjö og hálf mínúta að lengd. Upptökurnar frá borðunum eru samanlagt tæpar átta mínútur. Ég hefði átt að bíða eftir þeim.</p>
+    <p>Syrpan stendur hér áfram sem heimild, á sömu slóðum og áður.</p>
+    <ul class="record">
+      <li><a href="samhljomur.html">Samhljómur</a><span class="what">forsíða syrpunnar sjálfrar</span></li>
+      <li><a href="video.html">Myndbandið</a><span class="what">sungið af gervigreind</span></li>
+      <li><a href="report.html">Hvernig hún varð til</a><span class="what">hver ákvörðun líkansins, með heimildum</span></li>
+      <li><a href="songbook.html">Söngbókin</a><span class="what">einnig sem <a href="songbook.pdf">PDF</a></span></li>
+    </ul>
+    <p class="sign">Audrey Tang<span>11. október 2026</span><span>Samið með aðstoð gervigreindar, líka þessi íslenska útgáfa; frásögnin og afsökunarbeiðnin eru mínar.</span></p>
+    <p class="fine">Gögn: <a href="https://talasaman.is/gogn">Samtal, félag til almannaheilla (talasaman.is)</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Þetta er hvorki afstaða né niðurstaða Samtals.</p>
+  </article>
+
+  <article data-lang="en-gb" lang="en-GB" hidden>
+    <h1>The page’s history</h1>
+    <p>In early October I made a medley called <span lang="is">Samhljómur</span> from Samtal’s open data. The words were participants’ own, unchanged. Everything else came from machines. A model chose the lines and set their order, and AI wrote the music and sang it.</p>
+    <p>Young people said a song made by AI did not belong in Samtal. On 10 October the tables drew that line in their own words. Table 2 at <span lang="is">Menntaskólinn á Akureyri</span> wrote that AI <q lang="is">á að vera hjálpari ekki skapari</q>, a helper and not a creator. Table 4 at <span lang="is">Kvennaskólinn í Reykjavík</span> wrote <q lang="is">neytendur afneita gervigreindarlist</q>, and the whole table agreed.</p>
+    <p>They were right. The medley made AI the creator, and keeping the lyrics verbatim did not change that.</p>
+    <p>This address now opens on <span lang="is">Orðrétt</span>. It holds everything the tables wrote, unchanged, and the voices they chose to share, uncut and played straight from talasaman.is. No AI wrote, translated, shortened or voiced any of it, and the rules that select and order it are printed on the page.</p>
+    <p>The medley ran seven and a half minutes. The recordings from the tables add up to just under eight. I should have waited for them.</p>
+    <p>The medley stays here as a record, at the addresses it always had.</p>
+    <ul class="record">
+      <li><a href="samhljomur.html" lang="is">Samhljómur</a><span class="what">the medley’s own front page</span></li>
+      <li><a href="video.html">The video</a><span class="what">sung by AI</span></li>
+      <li><a href="report.html">How it was made</a><span class="what">every model decision, with sources</span></li>
+      <li><a href="songbook.html">The songbook</a><span class="what">also as a <a href="songbook.pdf">PDF</a></span></li>
+    </ul>
+    <p class="sign">Audrey Tang<span>11 October 2026</span><span>Drafted with an AI assistant; the account and the apology are mine.</span></p>
+    <p class="fine"><span lang="is">Gögn: <a href="https://talasaman.is/gogn">Samtal, félag til almannaheilla (talasaman.is)</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span> This is neither Samtal’s position nor its conclusion.</p>
+  </article>
+
+  <article data-lang="zh-tw" lang="zh-Hant-TW" hidden>
+    <h1>本頁的來由</h1>
+    <p>十月初，我以 Samtal 的開放資料，製作了一套名為 <span lang="is">Samhljómur</span> 的組曲。歌詞是參與者自己的話，一字未改；其餘的一切，都出自機器：由模型挑選詞句、安排順序，再由人工智慧作曲、演唱。</p>
+    <p>年輕人說，人工智慧做的歌，不該出現在 Samtal 裡。10 月 10 日，各桌用自己的話，劃下了這條界線。<span lang="is">Menntaskólinn á Akureyri</span> 第 2 桌寫道，人工智慧<q lang="is">á að vera hjálpari ekki skapari</q>，應該是幫手，而不是創作者。<span lang="is">Kvennaskólinn í Reykjavík</span> 第 4 桌寫下<q lang="is">neytendur afneita gervigreindarlist</q>，全桌一致同意。</p>
+    <p>他們說得對。那套組曲讓人工智慧當了創作者；歌詞一字不改，也改變不了這件事。</p>
+    <p>現在，這個網址打開的是 <span lang="is">Orðrétt</span>（一字不改）。這裡收錄各桌寫下的一切，未經更動；也收錄各桌選擇分享的聲音，完整未剪，直接從 talasaman.is 播放。其中沒有任何部分由人工智慧撰寫、翻譯、刪節或朗讀；挑選與排序的規則，都寫在頁面上。</p>
+    <p>那套組曲長七分半鐘；各桌的錄音加起來，將近八分鐘。我當初應該等它們的。</p>
+    <p>組曲仍留在這裡作為紀錄，網址一如以往。</p>
+    <ul class="record">
+      <li><a href="samhljomur.html" lang="is">Samhljómur</a><span class="what">組曲原本的首頁</span></li>
+      <li><a href="video.html">影片</a><span class="what">由人工智慧演唱</span></li>
+      <li><a href="report.html">製作過程</a><span class="what">模型的每一項決定，附上出處</span></li>
+      <li><a href="songbook.html">歌本</a><span class="what">另有 <a href="songbook.pdf">PDF</a> 版</span></li>
+    </ul>
+    <p class="sign">唐鳳<span>2026 年 10 月 11 日</span><span>在人工智慧助理協助下起草，這份華文版本也是；其中的敘述與道歉，都是我自己的。</span></p>
+    <p class="fine"><span lang="is">Gögn: <a href="https://talasaman.is/gogn">Samtal, félag til almannaheilla (talasaman.is)</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span> 本頁並非 Samtal 的立場或結論。</p>
+  </article>
 </main>
+<script>
+// The record in Icelandic, British English or Taiwanese Mandarin, chosen as on the front page and
+// remembered with it: the language the address names (#is, #en-gb, #zh-tw), which is then kept; else the
+// one chosen before, here or on the front page; else the browser's: Icelandic if it lists Icelandic at all,
+// otherwise the first of English or Chinese it lists, otherwise English. Without scripts it reads in Icelandic.
+const HTML_LANG = { is: "is", "en-gb": "en-GB", "zh-tw": "zh-Hant-TW" };
+const LANG_KEY = "ordrett-lang";
+const NAMES = { is: ["Saga síðunnar", "Tungumál"], "en-gb": ["The page’s history", "Language"], "zh-tw": ["本頁的來由", "語言"] };
+const named = () => { const h = location.hash.slice(1).toLowerCase(); return HTML_LANG[h] ? h : ""; };
+function chosenLang() {
+  if (named()) return named();
+  try { const kept = localStorage.getItem(LANG_KEY); if (HTML_LANG[kept]) return kept; } catch (e) {}
+  const prefs = (navigator.languages && navigator.languages.length ? [...navigator.languages] : [navigator.language || ""]).map((l) => String(l).toLowerCase());
+  if (prefs.some((l) => l === "is" || l.startsWith("is-"))) return "is";
+  for (const l of prefs) {
+    if (l === "en" || l.startsWith("en-")) return "en-gb";
+    if (l === "zh" || l.startsWith("zh-")) return "zh-tw";
+  }
+  return "en-gb";
+}
+function applyLang(code) {
+  if (named()) try { localStorage.setItem(LANG_KEY, code); } catch (e) {}
+  document.documentElement.lang = HTML_LANG[code];
+  document.title = NAMES[code][0];
+  document.querySelector(".langs").setAttribute("aria-label", NAMES[code][1]);
+  for (const a of document.querySelectorAll("article[data-lang]")) a.hidden = a.dataset.lang !== code;
+  for (const a of document.querySelectorAll(".langs a")) {
+    if (a.getAttribute("href") === "#" + code) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current");
+  }
+}
+addEventListener("hashchange", () => { if (named()) applyLang(named()); });
+applyLang(chosenLang());
+</script>
 </body>
 </html>

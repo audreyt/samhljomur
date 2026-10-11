@@ -70,6 +70,15 @@ Numbers agree with Icelandic usage in code: 1, 21, 31 … take the singular
 | Breidd línanna er styrkur raddarinnar, frá upphafi upptökunnar efst (0:00) til enda hennar neðst (1:13). | The width of the lines is the voice's loudness, from the start of the recording at the top (0:00) to its end at the bottom (1:13). (under a poster set in the shape of its voice) |
 | Saga síðunnar · ← Orðrétt | The page's history · back to Orðrétt (saga.html) |
 
+The record page, `saga.html`, is now in Icelandic too: the whole account,
+translated from Audrey's English (its English version is the gloss) with an
+AI assistant's help, and not yet read by a native speaker. Words worth a look:
+„syrpa“ for the medley; „Mállíkan valdi línurnar og raðaði þeim“; „drógu
+borðin mörkin með sínum eigin orðum“; „það breytti engu þótt textinn væri
+orðréttur“; „Syrpan stendur hér áfram sem heimild, á sömu slóðum og áður“;
+and the signature line „Samið með aðstoð gervigreindar, líka þessi íslenska
+útgáfa; frásögnin og afsökunarbeiðnin eru mínar.“
+
 The four rows on frames and the voice's shape came after the first review and
 have not been read by a native speaker yet.
 
