@@ -13,7 +13,8 @@
 // dialogs, button names, links to one summary, search, print, the live redraw
 // (against a held, controlled answer), a slow connection, screen mode by mouse
 // and by touch, long summaries in screen mode on a projector and on a phone,
-// and the share card and icons.
+// the mountain full screen with the words following the voice, a recording
+// measured from its own file, and the share card and icons.
 // Screenshots go to ordrett/qa/.
 
 import { chromium, type Page } from "playwright";
@@ -238,7 +239,13 @@ const shotOf = async (page: Page, sel: string, name: string) => { await page.loc
   await page.waitForFunction(() => /raddir tala|rödd talar/.test(document.getElementById("now")!.textContent ?? ""), null, { timeout: 30000 });
   await page.waitForTimeout(21000);
   const swell = await page.evaluate(() => ({ now: document.querySelector("#now .big")?.textContent, time: document.getElementById("deckTime")!.textContent }));
-  gate("all at once: voices join as the sweep reaches them", /raddir tala/.test(swell.now ?? "") && /^0:[12]\d \/ 1:13$/.test(swell.time ?? ""), JSON.stringify(swell));
+  const clock = /^0:(\d\d) \/ (\d+):(\d\d)$/.exec(swell.time ?? "");
+  const shown = clock ? Number(clock[1]) : -1;
+  const total = clock ? Number(clock[2]) * 60 + Number(clock[3]) : 0;
+  const longest = Math.max(...voiced.map((r: any) => facts[r.id].seconds));
+  // A recording measured from the live answer can make the mountain longer than the snapshot.
+  gate("all at once: voices join as the sweep reaches them",
+    /raddir tala/.test(swell.now ?? "") && shown >= 15 && shown <= 30 && total + 1 >= longest, JSON.stringify(swell));
   await shot(page, "phone-swell.png");
   await page.evaluate(() => (document.getElementById("deckStop") as HTMLButtonElement).click());
 
@@ -352,6 +359,108 @@ for (const changed of [false, true]) {
   gate("a live redraw while a poster is open: Esc gives focus to the redrawn button",
     !back.open && back.focus && back.entries === data.length, JSON.stringify(back));
   await ctx.close();
+}
+
+// ---------- a new recording is measured from the file and joins the mountain ----------
+{
+  const ALPH = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-_";
+  const pace = (r: any) => {
+    const f = facts[r.id];
+    if (!f || f.silent || !f.env) return 0;
+    let active = 0;
+    for (const c of f.env) if (ALPH.indexOf(c) / 63 > 0.15) active++;
+    const activeS = active * f.seconds / f.env.length;
+    const words = r.summary.trim().split(/\s+/).filter(Boolean).length;
+    return activeS > 2 ? words / (activeS / 60) : 0;
+  };
+  const donor = snap.data.filter((r: any) => r.audio && pace(r) >= 90 && pace(r) <= 240)
+    .sort((a: any, b: any) => facts[a.id].seconds - facts[b.id].seconds)[0];
+  const audioBytes = Buffer.from(await fetch(donor.audio).then((r) => r.arrayBuffer()));
+  const newId = "00000000-0000-4000-8000-000000000001";
+  const linesNow = snap.data.filter((r: any) => r.audio && facts[r.id] && !facts[r.id].silent && facts[r.id].env).length;
+  const data = [...snap.data, { ...donor, id: newId, audio: `https://talasaman.is/api/v1/summaries/${newId}/audio` }];
+  const ctx = await browser.newContext({ viewport: { width: 390, height: 844 } });
+  const page = await ctx.newPage();
+  const errors: string[] = [];
+  page.on("pageerror", (e) => errors.push(String(e)));
+  await page.route("**/api/v1/summaries**", (route) => {
+    const url = route.request().url();
+    if (url.includes("/audio")) return route.fulfill({ contentType: "audio/webm", body: audioBytes });
+    return route.fulfill({ contentType: "application/json", body: JSON.stringify({ data, meta: { ...snap.meta, generatedAt: "2026-10-11T10:10:00.000Z", count: data.length } }) });
+  });
+  await page.goto(BASE);
+  await page.waitForFunction((n) => {
+    const label = document.getElementById("mtn")?.getAttribute("aria-label") ?? "";
+    return label.startsWith(String(n));
+  }, linesNow + 1, { timeout: 20000 }).catch(() => {});
+  const got = await page.evaluate((id) => ({
+    label: document.getElementById("mtn")?.getAttribute("aria-label"),
+    row: !!document.getElementById("e-" + id),
+    failed: document.querySelector("#e-" + id + " .aside")?.textContent ?? "",
+  }), newId);
+  gate("a recording the build never measured joins the mountain, from the file itself",
+    (got.label ?? "").startsWith(String(linesNow + 1)) && got.row && got.failed === "" && errors.length === 0,
+    JSON.stringify({ ...got, errors }));
+  await ctx.close();
+
+  // The mountain, full screen: one voice, so the words can be seen to follow it.
+  const ctx2 = await browser.newContext({ viewport: { width: 1280, height: 720 } });
+  const page2 = await ctx2.newPage();
+  const errors2: string[] = [];
+  page2.on("pageerror", (e) => errors2.push(String(e)));
+  await page2.route("**/api/v1/summaries**", (route) => {
+    const url = route.request().url();
+    if (url.includes("/audio")) return route.fulfill({ contentType: "audio/webm", body: audioBytes });
+    return route.fulfill({ contentType: "application/json", body: JSON.stringify({ data: [donor], meta: { ...snap.meta, generatedAt: "2026-10-11T10:10:00.000Z", count: 1 } }) });
+  });
+  await page2.goto(BASE);
+  await page2.waitForFunction(() => /10:10/.test(document.getElementById("fetched")?.textContent ?? ""));
+  await page2.click("#toHall");
+  await page2.waitForFunction(() => document.activeElement?.id === "hGo");
+  const opened = await page2.evaluate(() => ({
+    focus: document.activeElement?.id,
+    inert: [...document.body.children].filter((e) => e.id !== "hall").every((e) => (e as HTMLElement).inert),
+  }));
+  await page2.click("#hGo");
+  const firstWord = donor.summary.trim().split(/\s+/)[0];
+  // A few seconds in, the marked word has to have left the first token. Silence does not count.
+  await page2.waitForFunction((first) => {
+    const m = document.querySelector("#hSay mark");
+    const pos = document.getElementById("hPos")?.textContent ?? "";
+    const sec = Number(/^0:(\d+)/.exec(pos)?.[1] ?? 0);
+    return !!m && !!m.textContent && m.textContent !== first && sec >= 3;
+  }, firstWord, { timeout: 20000 }).catch(() => {});
+  const hall = await page2.evaluate(() => {
+    const m = document.querySelector("#hSay mark");
+    const stage = document.getElementById("hStage")!.getBoundingClientRect();
+    const cv = document.getElementById("hMtn")!.getBoundingClientRect();
+    return {
+      word: m?.textContent ?? "",
+      say: document.getElementById("hSay")!.textContent,
+      who: document.getElementById("hWho")!.textContent,
+      cv: [Math.round(cv.width), Math.round(cv.height)],
+      stage: [Math.round(stage.width), Math.round(stage.height)],
+      coloured: (() => {
+        const c = document.getElementById("hMtn") as HTMLCanvasElement;
+        const g = c.getContext("2d")!;
+        const px = g.getImageData(0, 0, c.width, c.height).data;
+        let n = 0;
+        for (let i = 0; i < px.length; i += 16) if (px[i] > 40 && (px[i] !== px[i + 1] || px[i] !== px[i + 2])) n++;
+        return n;
+      })(),
+    };
+  });
+  const words = donor.summary.trim().split(/\s+/);
+  const moved = words.includes(hall.word) && hall.word !== words[0];
+  gate("the mountain full screen: the voice is drawn in time and its current word is marked",
+    opened.focus === "hGo" && opened.inert && moved && hall.say === donor.summary &&
+    hall.who.includes(donor.location) && hall.cv[0] > 200 && hall.cv[0] <= hall.stage[0] + 1 &&
+    hall.cv[1] <= hall.stage[1] + 1 && hall.coloured > 20 && errors2.length === 0,
+    JSON.stringify({ opened, hall, errors: errors2 }));
+  await page2.keyboard.press("Escape");
+  const back = await page2.evaluate(() => ({ hidden: document.getElementById("hall")!.hidden, focus: document.activeElement?.id }));
+  gate("Esc leaves the mountain and gives focus back", back.hidden && back.focus === "toHall", JSON.stringify(back));
+  await ctx2.close();
 }
 
 // ---------- a slow connection: the player says it is fetching, then counts ----------

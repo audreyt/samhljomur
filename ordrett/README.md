@@ -16,7 +16,8 @@ and the page says so. The parts:
   centred, so the stack forms a mountain. *Ein í einu* plays them in
   postcode order (7:47). *Allar í einu* plays them as drawn: each voice
   centred on the same moment, so the longest starts alone, the others join
-  as the sweep reaches them, and the longest ends alone (1:13). Playback
+  as the sweep reaches them, and the longest ends alone (1:13 in this
+  snapshot; a longer recording fetched live lengthens the sweep). Playback
   levels every voice to the same speaking level (−20 dBFS, within ±9 dB).
 - **Við viljum.** Every sentence from the tables with the word „viljum“, set
   on one spine under Samtal's own question. A sentence is text between line
@@ -45,6 +46,13 @@ and the page says so. The parts:
   are read. A summary written as a long list is set in columns on a wide
   screen when that makes its words larger and it then fits whole; on a
   phone, a summary too long for the screen scrolls in its frame.
+- **The mountain on a hall screen:** `#fjall`, or *Sýna fjallið*. The
+  mountain fills the screen and plays every voice at once, then each
+  voice in turn. While a voice is heard, its summary is shown and the
+  word follows the loudness in the recording, when that reading fits a
+  spoken pace; otherwise the words stand whole. A recording that arrives
+  after the build is measured from the file itself and its line joins
+  the mountain.
 - **On paper.** Printing gives black on white: the title, the „viljum“
   spine, the AI sheet with its highlighter colours, and every summary,
   with no players or controls.
@@ -83,7 +91,8 @@ at 320px or with text at 200%; focus held by the poster and screen mode
 and given back; listen buttons named as they read; search; print; the
 live redraw; the player on a slow connection; screen mode's buttons by
 mouse and by touch; long summaries in screen mode on a projector and a
-phone; and the share card and icons.
+phone; the mountain full screen, with the words following the voice; a
+recording measured from its own file; and the share card and icons.
 
 ## Licences
 
