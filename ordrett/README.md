@@ -117,7 +117,8 @@ recording measured from its own file; and the share card and icons. And
 they check the layout: Pretext counts the lines of every summary as the
 page sets them, or one more, never fewer; every poster holds its summary
 whole and in order at 36px or larger, a voiced one in the shape of its
-voice; screen mode sets every summary whole on a projector; and without
+voice when that keeps it there; screen mode sets every summary whole on a
+projector; and without
 `Intl.Segmenter` the poster and screen mode work as before.
 
 ## Licences

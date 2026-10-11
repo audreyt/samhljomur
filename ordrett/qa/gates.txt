@@ -11,7 +11,7 @@ PASS  no horizontal scroll at 390px  0px
 PASS  no errors on the snapshot
 PASS  Pretext is inlined, and counts the lines of every summary as the page sets them, or one more, never fewer  {"same":186,"more":1,"fewer":0}
 PASS  posters: every summary whole and in order across its frames, 1080 x 1920, at 36px or larger  smallest 36px; on more than one frame: bd67a4c6: 2 at 36px, 7f7ad7e0: 3 at 39px
-PASS  posters: a summary with a recording is set in the shape of its voice  21 of 21
+PASS  posters: only a summary with a recording is set in the shape of its voice, on one frame, when that keeps it at 36px or larger  21 of 21 in the shape of their voice
 PASS  no errors drawing every poster
 PASS  a link to one summary lands on it, marked  {"id":"e-9d056a6a-0a14-4413-b28d-7fa7f034af6e","top":32,"bg":"rgb(22, 24, 20)"}
 PASS  contents line: every link has its section  [["Við viljum",true],["Gervigreind",true],["Öll borðin",true],["Um síðuna",true]]
@@ -19,13 +19,13 @@ PASS  search: finds every summary with the word, marks it, and leaves the words 
 PASS  search: says when nothing is found; clearing it brings every summary back unmarked  Engin samantekt fannst. | 187 shown, 0 marks
 PASS  no errors while searching
 PASS  on paper: every summary and the AI sheet, no players or controls, black on white  {"players":[],"words":187,"notes":50,"colours":["rgb(255, 255, 255)","rgb(0, 0, 0)"]}
-PASS  live data reached  Gögnin eru frá 11. október 2026 kl. 14:01.
+PASS  live data reached  Gögnin eru frá 11. október 2026 kl. 14:07.
 PASS  tapping a line plays that voice  {"deck":true,"time":"0:01 / 1:13","now":"Það var rætt um flokkun, rusl, umhverfis"}
 PASS  player icons sit centred in their buttons  [0,0]
 PASS  all at once: voices join as the sweep reaches them  {"now":"2 raddir tala","time":"0:21 / 1:52"}
 PASS  poster is a 1080 x 1920 image  1080x1920
 PASS  poster preview is a modal dialog: focus goes in, and back to its button on Esc  {"inside":"posterSave","open":false,"focus":true}
-PASS  only talasaman.is contacted  localhost:34173, talasaman.is
+PASS  only talasaman.is contacted  localhost:42965, talasaman.is
 PASS  no errors live
 PASS  live answer unchanged from the snapshot: nothing is redrawn  {"redrawn":false,"entries":187,"focus":true}
 PASS  live answer changed: the list is redrawn, focus stays on the same button  {"redrawn":true,"entries":186,"focus":true}
@@ -46,7 +46,7 @@ PASS  screen mode on a phone: a summary too long for the screen starts at the to
 PASS  screen mode on a projector sets every summary whole, without scrolling  187 summaries, 0 scroll; smallest 24.3px, median 108px; 2 in columns
 PASS  without Intl.Segmenter: a poster and screen mode as before, without errors  {"poster":["1080x1920"],"fit":{"text":"Hvernig samtal viljum við skap","over":-11},"errors":[]}
 PASS  screen mode on a touch screen: the first tap wakes the controls, the next one turns the page  {"asleep":"0","first":"1 / 187","second":"2 / 187"}
-PASS  under talasaman.is CSP: live data and playback  Gögnin eru frá 11. október 2026 kl. 14:07. | 0:01 / 0:13 · 1 af 22
+PASS  under talasaman.is CSP: live data and playback  Gögnin eru frá 11. október 2026 kl. 14:12. | 0:01 / 0:13 · 1 af 22
 PASS  under talasaman.is CSP: no violations or errors
 PASS  every medley address still answers  samhljomur.html 200, video.html 200, report.html 200, songbook.html 200, songbook.pdf 200, video-standalone.html 200, medley.mp4 200, poster.png 200, poster-alt.png 200, media/medley.mp3 200
 PASS  the medley's front page is kept byte for byte  a1b8538ab0336bcf20cf5ea794b66ce43db95d76

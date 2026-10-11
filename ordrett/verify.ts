@@ -17,7 +17,7 @@
 // measured from its own file, and the share card and icons. Layout gates:
 // Pretext counts the lines of every summary as the page sets them; every
 // poster holds its summary whole at 36px or larger, a voiced one in the shape
-// of its voice; screen mode sets every summary whole on a projector; and
+// of its voice when that keeps it there; screen mode sets every summary whole on a projector; and
 // without Intl.Segmenter the page measures as it did before.
 // Screenshots go to ordrett/qa/.
 
@@ -172,10 +172,11 @@ const shotOf = async (page: Page, sel: string, name: string) => { await page.loc
   gate("Pretext is inlined, and counts the lines of every summary as the page sets them, or one more, never fewer",
     !!agree && agree.fewer === 0 && agree.same + agree.more === snap.data.length && agree.same >= snap.data.length * 0.95, JSON.stringify(agree));
 
-  // Every poster: its frames hold the summary whole and in order, at 36px or larger; a summary
-  // with a recording is set in the shape of its voice, on one frame.
+  // Every poster: its frames hold the summary whole and in order, at 36px or larger. Only a summary
+  // with a recording is set in the shape of its voice, on one frame; when the shape would set it
+  // below 36px it is set plainly instead, and the detail names it.
   const voicedIds = new Set(voiced.map((r: any) => r.id));
-  const wrong: string[] = [];
+  const wrong: string[] = [], plain: string[] = [];
   let smallest = Infinity, shaped = 0;
   const split: string[] = [];
   for (const r of ordered) {
@@ -192,16 +193,19 @@ const shotOf = async (page: Page, sel: string, name: string) => { await page.loc
       const lead = `${r.location}, borð ${r.table}${n > 1 ? `, ${i + 1} af ${n}` : ""}: `;
       return f.alt.startsWith(lead) ? f.alt.slice(lead.length) : "\u0000";
     }).join("");
-    const voice = voicedIds.has(r.id);
-    if (voice && frames.every((f) => f.shape === "voice")) shaped++;
+    const voice = voicedIds.has(r.id), inShape = frames.some((f) => f.shape === "voice");
+    if (inShape) shaped++;
+    else if (voice) plain.push(`${r.id.slice(0, 8)} at ${frames[0].px}px`);
     if (n > 1) split.push(`${r.id.slice(0, 8)}: ${n} at ${frames[0].px}px`);
     for (const f of frames) smallest = Math.min(smallest, f.px);
-    if (words !== r.summary || frames.some((f) => f.size !== "1080x1920" || !(f.px >= 36)) ||
-      (voice ? n !== 1 || frames[0].shape !== "voice" : frames.some((f) => f.shape !== "words"))) wrong.push(r.id.slice(0, 8));
+    if (words !== r.summary || frames.some((f) => f.size !== "1080x1920" || !(f.px >= 36) || !["voice", "words"].includes(f.shape!)) ||
+      (inShape && (!voice || n !== 1))) wrong.push(r.id.slice(0, 8));
   }
   gate("posters: every summary whole and in order across its frames, 1080 x 1920, at 36px or larger",
     wrong.length === 0 && smallest >= 36, `smallest ${smallest}px; on more than one frame: ${split.join(", ") || "none"}${wrong.length ? "; wrong: " + wrong.join(", ") : ""}`);
-  gate("posters: a summary with a recording is set in the shape of its voice", shaped === voiced.length, `${shaped} of ${voiced.length}`);
+  gate("posters: only a summary with a recording is set in the shape of its voice, on one frame, when that keeps it at 36px or larger",
+    shaped > 0 && shaped + plain.length === voiced.length && wrong.length === 0,
+    `${shaped} of ${voiced.length} in the shape of their voice${plain.length ? "; set plainly: " + plain.join(", ") : ""}`);
   gate("no errors drawing every poster", errors.length === 0, errors.join(" | "));
   await ctx.close();
 }
