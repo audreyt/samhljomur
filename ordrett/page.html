@@ -472,7 +472,7 @@ html.is-hall body { overflow: hidden; }
     <p data-t="um2">Raðað er eftir póstnúmeri, svo staðsetningu, svo borðnúmeri. Hver litur fylgir póstnúmeri. Póstnúmerin, og litirnir með þeim, fara hringinn í kringum landið.</p>
     <p data-t="um3">Línurnar efst eru teiknaðar úr upptökunum sjálfum, úr styrk hljóðsins tuttugu sinnum á sekúndu. Hljóðstyrkur er jafnaður svo hver rödd heyrist jafnt.</p>
     <p data-t="um4">Síðan sækir textann og upptökurnar beint af talasaman.is þegar hún opnast. Upptökurnar eru ekki afritaðar hingað. Upptaka sem bætist við eftir að síðan var byggð er mæld úr hljóðinu sjálfu þegar hún berst, og lína hennar bætist við fjallið.</p>
-    <p data-t="um5">Ekkert af því sem kemur frá borðunum er skrifað, stytt eða lesið upp af gervigreind. Á íslensku er ekkert þýtt; á ensku og kínversku eru orð borðanna þýdd fyrirfram af gervigreindaraðstoðarmanni, enginn hefur yfirfarið þýðingarnar og íslenski textinn fylgir hverri þeirra. Röðin og valið fylgja reglum sem standa á síðunni. Gervigreind hjálpaði til við að semja reglurnar, skrifa kóðann og þessa skýringartexta.</p>
+    <p data-t="um5">Ekkert af því sem kemur frá borðunum er skrifað, stytt eða lesið upp af gervigreind. Á íslensku er ekkert þýtt; á ensku og kínversku þýðir gervigreind orð borðanna fyrirfram, enginn hefur yfirfarið þýðingarnar og íslenski textinn fylgir hverri þeirra. Röðin og valið fylgja reglum sem standa á síðunni. Gervigreind hjálpaði til við að semja reglurnar, skrifa kóðann og þessa skýringartexta.</p>
     <p data-t="um6">Þetta er hvorki afstaða né niðurstaða Samtals.</p>
     <p class="fine"><span lang="is">Gögn: <a href="https://talasaman.is/gogn">Samtal, félag til almannaheilla (talasaman.is)</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span> <span id="fetched"></span></p>
     <p class="fine"><span data-t="by">Audrey Tang setti síðuna saman.</span> <a href="saga.html" data-t="saga">Saga síðunnar</a></p>
@@ -838,6 +838,25 @@ const MT_AT = { "en-gb": 0, "zh-tw": 1 };
 function mt(text) {
   const row = lang in MT_AT && TR.get(text);
   return (row && row[MT_AT[lang]]) || null;
+}
+// A name a translation keeps (Breiðholt, Borgarlína) is Icelandic, so it is marked so, like everything else Icelandic here.
+const ICE_LETTER = /[ÁáÐðÉéÍíÓóÚúÝýÞþÆæÖö]/;
+const ICE_WORD = /\p{L}*[ÁáÐðÉéÍíÓóÚúÝýÞþÆæÖö]\p{L}*/gu;
+function markIce(root) {
+  const todo = [], walk = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+  for (let n = walk.nextNode(); n; n = walk.nextNode()) if (ICE_LETTER.test(n.data)) todo.push(n);
+  for (const n of todo) {
+    const out = [];
+    let at = 0;
+    for (const m of n.data.matchAll(ICE_WORD)) {
+      if (m.index > at) out.push(n.data.slice(at, m.index));
+      out.push(ice(m[0]));
+      at = m.index + m[0].length;
+    }
+    if (at < n.data.length) out.push(n.data.slice(at));
+    n.replaceWith(...out);
+  }
+  return root;
 }
 function paintMt() {
   const note = $("mtNote"), on = lang in MT_AT;
@@ -1256,6 +1275,7 @@ function nowBlock(r) {
   const tr = mt(r.summary), tl = el("span", "t"), say = el("p", "say", tr || r.summary);
   put(tl, [t("table", r.table) + " · ", { is: r.topic }]);
   say.lang = tr ? HTML_LANG[lang] : "is";
+  if (tr) markIce(say);
   where.append(sw, ice(r.locationPostCode + " " + r.location), tl);
   return [where, say];
 }
@@ -1371,7 +1391,7 @@ function renderKwic() {
       link.href = "#e-" + r.id;
       kr.append(key, document.createTextNode(s.slice(i + m[2].length)));
       const tr = mt(s);
-      if (tr) { kr.append(own(el("span", "kt", tr))); translated = true; }
+      if (tr) { kr.append(markIce(own(el("span", "kt", tr)))); translated = true; }
       kr.append(link);
       kl.lang = kr.lang = "is";
       row.append(kl, kr);
@@ -1459,7 +1479,7 @@ function renderLine(set) {
     }
     if (at < s.length) p.append(document.createTextNode(s.slice(at)));
     const tr = mt(s);
-    if (tr) { p.append(own(el("span", "tr", tr))); translated = true; }
+    if (tr) { p.append(markIce(own(el("span", "tr", tr)))); translated = true; }
     const where = own(el("span", "m"));
     put(where, tableLabel(r));
     p.append(where);
@@ -1491,7 +1511,7 @@ function renderSheet() {
     put(m, [...tableLabel(r), " · ", { is: r.topic }]);
     box.append(m, tx);
     const tr = mt(r.summary);
-    if (tr) { box.append(own(el("p", "tr", tr))); translated = true; }
+    if (tr) { box.append(markIce(own(el("p", "tr", tr)))); translated = true; }
     return box;
   }));
   $("pens").replaceChildren(...PENS.map((p) => {
@@ -1625,7 +1645,7 @@ function entry(r) {
     orig = wordsOf(r.summary);
     orig.classList.add("orig"); orig.id = "o-" + r.id;
     orig.hidden = !(origOpen.has(r.id) || (has(r.summary) && !has(tr)));
-    a.append(m, wordsOf(tr, HTML_LANG[lang]), orig);
+    a.append(m, markIce(wordsOf(tr, HTML_LANG[lang])), orig);
   } else a.append(m, wordsOf(r.summary));
   if (r.audio && silent(r)) a.append(el("p", "aside", t("silent")));
   else if (r.audio && failed.has(r.id)) a.append(el("p", "aside", t("failed")));
@@ -2115,7 +2135,7 @@ function sShow(i) {
   $("sTop").replaceChildren(...parts);
   const say = $("sSay");
   say.style.opacity = "0";
-  setTimeout(() => { const tr = mt(r.summary); say.textContent = tr || r.summary; say.lang = tr ? HTML_LANG[lang] : "is"; fit(); say.style.opacity = "1"; }, reduce.matches ? 0 : 200);
+  setTimeout(() => { const tr = mt(r.summary); say.textContent = tr || r.summary; say.lang = tr ? HTML_LANG[lang] : "is"; if (tr) markIce(say); fit(); say.style.opacity = "1"; }, reduce.matches ? 0 : 200);
   $("sPos").textContent = (sIdx + 1) + " / " + sList.length;
   if (voiced) {
     A.mode = "screen"; A.queue = [r.id]; A.qi = 0;
@@ -2276,7 +2296,7 @@ function paintHall() {
 // The translation, beneath the Icelandic or, on a wide screen, beside it, scrolled as far as the voice has got.
 function hallTr(text, frac) {
   const e = $("hTr");
-  if (e.textContent !== (text || "")) { e.textContent = text || ""; e.scrollTop = 0; }
+  if (e.textContent !== (text || "")) { e.textContent = text || ""; e.scrollTop = 0; if (text) markIce(e); }
   e.lang = HTML_LANG[lang]; e.hidden = !text;
   if (text && frac != null && e.scrollHeight > e.clientHeight) e.scrollTop = Math.round(frac * (e.scrollHeight - e.clientHeight));
 }
