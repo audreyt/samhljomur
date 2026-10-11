@@ -3,8 +3,11 @@
 **[audreyt.github.io/samhljomur](https://audreyt.github.io/samhljomur/)** now
 opens on **Orðrétt**: every table summary from Samtal on 10 October 2026,
 unchanged, with the recordings the tables chose to share, streamed from
-talasaman.is. No model wrote, translated, shortened or voiced anything
-from the tables; the rules that select and order it are printed on the page.
+talasaman.is. No model wrote, shortened or voiced anything from the tables;
+the rules that select and order it are printed on the page. In Icelandic
+nothing is translated; in English and Chinese, Google Translate translates
+the tables' words as the page opens, labelled as such, with the Icelandic
+beside it.
 Source, build and gates: [`ordrett/`](ordrett/README.md).
 
 This repository first held Samhljómur, a medley made from Samtal's open data

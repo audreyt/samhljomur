@@ -20,10 +20,14 @@
 // of its voice when that keeps it there; screen mode sets every summary whole on a projector; and
 // without Intl.Segmenter the page measures as it did before. Language gates:
 // the browser's language chooses and #is, #en-gb, #zh-tw override and are
-// kept; in English and Chinese every summary stays verbatim and is marked
-// Icelandic, nothing Icelandic is left unmarked, and posters follow. The
-// record page speaks one of the same three languages, chosen the same way and
-// remembered with the front page's choice.
+// kept; in English and Chinese every summary is read in Google Translate's
+// translation, marked as that language, with its Icelandic verbatim beside it
+// and marked Icelandic; nothing Icelandic is left unmarked; only the tables'
+// words go to Google Translate, a second visit asks for nothing it has, and
+// without an answer the words stay as written; posters follow. These gates
+// stand a deterministic translator in for Google's; one live gate asks Google
+// itself. The record page speaks one of the same three languages, chosen the
+// same way and remembered with the front page's choice.
 // Screenshots go to ordrett/qa/.
 
 import { chromium, type Page } from "playwright";
@@ -221,17 +225,41 @@ const shotOf = async (page: Page, sel: string, name: string) => { await page.loc
 {
   // Letters only Icelandic has, and the page's Icelandic words that have none of them.
   const ICELANDIC = /[ÁáÐðÉéÍíÓóÚúÝýÞþÆæÖö]|\b(borð|Allt|annað|Leita|Loka|Deila|Plakat|Byrja|Hlusta|Fyrri|Næsta|Engin|samantekt\w*|upptak\w*|Gervigreind|Gögn|Staðsetning\w*)\b/;
-  const look = async (locale: string, path = "", languages?: string[]) => {
+  // A stand-in for Google Translate: every word becomes its length, so a translation is known in advance
+  // and holds no Icelandic. It answers as Google does, one string for each "q", and notes what was asked.
+  const fake = (x: string) => x.replace(/\p{L}+/gu, (w) => "w" + w.length);
+  type Asked = { tl: string | null; sl: string | null; q: string[] };
+  const translator = async (ctx: Awaited<ReturnType<typeof context>>, how: "fake" | "abort" | "google" = "fake") => {
+    const asked: Asked[] = [];
+    ctx.on("request", (r) => {
+      const u = new URL(r.url());
+      if (u.host === "translate.googleapis.com") asked.push({ tl: u.searchParams.get("tl"), sl: u.searchParams.get("sl"), q: new URLSearchParams(r.postData() ?? "").getAll("q") });
+    });
+    if (how !== "google") await ctx.route("https://translate.googleapis.com/**", (route) => how === "abort" ? route.abort() :
+      route.fulfill({ status: 200, headers: { "content-type": "application/json; charset=utf-8", "access-control-allow-origin": "*" },
+        body: JSON.stringify(new URLSearchParams(route.request().postData() ?? "").getAll("q").map(fake)) }));
+    return asked;
+  };
+  const look = async (locale: string, path = "", languages?: string[], how: "fake" | "abort" | "google" = "fake") => {
     const ctx = await context({ viewport: { width: 1280, height: 800 }, locale });
     if (languages) await ctx.addInitScript((l) => Object.defineProperty(navigator, "languages", { get: () => l }), languages);
+    const asked = await translator(ctx, how);
     const page = await ctx.newPage();
     const errors: string[] = [];
     page.on("pageerror", (e) => errors.push(String(e)));
     await page.route("**/api/v1/summaries**", (route) => route.abort());
     await page.goto(BASE + path);
     await page.waitForTimeout(500);
-    return { ctx, page, errors, lang: await page.evaluate(() => document.documentElement.lang) };
+    return { ctx, page, errors, asked, lang: await page.evaluate(() => document.documentElement.lang) };
   };
+  // What the page shows of each summary, with each part's language and whether it is hidden.
+  const readList = (page: Page) => page.evaluate(() => [...document.querySelectorAll<HTMLElement>("#list .entry")].map((a) => {
+    const part = (w: HTMLElement | null) => w && { text: w.textContent!, lang: (w.closest("[lang]") as HTMLElement).lang, hidden: w.hidden };
+    const b = a.querySelector<HTMLElement>("[data-orig]");
+    return { id: a.id.slice(2), read: part(a.querySelector(".words:not(.orig)")), orig: part(a.querySelector(".words.orig")), open: b?.getAttribute("aria-expanded") ?? null };
+  }));
+  // Every text the page may send: a summary, or a sentence of one.
+  const tablesWords = (q: string) => snap.data.some((r: any) => r.summary === q || sentencesOf(r.summary).includes(q));
   const cases: [string, string, string[] | undefined, string][] = [
     ["is-IS", "", undefined, "is"], ["en-GB", "", undefined, "en-GB"], ["en-US", "", undefined, "en-GB"], ["zh-TW", "", undefined, "zh-Hant-TW"],
     ["zh-CN", "", undefined, "zh-Hant-TW"], ["de-DE", "", undefined, "en-GB"], ["en-US", "", ["en-US", "is"], "is"],
@@ -259,8 +287,9 @@ const shotOf = async (page: Page, sel: string, name: string) => { await page.loc
     await ctx.close();
   }
 
-  for (const [locale, name] of [["en-GB", "English"], ["zh-TW", "Chinese"]] as const) {
-    const { ctx, page, errors } = await look(locale);
+  for (const [locale, name, tl] of [["en-GB", "English", "en"], ["zh-TW", "Chinese", "zh-TW"]] as const) {
+    const { ctx, page, errors, asked } = await look(locale);
+    await page.waitForFunction(() => document.querySelectorAll("#list .entry .orig").length > 0, null, { timeout: 10000 }).catch(() => {});
     const seen = await page.evaluate((src) => {
       const ICE = new RegExp(src);
       const html = document.documentElement.lang, unmarked: string[] = [];
@@ -271,16 +300,28 @@ const shotOf = async (page: Page, sel: string, name: string) => { await page.loc
         const l = (at.closest("[lang]") as HTMLElement | null)?.lang ?? html;
         if (!/^is\b/i.test(l) && ICE.test(n.textContent!)) unmarked.push(n.textContent!.trim().slice(0, 40));
       }
-      const words = [...document.querySelectorAll<HTMLElement>("#list .entry")].map((a) => {
-        const w = a.querySelector<HTMLElement>(".words")!;
-        return [a.id.slice(2), w.textContent!, (w.closest("[lang]") as HTMLElement).lang];
-      });
-      return { unmarked, words };
+      const own = (sel: string) => [...document.querySelectorAll<HTMLElement>(sel)].map((e) => [e.textContent!, (e.closest("[lang]") as HTMLElement).lang]);
+      const kwic = [...document.querySelectorAll<HTMLElement>(".krow")].map((k) => [k.dataset.sentence!, k.querySelector(".kt")?.textContent ?? null, (k.querySelector(".kt") as HTMLElement | null)?.lang ?? null]);
+      return { unmarked, kwic, notes: own(".note-row .tr"), line: own(".ai-line .tr"), noteCount: document.querySelectorAll(".note-row").length };
     }, ICELANDIC.source);
+    const list = await readList(page);
     const byId = new Map(snap.data.map((r: any) => [r.id, r.summary]));
-    const verbatim = seen.words.length === snap.data.length && seen.words.every(([id, w, l]) => byId.get(id) === w && l === "is");
-    gate(`languages, ${name}: every summary verbatim and marked Icelandic, and no Icelandic left unmarked`,
-      verbatim && seen.unmarked.length === 0 && errors.length === 0, `${seen.words.length} summaries; unmarked: ${seen.unmarked.slice(0, 6).join(" | ") || "none"}${errors.length ? "; errors: " + errors.join(" | ") : ""}`);
+    const want = { "en-GB": "en-GB", "zh-TW": "zh-Hant-TW" }[locale];
+    const wrong = list.filter((e) => !e.read || !e.orig || e.read.text !== fake(byId.get(e.id)) || e.read.lang !== want ||
+      e.orig.text !== byId.get(e.id) || e.orig.lang !== "is" || !e.orig.hidden || e.open !== "false");
+    gate(`languages, ${name}: every summary is read in its translation, marked ${name}, with its Icelandic verbatim beside it, marked Icelandic; nothing Icelandic is left unmarked`,
+      list.length === snap.data.length && wrong.length === 0 && seen.unmarked.length === 0 && errors.length === 0,
+      `${list.length} summaries, ${wrong.length} wrong${wrong.length ? " (" + wrong[0].id.slice(0, 8) + ")" : ""}; unmarked: ${seen.unmarked.slice(0, 6).join(" | ") || "none"}${errors.length ? "; errors: " + errors.join(" | ") : ""}`);
+    const kwicOk = seen.kwic.length === expectedKwic.length && seen.kwic.every(([s, tr, l]) => tr === fake(s) && l === want);
+    const notesOk = seen.notes.length === seen.noteCount && seen.noteCount === expectedAI.length && seen.notes.every(([x, l], i) => x === fake(expectedAI[i].summary) && l === want);
+    gate(`languages, ${name}: on the spine and the sheet the Icelandic stays, and each sentence and note has its translation beneath`,
+      kwicOk && notesOk && seen.line.length > 0 && seen.line.every(([, l]) => l === want),
+      `${seen.kwic.length} sentences, ${seen.notes.length} notes, ${seen.line.length} on the line`);
+    const qs = asked.flatMap((a) => a.q);
+    gate(`languages, ${name}: only the tables' words go to Google Translate, from Icelandic into ${tl}, each once`,
+      asked.length > 0 && asked.every((a) => a.sl === "is" && a.tl === tl) && qs.every(tablesWords) && new Set(qs).size === qs.length &&
+      snap.data.every((r: any) => qs.includes(r.summary)),
+      `${asked.length} requests, ${qs.length} texts, ${qs.filter((q) => !tablesWords(q)).length} not the tables' words`);
     // A poster speaks the page's language around the words, which stay as written.
     const longest = ordered.reduce((a: any, b: any) => (b.summary.length > a.summary.length ? b : a));
     await page.click(`[data-poster="${longest.id}"]`);
@@ -301,6 +342,74 @@ const shotOf = async (page: Page, sel: string, name: string) => { await page.loc
     gate(`languages, ${name}: a poster's link is in that language and names its summary`,
       link.text === (locale === "en-GB" ? "Link" : "連結") && link.href === "#e-" + longest.id && !ICELANDIC.test(link.text ?? "x"),
       JSON.stringify(link));
+    await ctx.close();
+  }
+
+  {
+    // The Icelandic opens under its translation, and the search reads both.
+    const { ctx, page, errors } = await look("en-GB");
+    await page.waitForFunction(() => document.querySelectorAll("#list .entry .orig").length > 0, null, { timeout: 10000 }).catch(() => {});
+    const first = ordered[0];
+    const b = page.locator(`[data-orig="${first.id}"]`);
+    await b.click();
+    const opened = await page.evaluate((id) => {
+      const o = document.getElementById("o-" + id)!, b = document.querySelector(`[data-orig="${id}"]`)!;
+      return { shown: !o.hidden && o.getBoundingClientRect().height > 0, expanded: b.getAttribute("aria-expanded"), controls: b.getAttribute("aria-controls"), text: o.textContent };
+    }, first.id);
+    await b.click();
+    const closed = await page.evaluate((id) => document.getElementById("o-" + id)!.hidden, first.id);
+    gate("languages, English: ‘Icelandic original’ opens the summary as written under its translation, and closes it",
+      opened.shown && opened.expanded === "true" && opened.controls === "o-" + first.id && opened.text === first.summary && closed, JSON.stringify({ ...opened, text: opened.text?.slice(0, 30), closed }));
+    // A word of the translation, and an Icelandic word that only the summaries hold.
+    const tWord = (fake(first.summary).match(/w\d+/g) ?? ["w1"]).sort((a, b) => b.length - a.length)[0];
+    const iWord = "viljum";
+    await page.fill("#q", tWord); await page.waitForTimeout(500);
+    const byT = await page.evaluate(() => ({ n: document.querySelectorAll("#list .entry").length, marks: document.querySelectorAll("#list .words:not(.orig) mark.q").length }));
+    const wantT = snap.data.filter((r: any) => fake(r.summary).toLowerCase().includes(tWord) || [r.summary, r.location, r.topic].some((x: string) => x.toLocaleLowerCase("is").includes(tWord))).length;
+    await page.fill("#q", iWord); await page.waitForTimeout(500);
+    const byI = await page.evaluate(() => [...document.querySelectorAll<HTMLElement>("#list .entry")].map((a) => {
+      const o = a.querySelector<HTMLElement>(".orig")!;
+      return { open: !o.hidden && a.querySelector("[data-orig]")!.getAttribute("aria-expanded") === "true", marked: !!o.querySelector("mark.q") };
+    }));
+    const wantI = snap.data.filter((r: any) => r.summary.toLocaleLowerCase("is").includes(iWord)).length;
+    await page.fill("#q", ""); await page.waitForTimeout(400);
+    const cleared = await page.evaluate(() => [...document.querySelectorAll<HTMLElement>("#list .entry .orig")].filter((o) => !o.hidden).length);
+    gate("languages, English: search finds a word of the translation or of the Icelandic; an Icelandic match opens the Icelandic, marked",
+      byT.n === wantT && byT.marks >= wantT && byI.length === wantI && byI.every((x) => x.open && x.marked) && cleared === 0 && errors.length === 0,
+      `"${tWord}": ${byT.n} of ${wantT}; "${iWord}": ${byI.length} of ${wantI}, ${byI.filter((x) => x.open && x.marked).length} opened and marked; cleared: ${cleared} open`);
+    // A second visit asks for nothing it has.
+    const before = await ctx.newPage();
+    const again: string[] = [];
+    before.on("request", (r) => { if (new URL(r.url()).host === "translate.googleapis.com") again.push(r.url()); });
+    await before.route("**/api/v1/summaries**", (route) => route.abort());
+    await before.goto(BASE + "#en-gb");
+    await before.waitForTimeout(800);
+    const fromCache = (await readList(before)).filter((e) => e.read && e.read.lang === "en-GB" && e.orig).length;
+    gate("languages, English: a second visit reads every translation from this browser and asks Google Translate for nothing",
+      again.length === 0 && fromCache === snap.data.length, `${again.length} requests, ${fromCache} translated`);
+    await ctx.close();
+  }
+  {
+    // Without an answer, the words stay as written, and the page says why.
+    const { ctx, page, errors } = await look("en-GB", "", undefined, "abort");
+    await page.waitForTimeout(500);
+    const list = await readList(page);
+    const byId = new Map(snap.data.map((r: any) => [r.id, r.summary]));
+    const note = await page.textContent("#mtNote");
+    gate("languages, English: when Google Translate cannot be reached, every summary stays in Icelandic, verbatim and marked, and the page says so",
+      list.length === snap.data.length && list.every((e) => e.read && e.read.text === byId.get(e.id) && e.read.lang === "is" && !e.orig && e.open === null) &&
+      /did not answer/.test(note ?? "") && errors.length === 0, `${list.length} summaries; "${note}"${errors.length ? "; " + errors.join(" | ") : ""}`);
+    await ctx.close();
+  }
+  {
+    // Google itself, once: every summary comes back translated, in the reader's language.
+    const { ctx, page, errors, asked } = await look("en-GB", "", undefined, "google");
+    await page.waitForFunction(() => /Google Translate as the page opens|did not answer/.test(document.getElementById("mtNote")?.textContent ?? "") &&
+      document.querySelectorAll("#list .entry .orig").length > 0, null, { timeout: 30000 }).catch(() => {});
+    const list = await readList(page);
+    const done = list.filter((e) => e.read && e.read.lang === "en-GB" && e.read.text.trim() && e.orig && e.orig.lang === "is").length;
+    gate("languages, English, live: Google Translate answers, and every summary is read in English with its Icelandic beside it",
+      done === snap.data.length && errors.length === 0, `${done} of ${list.length} translated in ${asked.length} requests${errors.length ? "; " + errors.join(" | ") : ""}`);
     await ctx.close();
   }
 

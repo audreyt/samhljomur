@@ -150,6 +150,9 @@ h1 { font-size: min(clamp(4.25rem, 20vw, 10.5rem), 28cqi); }
 .krow .key { font-family: var(--font-frame); font-weight: 800; }
 .krow .km { display: block; margin-top: .45rem; white-space: normal; font-family: var(--font-frame); font-size: .8125rem; line-height: 1.4; color: var(--dim); text-decoration: none; }
 .krow .km:hover { color: var(--chalk); text-decoration: underline; }
+/* In English and Chinese, Google Translate's reading of the tables' words: beneath them on the spine and
+   the sheet, whose words are Icelandic; in their place where a summary is read, with the Icelandic a tap away. */
+.krow .kt { display: block; margin-top: .4rem; font-family: var(--font-words); font-size: .6em; line-height: 1.45; color: var(--dim); }
 
 /* ---------- the sheet: what the tables said about AI ---------- */
 .sheet-wrap { padding-block: 3.5rem; border-top: 1px solid var(--hair); }
@@ -167,6 +170,7 @@ h1 { font-size: min(clamp(4.25rem, 20vw, 10.5rem), 28cqi); }
 .ai-line .s { margin: 0; font-size: clamp(1.3rem, 3.3vw, 1.85rem); line-height: 1.38; overflow-wrap: anywhere; }
 .ai-line .m { display: block; margin-top: .4rem; font-family: var(--font-frame); font-weight: 600; font-size: .8125rem; line-height: 1.4; color: var(--ink-dim); }
 .ai-line .rule { margin-top: 0; }
+.ai-line .tr { display: block; margin-top: .4rem; font-size: .6em; line-height: 1.45; color: var(--ink-dim); }
 .ai-line mark.f2 { background: linear-gradient(transparent 12%, var(--hl-2) 12%, var(--hl-2) 92%, transparent 92%); }
 .ai-line mark.f4 { background: linear-gradient(transparent 12%, var(--hl-4) 12%, var(--hl-4) 92%, transparent 92%); }
 .sheet .all { margin: 2.75rem 0 0; padding-top: 1.5rem; border-top: 2px solid var(--ink); font-family: var(--font-frame); font-weight: 800; font-size: clamp(1.4rem, 3.6vw, 1.9rem); line-height: 1.1; }
@@ -187,6 +191,7 @@ h1 { font-size: min(clamp(4.25rem, 20vw, 10.5rem), 28cqi); }
 .note-row { display: grid; grid-template-columns: minmax(0, 1fr); gap: .3rem; }
 .note-row .m { margin: 0; font-family: var(--font-frame); font-weight: 600; font-size: .8125rem; color: var(--ink-dim); }
 .note-row .t { margin: 0; font-size: 1.0625rem; line-height: 1.6; white-space: pre-wrap; overflow-wrap: anywhere; }
+.note-row .tr { margin: .1rem 0 0; font-size: 1rem; line-height: 1.55; white-space: pre-wrap; overflow-wrap: anywhere; color: var(--ink-dim); }
 mark { background: none; color: inherit; padding: 0 .06em; margin: 0 -.06em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
 .notes.f1 mark.f1 { background: linear-gradient(transparent 12%, var(--hl-1) 12%, var(--hl-1) 92%, transparent 92%); }
 .notes.f2 mark.f2 { background: linear-gradient(transparent 12%, var(--hl-2) 12%, var(--hl-2) 92%, transparent 92%); }
@@ -217,6 +222,9 @@ input[type="search"] { flex: 0 1 20rem; }
 input[type="search"]::placeholder { color: var(--dim); opacity: 1; }
 .found { flex-basis: 100%; margin: 0; font-family: var(--font-frame); font-size: .875rem; color: var(--dim); }
 .words mark.q { background: var(--chalk); color: var(--night); border-radius: .125rem; }
+.words.orig { font-size: 1.0625rem; color: var(--dim); padding-left: .85rem; border-left: 2px solid var(--hair); }
+.tool[aria-expanded="true"] { background: var(--chalk); border-color: var(--chalk); color: var(--night); }
+.archive .mt-note { margin-top: 1rem; }
 .play.small { min-height: 2.75rem; font-size: .9375rem; padding: .35rem 1rem .35rem .35rem; justify-self: start; }
 .play.small .ico { width: 2rem; height: 2rem; }
 .place { border-top: 2px solid var(--chalk); padding-block: .875rem 2.25rem; }
@@ -327,6 +335,14 @@ html.is-screen body { overflow: hidden; }
 .hall .who { margin: 0 0 .35rem; font-family: var(--font-frame); font-weight: 700; font-size: clamp(1rem, 2.2vw, 2.2rem); }
 .hall .say { margin: 0; font-family: var(--font-words); font-size: clamp(1.2rem, 2.6vw, 2.6rem); line-height: 1.35; white-space: pre-wrap; overflow-wrap: anywhere; color: var(--dim); }
 .hall .say mark { background: none; color: var(--chalk); font-weight: 700; }
+.hall .tr { margin: .6rem 0 0; font-family: var(--font-words); font-size: clamp(1rem, 1.9vw, 1.9rem); line-height: 1.35; white-space: pre-wrap; overflow-wrap: anywhere; color: var(--dim); }
+/* On a wide screen the translation stands beside the Icelandic, each in its own column, and keeps pace with it. */
+@media (min-width: 48rem) {
+  .hall .cap:has(.tr:not([hidden])) { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr); column-gap: 4vw; overflow: hidden; }
+  .hall .cap:has(.tr:not([hidden])) .who { grid-column: 1 / -1; }
+  .hall .cap:has(.tr:not([hidden])) .say, .hall .cap:has(.tr:not([hidden])) .tr { min-height: 0; overflow-y: auto; margin: 0; font-size: clamp(1.1rem, 2.1vw, 2.2rem); }
+  .hall .cap:has(.tr:not([hidden])) .tr { color: var(--chalk); }
+}
 .hall .foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: max(1vh, 1rem) 2vw; font-family: var(--font-frame); font-size: clamp(.8rem, 1.05vw, 1.25rem); color: var(--dim); }
 .hall .foot .by { flex: 1 1 18rem; }
 .hall .nav { display: flex; align-items: center; gap: .9rem; margin-left: auto; }
@@ -368,6 +384,8 @@ html.is-hall body { overflow: hidden; }
   .place .pc { position: static; font-size: 22pt; }
   .place h3 { break-after: avoid; }
   .words { font-size: 11pt; }
+  .entry .orig[hidden] { display: block !important; }
+  .words.orig { font-size: 10pt; }
   .entry.on, .entry:target, .entry.linked { background: none; box-shadow: none; }
   a { text-decoration: none; }
 }
@@ -431,6 +449,7 @@ html.is-hall body { overflow: hidden; }
 <div class="wrap">
   <section class="archive" id="bord">
     <h2 data-t="bord.h">Öll borðin</h2>
+    <p class="rule mt-note" id="mtNote" role="status" hidden></p>
     <div class="controls">
       <nav class="topics" id="topics" aria-label="Umræðuefni" data-t-aria="topics"></nav>
       <div class="field">
@@ -453,7 +472,7 @@ html.is-hall body { overflow: hidden; }
     <p data-t="um2">Raðað er eftir póstnúmeri, svo staðsetningu, svo borðnúmeri. Hver litur fylgir póstnúmeri. Póstnúmerin, og litirnir með þeim, fara hringinn í kringum landið.</p>
     <p data-t="um3">Línurnar efst eru teiknaðar úr upptökunum sjálfum, úr styrk hljóðsins tuttugu sinnum á sekúndu. Hljóðstyrkur er jafnaður svo hver rödd heyrist jafnt.</p>
     <p data-t="um4">Síðan sækir textann og upptökurnar beint af talasaman.is þegar hún opnast. Upptökurnar eru ekki afritaðar hingað. Upptaka sem bætist við eftir að síðan var byggð er mæld úr hljóðinu sjálfu þegar hún berst, og lína hennar bætist við fjallið.</p>
-    <p data-t="um5">Ekkert af því sem kemur frá borðunum er skrifað, þýtt, stytt eða lesið upp af gervigreind. Röðin og valið fylgja reglum sem standa á síðunni. Gervigreind hjálpaði til við að semja reglurnar, skrifa kóðann og þessa skýringartexta.</p>
+    <p data-t="um5">Ekkert af því sem kemur frá borðunum er skrifað, stytt eða lesið upp af gervigreind. Á íslensku er ekkert þýtt; á ensku og kínversku þýðir Google Translate orð borðanna vélrænt þegar síðan opnast, og íslenski textinn fylgir þýðingunni. Röðin og valið fylgja reglum sem standa á síðunni. Gervigreind hjálpaði til við að semja reglurnar, skrifa kóðann og þessa skýringartexta.</p>
     <p data-t="um6">Þetta er hvorki afstaða né niðurstaða Samtals.</p>
     <p class="fine"><span lang="is">Gögn: <a href="https://talasaman.is/gogn">Samtal, félag til almannaheilla (talasaman.is)</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span> <span id="fetched"></span></p>
     <p class="fine"><span data-t="by">Audrey Tang setti síðuna saman.</span> <a href="saga.html" data-t="saga">Saga síðunnar</a></p>
@@ -492,6 +511,7 @@ html.is-hall body { overflow: hidden; }
   <div class="cap" id="hCap">
     <p class="who" id="hWho"></p>
     <p class="say" id="hSay" lang="is"></p>
+    <p class="tr" id="hTr" hidden></p>
   </div>
   <div class="foot">
     <span class="by" lang="is">Orðrétt · Gögn: Samtal, félag til almannaheilla (talasaman.is), CC BY 4.0</span>
@@ -567,9 +587,10 @@ const count = (n, sg, pl) => n + " " + (one(n) ? sg : pl);
 const clock = (s) => { s = Math.max(0, Math.round(s)); return Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0"); };
 
 /* ---------- languages: the page's own words in Icelandic, British English or Taiwanese Mandarin ---------- */
-// What the tables wrote, their places and topics, Samtal's question and its attribution line are never
-// translated, by people or by machines: they stay as written, marked as Icelandic so that a screen reader
-// says them as Icelandic. Only the page's own words change. The language is the one the address names
+// What the tables wrote, their places and topics, Samtal's question and its attribution line stay as
+// written, marked as Icelandic so that a screen reader says them as Icelandic. The page's own words are
+// written in each language. In English and Chinese the tables' words are also machine-translated by Google
+// Translate as the page opens (below); the Icelandic stays beside the translation. The language is the one the address names
 // (#is, #en-gb, #zh-tw), and is then remembered; else the one chosen before; else the browser's:
 // Icelandic if it lists Icelandic at all, otherwise the first of English or Chinese it lists, otherwise English.
 const HTML_LANG = { is: "is", "en-gb": "en-GB", "zh-tw": "zh-Hant-TW" };
@@ -652,28 +673,37 @@ const T = {
     posterDate: "SAMTALIÐ · 10 OCTOBER 2026",
     posterAlt: (where, table, i, n) => where + ", " + table + (n > 1 ? ", " + i + " of " + n : "") + ": ",
     voiceRule: (end) => "The width of the lines is the voice’s loudness, from the start of the recording at the top (0:00) to its end at the bottom (" + end + ").",
+    mtNote: "The summaries are machine-translated from Icelandic by Google Translate as the page opens, and no one has checked the translation. " +
+      "‘Icelandic original’ under a summary shows it as the table wrote it.",
+    mtWait: "Translating the summaries from Icelandic with Google Translate …",
+    mtLost: "Google Translate did not answer for every summary. Those it did not translate are shown in the Icelandic they were written in.",
+    mtBeneath: " Beneath each, Google Translate’s machine translation.",
+    orig: "Icelandic original",
     date: '<span lang="is">Samtalið</span> · 10 October 2026',
     langs: "Language", toc: "On this page", "toc.viljum": "We want", "toc.ai": "AI", "toc.bord": "All the tables", "toc.um": "About this page",
-    dek: 'Every summary from the tables, word for word (<span lang="is">orðrétt</span>), as it was recorded on talasaman.is. ' +
-      "The summaries stay in the Icelandic they were written in: nothing from the tables is translated. The recordings are whole and uncut.",
+    dek: 'Every summary from the tables, word for word (<span lang="is">orðrétt</span>), as it was recorded on talasaman.is, ' +
+      "with a machine translation by Google Translate; the Icelandic is a tap away. The recordings are whole and uncut.",
     qlabel: "Samtal’s question",
     qgloss: 'What kind of society do we want (<span lang="is">viljum</span>) to create together?',
     "ai.h": "Artificial intelligence", "ai.all": "All the summaries",
-    "bord.h": "All the tables", topics: "Topics", place: "Location", search: "Search", searchHint: "an Icelandic word, or part of one",
+    "bord.h": "All the tables", topics: "Topics", place: "Location", search: "Search", searchHint: "a word in English or Icelandic, or part of one",
     "um.h": "About this page",
-    um1: "Everything from the tables is unchanged, spelling included. Nothing was left out.",
+    um1: "Everything from the tables is kept unchanged, spelling included, beside its translation. Nothing was left out.",
     um2: "Ordered by postcode, then location, then table number. Each colour follows a postcode. The postcodes, and the colours with them, go round the country.",
     um3: "The lines at the top are drawn from the recordings themselves, from their loudness twenty times a second. Volume is levelled so that every voice is heard equally.",
     um4: "The page fetches the text and the recordings straight from talasaman.is when it opens. The recordings are not copied here. " +
-      "A recording that arrives after the page was built is measured from the sound itself as it comes in, and its line joins the mountain.",
-    um5: "Nothing from the tables is written, translated, shortened or read aloud by AI. The order and the selection follow rules stated on the page. " +
+      "A recording that arrives after the page was built is measured from the sound itself as it comes in, and its line joins the mountain. " +
+      "In English, the page also sends the tables’ words, and nothing else, to Google Translate.",
+    um5: "Nothing from the tables is written, shortened or read aloud by AI. In English, the tables’ words are machine-translated by Google Translate " +
+      "as the page opens; no one has checked the translation, and the Icelandic stays with it. The order and the selection follow rules stated on the page. " +
       "AI helped draft the rules, write the code and these explanatory texts, this English version of them included.",
     um6: "This is neither Samtal’s position nor its conclusion.",
     by: "Put together by Audrey Tang.", saga: "The page’s history",
     toScreen: "Show on a screen", toHall: "Show the mountain",
-    screenFine: "One summary at a time, in large type, with the recordings. Or the mountain full screen: all the voices at once, then each voice. The words follow the loudness of the sound.",
+    screenFine: "One summary at a time, in large type, with the recordings. Or the mountain full screen: all the voices at once, then each voice. " +
+      "The Icelandic words follow the loudness of the sound, with the translation beneath.",
     share: "Share", close: "Close", start: "Start",
-    hall: "The mountain on screen", hallStart: "First all the voices at once, then each voice. The words follow the loudness of the sound. Esc closes.",
+    hall: "The mountain on screen", hallStart: "First all the voices at once, then each voice. The Icelandic words follow the loudness of the sound, with the translation beneath. Esc closes.",
     screen: "Orðrétt on screen", screenStart: "One summary at a time. The arrow keys turn the page, the space bar pauses, Esc closes.",
   },
   "zh-tw": {
@@ -708,25 +738,30 @@ const T = {
     posterDate: "SAMTALIÐ · 2026 年 10 月 10 日",
     posterAlt: (where, table, i, n) => where + "，" + table + (n > 1 ? "，第 " + i + " 張，共 " + n + " 張" : "") + "：",
     voiceRule: (end) => "線條的寬度就是聲音的強弱：上方是錄音開頭 0:00，下方是結尾 " + end + "。",
+    mtNote: "本頁開啟時，摘要由 Google 翻譯從冰島文機器翻譯成華文，譯文未經人工校對。點選摘要下方的「冰島文原文」，即可看到各桌所寫的原文。",
+    mtWait: "正在以 Google 翻譯將摘要從冰島文譯成華文……",
+    mtLost: "Google 翻譯沒有回應所有的摘要；未能翻譯的摘要，以原本的冰島文呈現。",
+    mtBeneath: "下方附有 Google 翻譯的機器翻譯。",
+    orig: "冰島文原文",
     date: '<span lang="is">Samtalið</span> · 2026 年 10 月 10 日',
     langs: "語言", toc: "本頁內容", "toc.viljum": "我們想要", "toc.ai": "人工智慧", "toc.bord": "所有討論桌", "toc.um": "關於本頁",
-    dek: '各桌的每一則摘要，一字不改（<span lang="is">orðrétt</span>），如實呈現 talasaman.is 上的紀錄。摘要保留原本的冰島文，各桌的話一概不翻譯。錄音完整，未經剪輯。',
+    dek: '各桌的每一則摘要，一字不改（<span lang="is">orðrétt</span>），如實呈現 talasaman.is 上的紀錄，並附上 Google 翻譯的機器翻譯；點一下即可看到冰島文原文。錄音完整，未經剪輯。',
     qlabel: "Samtal 的提問",
     qgloss: '我們想要（<span lang="is">viljum</span>）一起創造什麼樣的社會？',
     "ai.h": "人工智慧", "ai.all": "全部摘要",
-    "bord.h": "所有討論桌", topics: "討論主題", place: "地點", search: "搜尋", searchHint: "冰島文的詞，或詞的一部分",
+    "bord.h": "所有討論桌", topics: "討論主題", place: "地點", search: "搜尋", searchHint: "華文或冰島文的詞，或詞的一部分",
     "um.h": "關於本頁",
-    um1: "來自各桌的一切都未經更動，連拼寫也一樣。沒有任何遺漏。",
+    um1: "來自各桌的一切都原樣保留，連拼寫也一樣，與譯文並列。沒有任何遺漏。",
     um2: "依郵遞區號排序，其次是地點，再其次是桌號。每種顏色對應一個郵遞區號；郵遞區號和顏色一起，繞著冰島一圈。",
     um3: "頁首的線條取自錄音本身，每秒量測二十次聲音的強弱。音量經過拉平，讓每個聲音都一樣清楚。",
-    um4: "本頁開啟時，直接從 talasaman.is 取得文字與錄音；錄音不會複製到這裡。本頁建置之後才新增的錄音，會在載入時直接從聲音本身量測，它的線條也會加入山形。",
-    um5: "來自各桌的內容，沒有任何部分由人工智慧撰寫、翻譯、刪節或朗讀。排序與選取都依照本頁載明的規則。人工智慧協助草擬了這些規則、撰寫程式碼與這些說明文字，也包括這份華文版本。",
+    um4: "本頁開啟時，直接從 talasaman.is 取得文字與錄音；錄音不會複製到這裡。本頁建置之後才新增的錄音，會在載入時直接從聲音本身量測，它的線條也會加入山形。華文版另外會把各桌的文字（且只有這些文字）送到 Google 翻譯。",
+    um5: "來自各桌的內容，沒有任何部分由人工智慧撰寫、刪節或朗讀。華文版中各桌的文字，是本頁開啟時由 Google 翻譯機器翻譯而成，譯文未經人工校對，冰島文原文也一併保留。排序與選取都依照本頁載明的規則。人工智慧協助草擬了這些規則、撰寫程式碼與這些說明文字，也包括這份華文版本。",
     um6: "本頁並非 Samtal 的立場或結論。",
     by: "唐鳳製作。", saga: "本頁的來由",
     toScreen: "投影播放", toHall: "投影山形",
-    screenFine: "一次一則摘要，大字顯示，並播放錄音。或以全螢幕顯示山形：先讓所有聲音同時播放，再逐一播放每個聲音。文字隨聲音的強弱前進。",
+    screenFine: "一次一則摘要，大字顯示，並播放錄音。或以全螢幕顯示山形：先讓所有聲音同時播放，再逐一播放每個聲音。冰島文隨聲音的強弱前進，譯文列在下方。",
     share: "分享", close: "關閉", start: "開始",
-    hall: "山形投影", hallStart: "先讓所有聲音同時播放，再逐一播放每個聲音。文字隨聲音的強弱前進。按 Esc 關閉。",
+    hall: "山形投影", hallStart: "先讓所有聲音同時播放，再逐一播放每個聲音。冰島文隨聲音的強弱前進，譯文列在下方。按 Esc 關閉。",
     screen: "Orðrétt 投影模式", screenStart: "一次一則摘要。方向鍵換頁，空白鍵暫停，按 Esc 關閉。",
   },
 };
@@ -777,6 +812,7 @@ let source = "snapshot";
 let rank = new Map();
 const state = { topic: "", loc: "", q: "" };
 const failed = new Set();
+const origOpen = new Set(); // translated summaries whose Icelandic the reader opened
 const byId = (id) => rows.find((r) => r.id === id);
 // A recording that arrives after the build is measured here, from the file itself.
 const added = new Map();
@@ -797,6 +833,92 @@ function envOf(id) {
 const tableLabel = (r) => [{ is: r.locationPostCode + " " + r.location }, " · " + t("table", r.table)];
 // A label of the page's own inside Icelandic words takes the page's language back.
 const own = (e) => { e.lang = HTML_LANG[lang]; return e; };
+
+/* ---------- in English and Chinese, the tables' words by Google Translate ---------- */
+// Only in English or Chinese does the page send anything beyond talasaman.is: the tables' words, and nothing
+// else, to Google Translate, as the page opens. Where a summary is read, the translation stands in its place,
+// marked as the reader's language, with the Icelandic a tap away; on the spine and the sheet, whose words are
+// Icelandic, it stands beneath them. What comes back is kept in this browser, so a second visit asks only
+// for what it does not have. Without an answer, the words stay as written.
+const MT_TO = { "en-gb": "en", "zh-tw": "zh-TW" };
+const MT_URL = "https://translate.googleapis.com/translate_a/t?client=gtx&dj=1&sl=is&tl=";
+const MT_KEY = "ordrett-mt-";
+const MT = {};
+function mtOf(to) {
+  if (!MT[to]) {
+    const done = new Map();
+    try {
+      const kept = JSON.parse(localStorage.getItem(MT_KEY + to) || "{}");
+      for (const [k, v] of Object.entries(kept || {})) if (typeof v === "string") done.set(k, v);
+    } catch (e) {}
+    // done: text -> translation; ask: wanted, not yet sent; flight: sent, not yet back; lost: no answer
+    MT[to] = { done, ask: new Set(), flight: new Set(), lost: new Set(), state: "" };
+  }
+  return MT[to];
+}
+// The translation in the reader's language, or null: in Icelandic, and until it comes.
+function mt(text) {
+  const to = MT_TO[lang];
+  if (!to || !text || !text.trim()) return null;
+  const m = mtOf(to), got = m.done.get(text);
+  if (got != null) return got;
+  if (!m.flight.has(text) && !m.lost.has(text)) m.ask.add(text);
+  return null;
+}
+async function mtFetch() {
+  const to = MT_TO[lang];
+  if (!to) return;
+  const m = mtOf(to);
+  for (const r of rows) mt(r.summary); // every summary, after what the page drew first
+  const want = [...m.ask];
+  m.ask.clear();
+  if (!want.length) return;
+  const batches = [];
+  let cur = [], size = 0;
+  for (const x of want) {
+    m.flight.add(x);
+    if (cur.length && size + x.length > 5000) { batches.push(cur); cur = []; size = 0; }
+    cur.push(x); size += x.length;
+  }
+  batches.push(cur);
+  m.state = "wait"; paintMt();
+  let next = 0;
+  const worker = async () => {
+    while (next < batches.length) {
+      const b = batches[next++], body = new URLSearchParams();
+      for (const x of b) body.append("q", x);
+      try {
+        const res = await fetch(MT_URL + encodeURIComponent(to), { method: "POST", body, credentials: "omit", referrerPolicy: "no-referrer" });
+        if (!res.ok) throw new Error(String(res.status));
+        const out = await res.json();
+        if (!Array.isArray(out) || out.length !== b.length) throw new Error("unexpected answer");
+        b.forEach((x, i) => { if (typeof out[i] === "string" && out[i].trim()) m.done.set(x, out[i]); else m.lost.add(x); });
+      } catch (e) { for (const x of b) m.lost.add(x); }
+      for (const x of b) m.flight.delete(x);
+    }
+  };
+  await Promise.all(Array.from({ length: Math.min(4, batches.length) }, worker));
+  if (m.flight.size) return; // another round is still out; it finishes the job
+  m.state = m.lost.size ? "lost" : "done";
+  try { // keep what the tables still say; a summary since removed takes its translation with it
+    const keep = {};
+    for (const [k, v] of m.done) if (rows.some((r) => r.summary.includes(k))) keep[k] = v;
+    localStorage.setItem(MT_KEY + to, JSON.stringify(keep));
+  } catch (e) {}
+  if (MT_TO[lang] !== to) return;
+  nowKey = "";
+  keepPlace(render);
+  sRefresh();
+}
+function paintMt() {
+  const note = $("mtNote"), to = MT_TO[lang];
+  note.hidden = !to;
+  if (!to) return;
+  const s = mtOf(to).state;
+  note.textContent = t(s === "wait" ? "mtWait" : s === "lost" ? "mtLost" : "mtNote");
+}
+// A rule line, with the note that a translation stands beneath when one does.
+const ruleWith = (v, shown) => [...(Array.isArray(v) ? v : [v]), ...(shown ? [t("mtBeneath")] : [])];
 
 /* ---------- the mountain: one line per recording, shortest on top, centred in time ---------- */
 const M = { cv: $("mtn"), lines: [], base: null, W: 0, H: 0, gap: 0, amp: 0, maxS: 0, hover: -1, dpr: 1 };
@@ -1204,9 +1326,9 @@ function paintPlays() {
 function nowBlock(r) {
   const where = el("p", "where"), sw = el("span", "swatch");
   sw.style.background = tone(r.locationPostCode, "accent");
-  const tl = el("span", "t"), say = el("p", "say", r.summary);
+  const tr = mt(r.summary), tl = el("span", "t"), say = el("p", "say", tr || r.summary);
   put(tl, [t("table", r.table) + " · ", { is: r.topic }]);
-  say.lang = "is";
+  say.lang = tr ? HTML_LANG[lang] : "is";
   where.append(sw, ice(r.locationPostCode + " " + r.location), tl);
   return [where, say];
 }
@@ -1305,6 +1427,7 @@ const VILJUM = /(^|[^\p{L}])(viljum)(?![\p{L}])/iu;
 
 function renderKwic() {
   const out = [];
+  let translated = false;
   for (const r of rows) {
     for (const s of sentencesOf(r.summary)) {
       const m = VILJUM.exec(s);
@@ -1319,14 +1442,17 @@ function renderKwic() {
       const link = own(el("a", "km")), kl = el("div", "kl", left);
       put(link, tableLabel(r));
       link.href = "#e-" + r.id;
-      kr.append(key, document.createTextNode(s.slice(i + m[2].length)), link);
+      kr.append(key, document.createTextNode(s.slice(i + m[2].length)));
+      const tr = mt(s);
+      if (tr) { kr.append(own(el("span", "kt", tr))); translated = true; }
+      kr.append(link);
       kl.lang = kr.lang = "is";
       row.append(kl, kr);
       out.push(row);
     }
   }
   $("kwic").replaceChildren(...out);
-  put($("kwicRule"), t("kwicRule", out.length));
+  put($("kwicRule"), ruleWith(t("kwicRule", out.length), translated));
   alignKwic();
 }
 // Lower the words after „viljum“ so the spine sits on the last line of the words before it.
@@ -1393,6 +1519,7 @@ function renderLine(set) {
   box.hidden = false;
   const tablesHit = new Set(hits.map((h) => h.r.location + "|" + h.r.table)).size;
   const kids = [el("p", "lab", t("aiLineLab"))];
+  let translated = false;
   for (const { r, s } of hits) {
     const p = el("p", "s");
     p.dataset.id = r.id; p.dataset.sentence = s; p.lang = "is";
@@ -1404,12 +1531,14 @@ function renderLine(set) {
       at = b;
     }
     if (at < s.length) p.append(document.createTextNode(s.slice(at)));
+    const tr = mt(s);
+    if (tr) { p.append(own(el("span", "tr", tr))); translated = true; }
     const where = own(el("span", "m"));
     put(where, tableLabel(r));
     p.append(where);
     kids.push(p);
   }
-  kids.push(el("p", "rule", t("aiLineRule", hits.length, tablesHit)));
+  kids.push(el("p", "rule", ruleWith(t("aiLineRule", hits.length, tablesHit), translated).join("")));
   box.replaceChildren(...kids);
 }
 
@@ -1419,8 +1548,8 @@ function renderSheet() {
   const tables = new Set(rows.map((r) => r.location + "|" + r.table));
   const aiTables = new Set(set.map((r) => r.location + "|" + r.table));
   $("aiStat").textContent = t("aiStat", aiTables.size, tables.size);
-  $("aiRule").textContent = t("aiRule");
   const hits = new Map(PENS.map((p) => [p.k, 0]));
+  let translated = false;
   $("notes").replaceChildren(...set.map((r) => {
     const box = el("div", "note-row"), tx = el("p", "t"), m = el("p", "m"), seen = new Set();
     box.id = "ai-" + r.id; tx.lang = "is";
@@ -1434,6 +1563,8 @@ function renderSheet() {
     for (const k of seen) hits.set(k, hits.get(k) + 1);
     put(m, [...tableLabel(r), " · ", { is: r.topic }]);
     box.append(m, tx);
+    const tr = mt(r.summary);
+    if (tr) { box.append(own(el("p", "tr", tr))); translated = true; }
     return box;
   }));
   $("pens").replaceChildren(...PENS.map((p) => {
@@ -1445,6 +1576,7 @@ function renderSheet() {
     b.append(nm, st);
     return b;
   }));
+  $("aiRule").textContent = ruleWith(t("aiRule"), translated).join("");
   paintPens();
 }
 function paintPens() {
@@ -1460,7 +1592,7 @@ $("pens").addEventListener("click", (e) => {
 
 /* ---------- every table ---------- */
 const fold = (s) => String(s).toLocaleLowerCase("is");
-const found = (r) => !state.q || [r.summary, r.location, r.topic].some((s) => fold(s).includes(state.q));
+const found = (r) => !state.q || [r.summary, mt(r.summary) || "", r.location, r.topic].some((s) => fold(s).includes(state.q));
 const atPlace = (r) => (!state.loc || r.location === state.loc) && found(r);
 const matches = (r) =>
   atPlace(r) && (state.topic === "" || (state.topic === "*" ? !r.topicChosen : (r.topicChosen && r.topic === state.topic)));
@@ -1538,9 +1670,9 @@ function markLinked() {
 }
 
 // Verbatim: set as text, never as markup. A search marks its matches; the words stay as they are.
-function wordsOf(text) {
+function wordsOf(text, lng = "is") {
   const p = el("p", "words"), low = fold(text), q = state.q;
-  p.lang = "is";
+  p.lang = lng;
   if (!q || low.length !== text.length) { p.textContent = text; return p; }
   let at = 0;
   for (let i = low.indexOf(q); i >= 0; i = low.indexOf(q, at)) {
@@ -1558,8 +1690,16 @@ function entry(r) {
   const m = el("p", "meta");
   m.append(el("span", "", t("table", r.table)), ice(r.topic));
   if (r.source === "participant") m.append(el("span", "", t("participant")));
-  a.append(m, wordsOf(r.summary));
-  const acts = el("div", "acts");
+  const acts = el("div", "acts"), tr = mt(r.summary);
+  // The translation is read; the Icelandic opens beneath it, and opens by itself when only it holds the search.
+  let orig = null;
+  if (tr) {
+    const has = (x) => !!state.q && fold(x).includes(state.q);
+    orig = wordsOf(r.summary);
+    orig.classList.add("orig"); orig.id = "o-" + r.id;
+    orig.hidden = !(origOpen.has(r.id) || (has(r.summary) && !has(tr)));
+    a.append(m, wordsOf(tr, HTML_LANG[lang]), orig);
+  } else a.append(m, wordsOf(r.summary));
   if (r.audio && silent(r)) a.append(el("p", "aside", t("silent")));
   else if (r.audio && failed.has(r.id)) a.append(el("p", "aside", t("failed")));
   else if (r.audio) {
@@ -1575,6 +1715,12 @@ function entry(r) {
   const p = el("button", "tool", t("poster"));
   p.type = "button"; p.dataset.poster = r.id;
   acts.append(p);
+  if (orig) {
+    const b = el("button", "tool", t("orig"));
+    b.type = "button"; b.dataset.orig = r.id;
+    b.setAttribute("aria-controls", orig.id); b.setAttribute("aria-expanded", String(!orig.hidden));
+    acts.append(b);
+  }
   a.append(acts);
   return a;
 }
@@ -1587,7 +1733,13 @@ $("list").addEventListener("click", (e) => {
     return startOne(id, "archive");
   }
   const p = e.target.closest("[data-poster]");
-  if (p) openPoster(p.dataset.poster);
+  if (p) return openPoster(p.dataset.poster);
+  const o = e.target.closest("[data-orig]");
+  if (!o) return;
+  const words = $("o-" + o.dataset.orig), open = words.hidden;
+  words.hidden = !open;
+  o.setAttribute("aria-expanded", String(open));
+  if (open) origOpen.add(o.dataset.orig); else origOpen.delete(o.dataset.orig);
 });
 $("topics").addEventListener("click", (e) => {
   const b = e.target.closest(".chip");
@@ -2036,7 +2188,7 @@ function sShow(i) {
   $("sTop").replaceChildren(...parts);
   const say = $("sSay");
   say.style.opacity = "0";
-  setTimeout(() => { say.textContent = r.summary; say.lang = "is"; fit(); say.style.opacity = "1"; }, reduce.matches ? 0 : 200);
+  setTimeout(() => { const tr = mt(r.summary); say.textContent = tr || r.summary; say.lang = tr ? HTML_LANG[lang] : "is"; fit(); say.style.opacity = "1"; }, reduce.matches ? 0 : 200);
   $("sPos").textContent = (sIdx + 1) + " / " + sList.length;
   if (voiced) {
     A.mode = "screen"; A.queue = [r.id]; A.qi = 0;
@@ -2045,6 +2197,13 @@ function sShow(i) {
     if (A.mode === "screen") { ++A.token; stopSources(); A.id = null; }
     if (!sPaused) sTimer = setTimeout(() => sShow(sIdx + 1), readMs(r.summary));
   }
+}
+// A translation that arrives while a summary is on screen takes its place there.
+function sRefresh() {
+  const r = !$("screen").hidden && sStarted && sList[sIdx], say = $("sSay");
+  const tr = r && byId(r.id) && mt(r.summary);
+  if (!tr || say.textContent === tr || say.style.opacity === "0") return;
+  say.textContent = tr; say.lang = HTML_LANG[lang]; fit();
 }
 function screenAfterAudio() { clearTimeout(sTimer); if (!sPaused) sTimer = setTimeout(() => sShow(sIdx + 1), 1500); }
 function sPause() {
@@ -2158,7 +2317,7 @@ function fillWords(el, text, frac) {
   frag.append(m);
   if (after) frag.append(after);
   el.replaceChildren(frag);
-  const cap = el.closest(".cap");
+  const cap = getComputedStyle(el).overflowY === "auto" ? el : el.closest(".cap"); // its own column beside a translation
   if (!cap) return;
   const mr = m.getBoundingClientRect(), cr = cap.getBoundingClientRect(), pad = 8;
   if (mr.top < cr.top + pad) cap.scrollTop -= cr.top + pad - mr.top;
@@ -2169,7 +2328,7 @@ function paintHall() {
   const say = $("hSay"), who = $("hWho");
   if (A.mode === "swell" && A.swell && A.swell.loading) {
     who.textContent = t("fetchingVoicesOf", A.swell.done, A.swell.n);
-    fillWords(say, "", null); $("hPos").textContent = ""; paintHallToggle(); return;
+    fillWords(say, "", null); hallTr(null); $("hPos").textContent = ""; paintHallToggle(); return;
   }
   const now = progress();
   const placeOf = (Ln) => [{ is: Ln.r.location }, " · ", { is: Ln.r.topic }];
@@ -2191,7 +2350,15 @@ function paintHall() {
   const track = tracks(L.env, L.s, L.r.summary);
   const frac = track ? speechFrac(L.env, local, L.s) : null;
   fillWords(say, L.r.summary, frac);
+  hallTr(mt(L.r.summary), frac);
   paintHallToggle();
+}
+// The translation, beneath the Icelandic or, on a wide screen, beside it, scrolled as far as the voice has got.
+function hallTr(text, frac) {
+  const e = $("hTr");
+  if (e.textContent !== (text || "")) { e.textContent = text || ""; e.scrollTop = 0; }
+  e.lang = HTML_LANG[lang]; e.hidden = !text;
+  if (text && frac != null && e.scrollHeight > e.clientHeight) e.scrollTop = Math.round(frac * (e.scrollHeight - e.clientHeight));
 }
 function enterHall() {
   if ($("hall").hidden) hallFrom = document.activeElement;
@@ -2316,6 +2483,7 @@ function render() {
   rank = new Map(rows.map((r, i) => [r.id, i]));
   renderCounts(); renderKwic(); renderSheet(); renderTopics(); renderPlaces(); renderList();
   layoutMountain(); alignKwic(); paint(); // after the page has its full height, and so its final width
+  paintMt(); mtFetch();
 }
 // Redraw only when the column width changes (a window resize, or a scrollbar
 // coming or going), one frame later so a redraw never re-triggers the observer.
@@ -2338,7 +2506,7 @@ if (document.fonts && document.fonts.ready) document.fonts.ready.then(alignKwic)
 // focus goes back to the same control.
 function keepPlace(fn) {
   const a = document.activeElement, d = a && a !== document.body ? a.dataset : null;
-  const sel = !d ? null : d.poster ? '[data-poster="' + d.poster + '"]' : d.id ? '.listen[data-id="' + d.id + '"]' :
+  const sel = !d ? null : d.poster ? '[data-poster="' + d.poster + '"]' : d.orig ? '[data-orig="' + d.orig + '"]' : d.id ? '.listen[data-id="' + d.id + '"]' :
     d.topic != null ? '.chip[data-topic="' + CSS.escape(d.topic) + '"]' : d.k ? '.pen[data-k="' + d.k + '"]' : null;
   const inView = (e) => { const r = e.getBoundingClientRect(); return r.bottom > 0 && r.top < innerHeight; };
   const linked = location.hash.length > 1 && document.getElementById(location.hash.slice(1));
